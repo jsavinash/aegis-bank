@@ -3,8 +3,6 @@
 **Project:** Target-state AI Solutions Architect architecture for Nestlé USA's GLP-1-aware demand sensing (Frozen & Coffee)
 **Status:** Draft / reference architecture (reconstruction — validate before external use)
 **Owner:** AI Solutions Architect (Capgemini Engineering)
-**Author tenure:** Mar 2022 – Jun 2024 (2 yrs 4 mos) — split from the Mar 2022 – Nov 2026 Nestlé USA window
-**Role title:** Lead AI Engineer — Demand Sensing
 **Last updated:** 2026-11-22
 
 ---
