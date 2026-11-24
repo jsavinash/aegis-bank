@@ -19,7 +19,7 @@
 
 | Requirement | Supplying component | Open-source stack | Commercial alternative |
 |---|---|---|---|
-| Accounts/payments/cards | Core banking engine + Go services | **Apache Fineract** (Apache 2.0, ledger + REST API) or **Mifos X** (MPL 2.0, Fineract + web/mobile), **TigerBeetle** (high-throughput double-entry ledger), Go microservices | Temenos, Mambu, Thought Machine |
+| Accounts/payments/cards | Core banking engine + Java microservices (Spring Boot / Quarkus) | **Apache Fineract** (Apache 2.0, ledger + REST API) or **Mifos X** (MPL 2.0, Fineract + web/mobile), **TigerBeetle** (high-throughput double-entry ledger) | Temenos, Mambu, Thought Machine |
 | Card issuing & payment orchestration | Payments layer | **Hyperswitch** (Apache 2.0, Rust; 100+ processors, card vault), **Apache Fineract** for ledger | Marqeta, Stripe Issuing |
 | Fraud scoring | AI risk plane | GNN/GBM + vLLM (open models) | Feedzai, Featurespace |
 | KYC/AML | Compliance plane (`aegis/`) | Docling, LlamaIndex, NeMo, **Apache Fineract** audit journal | Actimize, NICE |
@@ -37,7 +37,7 @@
 | **Hyperswitch** | Apache 2.0 (Rust) | Payment orchestration, routing across 100+ processors, card vault | Payments layer beside Fineract; card vault brings PCI DSS scope. |
 | **Galoy core** | Mostly open source | Software-native banks; event-sourced multi-asset (fiat/stablecoin) double-entry core | Newer; custody-independent; AI-native but early. |
 
-> **Recommendation:** **Apache Fineract** (+ Mifos X front end) as the open-source core ledger/product engine, **Hyperswitch** for card/payment orchestration, and **TigerBeetle** where raw ledger throughput dominates. Budget for the operational work open source shifts onto your team (image hardening, EOD batch, upgrades, no vendor SLA) — or contract a Fineract hosting/support partner.
+> **Recommendation:** **Apache Fineract** (+ Mifos X front end) as the open-source core ledger/product engine, **Hyperswitch** for card/payment orchestration, and **TigerBeetle** where raw ledger throughput dominates. The core services run on **Java microservices** (Spring Boot / Quarkus — industry standard for banking) rather than Go. Budget for the operational work open source shifts onto your team (image hardening, EOD batch, upgrades, no vendor SLA) — or contract a Fineract hosting/support partner.
 
 ## Demand-supply gap analysis
 
