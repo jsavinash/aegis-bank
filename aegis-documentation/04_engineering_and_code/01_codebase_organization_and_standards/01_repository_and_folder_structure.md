@@ -5,7 +5,7 @@
 ## Monorepo layout
 
 ```
-hyperscale/
+aegis-bank/
 ├── aegis/                          # Python AI/risk plane (implemented)
 │   ├── models/ agents/ graphs/ workflows/ tools/
 │   ├── rag/ llm/ guardrails/ eval/ risk/ compliance/
