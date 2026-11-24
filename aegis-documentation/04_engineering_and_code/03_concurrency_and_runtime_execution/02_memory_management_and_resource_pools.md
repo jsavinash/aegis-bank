@@ -32,5 +32,5 @@
 
 ## Monitoring
 
-- Track memory, goroutine/thread counts, queue depths.
+- Track memory, thread/virtual-thread counts, queue depths.
 - Alert on leaks (monotonic growth).
