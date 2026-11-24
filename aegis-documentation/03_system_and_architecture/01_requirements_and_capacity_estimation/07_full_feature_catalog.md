@@ -779,11 +779,11 @@ The following sections capture features from a second, deeper research sweep (Fo
 
 > Part II adds ~150 features from a deeper 2026 sweep (Forbes, CNBC, NerdWallet, Stripe, Rho, Brex, World Bank, super-app & wallet analyses), bringing the catalogue to **~600 distinct features**.
 
-## Appendix B — Recommended MVP shortlist (first release)
+## Appendix B — Recommended Phase 1 shortlist (first release)
 
 **Core:** Checking + Savings + term deposit · **Cards:** physical + virtual + freeze + controls · **Payments:** domestic transfer + P2P + bill pay + mobile deposit · **Money mgmt:** spending dashboard + budgets · **Security:** biometric login + MFA + real-time fraud alerts + card controls · **Service:** basic virtual assistant + live chat + human escalation · **Compliance:** KYC + sanctions + audit trail · **Accessibility:** WCAG 2.2 AA baseline.
 
-This MVP matches the CNBC/Forbes/J.D. Power "essentials" while already exceeding the security baseline of 88% of 2026 banking apps (Ostorlab).
+This Phase 1 release matches the CNBC/Forbes/J.D. Power "essentials" while already exceeding the security baseline of 88% of 2026 banking apps (Ostorlab).
 
 ---
 
