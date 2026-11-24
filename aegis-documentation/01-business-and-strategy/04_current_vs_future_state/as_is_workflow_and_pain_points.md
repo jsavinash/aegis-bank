@@ -5,6 +5,7 @@
 | Area | Current state | Pain point |
 |---|---|---|
 | **Onboarding** | Paper/branch + manual KYC; days | Drop-off, cost, poor experience |
+| **Authentication** | Passwords + SMS OTP; no passkeys | Phishing / SIM-swap risk, poor UX |
 | **Fraud** | Rules + static ML; high false positives | Customer friction, analyst overload |
 | **AML** | Rules generate >90% false positives | Analysts buried; slow SAR filing |
 | **Customer service** | Scripted IVR + human agents; business hours | Long waits, limited coverage |
@@ -24,3 +25,4 @@
 - Continued fraud losses (bps of volume) and false-positive friction.
 - Rising compliance cost and regulatory risk (EU AI Act, AML).
 - Customer attrition to neobanks with superior UX and security.
+- Escalation debt: fraud/disputes with no in-app scam-warning or human fast-path, driving attrition (J.D. Power: satisfaction drops for fraud/disputes → AI must escalate).
