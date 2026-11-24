@@ -18,12 +18,19 @@ The **AI layer is the product**, not a feature. Aegis uses AI as the fraud engin
 
 - 99.95%+ availability; <150ms fraud decisions; WCAG 2.2 AA; PCI-DSS/SOC 2/ISO 27001.
 - Fraud false positives cut 40–60%; AML analyst time per alert down ~70%; contact deflection 25–40%.
+- **North-star:** monthly active customers completing at least one high-value digital journey (payment, application, savings goal).
 - A defensible, audit-ready AI estate where every decision is traceable to data, model, policy, and human.
 
 ## Investment posture
 
-Buy the core (Thought Machine/Mambu) rather than build; build the differentiated AI/risk plane; buy commodity data (KYC/AML/fraud feeds). Sequence 2–3 deep wins (fraud, servicing, AML) before breadth.
+Buy the core (Thought Machine/Mambu) rather than build; build the differentiated AI/risk plane; buy commodity data (KYC/AML/fraud feeds). Sequence 2–3 deep wins (fraud, servicing, AML) before breadth, and ship a production-grade MVP (accounts, cards, payments, security base) in ~3 months.
 
 ## Sign-off
 
 See `00_executive_summary_and_signoffs/approval_and_change_log.md`.
+
+## Related
+
+- [03_business_goals_and_kpis.md](../03_business_goals_and_kpis.md) — goals, KPI targets, north-star.
+- [north_star_and_funnel_metrics.md](../../02-product-and-ux/06_analytics_and_experimentation/north_star_and_funnel_metrics.md) — funnel stages and counter-metrics.
+- [10_cost_roi_and_alternatives/cost_and_roi_summary.md](../10_cost_roi_and_alternatives/cost_and_roi_summary.md) — cost model and ROI.
