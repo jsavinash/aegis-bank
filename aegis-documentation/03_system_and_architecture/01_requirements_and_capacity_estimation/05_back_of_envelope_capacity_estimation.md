@@ -8,7 +8,7 @@
 ## Card authorization (hot path)
 
 - 20M/month ≈ 7.7/sec average; peak ~23/sec — but per-node p99 <150ms is the binding constraint, not TPS.
-- Stateless Go service; horizontal scale; Redis for state.
+- Stateless Java service (Spring Boot / Quarkus); horizontal scale; Redis for state.
 
 ## Fraud scoring
 
