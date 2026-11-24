@@ -16,7 +16,7 @@ Retail banks face three simultaneous, compounding pressures:
 
 A greenfield AI-first bank can:
 
-1. **Deliver the full product surface** — ~600 features across 37 sections (see `../../docs/00-product-and-vision/02-feature-catalog.md`), built on a **config-driven core** (Thought Machine/Mambu) so 600 features ≠ 600 codebases. MVP scope (accounts, cards, payments, security base) launches in ~3 months; V2 adds lending, multi-currency, passkeys, scam detection, robo-advisor; V3 deepens with mortgages, agentic AI, business banking, embedded finance.
+1. **Deliver the full product surface** — ~600 features across 37 sections (see `../../docs/00-product-and-vision/02-feature-catalog.md`), built on a **config-driven core** (Thought Machine/Mambu) so 600 features ≠ 600 codebases. **Phase 1 production release** (accounts, cards, payments, security base) launches in ~3 months; Phase 2 adds lending, multi-currency, passkeys, scam detection, robo-advisor; Phase 3 deepens with mortgages, agentic AI, business banking, embedded finance.
 
 2. **Use AI as the decision engine across ~50 use cases** (see `../../docs/01-ai-and-architecture/02-ai-use-case-catalog.md`) organized by four agent archetypes:
    - **Monitoring agents** (hot path): real-time fraud scoring (<150ms GNN/GBM), AML transaction monitoring, sanctions/PEP screening, cybersecurity triage.
@@ -38,7 +38,7 @@ A greenfield AI-first bank can:
 
 ## Objectives
 
-- Launch a production-grade MVP (accounts, cards, payments, security base) in ~3 months.
+- Ship a **production-grade Phase 1 release** (accounts, cards, payments, security base) in ~3 months.
 - Prove the AI operating model on 2–3 deep use cases (fraud, servicing, AML) before breadth.
 - Reach 99.95% availability, <150ms fraud decisions, WCAG 2.2 AA.
 
