@@ -13,14 +13,14 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 | Rule | Consequence |
 |---|---|
 | **AI is Python.** | Everything touching models, agents, RAG, evals, data pipelines → **Python**. Non-negotiable (PyTorch/HF/LangGraph/LlamaIndex/vLLM/NeMo/Ragas are Python-first). |
-| **Money moves fast in Go.** | Latency-critical transactional paths (ledger, payments, cards, fraud hot-path, gateways) → **Go**. Low tail latency, goroutines, tiny footprint, trivial K8s. |
+| **Money moves fast in Java.** | Latency-critical transactional paths (ledger, payments, cards, fraud hot-path, gateways) → **Java** (Spring Boot / Quarkus). Low tail latency, virtual threads, strong type system, industry-standard for core banking, massive JVM ecosystem. |
 | **Screens are TypeScript.** | All customer/employee interfaces → **TypeScript** (React Native/Flutter for mobile, Next.js for web). |
 | **Buy the core, don't code it.** | The ledger/product engine is a **bought** system (Thought Machine/Mambu/Temenos) — its internals are Java; you integrate, you don't reimplement. |
 | **Java only at the edges.** | **Java/Kotlin** only if you adopt a JVM core or need heavy enterprise integration (SWIFT, mainframe). |
 | **Config over code.** | Products, fees, pricing are **configuration** in the core, not hard-coded modules — 600 features must not mean 600 codebases. |
 | **Contract-first.** | Every service speaks **OpenAPI/AsyncAPI/GraphQL** — language is an implementation detail behind a contract. |
 
-**Default split:** **Python** (AI + most services) · **Go** (transactional hot path + gateways) · **TypeScript** (channels + BFF) · **SQL** (data) · **Java** (only if buying a JVM core).
+**Default split:** **Python** (AI + most services) · **Java** (transactional hot path + gateways, Spring Boot/Quarkus) · **TypeScript** (channels + BFF) · **SQL** (data).
 
 ---
 
@@ -28,21 +28,21 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 
 | Type | Features | Language | Primary frameworks | Notes |
 |---|---|---|---|---|
-| **CORE** | 32 | Go (ledger) · config in core | Go: `chi`/`fiber`, `sqlc`, `pgx` · or bought core (Temenos/Mambu) | Double-entry, idempotent, ACID; correctness > velocity |
-| **PAY** | 42 | Go | `chi`, Kafka (`franz-go`/`segmentio`), Flink (Java/Python) | Event-driven, exactly-once, ISO 20022 |
-| **CARD** | 29 | Go | card-auth service (`grpc-go`), Redis | <150ms authorization; tokenisation via vault |
-| **LEND** | 32 | Python (decisioning) + Go (servicing) | Python: `scikit-learn`/`xgboost`, `fastapi` · Go: loan servicing | ML underwriting + explainability |
+| **CORE** | 32 | Java (ledger) · config in core | Spring Boot / Quarkus, `sqlc`/`pgx` equivalents · or bought core (Temenos/Mambu) | Double-entry, idempotent, ACID; correctness > velocity |
+| **PAY** | 42 | Java | Spring Boot / Quarkus, Kafka, Flink (Java/Python) | Event-driven, exactly-once, ISO 20022 |
+| **CARD** | 29 | Java | card-auth service (gRPC), Redis | <150ms authorization; tokenisation via vault |
+| **LEND** | 32 | Python (decisioning) + Java (servicing) | Python: `scikit-learn`/`xgboost`, `fastapi` · Java: loan servicing (Spring Boot) | ML underwriting + explainability |
 | **WEALTH** | 43 | Python | `pandas`/`polars`, `numpy`, `pyportfolioopt`, `fastapi` | Portfolio math, robo, analytics |
 | **BIZ** | 57 | TypeScript (back-office UI) + Python (automation) | Next.js + `tRPC`, Python `fastapi`/Celery | AP/AR automation, invoicing, expense |
-| **SEC** | 32 | Python (fraud/AML) + Go (authN/Z) | Python: GNN (PyG), `aegis/` guardrails · Go: session/keys | Real-time fraud + identity |
+| **SEC** | 32 | Python (fraud/AML) + Java (authN/Z) | Python: GNN (PyG), `aegis/` guardrails · Java: session/keys (Spring Security) | Real-time fraud + identity |
 | **AI** | 44 | Python | LangGraph, LlamaIndex, PyTorch, vLLM, LiteLLM, Ragas | The AI plane — see §4 |
 | **DATA** | 45 | Python + SQL | `dbt`, Dagster, Polars, ClickHouse client | Pipelines, analytics, feature store |
-| **OPEN** | 7 | Go + TypeScript | `chi` (APIs), Next.js (portal), OIDC | PSD2/open-banking APIs, consent |
+| **OPEN** | 7 | Java + TypeScript | Spring Boot (APIs), Next.js (portal), OIDC | PSD2/open-banking APIs, consent |
 | **LIFE** | 39 | TypeScript + Python | React Native/Flutter, Next.js, Python services | Super-app, lifestyle, mini-apps |
 | **ESG** | 16 | Python | `pandas`, carbon-factor APIs, `fastapi` | Carbon tracking, ESG scoring |
 | **COMP** | 25 | Python | `aegis/` compliance, Docling, Neo4j/Graphiti, NeMo | KYC/AML/regulatory — see `aegis/` |
 | **ACC** | 12 | TypeScript | React Native/Next.js + `axe-core`, WCAG 2.2 AA | Accessibility is a UI concern |
-| **PLAT** | 25 | Go + Python | K8s, Terraform, OTel, Kafka, Feast | Infra, observability, events |
+| **PLAT** | 25 | Java + Python | K8s, Terraform, OTel, Kafka, Feast, vLLM | Infra, observability, events |
 
 ---
 
@@ -50,34 +50,34 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 
 | § | Section | Language(s) | Framework(s) / stack |
 |---|---|---|---|
-| 1 | Accounts & Deposits | Go (core) · config | `chi`, `pgx`/`sqlc`; or Temenos/Mambu |
-| 2 | Payments & Transfers | Go | `chi`, Kafka (`franz-go`), Flink; ISO 20022 |
-| 3 | Cards | Go | `grpc-go` card-auth, Redis, tokenisation vault |
-| 4 | Bill Pay | Go + TypeScript | `chi` + Next.js scheduler UI |
-| 5 | Lending & Credit | Python + Go | `xgboost`/`scikit-learn`, `fastapi`; Go servicing |
+| 1 | Accounts & Deposits | Java (core) · config | Spring Boot / Quarkus, `pgx`/`sqlc` equivalents; or Temenos/Mambu |
+| 2 | Payments & Transfers | Java | Spring Boot / Quarkus, Kafka, Flink; ISO 20022 |
+| 3 | Cards | Java | gRPC card-auth, Redis, tokenisation vault |
+| 4 | Bill Pay | Java + TypeScript | Spring Boot + Next.js scheduler UI |
+| 5 | Lending & Credit | Python + Java | `xgboost`/`scikit-learn`, `fastapi`; Java servicing (Spring Boot) |
 | 6 | Savings, Wealth & Investing | Python | `polars`/`pandas`, `pyportfolioopt`, `fastapi` |
 | 7 | Money Management & Insights | Python + TypeScript | `polars`, `fastapi`; Next.js dashboards |
 | 8 | Credit & Financial Health | Python | credit-bureau APIs, `scikit-learn`, `fastapi` |
-| 9 | Security & Fraud | Python + Go | PyG/GNN, `aegis/risk`, `aegis/guardrails`; Go authN |
+| 9 | Security & Fraud | Python + Java | PyG/GNN, `aegis/risk`, `aegis/guardrails`; Java authN (Spring Security) |
 | 10 | Customer Service & AI | Python | LangGraph, LlamaIndex, MCP, vLLM (`aegis/agents`) |
 | 11 | Business & Commercial Banking | TypeScript + Python | Next.js + `tRPC`; `fastapi`/Celery |
-| 12 | Treasury & Cash Management | Go + Python | `chi`; Python forecasting (`pandas`, Prophet) |
+| 12 | Treasury & Cash Management | Java + Python | Spring Boot; Python forecasting (`pandas`, Prophet) |
 | 13 | Private Banking & Wealth | Python | `pyportfolioopt`, `fastapi`, RAG over mandates |
-| 14 | Kids, Teens & Family | TypeScript + Go | React Native, `chi` (limits/controls) |
-| 15 | Open Banking & Ecosystem | Go + TypeScript | `chi` (PSD2 APIs), Next.js portal, OIDC |
+| 14 | Kids, Teens & Family | TypeScript + Java | React Native, Spring Boot (limits/controls) |
+| 15 | Open Banking & Ecosystem | Java + TypeScript | Spring Boot (PSD2 APIs), Next.js portal, OIDC |
 | 16 | Super-App & Lifestyle | TypeScript + Python | React Native/Flutter, Next.js, Python services |
 | 17 | Sustainability / Green | Python | `pandas`, carbon-factor APIs, `fastapi` |
-| 18 | Digital Assets & Stablecoins | Python + Go | `web3.py`/`ethers`, custody KYT; Go ledger |
-| 19 | Rewards & Loyalty | TypeScript + Go | Next.js, `chi` (points ledger) |
+| 18 | Digital Assets & Stablecoins | Python + Java | `web3.py`/`ethers`, custody KYT; Java ledger (Spring Boot) |
+| 19 | Rewards & Loyalty | TypeScript + Java | Next.js, Spring Boot (points ledger) |
 | 20 | Insurance & Protection | Python | underwriting models, `fastapi` |
 | 21 | Accessibility & Inclusion | TypeScript | React Native/Next.js, `axe-core`, WCAG 2.2 AA |
 | 22 | Compliance, Risk & Regulatory | Python | `aegis/` (NeMo, LlamaIndex, Neo4j, Docling) |
-| 23 | Platform, Data & AI Infra | Go + Python | K8s, Terraform, OTel, Kafka, Feast, vLLM |
+| 23 | Platform, Data & AI Infra | Java + Python | K8s, Terraform, OTel, Kafka, Feast, vLLM |
 | 24 | Notifications & UX | TypeScript + Python | React Native push, `fastapi` prefs service |
-| 25 | International / Cross-border | Go | FX services, `chi`, corridor integrations |
-| 26 | Payments Acceptance (merchant) | Go | acquiring/POS, `chi`, webhooks |
-| 27 | Specialty / Niche | Python + Go | domain-specific (Islamic banking, agri) |
-| 28 | Credit Cards — advanced tooling | Go + TypeScript | virtual-card service, Next.js controls UI |
+| 25 | International / Cross-border | Java | FX services, Spring Boot, corridor integrations |
+| 26 | Payments Acceptance (merchant) | Java | acquiring/POS, Spring Boot, webhooks |
+| 27 | Specialty / Niche | Python + Java | domain-specific (Islamic banking, agri) |
+| 28 | Credit Cards — advanced tooling | Java + TypeScript | virtual-card service (Spring Boot), Next.js controls UI |
 | 29 | Super-App / Embedded / Wallets | TypeScript + Python | React Native, wallet SDKs, Python services |
 | 30 | Business Banking — depth | TypeScript + Python | Next.js + `tRPC`, AP/AR automation (Python) |
 | 31 | Financial Inclusion / Rural / Agri | Python + TypeScript | alternative-data scoring, USSD/mobile-money |
@@ -85,8 +85,8 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 | 33 | Financial Wellness & Personalisation | Python | `pandas`, `scikit-learn`, `fastapi` |
 | 34 | Notifications / Alerts / UX | TypeScript + Python | push/SMS/email, preference service |
 | 35 | Statements / Documents / Self-Service | TypeScript + Python | Next.js, Docling (PDF), `fastapi` |
-| 36 | Rewards / Travel / Perks | TypeScript + Go | Next.js, offers engine (`chi`) |
-| 37 | New / Emerging niche | Python + Go | varies (tokenised deposits, CBDC, etc.) |
+| 36 | Rewards / Travel / Perks | TypeScript + Java | Next.js, offers engine (Spring Boot) |
+| 37 | New / Emerging niche | Python + Java | varies (tokenised deposits, CBDC, etc.) |
 
 ---
 
@@ -141,13 +141,13 @@ Maps the AI use-case catalog ([../../03_system_and_architecture/03_high_level_de
 | Concern | Primary pick | Alternative |
 |---|---|---|
 | Backend API (AI/services) | **FastAPI** (Python) | Litestar, Flask |
-| Backend API (transactional) | **Go `chi`/`fiber`** | gRPC-go, Rust axum |
+| Backend API (transactional) | **Java (Spring Boot / Quarkus)** | gRPC, Quarkus / Vert.x |
 | BFF / GraphQL | **Apollo GraphQL** (TypeScript) | tRPC |
 | Mobile | **React Native** (Expo) / **Flutter** | Native Swift/Kotlin |
 | Web | **Next.js** (TypeScript) | Remix, SvelteKit |
 | Auth / identity | **Keycloak** / **Ory** (passkeys) | Auth0, Cognito |
 | Event bus | **Redpanda/Kafka** + **Flink** | NATS, Pulsar |
-| Ledger (build) | Go + Postgres / event-sourcing | **Buy**: Temenos/Mambu |
+| Ledger (build) | Java + Postgres / event-sourcing | **Buy**: Temenos/Mambu |
 | Feature store | **Feast** | Tecton |
 | Data transform | **dbt** | — |
 | Orchestration (data) | **Dagster** | Airflow, Prefect |
@@ -160,7 +160,7 @@ Maps the AI use-case catalog ([../../03_system_and_architecture/03_high_level_de
 ## 6. Golden rules (decision cheat-sheet)
 
 1. **Touching a model → Python.** No exceptions (features + every AI use case).
-2. **Touching money at speed → Go.** Ledger, payments, cards, fraud hot path, gateway.
+2. **Touching money at speed → Java.** Ledger, payments, cards, fraud hot path, gateway.
 3. **Touching a screen → TypeScript.** Mobile, web, BFF.
 4. **Touching the ledger product logic → buy, don't build.** Integrate via events/APIs.
 5. **Touching many products → configure, don't hardcode.** Product engine, not 600 modules.

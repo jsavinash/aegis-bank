@@ -53,7 +53,7 @@
 | Concern | Primary pick | Why | Alternative | Repo today |
 |---|---|---|---|---|
 | Identity / CIAM | **Keycloak** (self-host) or **Ory Kratos/Hydra** — with **FIDO2/passkeys** + risk-adaptive MFA | Passkeys in only 5% of apps (Ostorlab) → competitive edge; self-host for data residency | Auth0 / Okta CIC / AWS Cognito | `aegis/security` (JWT + RBAC) |
-| API gateway / WAF | **Kong** or **Cloudflare** + **AWS WAF** | Rate limiting, mTLS, schema validation, bot defense | Envoy / APISIX / AWS API Gateway | — |
+| API gateway / WAF | **APISIX** or **Cloudflare** + **AWS WAF** | Rate limiting, mTLS, schema validation, bot defense; richer AI plugin set (ai-proxy, ai-rate-limiting, ai-cache, ai-rag); 36 HTTP extended Gateway API features | Kong (Enterprise) / Envoy / AWS API Gateway | — |
 | BFF / API layer | **GraphQL (Apollo)** for app BFF + **REST/OpenAPI** for partner/open-banking | GraphQL for flexible client queries; REST for PSD2/partner contracts | tRPC / gRPC | ✅ FastAPI routers |
 | API docs / contract | **OpenAPI 3.1** + **Spectral** linting in CI | Contract-first; gates breaking changes | — | FastAPI auto-docs |
 

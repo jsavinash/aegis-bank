@@ -8,12 +8,12 @@
 - **Errors:** typed exceptions; no bare except.
 - **Docstrings:** public APIs only.
 
-## Go (transactional)
+## Java (transactional)
 
-- **Style:** gofmt, golangci-lint.
-- **Errors:** explicit error returns; wrap with context.
-- **Context:** propagate `context.Context` everywhere.
-- **Concurrency:** prefer channels/errgroup; avoid shared state.
+- **Style:** Checkstyle / Spotless, 4-space indent, 120 line length.
+- **Errors:** checked exceptions; avoid swallowing.
+- **Concurrency:** prefer `java.util.concurrent` / `CompletableFuture`; avoid shared mutable state.
+- **Frameworks:** Spring Boot / Quarkus conventions; dependency injection.
 
 ## TypeScript (channels)
 
