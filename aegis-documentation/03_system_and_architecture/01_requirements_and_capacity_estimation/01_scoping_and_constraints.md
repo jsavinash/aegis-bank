@@ -3,15 +3,15 @@
 ## Scope
 
 ### Phase 1 — Production-Grade Release (0–3 months)
-Accounts, cards (physical + virtual, freeze, controls), payments (domestic + P2P), bill pay, mobile deposit, savings, budgeting, biometric + passkey auth, real-time fraud alerts, basic agentic assistant + human escalation, KYC, audit trail, WCAG 2.2 AA baseline.
+Accounts, cards (physical + virtual, freeze, controls), payments (domestic + P2P), bill pay, mobile deposit, savings, budgeting, biometric + passkey auth, real-time fraud alerts, agentic AML/SAR, basic agentic assistant + human escalation, KYC, audit trail, WCAG 2.2 AA baseline.
 
 ### Phase 2 — AI core + differentiators (3–6 months)
-Agentic AML/SAR, fraud warm-path triage, credit score, multi-currency, pots/salary-sort, robo-advisor, open banking (aggregation), in-app scam detection, business lite.
+Fraud warm-path triage, credit score, multi-currency, pots/salary-sort, robo-advisor, open banking (aggregation), in-app scam detection, business lite.
 
 ### Phase 3 — Scale + depth (6–12 months)
 Mortgages, BNPL, crypto, wealth projection, full agentic assistant, kids/teen, business full (payroll/MTD), insurance, super-app, embedded finance/BaaS.
 
-Out of scope (never built by Aegis): mortgage origination, crypto custody, insurance underwriting, merchant acquiring.
+Out of scope (never built by Aegis): physical branch network, proprietary card/payment scheme, own core-banking ledger build (see [`in_scope_and_out_of_scope.md`](../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md)).
 
 ## Constraints
 
@@ -36,16 +36,16 @@ Out of scope (never built by Aegis): mortgage origination, crypto custody, insur
 | Feature area | Phase 1 | Phase 2 | Phase 3 |
 |---|---|---|---|
 | Core banking (accounts, cards, payments) | ✅ in scope | ✅ extended | ✅ deepened |
-| AI agents (assistant, AML, fraud) | ✅ basic agentic + escalation | ✅ warm-path triage, SAR | ✅ full agentic across all domains |
+| AI agents (assistant, AML, fraud) | ✅ basic agentic + escalation, SAR | ✅ warm-path triage | ✅ full agentic across all domains |
 | Credit & lending | lite | full underwriting | mortgages, BNPL |
 | Wealth & investment | basic savings, budgeting | robo-advisor, multi-currency | wealth projection, full portfolio |
 | Security & fraud | real-time alerts, one-tap freeze | warm-path triage, scam detection | full GNN/GBM across all channels |
 | Open banking / BaaS | aggregation lite | full aggregation, business lite | super-app, embedded finance |
-| Compliance & regulatory | KYC, audit trail, WCAG AA baseline | SAR, regulatory reporting | full model risk, cross-jurisdiction |
+| Compliance & regulatory | KYC, SAR, audit trail, WCAG AA baseline | regulatory reporting | full model risk, cross-jurisdiction |
 | Business banking | basic invoicing, payroll | full (MTD, payroll) | super-app, embedded finance |
 
 ## Out of scope for all phases
 
-- Physical branches, full private banking, merchant acquiring.
+- Physical branches, proprietary payment scheme, own core-ledger build.
 
 (End of file - total 44 lines)

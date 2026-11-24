@@ -9,10 +9,10 @@ Score each feature: **value density** (customer value × business value) × **re
 ## Roadmap
 
 ### Phase 1 — Production Release (0–3 months)
-Accounts, cards (physical + virtual, freeze, controls), payments (domestic + P2P), bill pay, mobile deposit, savings, budgeting, biometric + passkey auth, real-time fraud alerts, basic agentic assistant + human escalation, KYC, audit trail, WCAG 2.2 AA baseline.
+Accounts, cards (physical + virtual, freeze, controls), payments (domestic + P2P), bill pay, mobile deposit, savings, budgeting, biometric + passkey auth, real-time fraud alerts, agentic AML/SAR, basic agentic assistant + human escalation, KYC, audit trail, WCAG 2.2 AA baseline.
 
 ### Phase 2 — AI core + differentiators (3–6 months)
-Agentic AML/SAR, fraud warm-path triage, credit score, multi-currency, pots/salary-sort, robo-advisor, open banking (aggregation), in-app scam detection, business lite.
+Fraud warm-path triage, credit score, multi-currency, pots/salary-sort, robo-advisor, open banking (aggregation), in-app scam detection, business lite.
 
 ### Phase 3 — Scale + depth (6–12 months)
 Mortgages, BNPL, crypto, wealth projection, full agentic assistant, kids/teen, business full (payroll/MTD), insurance, super-app, embedded finance/BaaS.
@@ -24,7 +24,7 @@ Mortgages, BNPL, crypto, wealth projection, full agentic assistant, kids/teen, b
 | 1 | Real-time fraud + card controls | Highest ROI, security whitespace | 1 |
 | 2 | Agentic assistant + escalation | Core AI-first UX | 1 |
 | 3 | Fast onboarding + KYC | Activation | 1 |
-| 4 | AML investigation + SAR | Compliance must-have | 2 |
+| 4 | AML investigation + SAR | Compliance must-have | 1 |
 | 5 | Passkeys + scam detection | Security differentiation | 1–2 |
 | 6 | Savings goals + salary sort | Retention | 1–2 |
 | 7 | Credit score + building | Engagement | 2 |

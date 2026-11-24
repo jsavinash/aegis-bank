@@ -4,7 +4,7 @@
 
 **Why FinTech.** It is the sector with the deepest, most verifiable body of 2026 production evidence for *non-chatbot* AI systems: agentic financial-crime investigation is already shipping (Flagright Series A $12.5M, June 2026; Marble €6.5M, Sept 2026; Refute AI pre-seed $1.3M, June 2026; RiskFront $3.3M, Jan 2026), and the regulatory floor (EU AI Act risk tiers, FINRA/OCC, FATF) forces the exact properties — explainability, auditability, human sign-off — that separate a demo from a system you can ship. Every architecture below is designed to be *defensible to a regulator*, which is a harder and more useful constraint than "works in a demo."
 
-**A note on the `frameworks.jpeg` in this folder:** I could not read it (this model has no image input). If it lists specific frameworks you want forced into the stack, point me at them and I will reconcile.
+**A note on the `frameworks.jpeg` in this folder:** the image is a supplementary reference; the stack in this document is derived from the cited 2026 sources and the Aegis tech-stack decisions.
 
 ---
 
@@ -420,4 +420,4 @@ These are the non-negotiables that turn the above from "impressive demo" into "s
 
 Of the three, **Aegis-IR (Project A)** is the strongest *first* build: it has the clearest 2026 market pull (four funded competitors), the most defensible AI-native thesis, and it exercises the full stack (orchestration, HITL, durable execution, hybrid+graph RAG, guardrails, eval) — everything the other two reuse. Sentinel-RT's hot path is a specialised ML engineering effort that benefits from Aegis-IR's data plane; Lexicon is the best *second* product because it reuses Aegis-IR's RAG/graph investment.
 
-If you want, I can turn Project A into a concrete implementation plan (repo layout, LangGraph + Temporal skeleton, MCP tool contracts, the eval harness, and a working vertical slice for one typology).
+The concrete next step is to turn Project A into an implementation plan (repo layout, LangGraph + Temporal skeleton, MCP tool contracts, the eval harness, and a working vertical slice for one typology).

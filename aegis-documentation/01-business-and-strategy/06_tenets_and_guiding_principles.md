@@ -7,7 +7,7 @@
 3. **Humans are accountable.** High-consequence actions (file SAR, freeze, approve loan, move money) require human sign-off with a full audit trail. AI never acts autonomously on regulated actions.
 4. **Deterministic-first, AI-second.** Money math, authorization, and compliance rules are code; AI handles ambiguity and language, never invents numbers.
 5. **Buy the commodity, build the moat.** Buy the core banking ledger and data vendors; build the AI/risk plane and evals.
-6. **Config over code.** Products/fees/pricing are configuration; 600 features ≠ 600 codebases. One ledger, many products.
+6. **Config over code.** Products/fees/pricing are configuration; 485 features ≠ 485 codebases. One ledger, many products.
 7. **Eval-driven engineering.** No prompt/model/graph change merges without passing the tagged regression suite. Evals define "done," not vibes; the eval loop closes via online traces fed back into the dataset.
 8. **Accessibility by design.** WCAG 2.2 AA from day one; EAA-compliant in EU; axe-core CI + manual screen-reader testing.
 9. **Event-driven from day one.** Every transaction emits an event; the AI plane is impossible without a real-time event stream.

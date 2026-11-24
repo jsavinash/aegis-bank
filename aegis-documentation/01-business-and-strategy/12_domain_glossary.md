@@ -14,7 +14,7 @@ Banking-specific terms used throughout this documentation set. The general gloss
 | **Structuring** | Splitting deposits to evade reporting thresholds. |
 | **Layering** | Moving funds through multiple transactions to obscure origin. |
 | **Mule account** | An account used to receive and forward illicit funds. |
-| ** SAR narrative** | The written account in a SAR describing who/what/when/where/why/how. |
+| **SAR narrative** | The written account in a SAR describing who/what/when/where/why/how. |
 | **Adverse media** | Negative news used in risk assessment. |
 | **Source of funds / wealth** | Evidence of where money/assets originated. |
 | **Ongoing monitoring** | Continuous transaction/behaviour monitoring post-onboarding. |

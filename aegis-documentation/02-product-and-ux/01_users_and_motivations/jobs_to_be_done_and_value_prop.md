@@ -38,5 +38,5 @@
 | Parent / Teen | Parent/teen → allowance, controls, parental view |
 | Traveller / Expat | Travel → multi-currency, global QR, zero-FX |
 | Vulnerable / Accessibility | Accessible → WCAG 2.2 AA, screen-reader, motor support, cognitive adjustments |
-| Compliance Analyst | — (analyst-role job scenarios in `07_personas_and_business_scenarios.md`) |
-| Fraud Analyst | — (analyst-role job scenarios in `07_personas_and_business_scenarios.md`) |
+| Compliance Analyst | — (analyst-role job scenarios in [`07_personas_and_business_scenarios.md`](../../01-business-and-strategy/07_personas_and_business_scenarios.md)) |
+| Fraud Analyst | — (analyst-role job scenarios in [`07_personas_and_business_scenarios.md`](../../01-business-and-strategy/07_personas_and_business_scenarios.md)) |

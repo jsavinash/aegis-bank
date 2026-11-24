@@ -2,13 +2,13 @@
 
 **Version:** 1.0 · **Date:** 24 Nov 2026
 
-This is the master index proving that the **full feature set (~600 features, 37 domains)** and **all use cases (business + system + AI)** are covered throughout the `aegis-documentation/` set. Use it to navigate from any section to the authoritative feature and use-case sources.
+This is the master index proving that the **full feature set (~485 features, 37 domains)** and **all use cases (business + system + AI)** are covered throughout the `aegis-documentation/` set. Use it to navigate from any section to the authoritative feature and use-case sources.
 
 ## Authoritative sources
 
 | Artifact | Location | Contents |
 |---|---|---|
-| **Full feature catalog** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md) | ~600 features, 37 sections, tagged `[TYPE] [PRIORITY] [PROVEN]` |
+| **Full feature catalog** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md) | ~485 features, 37 sections, tagged `[TYPE] [PRIORITY] [PROVEN]` |
 | **Feature catalog (business copy)** | [`01-business-and-strategy/14_feature_catalog.md`](./01-business-and-strategy/14_feature_catalog.md) | Same catalog, business view |
 | **All use cases** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md) | Business (BU), System (SY), AI (AI) use cases |
 | **AI use cases** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md) | ~46 AI use cases, archetypes, value/readiness/regulatory |

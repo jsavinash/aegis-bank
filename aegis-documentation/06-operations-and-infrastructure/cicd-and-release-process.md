@@ -33,4 +33,4 @@
 
 ## Release notes
 
-- Auto-generated from conventional commits; user-facing notes in `07-.../release-notes-changelog.md`.
+- Auto-generated from conventional commits; user-facing notes in [`../07-security-compliance-and-users/end-user-and-support/release-notes-changelog.md`](../07-security-compliance-and-users/end-user-and-support/release-notes-changelog.md).

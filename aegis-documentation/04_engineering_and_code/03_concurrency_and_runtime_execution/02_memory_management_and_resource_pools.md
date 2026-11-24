@@ -19,8 +19,8 @@
 
 | Resource | Pool |
 |---|---|
-| **DB connections** | SQLAlchemy pool / `pgxpool` |
-| **HTTP clients** | httpx / `http.Client` |
+| **DB connections** | SQLAlchemy pool / HikariCP |
+| **HTTP clients** | httpx / `java.net.http.HttpClient` |
 | **GPU / model** | Inference server (vLLM) with bounded concurrency |
 | **Thread/worker** | Fixed-size worker pools |
 

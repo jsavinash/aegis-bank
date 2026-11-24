@@ -18,7 +18,9 @@
 - **Saved: 700 hrs/month** ≈ $28k–$42k/month (loaded $40–60/hr).
 - Against a $35k–$80k build + low-thousands/month run → **payback 60–120 days**.
 
-## Value pools (annual, illustrative)
+## Value pools (annual, illustrative — conservative)
+
+> These are conservative figures for the ROI case; the aspirational targets in [`03_business_goals_and_kpis.md`](../03_business_goals_and_kpis.md) are higher (e.g., contact deflection 25–40%, AML analyst time per alert down ~70%).
 
 | Use case | Value driver |
 |---|---|
@@ -31,4 +33,4 @@
 
 Track **business metrics** (fraud-loss bps, cost per contact, alert-to-filing), compare before/after, attribute conservatively. Avoid lab accuracy claims without business outcomes.
 
-> A detailed spreadsheet (`financial_model.xlsx`) should accompany this summary; it is not generated here.
+> A detailed model is provided in [`financial_model.csv`](./financial_model.csv) (low/high annual cost, value pools, and payback).

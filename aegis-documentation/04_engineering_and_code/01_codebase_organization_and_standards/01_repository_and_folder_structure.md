@@ -24,16 +24,15 @@ aegis-bank/
 
 ```
 <service>/
-├── cmd/            entrypoints
-├── internal/       private code (domain, adapters)
-├── api/            contracts (OpenAPI/AsyncAPI)
-├── tests/
+├── src/main/java/      production code (domain, adapters)
+├── src/test/java/      tests
+├── api/                contracts (OpenAPI/AsyncAPI)
 └── README.md
 ```
 
 ## Conventions
 
 - **Contract-first:** every service has `api/` contracts.
-- **Domain-driven:** `internal/domain` is pure; adapters at edges.
+- **Domain-driven:** the domain layer is pure; adapters at edges.
 - **No cross-service DB access.**
 - **Ownership:** each service has a CODEOWNERS entry.

@@ -2,7 +2,7 @@
 
 **Version:** 1.0 · **Date:** 24 Nov 2026 · **Scope:** full-stack technology selection for the Aegis large-scale, AI-first retail bank + risk/compliance plane.
 
-**Companion docs:** `../../01-business-and-strategy/13_high_level_solution_overview.md` (product/architecture), `../../01-business-and-strategy/14_feature_catalog.md` (~600 features), `../03_high_level_design_hld/06_ai_native_reference_architectures.md` (3 AI-native reference architectures), `04_ai_stack_pillars.md` (7-pillar AI stack).
+**Companion docs:** `../../01-business-and-strategy/13_high_level_solution_overview.md` (product/architecture), `../../01-business-and-strategy/14_feature_catalog.md` (~485 features), `../03_high_level_design_hld/06_ai_native_reference_architectures.md` (3 AI-native reference architectures), `04_ai_stack_pillars.md` (7-pillar AI stack).
 
 ---
 
@@ -11,7 +11,7 @@
 | Document | What it defines | Implication for the stack |
 |---|---|---|
 | **../../01-business-and-strategy/13_high_level_solution_overview.md** | A full retail bank: accounts, cards, payments, lending, wealth, business, open banking, compliance; real-time ledger; 99.95% uptime; <150ms fraud decisions; WCAG 2.2 AA; PSD2/3, GDPR | Needs a **core banking system of record**, **event-driven** backbone, **strong security/identity**, and **AI risk plane** |
-| **../../01-business-and-strategy/14_feature_catalog.md** | ~600 features across 37 domains (consumer, business, wealth, super-app, agri, emerging) | Breadth → **product-engine-driven** core (config, not code), heavy **API surface**, many **integrations** |
+| **../../01-business-and-strategy/14_feature_catalog.md** | ~485 features across 37 domains (consumer, business, wealth, super-app, agri, emerging) | Breadth → **product-engine-driven** core (config, not code), heavy **API surface**, many **integrations** |
 | **../03_high_level_design_hld/06_ai_native_reference_architectures.md** | Three AI-native systems: (A) agentic AML/SAR, (B) real-time fraud (hot GNN + warm LLM), (C) regulatory GraphRAG | Needs **agent orchestration + durable execution**, **graph + vector RAG**, **sub-150ms ML serving**, **eval/observability**, **guardrails** |
 | **04_ai_stack_pillars.md** | 7 AI pillars already mapped (PyTorch/HF, Docling/Qdrant, LlamaIndex, LangGraph/MCP, Ollama/vLLM, Langfuse/Ragas, NeMo/Llama Guard) | This is the **AI plane**; this doc extends it into a full production bank stack |
 
@@ -39,7 +39,7 @@
 
 | Concern | Primary pick | Why | Alternative | Repo today |
 |---|---|---|---|---|
-| Core ledger / product engine | **Thought Machine Vault** or **Mambu** (buy) · **build** on an event-sourced ledger if full control needed | Config-driven products (accounts/loans/deposits = config, not code) → 600-feature breadth without 600 codebases; real-time multi-currency ledger | Temenos / Oracle FLEXCUBE / 10x / TCS BaNCS; open-source: **Apache Fineract**, **Frappe/Meta** | — (not yet built) |
+| Core ledger / product engine | **Thought Machine Vault** or **Mambu** (buy) · **build** on an event-sourced ledger if full control needed | Config-driven products (accounts/loans/deposits = config, not code) → 485-feature breadth without 485 codebases; real-time multi-currency ledger | Temenos / Oracle FLEXCUBE / 10x / TCS BaNCS; open-source: **Apache Fineract**, **Frappe/Meta** | — (not yet built) |
 | General ledger | Core-native GL + double-entry sub-ledgers | Auditability, regulatory reporting | — | — |
 | Event backbone | **Redpanda** (Kafka-compatible) or **Apache Kafka** + **Flink** | Every txn emits an event → real-time fraud/AML/analytics; 10x pattern | NATS / Pulsar / Kinesis | `aegis/db` (Postgres) only |
 | Transaction DB | **PostgreSQL 16** (primary) + **pgvector** | One DB for ledger, audit, and (small) vectors; transactional JOINs | CockroachDB / Yugabyte for multi-region | ✅ `aegis/db` |
@@ -249,7 +249,7 @@ The stack is only half of AI-first; the **way you build** is the other half.
 
 | Decision | Recommendation | Why |
 |---|---|---|
-| **Core banking** | **Buy** (Thought Machine / Mambu) for MVP; revisit build if ledger is the differentiator | 600 features on a config-driven core beats 600 hand-built modules; faster to compliance |
+| **Core banking** | **Buy** (Thought Machine / Mambu) for MVP; revisit build if ledger is the differentiator | 485 features on a config-driven core beats 485 hand-built modules; faster to compliance |
 | **KYC/AML/fraud data** | **Buy data** (ComplyAdvantage/Alloy/Unit21/Sift) + **build the intelligence plane** (`aegis/`) | Data is a commodity; the agentic reasoning + eval loop is your moat |
 | **LLM** | **Multi-provider via LiteLLM**; self-host open weights (vLLM) for residency | Avoid lock-in; route cost/quality per step |
 | **Observability** | **Self-host Langfuse + Grafana** | Data residency + no per-seat cost for a regulated bank |

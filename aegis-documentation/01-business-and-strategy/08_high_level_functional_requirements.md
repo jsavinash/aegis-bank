@@ -1,6 +1,6 @@
 # 08 — High-Level Functional Requirements
 
-> **Coverage:** the full ~600-feature catalog is in `docs/00-product-and-vision/02-feature-catalog.md` (37 sections, 15 feature types: CORE, PAY, CARD, LEND, WEALTH, BIZ, SEC, AI, DATA, OPEN, LIFE, ESG, COMP, ACC, PLAT); master map in `FEATURE_AND_USE_CASE_COVERAGE.md`. Every requirement maps to a Phase (1/2/3) per `04_current_vs_future_state/to_be_target_capabilities.md`.
+> **Coverage:** the full ~485-feature catalog is in [`14_feature_catalog.md`](14_feature_catalog.md) (37 sections, 15 feature types: CORE, PAY, CARD, LEND, WEALTH, BIZ, SEC, AI, DATA, OPEN, LIFE, ESG, COMP, ACC, PLAT); master map in `FEATURE_AND_USE_CASE_COVERAGE.md`. Every requirement maps to a Phase (1/2/3) per `04_current_vs_future_state/to_be_target_capabilities.md`.
 
 | ID | Requirement | Feature types | Priority | Phase |
 |---|---|---|---|---|
@@ -32,6 +32,6 @@
 | FR-26 | Islamic/Shariah-compliant banking, microfinance/financial inclusion, gig/migrant-worker bundle, payroll-as-a-service, real-estate/rent-to-own, agri-value-chain finance, diaspora accounts, charity/non-profit accounts, trust/estate accounts | CORE + BIZ + LEND + ESG + SEC | Should | 3 |
 | FR-27 | Audit-ready AI: every decision traceable (data/model/policy/human); Langfuse + OTel + audit log; fail-closed guardrails; two-pass structured output; citation-required generation; numbers computed in code | AI + COMP | Must | 1 |
 
-> **Phase mapping:** Phase 1 (production release) = trust, security, compliance foundation: FR-01–FR-14, FR-17–FR-20, FR-27. Phase 2 (differentiation + scale) = conversational banking, credit decisioning, regulatory intelligence, open banking, money management, lending suite, international/cross-border: FR-11, FR-15–FR-16, FR-18, FR-21–FR-22. Phase 3 (moat expansion) = savings & wealth, business banking, kids/teen/family, rewards & loyalty, insurance, digital assets, super-app, sustainability, merchant acceptance, specialty/niche: FR-21–FR-26. Within each phase, "Must" requirements ship first, then "Should", then items scoped only for later phases.
+> **Phase mapping:** Phase 1 (production release) = trust, security, compliance foundation: FR-01–FR-10, FR-12–FR-14, FR-17, FR-19–FR-20, FR-27. Phase 2 (differentiation + scale) = conversational banking, credit decisioning, regulatory intelligence, open banking, money management, full lending suite, international/cross-border: FR-11, FR-15–FR-16, FR-18, FR-21–FR-22. Phase 3 (moat expansion) = savings & wealth, business banking, kids/teen/family, rewards & loyalty, insurance, digital assets, super-app, sustainability, merchant acceptance, specialty/niche: FR-23–FR-26. Within each phase, "Must" requirements ship first, then "Should", then items scoped only for later phases.
 
-> **Source-of-truth alignment:** every requirement maps to one or more sections of `docs/00-product-and-vision/02-feature-catalog.md` and to AI use cases in `docs/01-ai-and-architecture/02-ai-use-case-catalog.md`.
+> **Source-of-truth alignment:** every requirement maps to one or more sections of [`14_feature_catalog.md`](14_feature_catalog.md) and to AI use cases in [`08_ai_use_case_catalog.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md).

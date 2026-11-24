@@ -34,3 +34,5 @@
 - **Tier 0:** over-provision + multi-AZ; fail over fast.
 - **Tier 1:** autoscale K8s; queue-based load levelling.
 - **Tier 2:** best-effort, degrade gracefully.
+
+> **Headroom note:** the 10k+ TPS peak target in the NFR/scale documents is a multi-region *design ceiling*, not the bottom-up demand. At 5M customers the derived load is ~24/sec card-auth peak (3× the ~7.7/sec average); capacity is provisioned against the headroom target, while the bottom-up figures size the current footprint.

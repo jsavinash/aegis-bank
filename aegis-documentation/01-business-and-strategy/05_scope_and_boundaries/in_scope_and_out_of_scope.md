@@ -1,6 +1,6 @@
 # In Scope and Out of Scope
 
-Aegis Bank is a **full-featured retail digital bank**. Every product surface in the source-of-truth feature catalog (`docs/00-product-and-vision/02-feature-catalog.md`, ~600 features) is **in scope**, sequenced across Phase 1 (production release) → Phase 2 → Phase 3. Nothing in the catalog is deferred out of scope; "later" items are simply later phases.
+Aegis Bank is a **full-featured retail digital bank**. Every product surface in the source-of-truth feature catalog ([`../14_feature_catalog.md`](../14_feature_catalog.md), ~485 features) is **in scope**, sequenced across Phase 1 (production release) → Phase 2 → Phase 3. Nothing in the catalog is deferred out of scope; "later" items are simply later phases.
 
 ## In scope (all phases)
 

@@ -1,8 +1,8 @@
-# 02 — Language & Framework Mapping
+# Language & Framework Mapping
 
 **Version:** 1.1 · **Date:** 24 Nov 2026 · **Companion to:** [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md), [../../03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md](../../03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md), [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md)
 
-Maps the **full project** — all **~600 features** (37 sections, 15 feature types) **and** the **~50 AI use cases** (7 domains, 4 agent archetypes) — to the **languages and frameworks** that should implement each. The strategy is **polyglot**: one primary language per concern, chosen by the physics of the problem (latency, AI ecosystem, UI, correctness), not by preference.
+Maps the **full project** — all **~485 features** (37 sections, 15 feature types) **and** the **~46 AI use cases** (7 domains, 4 agent archetypes) — to the **languages and frameworks** that should implement each. The strategy is **polyglot**: one primary language per concern, chosen by the physics of the problem (latency, AI ecosystem, UI, correctness), not by preference.
 
 **Coverage map:** §2–3 cover the feature catalog (by type + all 37 sections); §4–4b cover the AI plane and AI use cases; §5–6 give the framework shortlist and decision rules.
 
@@ -17,7 +17,7 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 | **Screens are TypeScript.** | All customer/employee interfaces → **TypeScript** (React Native/Flutter for mobile, Next.js for web). |
 | **Buy the core, don't code it.** | The ledger/product engine is a **bought** system (Thought Machine/Mambu/Temenos) — its internals are Java; you integrate, you don't reimplement. |
 | **Java only at the edges.** | **Java/Kotlin** only if you adopt a JVM core or need heavy enterprise integration (SWIFT, mainframe). |
-| **Config over code.** | Products, fees, pricing are **configuration** in the core, not hard-coded modules — 600 features must not mean 600 codebases. |
+| **Config over code.** | Products, fees, pricing are **configuration** in the core, not hard-coded modules — 485 features must not mean 485 codebases. |
 | **Contract-first.** | Every service speaks **OpenAPI/AsyncAPI/GraphQL** — language is an implementation detail behind a contract. |
 
 **Default split:** **Python** (AI + most services) · **Java** (transactional hot path + gateways, Spring Boot/Quarkus) · **TypeScript** (channels + BFF) · **SQL** (data).
@@ -28,7 +28,7 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 
 | Type | Features | Language | Primary frameworks | Notes |
 |---|---|---|---|---|
-| **CORE** | 32 | Java (ledger) · config in core | Spring Boot / Quarkus, `sqlc`/`pgx` equivalents · or bought core (Temenos/Mambu) | Double-entry, idempotent, ACID; correctness > velocity |
+| **CORE** | 32 | Java (ledger) · config in core | Spring Boot / Quarkus, JPA/Hibernate + Flyway · or bought core (Temenos/Mambu) | Double-entry, idempotent, ACID; correctness > velocity |
 | **PAY** | 42 | Java | Spring Boot / Quarkus, Kafka, Flink (Java/Python) | Event-driven, exactly-once, ISO 20022 |
 | **CARD** | 29 | Java | card-auth service (gRPC), Redis | <150ms authorization; tokenisation via vault |
 | **LEND** | 32 | Python (decisioning) + Java (servicing) | Python: `scikit-learn`/`xgboost`, `fastapi` · Java: loan servicing (Spring Boot) | ML underwriting + explainability |
@@ -50,7 +50,7 @@ Maps the **full project** — all **~600 features** (37 sections, 15 feature typ
 
 | § | Section | Language(s) | Framework(s) / stack |
 |---|---|---|---|
-| 1 | Accounts & Deposits | Java (core) · config | Spring Boot / Quarkus, `pgx`/`sqlc` equivalents; or Temenos/Mambu |
+| 1 | Accounts & Deposits | Java (core) · config | Spring Boot / Quarkus, JPA/Hibernate + Flyway; or Temenos/Mambu |
 | 2 | Payments & Transfers | Java | Spring Boot / Quarkus, Kafka, Flink; ISO 20022 |
 | 3 | Cards | Java | gRPC card-auth, Redis, tokenisation vault |
 | 4 | Bill Pay | Java + TypeScript | Spring Boot + Next.js scheduler UI |
@@ -163,7 +163,7 @@ Maps the AI use-case catalog ([../../03_system_and_architecture/03_high_level_de
 2. **Touching money at speed → Java.** Ledger, payments, cards, fraud hot path, gateway.
 3. **Touching a screen → TypeScript.** Mobile, web, BFF.
 4. **Touching the ledger product logic → buy, don't build.** Integrate via events/APIs.
-5. **Touching many products → configure, don't hardcode.** Product engine, not 600 modules.
+5. **Touching many products → configure, don't hardcode.** Product engine, not 485 modules.
 6. **Touching a contract → define it first.** OpenAPI/AsyncAPI/GraphQL; language is an implementation detail.
 7. **Touching compliance → `aegis/` (Python) + human sign-off.** Never autonomous for regulated actions.
 8. **Every AI use case → same guardrails/eval/trace plane.** Fraud hot path = non-LLM low-latency serving (BentoML/KServe); all else = LangGraph/LlamaIndex/vLLM + NeMo + Langfuse.
@@ -177,7 +177,7 @@ Maps the AI use-case catalog ([../../03_system_and_architecture/03_high_level_de
 | All 15 feature types | §2 master mapping | ✅ |
 | All 37 feature-catalog sections | §3 per-section mapping | ✅ |
 | AI plane frameworks | §4 | ✅ |
-| All ~50 AI use cases (7 domains) | §4b | ✅ |
+| All ~46 AI use cases (7 domains) | §4b | ✅ |
 | Framework shortlist by concern | §5 | ✅ |
 | Decision rules | §6 | ✅ |
 | Code-level mapping (`aegis/`) | [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md) | ✅ |

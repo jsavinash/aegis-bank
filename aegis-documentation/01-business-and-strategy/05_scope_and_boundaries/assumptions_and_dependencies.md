@@ -4,7 +4,7 @@
 
 | # | Assumption | Impact if false |
 |---|---|---|
-| A1 | We can **buy a core** (Thought Machine Vault / Mambu; alternatives Temenos, Oracle FLEXCUBE, 10x, TCS BaNCS, Fineract) rather than build | Timeline + cost blow-up; 600-feature breadth at risk |
+| A1 | We can **buy a core** (Thought Machine Vault / Mambu; alternatives Temenos, Oracle FLEXCUBE, 10x, TCS BaNCS, Fineract) rather than build | Timeline + cost blow-up; 485-feature breadth at risk |
 | A2 | A **banking licence or BaaS/partner-bank model** is secured (determines deposit insurance, KYC, regulator) | Cannot hold deposits |
 | A3 | **Target markets/jurisdiction** (US/UK/EU) confirmed → specific regs (Reg E, PSD2/3, FCA, EAA, GDPR/CCPA) | Compliance rework; feature gating |
 | A4 | **Open-weight + frontier LLMs** meet quality/cost bar; multi-provider routing (LiteLLM) avoids lock-in | Re-evaluate model routing / self-host path |
@@ -37,7 +37,7 @@
 | Open banking / PSD2/3 partner access & consent service | Partnerships + Legal | Phase 2 |
 | Legal & compliance review (each phase gate) | Compliance | Each phase |
 
-> Phase mapping: the tech-stack plan (`docs/02-technology-stack/01-tech-stack-recommendation.md` §7) uses P0–P4 (foundation → AI core → bank MVP → scale → moat); these roll up into Phase 1 (production release) / Phase 2 / Phase 3 used across the business docs.
+> Phase mapping: the tech-stack plan ([`03_ai_first_tech_stack_recommendation.md`](../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md) §7) uses P0–P4 (foundation → AI core → bank MVP → scale → moat); these roll up into Phase 1 (production release) / Phase 2 / Phase 3 used across the business docs.
 
 ## Risks to assumptions
 

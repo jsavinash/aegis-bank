@@ -1,4 +1,4 @@
-# 01 — Codebase Mapping (aegis/ → tech stack)
+# Codebase Mapping (aegis/ → tech stack)
 
 Maps the `aegis/` package to the **AI/ML platform** (Layer 3 of `../../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md`) and the 7 AI pillars (`../../../03_system_and_architecture/02_tech_choices_and_adrs/04_ai_stack_pillars.md`). Everything ships with **offline-safe substitutes** so `make test` and `make serve` run with zero external services; each substitute is a **1:1 drop-in** for its production tool.
 

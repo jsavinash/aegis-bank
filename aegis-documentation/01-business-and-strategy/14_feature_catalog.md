@@ -2,14 +2,14 @@
 
 **Version:** 1.1 · **Date:** 24 Nov 2026 · **Companion to:** `13_high_level_solution_overview.md`
 
-This is the complete, exhaustive inventory of **~600 features** that can be integrated into a modern retail digital bank. Every feature is tagged so it can be dropped into a backlog:
+This is the complete, exhaustive inventory of **~485 features** that can be integrated into a modern retail digital bank. Every feature is tagged so it can be dropped into a backlog:
 
 - **Type:** `[CORE]` core banking · `[PAY]` payments · `[CARD]` cards · `[LEND]` lending · `[WEALTH]` wealth · `[BIZ]` business · `[SEC]` security/fraud · `[AI]` AI/ML · `[DATA]` data/insights · `[OPEN]` open banking/ecosystem · `[LIFE]` lifestyle/super-app · `[ESG]` sustainability · `[COMP]` compliance/regulatory · `[ACC]` accessibility · `[PLAT]` platform/infra
 - **Priority:** `[T]` table-stakes · `[D]` differentiator · `[E]` emerging/experimental · `[R]` regulated/required
 - **Proven?** ✅ shipping at scale · 🟡 pilot/emerging
 
-> **Part I (§1–27):** the core retail-banking catalogue (~330 features).
-> **Part II (§28–37):** a deeper sweep adding credit-card tooling, super-app/embedded finance, business-banking depth, financial inclusion/agri-finance, advanced agentic AI, financial wellness, notifications/UX, documents, rewards, and emerging niche domains (~150 more features).
+> **Part I (§1–27):** the core retail-banking catalogue (~345 features).
+> **Part II (§28–37):** a deeper sweep adding credit-card tooling, super-app/embedded finance, business-banking depth, financial inclusion/agri-finance, advanced agentic AI, financial wellness, notifications/UX, documents, rewards, and emerging niche domains (~140 more features).
 >
 > Sources: 2026 teardown of Chase, BofA, Wells Fargo, Capital One, US Bank, SoFi, DBS (World's Best Digital Bank 2026), Nubank, Revolut, Monzo, Starling, Chime, Citi, J.P. Morgan; core platforms (Temenos, Oracle FLEXCUBE, TCS BaNCS, SAP Fioneer, 10x, MobiFin); Ostorlab 2,686-app scan; PSD2/PSD3; European Accessibility Act; WCAG 2.2 AA; stablecoin/embedded-finance (BVNK); green-banking (CIMB, NatWest, DBS, Vietcombank, Emirates NBD, Clarity AI/Cogo); Stripe/Rho/Brex/Novo business-banking analyses; World Bank / IFAD agri-finance & agent-network guides; super-app & wallet (Paytm, GCash, WeChat, MobiFin, BPC).
 
@@ -540,7 +540,7 @@ This is the complete, exhaustive inventory of **~600 features** that can be inte
 
 # Part II — Additional features (deeper sweep)
 
-The following sections capture features from a second, deeper research sweep (Forbes/CNBC/NerdWallet/Stripe/Rho/Brex/World Bank/Super-app & wallet analyses, 2026). These extend the catalogue with **~150 more features** across credit-card tooling, super-app/embedded finance, business banking depth, financial inclusion/agri-finance, advanced AI/agentic banking, and additional niche domains.
+The following sections capture features from a second, deeper research sweep (Forbes/CNBC/NerdWallet/Stripe/Rho/Brex/World Bank/Super-app & wallet analyses, 2026). These extend the catalogue with **~140 more features** across credit-card tooling, super-app/embedded finance, business banking depth, financial inclusion/agri-finance, advanced AI/agentic banking, and additional niche domains.
 
 ## 28. Credit Cards — advanced tooling
 
@@ -775,15 +775,15 @@ The following sections capture features from a second, deeper research sweep (Fo
 | Statements / Documents / Self-Service | 8 | 3 | 5 | 0 |
 | Rewards / Travel / Perks | 7 | 0 | 7 | 0 |
 | New / Emerging niche | 14 | 0 | 6 | 8 |
-| **TOTAL** | **~600+** | | | |
+| **TOTAL** | **~485** | | | |
 
-> Part II adds ~150 features from a deeper 2026 sweep (Forbes, CNBC, NerdWallet, Stripe, Rho, Brex, World Bank, super-app & wallet analyses), bringing the catalogue to **~600 distinct features**.
+> Part II adds ~140 features from a deeper 2026 sweep (Forbes, CNBC, NerdWallet, Stripe, Rho, Brex, World Bank, super-app & wallet analyses), bringing the catalogue to **~485 distinct features**.
 
-## Appendix B — Recommended MVP shortlist (first release)
+## Appendix B — Recommended Phase 1 shortlist (first release)
 
 **Core:** Checking + Savings + term deposit · **Cards:** physical + virtual + freeze + controls · **Payments:** domestic transfer + P2P + bill pay + mobile deposit · **Money mgmt:** spending dashboard + budgets · **Security:** biometric login + MFA + real-time fraud alerts + card controls · **Service:** basic virtual assistant + live chat + human escalation · **Compliance:** KYC + sanctions + audit trail · **Accessibility:** WCAG 2.2 AA baseline.
 
-This MVP matches the CNBC/Forbes/J.D. Power "essentials" while already exceeding the security baseline of 88% of 2026 banking apps (Ostorlab).
+This Phase 1 release matches the CNBC/Forbes/J.D. Power "essentials" while already exceeding the security baseline of 88% of 2026 banking apps (Ostorlab).
 
 ---
 

@@ -23,6 +23,6 @@
 ## Activation design
 
 - **Time-to-value:** first value in <10 minutes (onboarding) and <24 hours (first useful action).
-- **Guided setup:** progressive disclosure; don't front-load 600 features.
+- **Guided setup:** progressive disclosure; don't front-load 485 features.
 - **Proactive value:** the assistant surfaces a useful insight or completes a task unprompted (e.g., "you could save $40/mo by switching this subscription").
 - **Trust cues:** visible security, plain language, human escalation when needed.

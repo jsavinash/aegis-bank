@@ -2,7 +2,7 @@
 
 ## What we are building
 
-**Aegis Bank** is an AI-first retail digital bank that combines incumbent-grade trust with neobank-grade UX and best-in-class security. It offers a full retail banking surface (~600 features: accounts, cards, payments, lending, wealth, business, open banking, compliance) delivered through mobile, web, voice, and an agentic assistant.
+**Aegis Bank** is an AI-first retail digital bank that combines incumbent-grade trust with neobank-grade UX and best-in-class security. It offers a full retail banking surface (~485 features: accounts, cards, payments, lending, wealth, business, open banking, compliance) delivered through mobile, web, voice, and an agentic assistant.
 
 ## The thesis
 

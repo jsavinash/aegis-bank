@@ -10,7 +10,7 @@ Prove Aegis is **correct, secure, compliant, accessible, and reliable** before a
 |---|---|---|---|
 | **Unit** | Functions, models, guardrails | pytest, Vitest | Every PR |
 | **Integration** | Services, DB, APIs | Testcontainers, Supertest | Every PR |
-| **Contract** | API/event schemas | Schematypes, Pact | Every PR |
+| **Contract** | API/event schemas | Schemathesis, Pact | Every PR |
 | **E2E** | Critical journeys | Playwright, Detox | Pre-release |
 | **Accessibility** | WCAG 2.2 AA | axe-core + manual | Every PR |
 | **Performance** | Load/latency | k6, Gatling | Pre-release |

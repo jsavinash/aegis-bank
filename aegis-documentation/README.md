@@ -11,9 +11,9 @@ Full enterprise-grade documentation set for **Aegis Bank**, an AI-first retail d
 
 ## Overview
 
-Aegis Bank is a full-featured retail digital bank (~600 features across 37 domains) whose **AI layer is the product**: it is the fraud engine, the AML investigator, the compliance analyst, the virtual assistant, and the credit underwriter. This documentation covers business strategy, product/UX, system architecture, engineering, quality, operations, and security/compliance.
+Aegis Bank is a full-featured retail digital bank (~485 features across 37 domains) whose **AI layer is the product**: it is the fraud engine, the AML investigator, the compliance analyst, the virtual assistant, and the credit underwriter. This documentation covers business strategy, product/UX, system architecture, engineering, quality, operations, and security/compliance.
 
-> **Features & use cases are covered in every section.** Start at the master map: [`FEATURE_AND_USE_CASE_COVERAGE.md`](./FEATURE_AND_USE_CASE_COVERAGE.md) — it links the full ~600-feature catalog, all business/system/AI use cases, the feature→architecture traceability, and where each is addressed across all 8 sections.
+> **Features & use cases are covered in every section.** Start at the master map: [`FEATURE_AND_USE_CASE_COVERAGE.md`](./FEATURE_AND_USE_CASE_COVERAGE.md) — it links the full ~485-feature catalog, all business/system/AI use cases, the feature→architecture traceability, and where each is addressed across all 8 sections.
 
 ## Navigation
 

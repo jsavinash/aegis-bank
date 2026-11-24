@@ -2,7 +2,7 @@
 
 **Version:** 1.0 · **Date:** 24 Nov 2026 · **Companion to:** [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md)
 
-This document closes the gap between the **full feature catalog** (~600 features, 37 sections) and the **system architecture**. The catalog itself lives in `01-business-and-strategy/14_feature_catalog.md`; here we trace every feature **domain** to the architectural components, services, and data stores that implement it.
+This document closes the gap between the **full feature catalog** (~485 features, 37 sections) and the **system architecture**. The catalog itself lives in `01-business-and-strategy/14_feature_catalog.md`; here we trace every feature **domain** to the architectural components, services, and data stores that implement it.
 
 > The architecture folder previously covered only 8 high-level FRs (`02_functional_requirements_demand_supply.md`). This traceability extends that to the full catalog.
 
@@ -72,9 +72,9 @@ This document closes the gap between the **full feature catalog** (~600 features
 
 - **Implemented today:** `aegis/` (AI + Risk + Compliance plane) covers types **SEC, AI, COMP** and parts of **LEND/WEALTH/DATA**.
 - **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services (see `03_high_level_design_hld/01_end_to_end_system_architecture.md`).
-- **AI use cases:** see `03_high_level_design_hld/07_ai_use_case_catalog.md` (~50 use cases mapped to the same components).
+- **AI use cases:** see `03_high_level_design_hld/07_ai_use_case_catalog.md` (~46 use cases mapped to the same components).
 - **Language/framework per domain:** see `../../04_engineering_and_code/01_codebase_organization_and_standards/04_language_and_framework_mapping.md`.
 
 ## Full feature detail
 
-The authoritative feature list is [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (37 sections, ~600 features, tagged `[TYPE] [PRIORITY] [PROVEN]`).
+The authoritative feature list is [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (37 sections, ~485 features, tagged `[TYPE] [PRIORITY] [PROVEN]`).

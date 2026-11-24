@@ -5,7 +5,7 @@
 | **Performance** | Balance latency (p99) | <200ms | Load test |
 | **Performance** | Fraud decision (p99) | <150ms | Load test |
 | **Performance** | App cold start | <2s | RUM |
-| **Scalability** | Peak TPS | 10k+ | Load test |
+| **Scalability** | Peak TPS | 10k+ (design headroom) | Load test |
 | **Scalability** | Users | Millions | Load test |
 | **Availability** | Uptime | 99.95%+ | SLO dashboards |
 | **Reliability** | RTO / RPO | <1h / <5min | DR drill |
