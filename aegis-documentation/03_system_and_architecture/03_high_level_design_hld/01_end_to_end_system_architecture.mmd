@@ -1,0 +1,58 @@
+flowchart TD
+    subgraph CH[Channels]
+        Mob[Mobile RN/Flutter]
+        Web[Web Next.js]
+        Voice[Voice/WhatsApp]
+    end
+    subgraph EDGE[Edge & Identity]
+        GW[Kong + WAF]
+        ID[Keycloak/Ory - passkeys]
+        BFF[GraphQL/REST BFF]
+    end
+    subgraph CORE[Core Banking]
+        LEDGER[Real-time Ledger]
+        PRODUCTS[Product Engine]
+        CIF[Customer Info File]
+    end
+    subgraph SVC[Domain Services - Go]
+        PAY[Payments]
+        CARD[Cards]
+        LEND[Lending]
+    end
+    subgraph BUS[Event Backbone]
+        KAFKA[Redpanda/Kafka + Flink]
+    end
+    subgraph AI[AI Platform - Python]
+        AGENTS[LangGraph Agents]
+        RAG[LlamaIndex RAG]
+        VEC[(Qdrant)]
+        GRAPH[(Neo4j)]
+        VLLM[vLLM/Ollama + LiteLLM]
+    end
+    subgraph RISK[AI Risk - aegis/]
+        FRAUD[Fraud Scorer]
+        AML[AML Investigation]
+        GUARD[NeMo + Llama Guard]
+    end
+    subgraph DATA[Data Platform]
+        ICE[(Iceberg/S3)]
+        OLAP[(ClickHouse)]
+    end
+    subgraph OBS[Observability]
+        LF[Langfuse + OTel]
+        AUDIT[(Audit Log)]
+    end
+    CH --> GW --> ID --> BFF
+    BFF --> CORE
+    BFF --> SVC
+    BFF --> AI
+    CORE --> KAFKA
+    SVC --> KAFKA
+    KAFKA --> RISK
+    KAFKA --> DATA
+    AI --> RAG --> VEC & GRAPH
+    AI --> VLLM
+    RISK --> GUARD
+    BFF --> GUARD
+    RISK --> AUDIT
+    AI --> LF

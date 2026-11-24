@@ -1,0 +1,39 @@
+# Agent Contracts and Tools
+
+## Agent contracts
+
+Each agent is a typed unit with a defined input/output schema (Pydantic) and a role. Agents run as LangGraph nodes with a Postgres checkpointer.
+
+| Agent | Role | Input | Output |
+|---|---|---|---|
+| **Evidence Gatherer** | Collect evidence | Alert | Evidence bundle |
+| **Typology Analyst** | Identify ML typologies | Evidence | Hypotheses + confidence |
+| **Network Analyst** | Map entity graph | Entities | Neighbourhood |
+| **Narrative Writer** | Draft SAR | Evidence + hypotheses | Grounded narrative + citations |
+| **QA Reviewer** | Score defensibility | Narrative | Approved / needs-review |
+| **Risk Analyst** | Warm-path fraud verdict | Risk object + context | Decision + rationale |
+| **Gap Analyst** | Obligation→control mapping | Obligation + controls | Gap register |
+
+## Tool contracts (MCP-style)
+
+| Tool | Roles | Write? |
+|---|---|---|
+| `get_transactions` | evidence, risk | No |
+| `get_kyc` | evidence | No |
+| `screen_watchlist` | evidence | No |
+| `query_graph_neighbourhood` | network | No |
+| `get_customer_360` | risk | No |
+| `search_obligations` | compliance | No |
+| `file_sar` | narrative | **Yes** (approval required) |
+| `freeze_account` | risk | **Yes** (approval required) |
+
+## Tool governance
+
+- **Least privilege:** each agent can call only its allowed tools.
+- **Guardrail gate:** every tool call passes through NeMo tool-call rail (role + write-approval).
+- **Tool-result screening:** every result treated as untrusted (injection defence).
+- **Idempotency:** write tools keyed by run ID.
+
+## Human escalation
+
+When QA confidence < threshold, or a guardrail fires, the run pauses for human review.

@@ -1,0 +1,12 @@
+@startuml
+[*] --> OPEN
+OPEN --> INVESTIGATING: start investigation
+INVESTIGATING --> PENDING_REVIEW: QA needs review
+PENDING_REVIEW --> INVESTIGATING: revise
+PENDING_REVIEW --> FILED: human approve + file SAR
+INVESTIGATING --> FILED: QA approves (confidence >= 0.85)
+INVESTIGATING --> DISMISSED: no suspicion
+FILED --> CLOSED: filed
+CLOSED --> [*]
+DISMISSED --> [*]
+@enduml

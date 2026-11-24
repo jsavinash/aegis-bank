@@ -1,0 +1,21 @@
+@startuml
+actor Customer
+participant "BFF" as BFF
+participant "Payments (Go)" as Pay
+participant "Fraud Scorer" as Fraud
+participant "Core Ledger" as Core
+participant "Event Bus" as Bus
+Customer -> BFF: initiate payment
+BFF -> Pay: POST /payments
+Pay -> Fraud: score(tx)
+Fraud --> Pay: risk score (<150ms)
+alt clear
+  Pay -> Core: post (idempotent)
+  Core -> Bus: emit transaction event
+  Bus --> BFF: confirmed
+  BFF --> Customer: success
+else ambiguous
+  Pay -> Fraud: warm-path agent
+  Fraud --> Customer: step-up / review
+end
+@enduml

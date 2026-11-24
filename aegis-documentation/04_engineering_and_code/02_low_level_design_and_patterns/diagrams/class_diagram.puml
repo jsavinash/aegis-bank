@@ -1,0 +1,23 @@
+@startuml
+class CaseState {
+  +case_id: UUID
+  +alert_id: UUID
+  +status: CaseStatus
+  +evidence: List<Evidence>
+  +hypotheses: List<TypologyHypothesis>
+  +narrative: String
+  +risk_score: float
+}
+class Evidence { +source: String; +ref: String; +content: String }
+class TypologyHypothesis { +code: String; +confidence: float }
+class RiskScore { +value: float; +level: RiskLevel }
+class BaseLLM { +complete() ; +structured() }
+class ToolRegistry { +call() }
+class GuardrailEngine { +check_input(); +check_tool_call() }
+CaseState "1" *-- "many" Evidence
+CaseState "1" *-- "many" TypologyHypothesis
+CaseState ..> RiskScore
+CaseState --> BaseLLM
+CaseState --> ToolRegistry
+CaseState --> GuardrailEngine
+@enduml
