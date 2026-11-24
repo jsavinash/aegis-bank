@@ -2,7 +2,7 @@
 
 ## Scope
 
-In: retail digital bank MVP (accounts, cards, payments, lending lite, wealth lite, security, compliance) + AI risk plane. Out: mortgage origination, crypto custody, insurance underwriting, merchant acquiring (see business scope doc).
+In: retail digital bank Phase 1 production release (accounts, cards, payments, lending lite, wealth lite, security, compliance) + AI risk plane. Out: mortgage origination, crypto custody, insurance underwriting, merchant acquiring (see business scope doc).
 
 ## Constraints
 
@@ -13,7 +13,7 @@ In: retail digital bank MVP (accounts, cards, payments, lending lite, wealth lit
 | **Latency** | Fraud hot path <150ms; balance <200ms |
 | **Availability** | 99.95%+ |
 | **Team** | Small initial team; AI-first delivery |
-| **Timeline** | MVP ~3 months; scale ~9 months |
+| **Timeline** | Phase 1 ~3 months; scale ~9 months |
 
 ## Non-negotiables
 
