@@ -31,4 +31,11 @@ A greenfield AI-first bank can:
 
 ## Success metrics
 
-See `03_business_goals_and_kpis.md`.
+See `03_business_goals_and_kpis.md` (includes north-star metric: monthly active customers completing a high-value digital journey).
+
+## Related
+
+- [00_executive_summary_and_signoffs/executive_summary.md](./00_executive_summary_and_signoffs/executive_summary.md) — executive summary & sign-off.
+- [03_business_goals_and_kpis.md](./03_business_goals_and_kpis.md) — goals, KPI targets, measurement discipline.
+- [09_non_functional_business_constraints.md](./09_non_functional_business_constraints.md) — NFR targets (availability, latency, scale, accessibility, compliance).
+- [13_high_level_solution_overview.md](./13_high_level_solution_overview.md) — high-level architecture & component responsibilities.
