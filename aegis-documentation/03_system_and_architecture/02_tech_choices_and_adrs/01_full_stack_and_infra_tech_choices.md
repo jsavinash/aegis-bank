@@ -10,7 +10,7 @@
 | **Channels** | TypeScript (React Native/Flutter, Next.js) | Cross-platform, velocity |
 | **BFF** | GraphQL (Apollo) + REST | Flexible client queries |
 | **Identity** | Keycloak / Ory (passkeys) | Open, self-hostable |
-| **Edge** | Kong + WAF | Rate limiting, security |
+| **Edge** | APISIX + WAF | Rate limiting, security; richer plugin set (AI proxy, rate limiting, cache, RAG); better Gateway API conformance (36 HTTP extended features); fully Apache-2.0, actively developed (3.19.0, Nov 2026). Kong remains the Enterprise alternative with consumer model & support. |
 | **Events** | Redpanda/Kafka + Flink | Real-time backbone |
 | **Vector / Graph** | Qdrant + Neo4j | RAG + GraphRAG |
 | **Inference** | vLLM (prod) / Ollama (dev) + LiteLLM | Throughput, portability |
