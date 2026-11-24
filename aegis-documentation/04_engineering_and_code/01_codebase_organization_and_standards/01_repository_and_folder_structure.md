@@ -10,7 +10,7 @@ aegis-bank/
 │   ├── models/ agents/ graphs/ workflows/ tools/
 │   ├── rag/ llm/ guardrails/ eval/ risk/ compliance/
 │   ├── db/ security/ memory/ api/
-├── services/                       # Go transactional services (to build)
+├── services/                       # Java transactional services (to build)
 │   ├── payments/ cards/ accounts/ lending/
 ├── channels/                       # TypeScript (to build)
 │   ├── mobile/ web/ ops/

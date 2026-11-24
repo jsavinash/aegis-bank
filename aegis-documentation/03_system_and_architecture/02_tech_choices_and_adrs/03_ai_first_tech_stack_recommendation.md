@@ -161,7 +161,7 @@ flowchart TD
     end
 
     subgraph EDGE["Edge & Identity"]
-        GW["Kong + WAF"]
+        GW["APISIX + WAF"]
         ID["Keycloak / Ory<br/>Passkeys · MFA · Device binding"]
         BFF["BFF (GraphQL) + REST"]
     end

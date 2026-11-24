@@ -8,11 +8,11 @@
 - **Bounded concurrency** — semaphores around expensive resources (GPU, DB).
 - **Backpressure** — queue-based load levelling.
 
-## Go (transactional)
+## Java (transactional)
 
-- **Goroutines** + `errgroup` for fan-out/fan-in.
-- **Channels** for coordination; prefer over shared memory.
-- **`context.Context`** for cancellation/deadlines.
+- **Virtual threads** + `CompletableFuture` for fan-out/fan-in.
+- **ExecutorService / structured concurrency** for coordination; prefer over shared mutable state.
+- **`context`** propagation (thread-local / virtual-thread local context) for cancellation/deadlines.
 - **Worker pools** with bounded size.
 
 ## Patterns
@@ -33,5 +33,5 @@
 
 ## Testing concurrency
 
-- Race detection (`go test -race`).
 - Deterministic tests with controlled scheduling.
+- Thread-safety tests (concurrent access) with JUnit 5 + Testcontainers.

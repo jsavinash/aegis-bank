@@ -7,12 +7,12 @@
 - **Always use timeouts** on locks.
 - **Avoid deadlocks** — consistent lock ordering.
 
-## Go
+## Java
 
-- **`sync.Mutex` / `sync.RWMutex`** for short critical sections.
-- **`context`** for cancellable waits.
-- **Atomic operations** (`sync/atomic`) for counters.
-- **Avoid** copying mutexes.
+- **`synchronized` / `ReentrantReadWriteLock`** for short critical sections.
+- **`ThreadLocal` context / virtual threads** for cancellable waits.
+- **Atomic operations** (`java.util.concurrent.atomic`) for counters.
+- **Avoid** lock object copying.
 
 ## Python
 

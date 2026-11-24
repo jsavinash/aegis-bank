@@ -6,9 +6,9 @@ Every service exposes a typed SDK (generated from OpenAPI/AsyncAPI) for consumer
 
 | SDK | Language | Generated from |
 |---|---|---|
-| **payments-sdk** | Go, Python, TS | OpenAPI |
-| **accounts-sdk** | Go, TS | OpenAPI |
-| **events** | Python, Go | AsyncAPI |
+| **payments-sdk** | Java, Python, TS | OpenAPI |
+| **accounts-sdk** | Java, TS | OpenAPI |
+| **events** | Python, Java | AsyncAPI |
 
 ## Internal APIs
 
@@ -24,7 +24,7 @@ Agents expose typed tools via MCP; the `ToolRegistry` is the contract. Each tool
 ## SDK design
 
 - **Idiomatic** per language.
-- **Typed** (Pydantic / Go structs / TS interfaces).
+- **Typed** (Pydantic / Java records / TS interfaces).
 - **Retry/timeout** built in for idempotent calls.
 - **Auth** handled via token provider.
 

@@ -31,7 +31,7 @@
 ## Language & framework rules (implementation)
 
 23. **Touching a model → Python.** Everything touching models, agents, RAG, evals, data pipelines is Python.
-24. **Touching money at speed → Go.** Ledger, payments, cards, fraud hot path, gateway: Go for low tail latency.
+24. **Touching money at speed → Java.** Ledger, payments, cards, fraud hot path, gateway: Java (Spring Boot/Quarkus) for low tail latency with virtual threads.
 25. **Touching a screen → TypeScript.** All customer/employee interfaces (mobile, web, BFF).
 26. **Touching the ledger product logic → buy, don't build.** Integrate via events/APIs; don't reimplement the core.
 27. **Touching a contract → define it first.** OpenAPI/AsyncAPI/GraphQL; language is an implementation detail behind the contract.

@@ -9,7 +9,7 @@ Aegis needs an AI-first retail bank architecture that is event-driven, regulator
 
 ## Decision
 Adopt a **layered, event-driven architecture**:
-- Channels (RN/Next.js) → Edge (Kong/WAF + Keycloak) → BFF (GraphQL/REST) → Core (bought) + Domain services (Go) + AI plane (Python) → Event bus (Kafka) → Data (Iceberg/ClickHouse).
+- Channels (RN/Next.js) → Edge (APISIX/WAF + Keycloak) → BFF (GraphQL/REST) → Core (bought) + Domain services (Java) + AI plane (Python) → Event bus (Kafka) → Data (Iceberg/ClickHouse).
 - AI plane: LangGraph + LlamaIndex + vLLM + Qdrant + Neo4j + NeMo + Langfuse/Ragas.
 
 ## Alternatives

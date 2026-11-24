@@ -18,7 +18,7 @@ Maps the `aegis/` package to the **AI/ML platform** (Layer 3 of `../../../03_sys
 | `aegis/compliance/` | Regulatory KB | In-memory obligations/controls/gaps | + Docling ingestion + Graphiti temporal KG |
 | `aegis/db/` | Persistence | Postgres + pgvector DDL | + Qdrant for scale |
 | `aegis/security/` | AuthN/AuthZ | JWT + RBAC + HMAC principals | Keycloak/Ory + OPA |
-| `aegis/api/` | HTTP surface | FastAPI routers | + Kong/WAF + GraphQL BFF |
+| `aegis/api/` | HTTP surface | FastAPI routers | + APISIX/WAF + GraphQL BFF |
 | `aegis/memory/` | Agent memory | In-memory `MemoryStore` | Postgres-backed + LangGraph store |
 
 ## Pillar → code → dependency extra
@@ -39,7 +39,7 @@ The `aegis/` package is the **AI risk & compliance plane**. The full bank (per `
 
 - **Core banking** (buy: Thought Machine/Mambu, or build on an event-sourced ledger)
 - **Event backbone** (Redpanda/Kafka + Flink)
-- **Identity/edge** (Keycloak/Ory passkeys, Kong + WAF)
+- **Identity/edge** (Keycloak/Ory passkeys, APISIX + WAF)
 - **Channels** (React Native/Flutter + Next.js) — `web/` is currently empty
 - **Data platform** (Iceberg + ClickHouse + dbt + Dagster)
 - **Infra** (Terraform, EKS, ArgoCD) — `infra/` is currently empty

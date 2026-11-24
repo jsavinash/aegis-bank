@@ -8,7 +8,7 @@ Aegis Bank is an AI-first retail bank built on a bought real-time core, an event
 
 ```mermaid
 flowchart TD
-    CH[Channels: Mobile / Web / Voice] --> EDGE[Edge: Kong+WAF, Keycloak passkeys]
+    CH[Channels: Mobile / Web / Voice] --> EDGE[Edge: APISIX+WAF, Keycloak passkeys]
     EDGE --> BFF[BFF: GraphQL/REST]
     BFF --> CORE[Core Banking: ledger, product engine, CIF]
     BFF --> AI[AI Platform: LangGraph, LlamaIndex, vLLM]

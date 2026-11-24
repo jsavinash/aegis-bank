@@ -36,9 +36,9 @@
 
 ```
 Customer → Channel (RN/Next.js/Voice)
-        → Edge (Kong/WAF, Keycloak passkeys)
+        → Edge (APISIX/WAF, Keycloak passkeys)
         → BFF (GraphQL/REST)
-        → Domain services (Go) + Core ledger (bought)
+        → Domain services (Java) + Core ledger (bought)
         → Event bus (Kafka) → AI plane (fraud, AML, agents) + Data (Iceberg/ClickHouse)
         → Guardrails + Audit + Langfuse
 ```

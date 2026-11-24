@@ -5,7 +5,7 @@
 | Ecosystem | Tool |
 |---|---|
 | **Python** | `pyproject.toml` + uv/poetry; lockfile committed |
-| **Go** | `go.mod` + `go.sum`; minimal deps |
+| **Java** | `pom.xml` / `build.gradle`; minimal deps |
 | **TypeScript** | pnpm/npm; lockfile committed |
 | **Terraform** | pinned provider versions |
 

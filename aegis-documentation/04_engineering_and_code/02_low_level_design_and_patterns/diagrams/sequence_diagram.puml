@@ -1,7 +1,7 @@
 @startuml
 actor Customer
 participant "BFF" as BFF
-participant "Payments (Go)" as Pay
+participant "Payments (Java)" as Pay
 participant "Fraud Scorer" as Fraud
 participant "Core Ledger" as Core
 participant "Event Bus" as Bus

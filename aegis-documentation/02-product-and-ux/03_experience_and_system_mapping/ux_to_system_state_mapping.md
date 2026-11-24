@@ -5,7 +5,7 @@ Each user action maps to a system state and an API call. This ensures the UX is 
 | UX action | System state | API / service | Notes |
 |---|---|---|---|
 | View balance | Account balance | `GET /accounts/{id}/balance` (core) | <200ms target |
-| Send payment | Payment pending → settled | `POST /payments` (Go) | Idempotency key |
+| Send payment | Payment pending → settled | `POST /payments` (Java) | Idempotency key |
 | Freeze card | Card status frozen | `POST /cards/{id}/freeze` | Instant |
 | Apply for loan | Application draft → decision | `POST /lending/applications` | ML + LLM copilot |
 | Create savings goal | Goal created | `POST /goals` | Rules engine |

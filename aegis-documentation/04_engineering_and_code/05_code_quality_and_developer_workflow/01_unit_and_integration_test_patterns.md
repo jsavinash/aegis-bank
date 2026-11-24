@@ -15,7 +15,7 @@
 - **Fixtures** for test data (synthetic, no PII).
 - **Fake LLMs** (deterministic mock) for agent tests.
 - **Property-based tests** (Hypothesis) for models/guardrails.
-- **Table-driven tests** (Go).
+- **Table-driven / parameterised tests** (JUnit 5 / pytest). 
 
 ## AI test patterns
 

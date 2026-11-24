@@ -8,12 +8,12 @@
 - **Object pooling** for expensive objects (DB connections, HTTP clients).
 - **GC tuning** for long-running workers.
 
-## Go
+## Java
 
-- **sync.Pool** for temporary buffers.
-- **Bounded goroutines** to avoid explosion.
-- **Preallocate** slices where size is known.
-- **Avoid leaks** — always close resources; use `defer`.
+- **Object pooling** (caches/pools) for temporary buffers.
+- **Bounded virtual threads** to avoid explosion.
+- **Preallocate** buffers where size is known.
+- **Avoid leaks** — always close resources; use try-with-resources.
 
 ## Resource pools
 
