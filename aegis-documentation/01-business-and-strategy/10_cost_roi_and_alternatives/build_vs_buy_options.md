@@ -15,6 +15,10 @@ Score each component on: **strategic differentiation**, **commodity maturity**, 
 | **Observability / eval** | **Self-host** Langfuse + Grafana | Data residency; no per-seat cost. |
 | **Agent orchestration** | **Build on** LangGraph + Temporal | Frameworks are commodities; our agent graphs + evals are IP. |
 | **Identity** | **Buy/adopt** Keycloak or Ory | Don't build an IdP. |
+| **Event backbone** | **Buy/adopt** Redpanda/Kafka + Flink | Event-driven from day one; every txn emits an event. |
+| **Data platform** | **Buy/adopt** Iceberg/S3 + ClickHouse + dbt + Dagster | Open table formats; time-travel for AML temporal queries. |
+| **Document AI** | **Buy/adopt** Docling | Best open parser for statements/KYC/regulatory PDFs. |
+| **Feature store / ML serving** | **Buy/adopt** Feast + BentoML/KServe | Online/offline parity; low-latency GNN/GBM serving. |
 | **Cloud / infra** | **Buy** (EKS/GKE) + Terraform | Standard. |
 
 ## Build-vs-buy for the AI plane
@@ -26,6 +30,8 @@ Score each component on: **strategic differentiation**, **commodity maturity**, 
 | Guardrails policy | Guardrail runtime (NeMo), safety model (Llama Guard) |
 | Fraud GNN features | Fraud consortium data |
 | RAG pipelines | Embedding/rerank models |
+| Synthetic data pipelines (AML/fraud regen) | Document AI (Docling) |
+| Feature engineering & feature-store tuning | Feature store (Feast), ML serving (BentoML/KServe) |
 
 ## Financial model
 
