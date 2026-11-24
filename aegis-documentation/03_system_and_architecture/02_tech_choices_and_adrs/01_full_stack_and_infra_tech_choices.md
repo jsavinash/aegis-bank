@@ -5,7 +5,7 @@
 | Layer | Choice | Rationale |
 |---|---|---|
 | **Core banking** | Buy (Thought Machine/Mambu) | Config-driven; speed; compliance |
-| **Transactional services** | Go (`chi`, `pgx`, `grpc-go`) | Low latency, concurrency |
+| **Transactional services** | Java (Spring Boot / Quarkus, `chi`/`pgx`/`grpc` equivalents) | Low latency, concurrency; industry standard for banking |
 | **AI / services** | Python (FastAPI, LangGraph, LlamaIndex) | AI ecosystem |
 | **Channels** | TypeScript (React Native/Flutter, Next.js) | Cross-platform, velocity |
 | **BFF** | GraphQL (Apollo) + REST | Flexible client queries |

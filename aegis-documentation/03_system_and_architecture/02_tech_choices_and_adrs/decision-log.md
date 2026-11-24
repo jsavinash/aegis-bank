@@ -7,7 +7,7 @@ Binding architecture decisions. New decisions supersede old ones; the log is app
 | D-001 | 2026-11-24 | Layered, event-driven architecture; buy core, build AI plane | Accepted | ADR-001 |
 | D-002 | 2026-11-24 | Polyglot persistence (Postgres + Qdrant + Neo4j + ClickHouse + Iceberg) | Accepted | ADR-002 |
 | D-003 | 2026-11-24 | Passkeys + biometrics + risk-adaptive MFA | Accepted | ADR-003 |
-| D-004 | 2026-11-24 | Python for AI plane; Go for transactional; TypeScript for channels | Accepted | (tech choices) |
+| D-004 | 2026-11-24 | Python for AI plane; Java (Spring Boot/Quarkus) for transactional; TypeScript for channels | Accepted | (tech choices) |
 | D-005 | 2026-11-24 | Eval-gated CI blocks all AI changes | Accepted | (quality) |
 | D-006 | 2026-11-24 | Fail-closed guardrails on all AI actions | Accepted | (security) |
 
