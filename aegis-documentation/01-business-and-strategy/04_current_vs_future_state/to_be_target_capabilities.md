@@ -2,8 +2,8 @@
 
 ## Target capabilities
 
-**Phase 1 (production release):** trust, security, compliance foundation — real-time ledger, fraud engine, agentic AML, onboarding, accessibility, audit-ready AI.  
-**Phase 2:** differentiation + scale — conversational banking, credit decisioning, regulatory intelligence, open banking, money management, lending suite, international/cross-border.  
+**Phase 1 (production release):** trust, security, compliance foundation — real-time ledger, fraud engine, agentic AML, onboarding, accessibility, audit-ready AI.
+**Phase 2:** differentiation + scale — conversational banking, credit decisioning, regulatory intelligence, open banking, money management, lending suite, international/cross-border.
 **Phase 3:** moat expansion — savings & wealth, business banking, kids/teen/family, rewards & loyalty, insurance, digital assets, super-app, sustainability, merchant acceptance, specialty/niche.
 
 | Capability | Target state | Enabled by | Phase |

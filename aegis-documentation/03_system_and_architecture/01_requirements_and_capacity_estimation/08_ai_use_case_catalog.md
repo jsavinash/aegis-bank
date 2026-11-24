@@ -1,4 +1,4 @@
-# 02 — AI Use-Case Catalog (Aegis Bank)
+# AI Use-Case Catalog (Aegis Bank)
 
 **Version:** 1.0 · **Date:** 24 Nov 2026 · **Companion to:** [06_ai_native_reference_architectures.md](../03_high_level_design_hld/06_ai_native_reference_architectures.md), [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md)
 

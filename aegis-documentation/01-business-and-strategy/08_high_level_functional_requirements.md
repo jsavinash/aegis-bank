@@ -8,7 +8,7 @@
 | FR-02 | Domestic & international payments, P2P, standing orders, wires, QR, instant rails | PAY | Must | 1 |
 | FR-03 | Issue & manage physical & virtual cards, freeze, granular MCC/channel controls | CARD | Must | 1 |
 | FR-04 | Bill pay, scheduled payments, autopay, split bills, request-to-pay, mobile deposit | PAY | Must | 1 |
-| FR-05 | Personal loans, auto/vehicle, mortgage, BNPL, overdraft, EWA, credit line, origination workflow | LEND | Must | 1 |
+| FR-05 | Personal loans, auto/vehicle, mortgage, BNPL, overdraft, EWA, credit line, origination workflow (lite in Phase 1; full suite Phase 2) | LEND | Must | 1 |
 | FR-06 | Savings goals, robo-advisor, self-directed investing, retirement, crypto, portfolio analytics, tax-loss harvesting | WEALTH | Should | 1 |
 | FR-07 | Spending dashboard, budgets, cash-flow forecast, net-worth 360°, AI personalised nudges | DATA | Must | 1 |
 | FR-08 | Credit score monitoring, credit-building tools, report/history, identity/dark-web monitoring | SEC + DATA | Must | 1 |

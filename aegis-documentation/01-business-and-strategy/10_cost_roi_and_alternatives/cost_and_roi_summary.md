@@ -18,16 +18,16 @@
 - **Saved: 700 hrs/month** ≈ $28k–$42k/month (loaded $40–60/hr).
 - Against a $35k–$80k build + low-thousands/month run → **payback 60–120 days**.
 
-## Value pools (annual, illustrative — conservative)
+## Value pools (annual, illustrative — conservative vs target)
 
-> These are conservative figures for the ROI case; the aspirational targets in [`03_business_goals_and_kpis.md`](../03_business_goals_and_kpis.md) are higher (e.g., contact deflection 25–40%, AML analyst time per alert down ~70%).
+> The **Conservative** column is used for the ROI case; the **Target** column is the aspirational goal from [`03_business_goals_and_kpis.md`](../03_business_goals_and_kpis.md). They differ by design (conservative ROI vs stretch target).
 
-| Use case | Value driver |
-|---|---|
-| Fraud | 5–10% fraud-loss reduction (bps of volume) |
-| Servicing | 10–20% contact-deflection efficiency |
-| AML | 15% compliance manual-work reduction |
-| Underwriting | Faster decisions, thin-file expansion |
+| Use case | Conservative (ROI) | Target |
+|---|---|---|
+| Fraud | 5–10% fraud-loss reduction (bps of volume) | 30–50% reduction |
+| Servicing | 10–20% contact-deflection efficiency | 25–40% deflection |
+| AML | 15% compliance manual-work reduction | ~70% analyst time per alert |
+| Underwriting | Faster decisions, thin-file expansion | — |
 
 ## Measurement discipline
 

@@ -44,6 +44,6 @@
 
 | Test | Target | Actual | Status |
 |---|---|---|---|
-| Balance p99 | <200ms | TBD | |
-| Fraud p99 | <150ms | TBD | |
-| Peak TPS | 10k+ | TBD | |
+| Balance p99 | <200ms | Pending load test | |
+| Fraud p99 | <150ms | Pending load test | |
+| Peak TPS | 10k+ | Pending load test | |

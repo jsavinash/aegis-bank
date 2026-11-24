@@ -50,6 +50,8 @@ Every feature type is covered by at least one architectural component (see `06_f
 | ACC | 12 | Channels (WCAG 2.2 AA) | 07, 06 |
 | PLAT | 25 | Platform / Data / Infra | 07, 06 |
 
+> Counts are by **primary** feature type; a few features span multiple types, so the by-type total (~480) is approximate and reconciles to the ~485 catalog total in Appendix A.
+
 ## How to use this map
 
 - **Building a feature?** → find its type in `06_feature_traceability.md`, then the language/framework in `04_language_and_framework_mapping.md`.

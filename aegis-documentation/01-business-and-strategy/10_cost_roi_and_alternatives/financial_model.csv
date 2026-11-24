@@ -1,10 +1,10 @@
 item,basis,value_low,value_high,notes
 Core banking licence,annual,150000,600000,vendor-dependent; per-account/per-txn pricing
-Cloud infrastructure,annual,120000,300000,EKS, GPU, storage, streaming
+Cloud infrastructure,annual,120000,300000,"EKS, GPU, storage, streaming"
 Data licences (KYC/AML/fraud),annual,80000,200000,commodity feeds
 AI inference,annual,60000,180000,routed; self-host for residency
 Engineering (platform+AI+channels),annual,1500000,3000000,team of ~15-25
-Compliance & audit,annual,100000,250000,pen-test, model validation, audits
+Compliance & audit,annual,100000,250000,"pen-test, model validation, audits"
 Total annual cost,annual,2010000,4530000,sum of above
 KYC/reconciliation hours saved,monthly,700,700,cases/month x time saved
 Recovered capacity value,monthly,28000,42000,loaded analyst cost $40-60/hr
