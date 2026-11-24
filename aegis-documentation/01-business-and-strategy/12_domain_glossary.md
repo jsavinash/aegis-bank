@@ -32,3 +32,25 @@ Banking-specific terms used throughout this documentation set. The general gloss
 | **PSD2 SCA** | Strong Customer Authentication under PSD2. |
 | **FATF** | Financial Action Task Force — AML standard-setter. |
 | **FinCEN** | US Financial Crimes Enforcement Network. |
+| **LangGraph** | Stateful multi-agent orchestration framework (typed state graphs, `interrupt()` HITL). |
+| **Temporal** | Durable execution engine for long-running, crash-proof workflows with idempotent side effects. |
+| **MCP** | Model Context Protocol — universal standard for agent-tool connectivity (OAuth, elicitation). |
+| **vLLM** | High-throughput GPU inference server (PagedAttention, constrained decoding, tool-strict-level). |
+| **Ollama** | Local LLM runtime for development. |
+| **LiteLLM** | Multi-provider LLM gateway (routing, fallbacks, budgets, caching). |
+| **LlamaIndex** | Advanced RAG framework (vector + graph + hybrid + router query engines). |
+| **Qdrant** | Vector DB with rich metadata filtering (tenant isolation) and HNSW. |
+| **Neo4j / Graphiti** | Graph DB + temporal knowledge graph (validity intervals, superseded-on edges). |
+| **Docling** | IBM document parser → clean Markdown/JSON for statements, KYC, regulatory PDFs. |
+| **Feast** | Feature store (offline: Iceberg/S3, online: Redis) for online/offline parity. |
+| **BentoML / KServe** | ML model serving (GNN/GBM fraud models at low latency). |
+| **Langfuse** | Self-hostable LLM tracing/evaluation platform (OTel-compatible). |
+| **Ragas** | RAG evaluation (faithfulness, answer relevancy, context precision/recall). |
+| **Braintrust** | Eval-as-CI platform; gates merges on regression suites. |
+| **NeMo Guardrails** | Programmable conversational rails (input/output/tool-call); fail-closed. |
+| **Llama Guard** | Safety classifier behind a guardrail. |
+| **OPA / Cedar** | Externalized authorization policy engine. |
+| **GraphRAG** | Graph-augmented retrieval for corpus-wide/temporal/multi-hop questions. |
+| **Two-pass structured output** | Tools-on pass gathers evidence; tools-off/schema-on pass emits validated JSON (avoids constraint-tax tool suppression). |
+| **HITL** | Human-in-the-loop — approval gate before high-consequence actions. |
+| **SR 11-7** | Fed model risk management guidance (validation, monitoring, documentation, governance). |

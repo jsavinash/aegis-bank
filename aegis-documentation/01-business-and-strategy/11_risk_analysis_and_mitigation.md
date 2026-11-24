@@ -12,6 +12,12 @@
 | R6 | Cost blow-up (agent loops, GPU) | Medium | Medium | Budgets, model routing, reserved capacity |
 | R7 | Talent scarcity (AI + banking) | High | Medium | Partner, upskill, managed services |
 | R8 | Data quality from core | High | High | Event backbone + feature store; data contracts |
+| R9 | Eval debt (regression suite not maintained) | Medium | High | Eval gate in CI from day one; tagged suites; online eval on prod traces |
+| R10 | LLM latency compounding on hot paths | Medium | High | LLM never on fraud hot path; precomputed graph embeddings; async warm path with hard budget; model routing |
+| R11 | Context-window bloat / graph-prompt inflation | Medium | Medium | Scoped graph over obligations/controls; retrieval budget; summarise-then-reason; router keeps lookups on cheap hybrid |
+| R12 | Constraint-tax tool suppression (open-weight models) | Medium | High | Two-pass structured output (tools-on then schema-on) wherever agent must both act and emit JSON |
+| R13 | Temporal correctness (citing superseded rules) | Medium | High | Temporal KG with explicit validity intervals; router sends temporal questions to graph; regression suite tagged `temporal` |
+| R14 | Accessibility non-compliance (EAA/WCAG) | Medium | High | WCAG 2.2 AA in CI (axe-core) + manual screen-reader testing from Phase 1 |
 
 ## Security & compliance risks
 
