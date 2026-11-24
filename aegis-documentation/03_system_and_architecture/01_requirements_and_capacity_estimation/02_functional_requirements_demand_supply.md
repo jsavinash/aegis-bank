@@ -17,17 +17,30 @@
 
 ## Supply (components that satisfy demand)
 
-| Requirement | Supplying component | Stack |
-|---|---|---|
-| Accounts/payments/cards | Core banking (bought) + Go services | Temenos/Mambu, Go |
-| Fraud scoring | AI risk plane | GNN/GBM + vLLM |
-| KYC/AML | Compliance plane (`aegis/`) | Docling, LlamaIndex, NeMo |
-| Lending | Lending service | XGBoost + LangGraph |
-| Assistant | AI platform | LangGraph + LlamaIndex |
-| Data | Data platform | Kafka, Iceberg, ClickHouse |
+| Requirement | Supplying component | Open-source stack | Commercial alternative |
+|---|---|---|---|
+| Accounts/payments/cards | Core banking engine + Go services | **Apache Fineract** (Apache 2.0, ledger + REST API) or **Mifos X** (MPL 2.0, Fineract + web/mobile), **TigerBeetle** (high-throughput double-entry ledger), Go microservices | Temenos, Mambu, Thought Machine |
+| Card issuing & payment orchestration | Payments layer | **Hyperswitch** (Apache 2.0, Rust; 100+ processors, card vault), **Apache Fineract** for ledger | Marqeta, Stripe Issuing |
+| Fraud scoring | AI risk plane | GNN/GBM + vLLM (open models) | Feedzai, Featurespace |
+| KYC/AML | Compliance plane (`aegis/`) | Docling, LlamaIndex, NeMo, **Apache Fineract** audit journal | Actimize, NICE |
+| Lending | Lending service | XGBoost + LangGraph; **Apache Fineract** loan/savings product engine | Temenos, Mambu |
+| Assistant | AI platform | LangGraph + LlamaIndex | — |
+| Data | Data platform | Kafka/Redpanda, Iceberg, ClickHouse | Snowflake, Databricks |
+
+### Best open-source core banking options (2026)
+
+| Project | License | Best for | Notes |
+|---|---|---|---|
+| **Apache Fineract** | Apache 2.0 (ASF top-level) | Ledger, loans, savings, deposits, double-entry accounting via REST API | Most actively released open core (1.16.1, Oct 2026); aimed at lenders/neobanks, not tier-1. Docker images **not production-ready** — you own image hardening, upgrades, EOD batch. |
+| **Mifos X** | MPL 2.0 (engine Apache 2.0) | Financial-inclusion bank with ready web + mobile front ends | Distribution of Fineract + clients; 60+ implementation partners. |
+| **TigerBeetle** | Apache 2.0 | Ultra-high-throughput double-entry financial transactions DB | Pairs as the hot accounting ledger beneath a composable core; not a full product engine. |
+| **Hyperswitch** | Apache 2.0 (Rust) | Payment orchestration, routing across 100+ processors, card vault | Payments layer beside Fineract; card vault brings PCI DSS scope. |
+| **Galoy core** | Mostly open source | Software-native banks; event-sourced multi-asset (fiat/stablecoin) double-entry core | Newer; custody-independent; AI-native but early. |
+
+> **Recommendation:** **Apache Fineract** (+ Mifos X front end) as the open-source core ledger/product engine, **Hyperswitch** for card/payment orchestration, and **TigerBeetle** where raw ledger throughput dominates. Budget for the operational work open source shifts onto your team (image hardening, EOD batch, upgrades, no vendor SLA) — or contract a Fineract hosting/support partner.
 
 ## Demand-supply gap analysis
 
-- **Core:** buy to meet demand; integrate via events.
+- **Core:** run an open-source engine (Apache Fineract) to avoid per-account license tax; integrate via events. Budget for operational ownership (hardening, upgrades, backup/DR, no vendor SLA).
 - **Fraud/AML:** build the AI plane; scale horizontally.
 - **Assistant:** stateless agents + shared vector/graph stores; scale via K8s.
