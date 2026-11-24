@@ -16,11 +16,14 @@
 | KPI | Baseline | Target |
 |---|---|---|
 | Availability | — | 99.95%+ |
+| Balance latency (p99) | — | <200ms |
 | Fraud decision latency (p99) | — | <150ms |
+| Payment success rate | — | >99.5% |
 | Fraud loss rate | ~6–8 bps (industry) | reduce 30–50% |
 | Fraud false-positive rate | rules baseline | cut 40–60% |
 | Contact deflection (tier-1) | — | 25–40% |
 | AML analyst time per alert | ~70% manual research | down ~70% |
+| AML alert-to-filing rate | legacy baseline | ↑ (fewer false alerts) |
 | KYC onboarding time | days | <10 min |
 | Underwriting cycle (straight-through) | days | <1 hour |
 | WCAG 2.2 AA conformance | — | 100% of journeys |
@@ -32,3 +35,8 @@
 ## Measurement discipline
 
 Track **business metrics** (fraud loss bps, cost per contact, alert-to-filing rate), not just model accuracy. Compare before/after; attribute conservatively.
+
+## Related
+
+- [north_star_and_funnel_metrics.md](../02-product-and-ux/06_analytics_and_experimentation/north_star_and_funnel_metrics.md) — funnel stages, trust & counter-metrics, reporting cadence.
+- [03_observability_rum_and_slos.md](../03_system_and_architecture/10_testing_cicd_and_observability/03_observability_rum_and_slos.md) — SLOs behind the availability/latency/payment-success KPIs.
