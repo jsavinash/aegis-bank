@@ -5,7 +5,7 @@ flowchart TD
         Voice[Voice/WhatsApp]
     end
     subgraph EDGE[Edge & Identity]
-        GW[Kong + WAF]
+        GW[APISIX + WAF]
         ID[Keycloak/Ory - passkeys]
         BFF[GraphQL/REST BFF]
     end
@@ -14,10 +14,10 @@ flowchart TD
         PRODUCTS[Product Engine]
         CIF[Customer Info File]
     end
-    subgraph SVC[Domain Services - Go]
-        PAY[Payments]
-        CARD[Cards]
-        LEND[Lending]
+    subgraph SVC[Domain Services - Java]
+        PAY[Payments • Spring Boot / Quarkus]
+        CARD[Cards • Spring Boot / Quarkus]
+        LEND[Lending • Spring Boot / Quarkus]
     end
     subgraph BUS[Event Backbone]
         KAFKA[Redpanda/Kafka + Flink]

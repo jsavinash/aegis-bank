@@ -13,7 +13,7 @@ flowchart TD
         Voice[Voice/WhatsApp]
     end
     subgraph EDGE[Edge & Identity]
-        GW[Kong + WAF]
+        GW[APISIX + WAF]
         ID[Keycloak/Ory - passkeys]
         BFF[GraphQL/REST BFF]
     end
@@ -22,10 +22,10 @@ flowchart TD
         PRODUCTS[Product Engine]
         CIF[Customer Info File]
     end
-    subgraph SVC[Domain Services - Go]
-        PAY[Payments]
-        CARD[Cards]
-        LEND[Lending]
+    subgraph SVC[Domain Services - Java]
+        PAY[Payments • Spring Boot / Quarkus]
+        CARD[Cards • Spring Boot / Quarkus]
+        LEND[Lending • Spring Boot / Quarkus]
     end
     subgraph BUS[Event Backbone]
         KAFKA[Redpanda/Kafka + Flink]
@@ -69,7 +69,7 @@ flowchart TD
 ## Data flow (payment)
 
 1. Customer initiates payment (mobile).
-2. BFF validates session (passkey) → calls Payments service (Go).
+2. BFF validates session (passkey) → calls Payments service (Java).
 3. Fraud scorer (GNN/GBM) scores in <150ms.
 4. If clear → core ledger posts; event emitted to Kafka.
 5. If ambiguous → warm-path agent (LangGraph) produces verdict → HITL if needed.
