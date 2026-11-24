@@ -27,18 +27,6 @@
 | Assistant | AI platform | LangGraph + LlamaIndex | — |
 | Data | Data platform | Kafka/Redpanda, Iceberg, ClickHouse | Snowflake, Databricks |
 
-### Best open-source core banking options (2026)
-
-| Project | License | Best for | Notes |
-|---|---|---|---|
-| **Apache Fineract** | Apache 2.0 (ASF top-level) | Ledger, loans, savings, deposits, double-entry accounting via REST API | Most actively released open core (1.16.1, Oct 2026); aimed at lenders/neobanks, not tier-1. Docker images **not production-ready** — you own image hardening, upgrades, EOD batch. |
-| **Mifos X** | MPL 2.0 (engine Apache 2.0) | Financial-inclusion bank with ready web + mobile front ends | Distribution of Fineract + clients; 60+ implementation partners. |
-| **TigerBeetle** | Apache 2.0 | Ultra-high-throughput double-entry financial transactions DB | Pairs as the hot accounting ledger beneath a composable core; not a full product engine. |
-| **Hyperswitch** | Apache 2.0 (Rust) | Payment orchestration, routing across 100+ processors, card vault | Payments layer beside Fineract; card vault brings PCI DSS scope. |
-| **Galoy core** | Mostly open source | Software-native banks; event-sourced multi-asset (fiat/stablecoin) double-entry core | Newer; custody-independent; AI-native but early. |
-
-> **Recommendation:** **Apache Fineract** (+ Mifos X front end) as the open-source core ledger/product engine, **Hyperswitch** for card/payment orchestration, and **TigerBeetle** where raw ledger throughput dominates. The core services run on **Java microservices** (Spring Boot / Quarkus — industry standard for banking) rather than Go. Budget for the operational work open source shifts onto your team (image hardening, EOD batch, upgrades, no vendor SLA) — or contract a Fineract hosting/support partner.
-
 ## Demand-supply gap analysis
 
 - **Core:** run an open-source engine (Apache Fineract) to avoid per-account license tax; integrate via events. Budget for operational ownership (hardening, upgrades, backup/DR, no vendor SLA).
