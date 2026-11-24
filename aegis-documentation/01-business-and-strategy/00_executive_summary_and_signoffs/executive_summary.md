@@ -23,7 +23,7 @@ The **AI layer is the product**, not a feature. Aegis uses AI as the fraud engin
 
 ## Investment posture
 
-Buy the core (Thought Machine/Mambu) rather than build; build the differentiated AI/risk plane; buy commodity data (KYC/AML/fraud feeds). Sequence 2–3 deep wins (fraud, servicing, AML) before breadth, and ship a production-grade MVP (accounts, cards, payments, security base) in ~3 months.
+Buy the core (Thought Machine/Mambu) rather than build; build the differentiated AI/risk plane; buy commodity data (KYC/AML/fraud feeds). Sequence 2–3 deep wins (fraud, servicing, AML) before breadth, and Ship a production-grade Phase 1 release (accounts, cards, payments, security base) in ~3 months.
 
 ## Sign-off
 

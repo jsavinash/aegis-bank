@@ -8,29 +8,29 @@ Score each feature: **value density** (customer value × business value) × **re
 
 ## Roadmap
 
-### Phase 0 — MVP (0–3 months)
+### Phase 1 — Production Release (0–3 months)
 Accounts, cards (physical + virtual, freeze, controls), payments (domestic + P2P), bill pay, mobile deposit, savings, budgeting, biometric + passkey auth, real-time fraud alerts, basic agentic assistant + human escalation, KYC, audit trail, WCAG 2.2 AA baseline.
 
-### Phase 1 — AI core + differentiators (3–6 months)
+### Phase 2 — AI core + differentiators (3–6 months)
 Agentic AML/SAR, fraud warm-path triage, credit score, multi-currency, pots/salary-sort, robo-advisor, open banking (aggregation), in-app scam detection, business lite.
 
-### Phase 2 — Scale + depth (6–12 months)
+### Phase 3 — Scale + depth (6–12 months)
 Mortgages, BNPL, crypto, wealth projection, full agentic assistant, kids/teen, business full (payroll/MTD), insurance, super-app, embedded finance/BaaS.
 
 ## Prioritised backlog (top 10)
 
 | # | Feature | Why | Phase |
 |---|---|---|---|
-| 1 | Real-time fraud + card controls | Highest ROI, security whitespace | 0 |
-| 2 | Agentic assistant + escalation | Core AI-first UX | 0 |
-| 3 | Fast onboarding + KYC | Activation | 0 |
-| 4 | AML investigation + SAR | Compliance must-have | 1 |
-| 5 | Passkeys + scam detection | Security differentiation | 0–1 |
-| 6 | Savings goals + salary sort | Retention | 0–1 |
-| 7 | Credit score + building | Engagement | 1 |
-| 8 | Multi-currency / zero-FX | Traveller segment | 1 |
-| 9 | Business banking (invoicing) | SME segment | 1–2 |
-| 10 | Robo-advisor | Wealth expansion | 1–2 |
+| 1 | Real-time fraud + card controls | Highest ROI, security whitespace | 1 |
+| 2 | Agentic assistant + escalation | Core AI-first UX | 1 |
+| 3 | Fast onboarding + KYC | Activation | 1 |
+| 4 | AML investigation + SAR | Compliance must-have | 2 |
+| 5 | Passkeys + scam detection | Security differentiation | 1–2 |
+| 6 | Savings goals + salary sort | Retention | 1–2 |
+| 7 | Credit score + building | Engagement | 2 |
+| 8 | Multi-currency / zero-FX | Traveller segment | 2 |
+| 9 | Business banking (invoicing) | SME segment | 2–3 |
+| 10 | Robo-advisor | Wealth expansion | 2–3 |
 
 ## Release principle
 
