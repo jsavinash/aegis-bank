@@ -13,20 +13,26 @@
 
 ## KPIs (with targets)
 
-| KPI | Baseline | Target |
-|---|---|---|
-| Availability | — | 99.95%+ |
-| Balance latency (p99) | — | <200ms |
-| Fraud decision latency (p99) | — | <150ms |
-| Payment success rate | — | >99.5% |
-| Fraud loss rate | ~6–8 bps (industry) | reduce 30–50% |
-| Fraud false-positive rate | rules baseline | cut 40–60% |
-| Contact deflection (tier-1) | — | 25–40% |
-| AML analyst time per alert | ~70% manual research | down ~70% |
-| AML alert-to-filing rate | legacy baseline | ↑ (fewer false alerts) |
-| KYC onboarding time | days | <10 min |
-| Underwriting cycle (straight-through) | days | <1 hour |
-| WCAG 2.2 AA conformance | — | 100% of journeys |
+| Category | KPI | Baseline | Target |
+|---|---|---|---|
+| **Reliability** | Availability | — | 99.95%+ |
+| **Reliability** | Balance latency (p99) | — | <200ms |
+| **Reliability** | Fraud decision latency (p99) | — | <150ms |
+| **Reliability** | App cold start (p95) | — | <2s |
+| **Reliability** | Payment success rate | — | >99.5% |
+| **Reliability** | Peak throughput | — | 10k+ TPS, multi-region |
+| **Fraud & financial crime** | Fraud loss rate | ~6–8 bps (industry) | reduce 30–50% |
+| **Fraud & financial crime** | Fraud false-positive rate | rules baseline | cut 40–60% |
+| **Fraud & financial crime** | AML analyst time per alert | ~70% manual research | down ~70% |
+| **Fraud & financial crime** | AML alert-to-filing rate | legacy baseline | ↑ (fewer false alerts) |
+| **AI leverage** | Contact deflection (tier-1) | — | 25–40% |
+| **AI leverage** | KYC onboarding time | days | <10 min |
+| **AI leverage** | Underwriting cycle (straight-through) | days | <1 hour |
+| **Adoption & growth** | Monthly active users (MAU) | — | ↑ vs baseline |
+| **Adoption & growth** | Digital sales % | — | ↑ vs baseline |
+| **Adoption & growth** | Products per customer | — | ↑ vs baseline |
+| **Compliance & accessibility** | SAR filing timeliness | — | 100% within regulatory deadline |
+| **Compliance & accessibility** | WCAG 2.2 AA conformance | — | 100% of journeys |
 
 ## North-star metric
 
@@ -35,6 +41,10 @@
 ## Measurement discipline
 
 Track **business metrics** (fraud loss bps, cost per contact, alert-to-filing rate), not just model accuracy. Compare before/after; attribute conservatively.
+
+**Counter-metrics (guard against gaming):** support contacts per 1k users (should fall), chargeback rate, complaint rate, app-store rating & review sentiment.
+
+**Reporting cadence:** daily ops dashboard (fraud, latency, errors) · weekly product funnel + guardrails · monthly business review (north star, value pools).
 
 ## Related
 
