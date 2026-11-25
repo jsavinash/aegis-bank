@@ -1,32 +1,41 @@
 #!/usr/bin/env bash
-# Idempotent toolchain installer (Node/corepack, uv, SDKMAN+JDK). Non-fatal.
+# Toolchain installer: fnm (Node) + portable JDK + uv. No brew/SDKMAN required.
 set -uo pipefail
-echo "== checking toolchains =="
-if command -v node >/dev/null 2>&1 && command -v corepack >/dev/null 2>&1; then
-  corepack enable || true
-  echo "pnpm via corepack: $(pnpm --version 2>/dev/null || echo 'pending')"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+TOOLS="$ROOT/.tools"; mkdir -p "$TOOLS"
+ARCH="$(uname -m)"; case "$ARCH" in arm64) JDK_ARCH=aarch64;; *) JDK_ARCH=x64;; esac
+
+echo "== Node (fnm) =="
+if ! command -v fnm >/dev/null 2>&1; then
+  curl -fsSL -o "$TOOLS/fnm.zip" https://github.com/Schniz/fnm/releases/latest/download/fnm-macos.zip || true
+  unzip -o "$TOOLS/fnm.zip" -d "$TOOLS/fnm" >/dev/null 2>&1 || true
+  chmod +x "$TOOLS/fnm/fnm" 2>/dev/null || true
+fi
+export PATH="$TOOLS/fnm:$PATH"
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --shell bash)"
+  fnm install 20 || true
+  fnm use 20 || true
+fi
+command -v corepack >/dev/null 2>&1 && corepack enable || true
+node --version 2>/dev/null || echo "node install failed"
+
+echo "== JDK 21 =="
+JDK_HOME=""
+if java -version >/dev/null 2>&1; then
+  JDK_HOME="$(java -XshowSettings:properties -version 2>&1 | awk -F= '/java.home/{print $2}')"
 else
-  echo "Node 20 not found — install Node 20 first (https://nodejs.org)."
+  [ -f "$TOOLS/jdk.tar.gz" ] || curl -fsSL -o "$TOOLS/jdk.tar.gz" "https://api.adoptium.net/v3/binary/latest/21/ga/mac/$JDK_ARCH/jdk/hotspot/normal/eclipse?project=jdk"
+  tar -xzf "$TOOLS/jdk.tar.gz" -C "$TOOLS"
+  JDK_HOME="$(ls -d "$TOOLS"/jdk-21*/Contents/Home 2>/dev/null | head -1)"
 fi
-if ! command -v uv >/dev/null 2>&1; then
-  echo "installing uv..."
-  curl -LsSf https://astral.sh/uv/install.sh | sh || true
-fi
-command -v uv >/dev/null 2>&1 && echo "uv: $(uv --version)" || echo "uv not found"
-if [ ! -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-  echo "installing SDKMAN..."
-  curl -s "https://get.sdkman.io" | bash || true
-fi
-BASH4="$(command -v /opt/homebrew/bin/bash || command -v /usr/local/bin/bash || true)"
-if [ ! -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-  if [ -n "$BASH4" ]; then
-    "$BASH4" -c 'curl -s "https://get.sdkman.io" | bash' || true
-  else
-    echo "SDKMAN needs Bash 4+ — install: brew install bash (then re-run make tools)"
-  fi
-fi
-if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ] && [ -n "$BASH4" ]; then
-  "$BASH4" -c 'source "$HOME/.sdkman/bin/sdkman-init.sh"; cd "$(dirname "$0")/.." 2>/dev/null; sdk env install' || true
-fi
-java -version 2>&1 | head -1 || echo "JDK not on PATH — install JDK 21 (brew install --cask temurin@21)"
-echo "== done =="
+[ -n "$JDK_HOME" ] && "$JDK_HOME/bin/java" -version 2>&1 | head -1 || echo "JDK install failed"
+
+cat > "$TOOLS/env.sh" <<EOF
+export PATH="$TOOLS/fnm:\$PATH"
+[ -s "$TOOLS/fnm/fnm.env" ] && . "$TOOLS/fnm/fnm.env"
+command -v fnm >/dev/null 2>&1 && eval "\$(fnm env --shell bash)"
+export JAVA_HOME="$JDK_HOME"
+export PATH="\$JAVA_HOME/bin:\$PATH"
+EOF
+echo "== wrote $TOOLS/env.sh =="

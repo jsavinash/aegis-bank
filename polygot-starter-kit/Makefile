@@ -8,16 +8,17 @@ SHELL := /bin/bash
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-16s\033[0m %s\n",$$1,$$2}'
 
-tools: ## Install missing toolchains (Node/corepack, uv, SDKMAN+JDK)
+tools: ## Install missing toolchains (portable Node + JDK + uv)
 	bash scripts/install-tools.sh
+	@if [ -f .tools/env.sh ]; then . .tools/env.sh; fi
 
 locks: ## Generate pnpm-lock.yaml + uv.lock
 	pnpm install --lockfile-only || true
 	uv lock || true
 
 install: ## Install all dependencies (pnpm + uv)
-	@if command -v pnpm >/dev/null; then pnpm install; else echo "pnpm not found - install: https://pnpm.io"; fi
-	@if command -v uv >/dev/null; then uv sync --all-packages; else echo "uv not found - install: https://docs.astral.sh/uv"; fi
+	@. .tools/env.sh 2>/dev/null || true; if command -v pnpm >/dev/null; then pnpm install; else echo "pnpm not found - install: https://pnpm.io"; fi
+	@. .tools/env.sh 2>/dev/null || true; if command -v uv >/dev/null; then uv sync --all-packages; else echo "uv not found - install: https://docs.astral.sh/uv"; fi
 
 bootstrap: tools install hooks java-sync ## One-time setup (tools + deps + gradle sync + hooks)
 
@@ -28,7 +29,7 @@ dev: ## Run all dev servers (web, api, app)
 	npx nx run-many -t dev
 
 java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
-	if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; java -version >/dev/null 2>&1 || { echo "java not found - install JDK 21 or SDKMAN"; exit 0; }; ./gradlew dependencies
+	. .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; java -version >/dev/null 2>&1 || { echo "java not found - install JDK 21 or SDKMAN"; exit 0; }; ./gradlew dependencies
 
 build: ## Build everything
 	npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
