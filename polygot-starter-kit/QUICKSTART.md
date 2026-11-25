@@ -27,7 +27,7 @@ make run-app            # React app (apps/app)
 make run-aegis          # Python AI service (apps/aegis)
 make run-mcp            # MCP server, stdio (apps/aegis-mcp)
 make run-data           # data-platform
-make run-java           # Java payments (./gradlew :payments:bootRun)
+make run-java           # Java payments (or: ./java.sh run)
 ```
 
 ## 4. Build / test / quality
