@@ -14,6 +14,8 @@ flowchart LR
     RISK --> GUARD[NeMo + Llama Guard]
     RISK --> LF[Langfuse Trace]
     LF --> EVAL[Ragas Eval + CI Gate]
+    EVAL --> MON[Drift / Quality Monitor]
+    MON --> LAKE
 ```
 
 ## Components
@@ -30,6 +32,8 @@ flowchart LR
 | **Guardrails** | NeMo + Llama Guard | Fail-closed safety |
 | **Eval** | Ragas + Braintrust | Quality gates |
 | **Tracing** | Langfuse + OTel | Observability |
+| **Monitoring** | Evidently + custom | Drift, quality, fairness |
+| **Cache** | Redis / semantic cache | Cost/latency reduction |
 
 ## Two-pass structured output
 
@@ -42,3 +46,18 @@ High-consequence actions (SAR, freeze, loan approval) pause via LangGraph `inter
 ## Model routing
 
 LiteLLM gateway routes tiers (fast/balanced/reasoning) to vLLM/Ollama/frontier; budgets enforced per step.
+
+## Feedback, drift & shadow
+
+- **Feedback loop:** production traces + human verdicts → labelled dataset (Langfuse → Iceberg).
+- **Drift monitors:** data/model drift + fairness metrics; alerts on breach.
+- **Shadow / champion-challenger:** new models scored in shadow before promotion.
+
+## Cost & latency
+
+- Per-step token budget; semantic + response caching; route easy steps to cheaper tiers.
+- Hot-path (fraud) uses precomputed graph embeddings; LLM never on the <150ms path.
+
+## Security
+
+- Prompt-injection rails on tool results; least-privilege MCP scopes; PII redaction before logging; eval for jailbreak/leakage.
