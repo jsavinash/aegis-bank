@@ -3,6 +3,8 @@
 
 install:
 	uv sync --extra dev
+	cd polygot-starter-kit && make install
+	cd polygot-starter-kit && make java-sync
 
 dev:
 	uv sync --extra dev && uv run pre-commit install || true
