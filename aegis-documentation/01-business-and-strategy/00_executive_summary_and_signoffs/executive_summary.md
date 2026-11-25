@@ -27,7 +27,7 @@ Buy the core (Thought Machine/Mambu) rather than build; build the differentiated
 
 ## Sign-off
 
-See `00_executive_summary_and_signoffs/approval_and_change_log.md`.
+See `approval_and_change_log.md`.
 
 ## Related
 

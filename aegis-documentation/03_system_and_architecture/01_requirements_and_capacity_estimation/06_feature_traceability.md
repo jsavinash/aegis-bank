@@ -2,7 +2,7 @@
 
 **Version:** 1.1 · **Date:** 25 Nov 2026 · **Companion to:** [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (canonical combined catalog)
 
-This document closes the gap between the **full feature catalog** (~485 features, 37 sections) and the **system architecture**. The catalog itself lives in `01-business-and-strategy/14_feature_catalog.md`; here we trace every feature **domain** to the architectural components, services, and data stores that implement it.
+This document closes the gap between the **full feature catalog** (~485 features, 37 sections) and the **system architecture**. The catalog itself lives in `../../01-business-and-strategy/14_feature_catalog.md`; here we trace every feature **domain** to the architectural components, services, and data stores that implement it.
 
 > The architecture folder previously covered only 8 high-level FRs (`02_functional_requirements_demand_supply.md`). This traceability extends that to the full catalog.
 
@@ -73,7 +73,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 ## Coverage notes
 
 - **Implemented today:** (AI + Risk + Compliance plane) covers types **SEC, AI, COMP** and parts of **LEND/WEALTH/DATA**.
-- **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services (see `03_high_level_design_hld/01_end_to_end_system_architecture.md`).
+- **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services (see `../03_high_level_design_hld/01_end_to_end_system_architecture.md`).
 - **AI use cases:** see `../../01-business-and-strategy/14_feature_catalog.md` (~46 use cases mapped to the same components).
 - **Language/framework per domain:** see `../../04_engineering_and_code/01_codebase_organization_and_standards/04_language_and_framework_mapping.md`.
 

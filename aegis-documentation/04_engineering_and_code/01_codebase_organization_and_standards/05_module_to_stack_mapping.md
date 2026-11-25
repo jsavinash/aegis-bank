@@ -1,6 +1,6 @@
 # Codebase Mapping (tech stack)
 
-Maps the package to the **AI/ML platform** (Layer 3 of `../../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md`) and the 7 AI pillars (`../../../03_system_and_architecture/02_tech_choices_and_adrs/04_ai_stack_pillars.md`). Everything ships with **offline-safe substitutes** so `make test` and `make serve` run with zero external services; each substitute is a **1:1 drop-in** for its production tool.
+Maps the package to the **AI/ML platform** (Layer 3 of `../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md`) and the 7 AI pillars (`../../03_system_and_architecture/02_tech_choices_and_adrs/04_ai_stack_pillars.md`). Everything ships with **offline-safe substitutes** so `make test` and `make serve` run with zero external services; each substitute is a **1:1 drop-in** for its production tool.
 
 ## Module → layer → production drop-in
 
@@ -35,7 +35,7 @@ Maps the package to the **AI/ML platform** (Layer 3 of `../../../03_system_and_a
 
 ## What is NOT yet in this repo (build next)
 
-The package is the **AI risk & compliance plane**. The full bank (per `../../../01-business-and-strategy/13_high_level_solution_overview.md` and `../../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md`) additionally needs:
+The package is the **AI risk & compliance plane**. The full bank (per `../../01-business-and-strategy/13_high_level_solution_overview.md` and `../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md`) additionally needs:
 
 - **Core banking** (buy: Thought Machine/Mambu, or build on an event-sourced ledger)
 - **Event backbone** (Redpanda/Kafka + Flink)
@@ -44,4 +44,4 @@ The package is the **AI risk & compliance plane**. The full bank (per `../../../
 - **Data platform** (Iceberg + ClickHouse + dbt + Dagster)
 - **Infra** (Terraform, EKS, ArgoCD) — `infra/` is currently empty
 
-See the phased plan in `../../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md` §7 for the build order (P0 → P4).
+See the phased plan in `../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md` §7 for the build order (P0 → P4).

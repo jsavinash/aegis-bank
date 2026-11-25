@@ -20,9 +20,9 @@ This is the master index proving that the **full feature set (~485 features, 37 
 |---|---|---|
 | **00 · Glossary** | Domain terms for all features | Agent archetypes (task/workflow/monitoring/multi-agent) |
 | **01 · Business & Strategy** | `14_feature_catalog.md` (full), `08_high_level_functional_requirements.md`, `13_high_level_solution_overview.md` | `07_personas_and_business_scenarios.md`, `08_high_level_functional_requirements.md` |
-| **02 · Product & UX** | `feature-prioritization-roadmap.md`, `04_permissions_and_plan_tiers.md` | `01_users_and_motivations/jobs_to_be_done_and_value_prop.md`, `03_experience_and_system_mapping/customer_journey_and_service_blueprint.md` |
+| **02 · Product & UX** | `feature-prioritization-roadmap.md`, `04_permissions_and_plan_tiers.md` | `02-product-and-ux/01_users_and_motivations/jobs_to_be_done_and_value_prop.md`, `02-product-and-ux/03_experience_and_system_mapping/customer_journey_and_service_blueprint.md` |
 | **03 · System & Architecture** | `01-business-and-strategy/14_feature_catalog.md`, `06_feature_traceability.md`, `02_functional_requirements_demand_supply.md`, `03_non_functional_requirements_matrix.md` | `07_use_case_catalog_all.md`, `06_ai_native_reference_architectures.md`, `05_agent_contracts_and_tools.md` |
-| **04 · Engineering & Code** | `04_language_and_framework_mapping.md`, `05_module_to_stack_mapping.md` | `02_low_level_design_and_patterns/01_uml_modeling_and_system_use_cases.md`, `06_reference_implementation/` |
+| **04 · Engineering & Code** | `04_language_and_framework_mapping.md`, `05_module_to_stack_mapping.md` | `04_engineering_and_code/02_low_level_design_and_patterns/01_uml_modeling_and_system_use_cases.md`, `06_reference_implementation/` |
 | **05 · Quality & Verification** | `acceptance-criteria-and-cases.md` (feature acceptance) | `acceptance-criteria-and-cases.md` (use-case → test cases), `master-test-strategy.md` |
 | **06 · Operations & Infra** | Capacity from feature volumes (`05_back_of_envelope_capacity_estimation.md`) | Operational runbooks per use-case failure modes |
 | **07 · Security, Compliance & Users** | Feature-level security/compliance (types SEC/COMP/ACC) | `support-escalation-matrix.md` (use-case-driven support), `user-help-center-guides.md` (per feature) |

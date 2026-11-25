@@ -37,4 +37,4 @@ Score each component on: **strategic differentiation**, **commodity maturity**, 
 
 ## Financial model
 
-See `10_cost_roi_and_alternatives/cost_and_roi_summary.md`.
+See `cost_and_roi_summary.md`.
