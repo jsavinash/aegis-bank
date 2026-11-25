@@ -5,7 +5,7 @@ One repo, one control plane (**`make`**), four stacks: **TypeScript (pnpm + Turb
 ## 1. Prerequisites
 - **pnpm** ≥ 9 (TS) — https://pnpm.io
 - **uv** (Python) — https://docs.astral.sh/uv
-- **Java 21** (Gradle) + **Node ≥ 20**
+- **Java 21** via **SDKMAN!** (`.sdkmanrc`) + **Node ≥ 20**
 - **Docker** (optional, for redis/compose)
 
 ## 2. Bootstrap (one command)

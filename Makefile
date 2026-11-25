@@ -35,18 +35,18 @@ down:
 migrate:
 	uv run alembic upgrade head
 
-# --- Java microservices (Gradle, in polygot-starter-kit) ---
+# --- Java microservices (Gradle via SDKMAN, in polygot-starter-kit) ---
 java-build:
-	cd polygot-starter-kit && ./gradlew clean build
+	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew clean build
 
 java-test:
-	cd polygot-starter-kit && ./gradlew test
+	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew test
 
 java-run:
-	cd polygot-starter-kit && ./gradlew -p apps/micro-services payments:bootRun
+	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew -p apps/micro-services payments:bootRun
 
 java-quality:
-	cd polygot-starter-kit && ./gradlew spotlessApply check
+	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew spotlessApply check
 
 java-docker:
-	cd polygot-starter-kit && ./gradlew -p apps/micro-services payments:jibDockerBuild
+	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew -p apps/micro-services payments:jibDockerBuild

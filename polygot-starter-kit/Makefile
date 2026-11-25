@@ -21,7 +21,7 @@ dev: ## Run all dev servers (web, api, app)
 	npx nx run-many -t dev
 
 build: ## Build everything
-	npx nx run-many -t build && ./gradlew build
+	npx nx run-many -t build && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew build
 
 test: ## Run all tests
 	npx nx run-many -t test && uv run pytest
@@ -36,7 +36,7 @@ typecheck: ## Type-check everything
 	npx nx run-many -t typecheck && uv run mypy .
 
 ci: ## Local CI mirror (what CI runs)
-	npx nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest && ./gradlew build
+	npx nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew build
 
 run-web: ## Run Astro marketing site
 	pnpm --filter @aegis/web dev
@@ -50,8 +50,8 @@ run-mcp: ## Run MCP server (stdio)
 	uv run --package mcp-aegis mcp-aegis
 run-data: ## Run data-platform
 	uv run --package data-platform python -m data_platform
-run-java: ## Run Java micro-services
-	./gradlew -p apps/micro-services payments:bootRun
+run-java: ## Run Java micro-services (SDKMAN)
+	source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew -p apps/micro-services payments:bootRun
 
 docker-build: ## Build docker images
 	docker compose build
