@@ -48,6 +48,22 @@ Single source of truth for terms, acronyms, and definitions used across this doc
 | **ISO 20022** | ISO 20022 — international financial messaging standard (transaction events). |
 | **SWIFT** | Society for Worldwide Interbank Financial Telecommunication — cross-border payment messaging. |
 | **DSAR** | Data Subject Access Request — privacy right to access/export/delete data. |
+| **FX** | Foreign exchange — currency conversion and multi-currency handling. |
+| **Stablecoin** | Fiat-pegged crypto token used for payments/remittance. |
+| **Tokenised deposit** | A bank deposit represented as a blockchain token. |
+| **Escrow** | Funds held by a third party until conditions are met. |
+| **Round-up** | Saving the spare change from everyday transactions. |
+| **Pots / spaces** | Named savings buckets within an account. |
+| **Salary sorting** | Automatic split of incoming salary across pots. |
+| **Credit-building** | Tools that help establish or improve a credit score. |
+| **Scam detection** | In-app warnings/interception of scam payments. |
+| **Positive Pay** | ACH/check fraud filter matching issued items. |
+| **Maker-checker** | Dual-approval control for high-value actions. |
+| **Confirmation of payee** | Pre-payment check that the payee name matches. |
+| **Standing order / Request-to-Pay (RTI)** | Recurring fixed payment / a request for payment. |
+| **Chargeback** | Reversal of a card payment after a dispute. |
+| **Agent banking** | Assisted banking via agents (offline/USSD). |
+| **USSD / softPOS / eSIM** | Feature-phone menu / software point-of-sale / embedded SIM. |
 
 ## Technical
 
@@ -91,6 +107,82 @@ Single source of truth for terms, acronyms, and definitions used across this doc
 | **Agent archetype** | Task / Workflow / Monitoring / Multi-agent classification of AI agent scope. |
 | **Autonomy spectrum** | Adviser → Copilot → Supervised executor → Autonomous (human accountability scales with autonomy). |
 
+## Feature terms
+
+| Term | Definition |
+|---|---|
+| **Budget** | A spending plan by category. |
+| **Cash-flow forecast** | Predicted inflows/outflows over time. |
+| **Net-worth 360°** | Consolidated view of assets minus liabilities. |
+| **Payroll** | Processing of employee salaries. |
+| **Cash pooling** | Consolidating balances across accounts for treasury. |
+| **ZBA / TBA** | Zero-Balance / Target-Balance Account — automated sweeps. |
+| **Lockbox** | Bank-operated receipt processing for payments. |
+| **FX hedging** | Instruments that reduce currency risk. |
+| **Teen account** | Account for minors with parental oversight. |
+| **Parental controls** | Limits/approvals a parent sets on a teen account. |
+| **Super-app** | An app bundling many services (payments, lifestyle, retail). |
+| **Cashback** | Reward returning a percentage of spend. |
+| **Card-linked offers** | Discounts applied when paying with a linked card. |
+| **Underwriting** | Assessing risk to approve credit/insurance. |
+| **Claims** | Requests for an insurance payout. |
+| **Embedded insurance** | Insurance offered at the point of sale. |
+| **Alert fatigue** | Over-alerting that reduces response quality. |
+| **Quiet hours** | Do-not-disturb windows for non-critical alerts. |
+| **Statement** | Periodic record of account activity. |
+| **Retention** | Keeping records for the required period. |
+| **Shariah / Islamic banking** | Banking compliant with Islamic law (no riba/interest). |
+| **VSLA / SACCO** | Village Savings & Loan Association / Savings & Credit Cooperative. |
+| **Parametric insurance** | Pays out on a defined trigger (e.g., crop yield). |
+| **Tokenisation** | Replacing sensitive data (e.g., card number) with a token. |
+| **Wallet tokenisation** | Device-bound tokens replacing card data for wallets. |
+| **Alternative credit scoring** | Scoring using non-traditional data (thin-file). |
+| **Financial health score** | A metric summarising a customer's financial resilience. |
+| **Nudge** | A timely prompt encouraging a financial action. |
+| **Perk** | A loyalty/travel benefit. |
+
+## Feature-domain coverage (37 sections)
+
+| § | Domain | Key terms |
+|---|---|---|
+| 1 | Accounts & Deposits | core, ledger, product engine, pots, round-up, salary sorting |
+| 2 | Payments & Transfers | P2P, ACH/SEPA/FedNow/RTP, SWIFT, ISO 20022, standing order, RTI, confirmation of payee |
+| 3 | Cards | MCC, 3DS, PCI-DSS, tokenisation |
+| 4 | Bill Pay | bill pay, autopay, RTI |
+| 5 | Lending & Credit | BNPL, EWA, HELOC, FICO |
+| 6 | Savings, Wealth & Investing | robo-advisor, APY/AER, ESG, tokenised deposit |
+| 7 | Money Management & Insights | budget, cash-flow forecast, net-worth |
+| 8 | Credit & Financial Health | FICO, credit-building |
+| 9 | Security & Fraud | passkey, MFA, GNN, scam detection, Positive Pay, KYT |
+| 10 | Customer Service & AI | agentic AI, RAG, MCP, HITL |
+| 11 | Business & Commercial | SME, AP/AR, MTD, payroll |
+| 12 | Treasury & Cash Mgmt | cash pooling, ZBA/TBA, lockbox, FX hedging |
+| 13 | Private Banking (HNW) | HNW |
+| 14 | Kids, Teens & Family | teen account, parental controls |
+| 15 | Open Banking & Ecosystem | PSD2/PSD3, PISP/AISP, BaaS |
+| 16 | Super-App & Lifestyle | super-app, eSIM, softPOS, USSD |
+| 17 | Sustainability / Green | ESG |
+| 18 | Digital Assets & Stablecoins | stablecoin, tokenised deposit, CBDC, KYT |
+| 19 | Rewards & Loyalty | cashback, card-linked offers |
+| 20 | Insurance & Protection | underwriting, claims, embedded insurance |
+| 21 | Accessibility & Inclusion | WCAG 2.2 AA, EAA |
+| 22 | Compliance & Regulatory | AML, KYC, SAR/STR, PEP, typology, FATF/FinCEN |
+| 23 | Platform, Data & AI Infra | feature store, OTel, vector/graph store |
+| 24 | Notifications & UX | push/SMS/email, alert fatigue |
+| 25 | International / Cross-border | FX, SWIFT, ISO 20022 |
+| 26 | Payments Acceptance (merchant) | MCC, chargeback |
+| 27 | Specialty / Niche | Shariah, VSLA/SACCO, parametric insurance |
+| 28 | Credit Cards — advanced | 3DS, tokenisation |
+| 29 | Embedded Finance & Wallets | wallet tokenisation |
+| 30 | Business Banking — depth | payroll, MTD |
+| 31 | Financial Inclusion / Rural / Agri | alternative credit scoring, VSLA |
+| 32 | Advanced AI & Agentic | agentic AI, MCP, multi-agent |
+| 33 | Financial Wellness | financial health score, nudges |
+| 34 | Notifications, Alerts & UX | alert fatigue, quiet hours |
+| 35 | Statements & Documents | statement, retention |
+| 36 | Rewards, Travel & Perks | cashback, perks |
+| 37 | New / Emerging | CBDC, tokenised deposit |
+
 ## Abbreviations
 
 | Short | Meaning |
@@ -105,37 +197,3 @@ Single source of truth for terms, acronyms, and definitions used across this doc
 | **SLO / SLA** | Service Level Objective / Agreement |
 | **WAF** | Web Application Firewall |
 | **IaC** | Infrastructure as Code |
-| **ACH** | Automated Clearing House |
-| **AP / AR** | Accounts Payable / Accounts Receivable |
-| **APY / AER** | Annual Percentage Yield / Annual Equivalent Rate |
-| **CD** | Certificate of Deposit |
-| **CIAM** | Customer Identity & Access Management |
-| **CBDC** | Central Bank Digital Currency |
-| **DSAR** | Data Subject Access Request |
-| **EAA** | European Accessibility Act |
-| **ESG** | Environmental, Social & Governance |
-| **FATF** | Financial Action Task Force |
-| **FinCEN** | Financial Crimes Enforcement Network |
-| **FICO** | Fair Isaac Credit Score |
-| **GDPR** | General Data Protection Regulation |
-| **HELOC** | Home Equity Line of Credit |
-| **HNW** | High Net Worth |
-| **HSM** | Hardware Security Module |
-| **ISO 20022** | ISO 20022 financial messaging standard |
-| **ISO 27001** | International Organization for Standardization 27001 |
-| **JWT** | JSON Web Token |
-| **KYT** | Know Your Transaction |
-| **MCC** | Merchant Category Code |
-| **MFA** | Multi-Factor Authentication |
-| **MTD** | Making Tax Digital |
-| **P2P** | Peer-to-Peer |
-| **PCI-DSS** | Payment Card Industry Data Security Standard |
-| **RBAC** | Role-Based Access Control |
-| **RUM** | Real User Monitoring |
-| **SAST** | Static Application Security Testing |
-| **DAST** | Dynamic Application Security Testing |
-| **SEPA** | Single Euro Payments Area |
-| **SOC 2** | Service Organization Control 2 |
-| **SWIFT** | Society for Worldwide Interbank Financial Telecommunication |
-| **TPS** | Transactions Per Second |
-| **3DS** | 3-D Secure |
