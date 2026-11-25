@@ -96,45 +96,45 @@ OpsConsole (web)
 
 Every feature-catalog section maps to at least one page (source: `../../01-business-and-strategy/14_feature_catalog.md`):
 
-| § | Feature domain | Page(s) |
-|---|---|---|
-| 1 | Accounts & Deposits | AccountsScreen |
-| 2 | Payments & Transfers | PaymentsScreen |
-| 3 | Cards | CardsScreen |
-| 4 | Bill Pay & Payment Mgmt | PayBillScreen |
-| 5 | Lending & Credit | BorrowScreen |
-| 6 | Savings, Wealth & Investing | SaveInvestScreen |
-| 7 | Money Management & Insights | InsightsScreen |
-| 8 | Credit & Financial Health | CreditHealthScreen |
-| 9 | Security & Fraud | StepUpAuthScreen, Profile › Security (+ Ops FraudReview) |
-| 10 | Customer Service & AI | AssistantScreen, SupportScreen |
-| 11 | Business & Commercial Banking | BusinessScreen |
-| 12 | Treasury & Cash Management | TreasuryScreen |
-| 13 | Private Banking & Wealth (HNW) | WealthScreen |
-| 14 | Kids, Teens & Family | KidsFamilyScreen |
-| 15 | Open Banking & Embedded Finance | OpenBankingScreen |
-| 16 | Super-App & Lifestyle | LifestyleScreen |
-| 17 | Sustainability / Green Banking | SustainabilityScreen |
-| 18 | Digital Assets & Stablecoins | CryptoScreen |
-| 19 | Rewards & Loyalty | RewardsScreen |
-| 20 | Insurance & Protection | InsuranceScreen |
-| 21 | Accessibility & Inclusion | AccessibilityScreen |
-| 22 | Compliance, Risk & Regulatory | OpsConsole (Case/Kyc/Sar/Audit) |
-| 23 | Platform, Data & AI Infrastructure | (no customer page — platform/infra) |
-| 24 | Notifications, Personalisation & UX | Profile › Notifications, NudgesScreen |
-| 25 | International / Cross-border | InternationalScreen |
-| 26 | Payments Acceptance (merchant) | MerchantAcceptanceScreen |
-| 27 | Specialty / Niche products | SpecialtyScreen |
-| 28 | Credit Cards — advanced tooling | CardDetailScreen |
-| 29 | Super-App, Embedded Finance & Wallets | LifestyleScreen, AddToWalletScreen |
-| 30 | Business Banking — depth | BusinessScreen |
-| 31 | Financial Inclusion, Rural & Agri | AgriInclusionScreen |
-| 32 | Advanced AI & Agentic Banking | AssistantScreen |
-| 33 | Financial Wellness & Personalisation | InsightsScreen (wellness) |
-| 34 | Notifications, Alerts & UX | NudgesScreen |
-| 35 | Statements, Documents & Self-Service | ActivityScreen |
-| 36 | Rewards, Travel & Perks | RewardsScreen |
-| 37 | New / Emerging niche domains | EmergingScreen |
+| § | Feature domain | Page(s) | AI features |
+|---|---|---|---|
+| 1 | Accounts & Deposits | AccountsScreen | — |
+| 2 | Payments & Transfers | PaymentsScreen | Agentic payment initiation, instruction repair, cash-flow forecasting |
+| 3 | Cards | CardsScreen | — |
+| 4 | Bill Pay & Payment Mgmt | PayBillScreen | — |
+| 5 | Lending & Credit | BorrowScreen | Origination agent, underwriting copilot, income verification, alt-data scoring, collections |
+| 6 | Savings, Wealth & Investing | SaveInvestScreen | RM copilot, robo-advisory, financial planning, tax-loss harvesting, market-scout |
+| 7 | Money Management & Insights | InsightsScreen | — |
+| 8 | Credit & Financial Health | CreditHealthScreen | — |
+| 9 | Security & Fraud | StepUpAuthScreen, Profile › Security (+ Ops FraudReview) | Real-time fraud scoring, alert triage, scam interception |
+| 10 | Customer Service & AI | AssistantScreen, SupportScreen | Contact-centre agent, account/card servicing, agent assist, voice banking, complaints, digital-human guide, coaching |
+| 11 | Business & Commercial Banking | BusinessScreen | — |
+| 12 | Treasury & Cash Management | TreasuryScreen | Liquidity monitoring, reconciliation, forecasting |
+| 13 | Private Banking & Wealth (HNW) | WealthScreen | RM copilot |
+| 14 | Kids, Teens & Family | KidsFamilyScreen | — |
+| 15 | Open Banking & Embedded Finance | OpenBankingScreen | — |
+| 16 | Super-App & Lifestyle | LifestyleScreen | — |
+| 17 | Sustainability / Green Banking | SustainabilityScreen | — |
+| 18 | Digital Assets & Stablecoins | CryptoScreen | — |
+| 19 | Rewards & Loyalty | RewardsScreen | — |
+| 20 | Insurance & Protection | InsuranceScreen | — |
+| 21 | Accessibility & Inclusion | AccessibilityScreen | — |
+| 22 | Compliance, Risk & Regulatory | OpsConsole (Case/Kyc/Sar/Audit) | AML monitoring, investigation agent, SAR/STR drafting, KYC/KYB, sanctions/PEP, regulatory reporting, change monitoring, disputes, agentic BI |
+| 23 | Platform, Data & AI Infrastructure | (no customer page — platform/infra) | Developer augmentation, cyber triage, knowledge search, audit copilot, document/vision extraction |
+| 24 | Notifications, Personalisation & UX | Profile › Notifications, NudgesScreen | — |
+| 25 | International / Cross-border | InternationalScreen | — |
+| 26 | Payments Acceptance (merchant) | MerchantAcceptanceScreen | — |
+| 27 | Specialty / Niche products | SpecialtyScreen | — |
+| 28 | Credit Cards — advanced tooling | CardDetailScreen | — |
+| 29 | Super-App, Embedded Finance & Wallets | LifestyleScreen, AddToWalletScreen | — |
+| 30 | Business Banking — depth | BusinessScreen | — |
+| 31 | Financial Inclusion, Rural & Agri | AgriInclusionScreen | — |
+| 32 | Advanced AI & Agentic Banking | AssistantScreen | Agentic assistant, multi-agent orchestration, MCP tools |
+| 33 | Financial Wellness & Personalisation | InsightsScreen (wellness) | — |
+| 34 | Notifications, Alerts & UX | NudgesScreen | — |
+| 35 | Statements, Documents & Self-Service | ActivityScreen | — |
+| 36 | Rewards, Travel & Perks | RewardsScreen | — |
+| 37 | New / Emerging niche domains | EmergingScreen | Research automation, pitchbook, trading-ops, enterprise risk (adjacent) |
 
 ## Design system
 
