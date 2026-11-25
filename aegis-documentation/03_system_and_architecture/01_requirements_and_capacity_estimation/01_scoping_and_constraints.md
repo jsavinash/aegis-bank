@@ -20,51 +20,47 @@ Mortgages, BNPL, crypto, wealth projection, full agentic assistant, kids/teen, b
 
 Out of scope (never built by Aegis): physical branch network, proprietary card/payment scheme, own core-banking ledger build (see [`in_scope_and_out_of_scope.md`](../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md)).
 
-## Feature-domain & AI use-case scope (all 37 catalog sections)
+## Feature-domain scope (all 37 catalog sections)
 
-All 37 feature-catalog sections are in scope and sequenced across phases. The **AI use cases** column maps the 7 AI domains (~46 use cases, detail in [`14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md)) to the feature domains they serve.
-
-**AI domains:** CS = Customer service & engagement (7) · FFC = Fraud, financial crime & compliance (13) · L&C = Lending & credit (6) · W&PB = Wealth & private banking (5) · PTO = Payments, treasury & operations (6) · TCIP = Technology, cyber & internal productivity (5) · IBM = Investment banking & markets (4). **Total ≈ 46.**
-
-| § | Feature domain | Phase(s) | AI use cases | Notes |
-|---|---|---|---|---|
-| 1 | Accounts & Deposits | 1 | CS | Core; multi-currency later |
-| 2 | Payments & Transfers | 1 | PTO | Domestic, P2P; wires/QR/instant |
-| 3 | Cards | 1 | FFC, CS | Physical + virtual, freeze, controls |
-| 4 | Bill Pay & Payment Mgmt | 1 | PTO | Autopay, scheduled, split, RTI |
-| 5 | Lending & Credit | 1 → 2 | L&C | Lite in P1; full underwriting P2 |
-| 6 | Savings, Wealth & Investing | 1 → 3 | W&PB | Savings P1; robo P2; projection P3 |
-| 7 | Money Management & Insights | 1 → 2 | CS, FFC | Budgeting P1; full insights P2 |
-| 8 | Credit & Financial Health | 2 | L&C | Score, report, build |
-| 9 | Security & Fraud | 1 → 3 | FFC, TCIP | Alerts/freeze P1; scam P2; full GNN P3 |
-| 10 | Customer Service & AI | 1 → 3 | CS | Basic assistant P1; full agentic P3 |
-| 11 | Business & Commercial Banking | 2 → 3 | PTO, L&C | Lite P2; full P3 |
-| 12 | Treasury & Cash Management | 3 | PTO, IBM | Corporate/institutional |
-| 13 | Private Banking & Wealth (HNW) | 3 | W&PB, IBM | HNW |
-| 14 | Kids, Teens & Family | 3 | — | Family accounts |
-| 15 | Open Banking & Embedded Finance | 2 → 3 | PTO | Aggregation P2; embedded/BaaS P3 |
-| 16 | Super-App & Lifestyle | 3 | CS | Lifestyle |
-| 17 | Sustainability / Green Banking | 3 | — | ESG |
-| 18 | Digital Assets & Stablecoins | 3 | FFC | Crypto; KYT/sanctions |
-| 19 | Rewards & Loyalty | 2 | — | Rewards |
-| 20 | Insurance & Protection | 2 → 3 | — | Basic P2; deep P3 |
-| 21 | Accessibility & Inclusion | 1 | — | WCAG 2.2 AA baseline, ongoing |
-| 22 | Compliance, Risk & Regulatory | 1 → 3 | FFC | KYC/AML/audit P1; model risk P3 |
-| 23 | Platform, Data & AI Infrastructure | 1 → 3 | TCIP | Foundation P1; scale P2–P3 |
-| 24 | Notifications, Personalisation & UX | 1 → 2 | CS, FFC | Basic P1; personalisation P2 |
-| 25 | International / Cross-border | 2 | PTO, FFC | Multi-currency, remittance |
-| 26 | Payments Acceptance (merchant) | 3 | PTO, FFC | Merchant side; disputes |
-| 27 | Specialty / Niche products | 3 | — | Niche |
-| 28 | Credit Cards — advanced tooling | 3 | FFC, L&C | Advanced card tooling |
-| 29 | Super-App, Embedded Finance & Wallets | 3 | PTO, CS | Wallets |
-| 30 | Business Banking — depth | 3 | L&C, PTO | Payroll/MTD depth |
-| 31 | Financial Inclusion, Rural & Agri | 3 | L&C | Agri/inclusion; alt-data scoring |
-| 32 | Advanced AI & Agentic Banking | 2 → 3 | All 7 domains | Agentic umbrella |
-| 33 | Financial Wellness & Personalisation | 2 → 3 | CS, FFC | Wellness; guided coaching |
-| 34 | Notifications, Alerts & UX | 2 | CS, FFC | Alerts/UX |
-| 35 | Statements, Documents & Self-Service | 1 → 2 | TCIP, CS | Statements P1; self-service P2 |
-| 36 | Rewards, Travel & Perks | 3 | — | Travel/perks |
-| 37 | New / Emerging niche domains | 3 | — | Emerging |
+| § | Feature domain | Phase(s) | Notes |
+|---|---|---|---|
+| 1 | Accounts & Deposits | 1 | Core; multi-currency later |
+| 2 | Payments & Transfers | 1 | Domestic, P2P; wires/QR/instant |
+| 3 | Cards | 1 | Physical + virtual, freeze, controls |
+| 4 | Bill Pay & Payment Mgmt | 1 | Autopay, scheduled, split, RTI |
+| 5 | Lending & Credit | 1 → 2 | Lite in P1; full underwriting P2 |
+| 6 | Savings, Wealth & Investing | 1 → 3 | Savings P1; robo P2; projection P3 |
+| 7 | Money Management & Insights | 1 → 2 | Budgeting P1; full insights P2 |
+| 8 | Credit & Financial Health | 2 | Score, report, build |
+| 9 | Security & Fraud | 1 → 3 | Alerts/freeze P1; scam P2; full GNN P3 |
+| 10 | Customer Service & AI | 1 → 3 | Basic assistant P1; full agentic P3 |
+| 11 | Business & Commercial Banking | 2 → 3 | Lite P2; full P3 |
+| 12 | Treasury & Cash Management | 3 | Corporate/institutional |
+| 13 | Private Banking & Wealth (HNW) | 3 | HNW |
+| 14 | Kids, Teens & Family | 3 | Family accounts |
+| 15 | Open Banking & Embedded Finance | 2 → 3 | Aggregation P2; embedded/BaaS P3 |
+| 16 | Super-App & Lifestyle | 3 | Lifestyle |
+| 17 | Sustainability / Green Banking | 3 | ESG |
+| 18 | Digital Assets & Stablecoins | 3 | Crypto |
+| 19 | Rewards & Loyalty | 2 | Rewards |
+| 20 | Insurance & Protection | 2 → 3 | Basic P2; deep P3 |
+| 21 | Accessibility & Inclusion | 1 | WCAG 2.2 AA baseline, ongoing |
+| 22 | Compliance, Risk & Regulatory | 1 → 3 | KYC/AML/audit P1; model risk P3 |
+| 23 | Platform, Data & AI Infrastructure | 1 → 3 | Foundation P1; scale P2–P3 |
+| 24 | Notifications, Personalisation & UX | 1 → 2 | Basic P1; personalisation P2 |
+| 25 | International / Cross-border | 2 | Multi-currency, remittance |
+| 26 | Payments Acceptance (merchant) | 3 | Merchant side |
+| 27 | Specialty / Niche products | 3 | Niche |
+| 28 | Credit Cards — advanced tooling | 3 | Advanced card tooling |
+| 29 | Super-App, Embedded Finance & Wallets | 3 | Wallets |
+| 30 | Business Banking — depth | 3 | Payroll/MTD depth |
+| 31 | Financial Inclusion, Rural & Agri | 3 | Agri/inclusion |
+| 32 | Advanced AI & Agentic Banking | 2 → 3 | Agentic |
+| 33 | Financial Wellness & Personalisation | 2 → 3 | Wellness |
+| 34 | Notifications, Alerts & UX | 2 | Alerts/UX |
+| 35 | Statements, Documents & Self-Service | 1 → 2 | Statements P1; self-service P2 |
+| 36 | Rewards, Travel & Perks | 3 | Travel/perks |
+| 37 | New / Emerging niche domains | 3 | Emerging |
 
 ## Constraints
 
