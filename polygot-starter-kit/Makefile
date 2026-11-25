@@ -32,7 +32,7 @@ java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
 	. .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; java -version >/dev/null 2>&1 || { echo "java not found - install JDK 21 or SDKMAN"; exit 0; }; ./gradlew dependencies
 
 build: ## Build everything
-	npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
+	. .tools/env.sh 2>/dev/null || true; npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
 
 test: ## Run all tests
 	npx nx run-many -t test && uv run pytest
@@ -62,7 +62,7 @@ run-mcp: ## Run MCP server (stdio)
 run-data: ## Run data-platform
 	uv run --package data-platform python -m data_platform
 run-java: ## Run Java micro-services (SDKMAN)
-	if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
+	. .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
 
 docker-build: ## Build docker images
 	docker compose build

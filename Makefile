@@ -1,5 +1,5 @@
 .PHONY: install dev test lint format serve seed migrate up down \
-        java-build java-test java-run java-quality java-docker
+        java-build java-test java-run java-quality java-docker kit-tools kit-bootstrap
 
 install:
 	uv sync --extra dev
@@ -37,16 +37,22 @@ migrate:
 
 # --- Java microservices (Gradle via SDKMAN, in polygot-starter-kit) ---
 java-build:
-	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew clean build
+	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew clean build
 
 java-test:
-	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew test
+	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew test
 
 java-run:
-	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
+	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
 
 java-quality:
-	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew spotlessApply check
+	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew spotlessApply check
 
 java-docker:
-	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:jibDockerBuild
+	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:jibDockerBuild
+# --- delegate to polygot-starter-kit scripts ---
+kit-tools:
+	cd polygot-starter-kit && make tools
+
+kit-bootstrap:
+	cd polygot-starter-kit && make bootstrap
