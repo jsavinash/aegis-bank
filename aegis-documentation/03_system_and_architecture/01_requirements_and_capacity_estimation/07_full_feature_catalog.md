@@ -15,6 +15,14 @@ This is the complete, exhaustive inventory of **~485 features** that can be inte
 
 ---
 
+## Coverage
+
+- **Complete:** all 37 sections contain features; total **~485** (Appendix A).
+- **Traceability (feature → component):** [`06_feature_traceability.md`](./06_feature_traceability.md)
+- **AI use cases (~46):** [`08_ai_use_case_catalog.md`](./08_ai_use_case_catalog.md)
+- **NFR baseline:** [`03_non_functional_requirements_matrix.md`](./03_non_functional_requirements_matrix.md)
+- **Phase sequencing:** [`01_scoping_and_constraints.md`](./01_scoping_and_constraints.md)
+
 ## Table of contents
 **Part I — Core catalogue**
 1. Accounts & Deposits

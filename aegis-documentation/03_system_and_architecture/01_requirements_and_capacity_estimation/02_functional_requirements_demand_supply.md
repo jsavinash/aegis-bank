@@ -1,6 +1,6 @@
 # Functional Requirements — Demand & Supply
 
-> These are the high-level FRs. The **full ~485-feature catalog** (37 sections) is in [`07_full_feature_catalog.md`](./07_full_feature_catalog.md) (and `../../01-business-and-strategy/14_feature_catalog.md`); its **architecture traceability** is in [`06_feature_traceability.md`](./06_feature_traceability.md); **all use cases** (business + system + AI) are in [`09_use_case_catalog_all.md`](./09_use_case_catalog_all.md) and [`08_ai_use_case_catalog.md`](./08_ai_use_case_catalog.md).
+> These are the high-level FRs. The **full ~485-feature catalog** (37 sections) is in [`07_full_feature_catalog.md`](./07_full_feature_catalog.md) (and `../../01-business-and-strategy/14_feature_catalog.md`); its **architecture traceability** is in [`06_feature_traceability.md`](./06_feature_traceability.md); **all use cases** (business + system + AI) are in [`09_use_case_catalog_all.md`](./09_use_case_catalog_all.md) and [`08_ai_use_case_catalog.md`](./08_ai_use_case_catalog.md). Every feature domain is covered by a demand driver and a supplying component below.
 
 ## Demand (functional requirements)
 
@@ -27,8 +27,53 @@
 | Assistant | AI platform | LangGraph + LlamaIndex | — |
 | Data | Data platform | Kafka/Redpanda, Iceberg, ClickHouse | Snowflake, Databricks |
 
+## Feature-domain demand & supply (all 37 catalog sections)
+
+| § | Feature domain | Demand (illustrative) | Supplying component |
+|---|---|---|---|
+| 1 | Accounts & Deposits | 5M accounts | Core (ledger / product engine / CIF) |
+| 2 | Payments & Transfers | 5M/month | Payments service (Java) + Hyperswitch |
+| 3 | Cards | 20M/month auth | Cards service + card issuing (Hyperswitch/Marqeta) |
+| 4 | Bill Pay & Payment Mgmt | On demand | Payments service |
+| 5 | Lending & Credit | 100k/month apps | Lending service + XGBoost/LangGraph + Fineract |
+| 6 | Savings, Wealth & Investing | On demand | Core + Wealth (AI/Data) + robo-advisor |
+| 7 | Money Management & Insights | On demand | Data platform + AI insights |
+| 8 | Credit & Financial Health | On demand | Data + AI (credit score) |
+| 9 | Security & Fraud | Every txn | `aegis/` Fraud + Identity |
+| 10 | Customer Service & AI | 2M/month queries | AI platform (agents) + BFF |
+| 11 | Business & Commercial Banking | On demand | Business services |
+| 12 | Treasury & Cash Management | On demand | Treasury services |
+| 13 | Private Banking & Wealth (HNW) | On demand | Wealth (HNW) |
+| 14 | Kids, Teens & Family | On demand | Core + Accounts |
+| 15 | Open Banking & Embedded Finance | On demand | Open Banking service + APIs |
+| 16 | Super-App & Lifestyle | On demand | Lifestyle + Channels |
+| 17 | Sustainability / Green Banking | On demand | ESG service + Data |
+| 18 | Digital Assets & Stablecoins | On demand | Digital-asset service + Core |
+| 19 | Rewards & Loyalty | On demand | Rewards service |
+| 20 | Insurance & Protection | On demand | Insurance service |
+| 21 | Accessibility & Inclusion | Always (WCAG) | Channels (WCAG 2.2 AA) |
+| 22 | Compliance, Risk & Regulatory | KYC onboarding + ongoing | `aegis/` Compliance + Audit |
+| 23 | Platform, Data & AI Infrastructure | Event-driven | Platform + Data + AI plane |
+| 24 | Notifications, Personalisation & UX | On demand | Notification service + AI personalisation |
+| 25 | International / Cross-border | On demand | Payments (FX) + International service |
+| 26 | Payments Acceptance (merchant) | On demand | Merchant-acceptance service |
+| 27 | Specialty / Niche products | On demand | Specialty service |
+| 28 | Credit Cards — advanced tooling | On demand | Cards service |
+| 29 | Super-App, Embedded Finance & Wallets | On demand | Lifestyle + Wallet |
+| 30 | Business Banking — depth | On demand | Business services |
+| 31 | Financial Inclusion, Rural & Agri | On demand | Agri/inclusion service |
+| 32 | Advanced AI & Agentic Banking | On demand | AI platform (LangGraph) |
+| 33 | Financial Wellness & Personalisation | On demand | Data + AI |
+| 34 | Notifications, Alerts & UX | On demand | Notification service |
+| 35 | Statements, Documents & Self-Service | On demand | Document service + Data |
+| 36 | Rewards, Travel & Perks | On demand | Rewards service |
+| 37 | New / Emerging niche domains | On demand | Emerging service |
+
 ## Demand-supply gap analysis
 
 - **Core:** buy the ledger/product engine (Thought Machine/Mambu) per D-001 and integrate via events; Apache Fineract/Mifos X is the open-source fallback only if we build. If we build, budget for operational ownership (hardening, upgrades, backup/DR, no vendor SLA).
 - **Fraud/AML:** build the AI plane; scale horizontally.
 - **Assistant:** stateless agents + shared vector/graph stores; scale via K8s.
+- **Data:** Kafka/Redpanda + Iceberg + ClickHouse; scale storage/compute independently.
+- **Platform/infra:** K8s + Terraform + ArgoCD; multi-region for Tier 0.
+- **Long-tail domains (11–37):** mostly config-driven products on the bought core + shared AI/data plane, not bespoke codebases.
