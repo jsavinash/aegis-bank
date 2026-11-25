@@ -1,0 +1,8 @@
+[project]
+name='mcp-aegis'
+version='0.1.0'
+dependencies=['mcp','mcp-core']
+[project.scripts]
+mcp-aegis='mcp_aegis.cli:main'
+[tool.uv.sources]
+mcp-core={workspace=true}

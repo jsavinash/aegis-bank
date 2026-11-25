@@ -1,0 +1,11 @@
+{
+  "name": "@aegis/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "hono": "^4",
+    "@trpc/server": "^11",
+    "@aegis/core": "workspace:*"
+  }
+}
