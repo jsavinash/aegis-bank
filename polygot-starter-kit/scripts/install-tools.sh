@@ -17,12 +17,16 @@ if [ ! -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
   echo "installing SDKMAN..."
   curl -s "https://get.sdkman.io" | bash || true
 fi
-if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-  # shellcheck disable=SC1090
-  source "$HOME/.sdkman/bin/sdkman-init.sh"
-  ( cd "$(dirname "$0")/.." && sdk env install ) || true
-  java -version 2>&1 | head -1 || true
-else
-  echo "SDKMAN not found — install JDK 21 manually or via SDKMAN."
+BASH4="$(command -v /opt/homebrew/bin/bash || command -v /usr/local/bin/bash || true)"
+if [ ! -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
+  if [ -n "$BASH4" ]; then
+    "$BASH4" -c 'curl -s "https://get.sdkman.io" | bash' || true
+  else
+    echo "SDKMAN needs Bash 4+ — install: brew install bash (then re-run make tools)"
+  fi
 fi
+if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ] && [ -n "$BASH4" ]; then
+  "$BASH4" -c 'source "$HOME/.sdkman/bin/sdkman-init.sh"; cd "$(dirname "$0")/.." 2>/dev/null; sdk env install' || true
+fi
+java -version 2>&1 | head -1 || echo "JDK not on PATH — install JDK 21 (brew install --cask temurin@21)"
 echo "== done =="
