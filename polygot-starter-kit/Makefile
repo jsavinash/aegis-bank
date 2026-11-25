@@ -1,18 +1,21 @@
 .DEFAULT_GOAL := help
 SHELL := /bin/bash
 
-.PHONY: help install bootstrap dev build test lint format typecheck ci \
+.PHONY: help tools install bootstrap dev build test lint format typecheck ci \
         run-web run-api run-app run-aegis run-mcp run-data run-java java-sync \
         docker-build docker-up docker-down clean deep-clean hooks docs security sbom
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-16s\033[0m %s\n",$$1,$$2}'
 
+tools: ## Install missing toolchains (Node/corepack, uv, SDKMAN+JDK)
+	bash scripts/install-tools.sh
+
 install: ## Install all dependencies (pnpm + uv)
 	@if command -v pnpm >/dev/null; then (pnpm install --frozen-lockfile || pnpm install); else echo "pnpm not found - install: https://pnpm.io"; fi
 	@if command -v uv >/dev/null; then (uv sync --locked --all-packages || uv sync --all-packages); else echo "uv not found - install: https://docs.astral.sh/uv"; fi
 
-bootstrap: install hooks java-sync ## One-time setup (deps + gradle sync + git hooks)
+bootstrap: tools install hooks java-sync ## One-time setup (tools + deps + gradle sync + hooks)
 
 hooks: ## Install git hooks
 	bash scripts/install-hooks.sh

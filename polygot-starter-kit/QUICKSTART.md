@@ -8,14 +8,19 @@ One repo, one control plane (**`make`**), four stacks: **TypeScript (pnpm + Turb
 - **Java 21** via **SDKMAN!** (`.sdkmanrc`) + **Node ≥ 20**
 - **Docker** (optional, for redis/compose)
 
-## 2. Bootstrap (one command)
+## 2. Install toolchains (optional, idempotent)
+```bash
+make tools              # installs uv + SDKMAN/JDK if missing; enables pnpm via corepack
+```
+
+## 3. Bootstrap (one command)
 ```bash
 git clone <repo> && cd polygot-starter-kit
 make bootstrap          # install deps + git hooks
 ```
 `make install` = `pnpm install` + `uv sync --all-packages` (TS tasks run via **Turborepo**).
 
-## 3. Run everything
+## 4. Run everything
 ```bash
 make dev                # all dev servers (web, api, app)
 ```
@@ -40,7 +45,7 @@ make java-quality       # spotlessApply + check
 make java-docker        # jibDockerBuild (payments)
 ```
 
-## 4. Build / test / quality
+## 5. Build / test / quality
 ```bash
 make build              # nx build + gradle build
 make test               # nx test + pytest
@@ -48,7 +53,7 @@ make lint format typecheck
 make ci                 # local CI mirror (affected build/test/lint + ruff/mypy/pytest + gradle)
 ```
 
-## 5. Containers & docs
+## 6. Containers & docs
 ```bash
 make docker-up          # redis + services
 make docker-down
@@ -57,20 +62,20 @@ make security           # pip-audit
 make sbom               # syft SBOM (if installed)
 ```
 
-## 6. Clean
+## 7. Clean
 ```bash
 make clean              # remove build/cache artifacts
 make deep-clean         # also node_modules + .venv
 ```
 
-## 7. Use Nx directly (optional)
+## 8. Use Nx directly (optional)
 ```bash
 npx nx graph                 # visualize the polyglot graph
 npx nx affected -t build     # only what changed
 npx nx run-many -t test
 ```
 
-## 8. Layout
+## 9. Layout
 ```
 apps/            app, web, api, email, ops-console, mobile (TS) · aegis, aegis-mcp, data-platform (Py) · micro-services (Java)
 packages/        core, ui, ws-protocol (TS)
@@ -83,12 +88,12 @@ config/          checkstyle/detekt/pmd
 infra/ docs/     Terraform, MkDocs
 ```
 
-## 9. Troubleshooting
+## 10. Troubleshooting
 - **`./gradlew` fails:** ensure Java 21 (`java -version`); wrapper is committed.
 - **`uv sync --locked` fails:** run `uv lock` to refresh `uv.lock`.
 - **`pnpm install --frozen-lockfile` fails:** run `pnpm install` to refresh `pnpm-lock.yaml`.
 - **Port busy:** `make docker-down` or change the port in the app config.
 - **Reset everything:** `make deep-clean && make bootstrap`.
 
-## 10. CI
+## 11. CI
 `.github/workflows/ci.yml` mirrors `make ci` (Nx affected + uv ruff/mypy/pytest + Gradle + gitleaks).
