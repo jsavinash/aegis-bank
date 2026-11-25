@@ -11,17 +11,27 @@
 
 ## Policies
 
-- **Pinned versions** for reproducibility.
-- **SCA scanning** (CVEs) in CI; no critical vulns to prod.
+- **Pinned versions** (lockfiles) for reproducibility.
+- **SCA scanning** (CVEs) in CI; no critical vulns to prod; **SBOM** generated.
 - **License checks** (no copyleft without approval).
 - **Minimal deps** — justify every new dependency.
+
+## Tooling & automation
+
+- **Renovate/Dependabot** for update PRs; **private registry** (Artifactory/GH Packages).
+- **Transitive deps** reviewed; **update cadence** monthly (patch) / quarterly (minor).
 
 ## Dependency injection
 
 - **Constructor injection** (not service locators).
 - **Interfaces** for external boundaries (DB, LLM, tools) → testability.
 - **Composition root** per process wires dependencies.
-- **No global state** — explicit dependencies.
+- **No global state** — explicit dependencies; **no circular deps**.
+
+## DI lifecycle & patterns
+
+- **Scoped lifetimes** (singleton for stateless, scoped per request); **factory/provider** for expensive clients.
+- **Config injected** (not read from globals).
 
 ## Example (Python)
 
@@ -33,7 +43,10 @@ class CaseService:
         self.guardrails = guardrails
 ```
 
+## Testing
+
+- **Fakes/mocks** at interfaces; **real** composition root only in integration tests.
+
 ## Versioning
 
-- **Semantic versioning** for internal libraries.
-- **Deprecation** with migration path.
+- **Semantic versioning** for internal libraries; **deprecation** with migration path.
