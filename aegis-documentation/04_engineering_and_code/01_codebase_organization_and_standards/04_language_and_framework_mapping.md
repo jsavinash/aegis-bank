@@ -59,7 +59,7 @@ Maps the **full project** — all **~485 features** (37 sections, 15 feature typ
 | 7 | Money Management & Insights | Python + TypeScript | `polars`, `fastapi`; Next.js dashboards |
 | 8 | Credit & Financial Health | Python | credit-bureau APIs, `scikit-learn`, `fastapi` |
 | 9 | Security & Fraud | Python + Java | PyG/GNN, , ; Java authN (Spring Security) |
-| 10 | Customer Service & AI | Python | LangGraph, LlamaIndex, MCP, vLLM () |
+| 10 | Customer Service & AI | Python | LangGraph, LlamaIndex, MCP, vLLM |
 | 11 | Business & Commercial Banking | TypeScript + Python | Next.js + `tRPC`; `fastapi`/Celery |
 | 12 | Treasury & Cash Management | Java + Python | Spring Boot; Python forecasting (`pandas`, Prophet) |
 | 13 | Private Banking & Wealth | Python | `pyportfolioopt`, `fastapi`, RAG over mandates |
@@ -81,7 +81,7 @@ Maps the **full project** — all **~485 features** (37 sections, 15 feature typ
 | 29 | Super-App / Embedded / Wallets | TypeScript + Python | React Native, wallet SDKs, Python services |
 | 30 | Business Banking — depth | TypeScript + Python | Next.js + `tRPC`, AP/AR automation (Python) |
 | 31 | Financial Inclusion / Rural / Agri | Python + TypeScript | alternative-data scoring, USSD/mobile-money |
-| 32 | Advanced AI & Agentic Banking | Python | LangGraph + Temporal + MCP () |
+| 32 | Advanced AI & Agentic Banking | Python | LangGraph + Temporal + MCP |
 | 33 | Financial Wellness & Personalisation | Python | `pandas`, `scikit-learn`, `fastapi` |
 | 34 | Notifications / Alerts / UX | TypeScript + Python | push/SMS/email, preference service |
 | 35 | Statements / Documents / Self-Service | TypeScript + Python | Next.js, Docling (PDF), `fastapi` |
@@ -180,7 +180,7 @@ Maps the AI use-case catalog ([14_feature_catalog.md](../../01-business-and-stra
 | All ~46 AI use cases (7 domains) | §4b | ✅ |
 | Framework shortlist by concern | §5 | ✅ |
 | Decision rules | §6 | ✅ |
-| Code-level mapping () | [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md) | ✅ |
+| Code-level mapping | [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md) | ✅ |
 | Tech-stack layers (full bank) | [../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md](../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md) | ✅ |
 
 ---

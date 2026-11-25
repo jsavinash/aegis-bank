@@ -917,7 +917,7 @@ Score every candidate on **annual value × data readiness × (inverse) regulator
 |---|---|---|---|
 | 1 | **Fraud detection & alert triage** | Highest measurable ROI (card losses 6–8 bps; 40–60% FP cut); moderate reg exposure; builds org muscle | GNN/GBM hot path + LangGraph warm triage (, ) |
 | 2 | **Customer servicing (contact centre + account/card agent)** | 25–40% contact deflection; huge volume; well-scoped | RAG + agentic assistant + MCP tools |
-| 3 | **AML monitoring + investigation (Aegis-IR)** | Legacy FP >90%; agentic investigation is proven (4 funded competitors) | Multi-agent LangGraph + GraphRAG + Temporal () |
+| 3 | **AML monitoring + investigation (Aegis-IR)** | Legacy FP >90%; agentic investigation is proven (4 funded competitors) | Multi-agent LangGraph + GraphRAG + Temporal |
 | 4 | **KYC/onboarding automation** | High volume, well-defined; fastest payback (60–120 days) | Workflow agent + Docling + guardrails |
 | 5 | **Credit underwriting copilot** | High value but heavy fair-lending scrutiny → *after* fraud/servicing prove governance | ML + LLM copilot, human-in-loop |
 | 6 | **Wealth RM copilot** | Revenue uplift; lower regulatory exposure than lending | RAG over portfolio + policy |

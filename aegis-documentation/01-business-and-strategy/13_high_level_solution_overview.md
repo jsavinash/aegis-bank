@@ -33,7 +33,7 @@ flowchart TD
 | **Core banking** | System of record: ledger, products, GL, CIF. |
 | **Event bus** | Real-time backbone; every txn → event. |
 | **AI platform** | Agents, RAG, inference, feature store. |
-| **AI risk** | Fraud, AML, compliance intelligence (). |
+| **AI risk** | Fraud, AML, compliance intelligence. |
 | **Data** | Lakehouse, warehouse, feature store. |
 | **Guardrails** | Fail-closed safety on all AI. |
 | **Observability** | Tracing, eval, audit. |
