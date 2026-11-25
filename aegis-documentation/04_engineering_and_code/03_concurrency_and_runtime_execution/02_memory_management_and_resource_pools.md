@@ -3,8 +3,7 @@
 ## Python
 
 - **Bounded queues** to cap memory under load.
-- **Streaming** large results (don't load everything).
-- **Generators** for large datasets.
+- **Streaming** large results; **generators** for large datasets.
 - **Object pooling** for expensive objects (DB connections, HTTP clients).
 - **GC tuning** for long-running workers.
 
@@ -13,7 +12,7 @@
 - **Object pooling** (caches/pools) for temporary buffers.
 - **Bounded virtual threads** to avoid explosion.
 - **Preallocate** buffers where size is known.
-- **Avoid leaks** — always close resources; use try-with-resources.
+- **Avoid leaks** — try-with-resources; always close resources.
 
 ## Resource pools
 
@@ -24,13 +23,16 @@
 | **GPU / model** | Inference server (vLLM) with bounded concurrency |
 | **Thread/worker** | Fixed-size worker pools |
 
-## Memory safety
+## Cache & eviction
 
-- **No unbounded caches** — TTL + max size (LRU).
-- **Bounded context windows** — retrieval budgets.
-- **Chunking** for large documents.
+- **No unbounded caches** — TTL + max size (**LRU/LFU**).
+- **Bounded context windows** — retrieval budgets; **chunking** for large docs.
 
-## Monitoring
+## K8s memory
 
-- Track memory, thread/virtual-thread counts, queue depths.
-- Alert on leaks (monotonic growth).
+- **Requests/limits** per pod; **OOMKilled** alerts; **HPA** on memory where relevant.
+
+## Leak detection & profiling
+
+- Track memory, thread/virtual-thread counts, queue depths; **profiling** (Pyroscope/async-profiler).
+- Alert on **monotonic growth** (leak) and **pool saturation**.
