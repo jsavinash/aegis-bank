@@ -9,8 +9,8 @@ help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-16s\033[0m %s\n",$$1,$$2}'
 
 install: ## Install all dependencies (pnpm + uv)
-	pnpm install --frozen-lockfile || pnpm install
-	uv sync --locked --all-packages || uv sync --all-packages
+	@if command -v pnpm >/dev/null; then (pnpm install --frozen-lockfile || pnpm install); else echo "pnpm not found - install: https://pnpm.io"; fi
+	@if command -v uv >/dev/null; then (uv sync --locked --all-packages || uv sync --all-packages); else echo "uv not found - install: https://docs.astral.sh/uv"; fi
 
 bootstrap: install hooks java-sync ## One-time setup (deps + gradle sync + git hooks)
 
@@ -21,7 +21,7 @@ dev: ## Run all dev servers (web, api, app)
 	npx nx run-many -t dev
 
 java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
-	if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew dependencies
+	if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; java -version >/dev/null 2>&1 || { echo "java not found - install JDK 21 or SDKMAN"; exit 0; }; ./gradlew dependencies
 
 build: ## Build everything
 	npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
