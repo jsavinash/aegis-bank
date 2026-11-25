@@ -250,7 +250,7 @@ The stack is only half of AI-first; the **way you build** is the other half.
 | Decision | Recommendation | Why |
 |---|---|---|
 | **Core banking** | **Buy** (Thought Machine / Mambu) for MVP; revisit build if ledger is the differentiator | 485 features on a config-driven core beats 485 hand-built modules; faster to compliance |
-| **KYC/AML/fraud data** | **Buy data** (ComplyAdvantage/Alloy/Unit21/Sift) + **build the intelligence plane** () | Data is a commodity; the agentic reasoning + eval loop is your moat |
+| **KYC/AML/fraud data** | **Buy data** (ComplyAdvantage/Alloy/Unit21/Sift) + **build the intelligence plane** | Data is a commodity; the agentic reasoning + eval loop is your moat |
 | **LLM** | **Multi-provider via LiteLLM**; self-host open weights (vLLM) for residency | Avoid lock-in; route cost/quality per step |
 | **Observability** | **Self-host Langfuse + Grafana** | Data residency + no per-seat cost for a regulated bank |
 | **Agent orchestration** | **Build on LangGraph + Temporal** | Frameworks are commodities; your agent graphs + evals are the IP |

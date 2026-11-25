@@ -102,13 +102,13 @@ Every feature type is covered by at least one component (full mapping in `06_fea
 | LEND | 32 | Lending service |
 | WEALTH | 43 | Wealth (AI + Data) |
 | BIZ | 57 | Business services |
-| SEC | 32 | Fraud + Identity () |
-| AI | 44 | AI Platform () |
+| SEC | 32 | Fraud + Identity |
+| AI | 44 | AI Platform |
 | DATA | 45 | Data Platform |
 | OPEN | 7 | Open Banking |
 | LIFE | 39 | Lifestyle / Channels |
 | ESG | 16 | ESG |
-| COMP | 25 | Compliance () |
+| COMP | 25 | Compliance |
 | ACC | 12 | Channels (WCAG 2.2 AA) |
 | PLAT | 25 | Platform / Data / Infra |
 
