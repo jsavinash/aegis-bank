@@ -1,5 +1,5 @@
 .PHONY: install dev test test-py test-ts test-java lint format serve seed migrate up down \
-        java-build java-test java-run java-quality java-docker kit-tools kit-bootstrap
+        java-build java-run java-quality java-docker kit-tools kit-bootstrap
 
 install:
 	uv sync --extra dev
@@ -42,8 +42,6 @@ migrate:
 java-build:
 	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew clean build
 
-java-test:
-	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew test
 
 java-run:
 	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
