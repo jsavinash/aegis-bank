@@ -51,7 +51,7 @@ run-mcp: ## Run MCP server (stdio)
 run-data: ## Run data-platform
 	uv run --package data-platform python -m data_platform
 run-java: ## Run Java micro-services
-	./gradlew :payments:bootRun
+	./gradlew -p apps/micro-services payments:bootRun
 
 docker-build: ## Build docker images
 	docker compose build

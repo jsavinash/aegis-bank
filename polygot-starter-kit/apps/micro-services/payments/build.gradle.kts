@@ -1,2 +1,2 @@
-plugins { id("com.convention-plugins.springboot-app") }
+plugins { id("com.aegis.buildlogic.spring-boot-application") }
 application { mainClass.set("com.aegis.payments.PaymentsApplication") }

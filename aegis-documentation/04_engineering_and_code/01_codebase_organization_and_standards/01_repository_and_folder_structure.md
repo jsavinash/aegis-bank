@@ -22,7 +22,7 @@ aegis-bank/
 
 ---
 
-## Java — [`jsavinash/java-starter-kit`](https://github.com/jsavinash/java-starter-kit)
+## Java — [`jsavinash/java-starter-kit`](https://github.com/jsavinash/java-starter-kit-final)
 
 Spring Boot + Gradle, composite builds, convention plugins, BOMs.
 

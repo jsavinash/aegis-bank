@@ -1,0 +1,2 @@
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker"><module name="TreeWalker"/></module>
