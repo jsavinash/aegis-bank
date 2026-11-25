@@ -4,7 +4,8 @@
 
 - **Static assets** served via CDN (CloudFront/Cloudflare) with long-cache hashed filenames.
 - **Edge functions** for light personalisation (geo, A/B assignment).
-- **No sensitive API caching** at the edge.
+- **Edge WAF + rate limiting**; **token verification** at the edge for APIs.
+- **No sensitive API caching** at the edge; cache keys exclude PII.
 
 ## Caching layers
 
@@ -17,18 +18,26 @@
 | **Application** | Reference data (FX rates, products) | Scheduled / event |
 | **Database** | Query cache, read replicas | Replication lag |
 
-## Cache-aside pattern
+## Patterns
 
-- Read through cache; on miss, load from DB and populate.
-- Write-through for critical data (ledger bypasses cache).
+- **Cache-aside:** read through cache; on miss, load from DB and populate.
+- **Write-through** for critical data (ledger bypasses cache); **write-behind** where safe.
+- **Negative caching** for known-empty results; **bloom filter** to stop penetration.
 
-## Cache stampede protection
+## Cache stampede / avalanche protection
 
-- **Request coalescing** (single-flight).
-- **Stale-while-revalidate**.
-- **TTL jitter**.
+- **Request coalescing** (single-flight); **stale-while-revalidate**.
+- **TTL jitter**; **locks** on rebuild; **hot-key** replication.
+
+## Eviction & sizing
+
+- **LRU/LFU** with `maxmemory-policy`; per-bucket TTLs; memory headroom alerts.
 
 ## Distribution
 
-- **Multi-region** active-active for Tier 0 (with conflict resolution).
-- **Read replicas** for analytics.
+- **Multi-region** active-active for Tier 0 with **conflict resolution** (last-write-wins/CRDT).
+- **Read replicas** for analytics; **cache warming** after deploy.
+
+## Observability
+
+- Hit ratio, eviction rate, latency per cache tier; alert on regressions.
