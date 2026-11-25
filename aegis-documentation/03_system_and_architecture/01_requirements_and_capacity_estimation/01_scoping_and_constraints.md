@@ -3,7 +3,7 @@
 ## Coverage
 This document scopes the **full product surface** — all 37 feature-catalog sections (~485 features) are in scope and sequenced across Phase 1 → Phase 2 → Phase 3; nothing is deferred out of scope. Authoritative sources:
 
-- **Features & AI use cases:** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md) (37 sections, ~485 features; ~46 AI use cases)
+- **Features:** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md) (37 sections, ~485 features)
 - **Traceability:** [`06_feature_traceability.md`](./06_feature_traceability.md)
 - **Scope boundaries:** [`../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md`](../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md)
 
