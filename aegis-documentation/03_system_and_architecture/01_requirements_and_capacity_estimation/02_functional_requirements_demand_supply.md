@@ -17,15 +17,18 @@
 
 ## Supply (components that satisfy demand)
 
-| Requirement | Supplying component | Open-source stack | Commercial alternative |
+Each demand (D-01…D-08) maps to a supplying component, with an open-source and a commercial option.
+
+| Demand | Supplying component | Open-source stack | Commercial alternative |
 |---|---|---|---|
-| Accounts/payments/cards | Core banking engine + Java microservices (Spring Boot / Quarkus) | **Apache Fineract** (Apache 2.0, ledger + REST API) or **Mifos X** (MPL 2.0, Fineract + web/mobile), **TigerBeetle** (high-throughput double-entry ledger) | Temenos, Mambu, Thought Machine |
-| Card issuing & payment orchestration | Payments layer | **Hyperswitch** (Apache 2.0, Rust; 100+ processors, card vault), **Apache Fineract** for ledger | Marqeta, Stripe Issuing |
-| Fraud scoring | AI risk plane | GNN/GBM + vLLM (open models) | Feedzai, Featurespace |
-| KYC/AML | Compliance plane () | Docling, LlamaIndex, NeMo, **Apache Fineract** audit journal | Actimize, NICE |
-| Lending | Lending service | XGBoost + LangGraph; **Apache Fineract** loan/savings product engine | Temenos, Mambu |
-| Assistant | AI platform | LangGraph + LlamaIndex | — |
-| Data | Data platform | Kafka/Redpanda, Iceberg, ClickHouse | Snowflake, Databricks |
+| D-01 Accounts | Core banking engine + Java microservices (Spring Boot / Quarkus) | **Apache Fineract** (Apache 2.0, ledger + REST API) or **Mifos X** (MPL 2.0, Fineract + web/mobile), **TigerBeetle** (high-throughput double-entry ledger) | Temenos, Mambu, Thought Machine |
+| D-02 Payments | Payments layer | **Hyperswitch** (Apache 2.0, Rust; 100+ processors, card vault) + **Apache Fineract** ledger | Marqeta, Stripe Issuing |
+| D-03 Cards | Card issuing & payment orchestration | **Hyperswitch** (card vault, 100+ processors) | Marqeta, Stripe Issuing |
+| D-04 Fraud scoring | AI risk plane | GNN/GBM + vLLM (open models) | Feedzai, Featurespace |
+| D-05 KYC/AML | Compliance plane | Docling, LlamaIndex, NeMo, **Apache Fineract** audit journal | Actimize, NICE |
+| D-06 Lending | Lending service | XGBoost + LangGraph; **Apache Fineract** loan/savings product engine | Temenos, Mambu |
+| D-07 Assistant | AI platform | LangGraph + LlamaIndex | — |
+| D-08 Statements/documents | Document service + Data platform | Docling, Iceberg, ClickHouse | — |
 
 ## Feature-domain demand & supply (all 37 catalog sections)
 
@@ -71,9 +74,9 @@
 
 ## Demand-supply gap analysis
 
-- **Core:** buy the ledger/product engine (Thought Machine/Mambu) per D-001 and integrate via events; Apache Fineract/Mifos X is the open-source fallback only if we build. If we build, budget for operational ownership (hardening, upgrades, backup/DR, no vendor SLA).
+- **Core:** buy the ledger/product engine (Thought Machine/Mambu) per D-01 and integrate via events; Apache Fineract/Mifos X is the open-source fallback only if we build. If we build, budget for operational ownership (hardening, upgrades, backup/DR, no vendor SLA).
 - **Fraud/AML:** build the AI plane; scale horizontally.
 - **Assistant:** stateless agents + shared vector/graph stores; scale via K8s.
 - **Data:** Kafka/Redpanda + Iceberg + ClickHouse; scale storage/compute independently.
 - **Platform/infra:** K8s + Terraform + ArgoCD; multi-region for Tier 0.
-- **Long-tail domains (11–37):** mostly config-driven products on the bought core + shared AI/data plane, not bespoke codebases.
+- **Domains 11–37:** mostly config-driven products on the bought core + shared AI/data plane, not bespoke codebases.
