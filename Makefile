@@ -1,4 +1,5 @@
-.PHONY: install dev test lint format serve seed migrate up down
+.PHONY: install dev test lint format serve seed migrate up down \
+        java-build java-test java-run java-quality java-docker
 
 install:
 	pip install -e ".[dev]"
@@ -33,3 +34,19 @@ down:
 
 migrate:
 	alembic upgrade head
+
+# --- Java microservices (Gradle, in polygot-starter-kit) ---
+java-build:
+	cd polygot-starter-kit && ./gradlew clean build
+
+java-test:
+	cd polygot-starter-kit && ./gradlew test
+
+java-run:
+	cd polygot-starter-kit && ./gradlew -p apps/micro-services payments:bootRun
+
+java-quality:
+	cd polygot-starter-kit && ./gradlew spotlessApply check
+
+java-docker:
+	cd polygot-starter-kit && ./gradlew -p apps/micro-services payments:jibDockerBuild
