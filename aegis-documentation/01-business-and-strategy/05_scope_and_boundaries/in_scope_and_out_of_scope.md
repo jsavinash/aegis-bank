@@ -44,7 +44,7 @@ Aegis Bank is a **full-featured retail digital bank**. Every product surface in 
 | 36 | Rewards, Travel & Perks | Travel, perks, partner offers |
 | 37 | New / Emerging niche | Tokenised deposits, CBDC, and other emerging domains; **AI:** research automation, pitchbook generation, trading-ops exception handling, enterprise risk assessment (adjacent) |
 
-> **AI features:** ~46 use cases across 7 domains — Customer service & engagement (7), Fraud/financial crime/compliance (13), Lending & credit (6), Wealth & private banking (5), Payments/treasury/operations (6), Technology/cyber/productivity (5), Investment banking & markets (4, adjacent). Detail: [`08_ai_use_case_catalog.md`](../../03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md).
+> **AI features:** ~46 use cases across 7 domains — Customer service & engagement (7), Fraud/financial crime/compliance (13), Lending & credit (6), Wealth & private banking (5), Payments/treasury/operations (6), Technology/cyber/productivity (5), Investment banking & markets (4, adjacent). Detail: [`../14_feature_catalog.md`](../14_feature_catalog.md).
 
 ## Out of scope
 

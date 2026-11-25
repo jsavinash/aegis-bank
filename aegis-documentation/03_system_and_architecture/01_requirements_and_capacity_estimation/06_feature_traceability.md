@@ -1,6 +1,6 @@
 # Feature Traceability — Architecture Coverage
 
-**Version:** 1.1 · **Date:** 25 Nov 2026 · **Companion to:** [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (canonical combined catalog; `07_full_feature_catalog.md` is a pointer)
+**Version:** 1.1 · **Date:** 25 Nov 2026 · **Companion to:** [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (canonical combined catalog)
 
 This document closes the gap between the **full feature catalog** (~485 features, 37 sections) and the **system architecture**. The catalog itself lives in `01-business-and-strategy/14_feature_catalog.md`; here we trace every feature **domain** to the architectural components, services, and data stores that implement it.
 
@@ -74,7 +74,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 
 - **Implemented today:** `aegis/` (AI + Risk + Compliance plane) covers types **SEC, AI, COMP** and parts of **LEND/WEALTH/DATA**.
 - **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services (see `03_high_level_design_hld/01_end_to_end_system_architecture.md`).
-- **AI use cases:** see `08_ai_use_case_catalog.md` (~46 use cases mapped to the same components).
+- **AI use cases:** see `../../01-business-and-strategy/14_feature_catalog.md` (~46 use cases mapped to the same components).
 - **Language/framework per domain:** see `../../04_engineering_and_code/01_codebase_organization_and_standards/04_language_and_framework_mapping.md`.
 
 ## AI use-case traceability (7 domains → components)
@@ -95,7 +95,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 - **Implemented today:** `aegis/` (AI + Risk + Compliance) covers SEC, AI, COMP and parts of LEND/WEALTH/DATA.
 - **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services.
 - **NFR baseline:** applies to every domain (see `03_non_functional_requirements_matrix.md`).
-- **AI use cases:** 46, mapped to the same components (see `08_ai_use_case_catalog.md`).
+- **AI use cases:** 46, mapped to the same components (see `../../01-business-and-strategy/14_feature_catalog.md`).
 
 ## Full feature detail
 

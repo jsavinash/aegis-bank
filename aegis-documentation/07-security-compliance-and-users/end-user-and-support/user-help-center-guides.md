@@ -1,6 +1,6 @@
 # User Help Center Guides
 
-> **Coverage:** one guide per customer-facing feature in [`../03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md`](../../03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md); escalation per use case in [`./support-escalation-matrix.md`](./support-escalation-matrix.md).
+> **Coverage:** one guide per customer-facing feature in [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md); escalation per use case in [`./support-escalation-matrix.md`](./support-escalation-matrix.md).
 
 ## Getting started
 

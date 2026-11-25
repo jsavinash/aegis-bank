@@ -1,6 +1,6 @@
 # Language & Framework Mapping
 
-**Version:** 1.1 · **Date:** 24 Nov 2026 · **Companion to:** [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md), [../../03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md](../../03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md), [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md)
+**Version:** 1.1 · **Date:** 24 Nov 2026 · **Companion to:** [../../01-business-and-strategy/14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md), [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md)
 
 Maps the **full project** — all **~485 features** (37 sections, 15 feature types) **and** the **~46 AI use cases** (7 domains, 4 agent archetypes) — to the **languages and frameworks** that should implement each. The strategy is **polyglot**: one primary language per concern, chosen by the physics of the problem (latency, AI ecosystem, UI, correctness), not by preference.
 
@@ -111,7 +111,7 @@ The 44 `AI` + 25 `COMP` + 32 `SEC` features share one Python AI plane (see [../.
 
 ## 4b. AI use cases → language & framework
 
-Maps the AI use-case catalog ([../../03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md](../../03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md)) to concrete languages and frameworks. All AI use cases are **Python**, but the *serving path* differs by latency class.
+Maps the AI use-case catalog ([14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md)) to concrete languages and frameworks. All AI use cases are **Python**, but the *serving path* differs by latency class.
 
 | Use case (from AI catalog) | Archetype | Language | Framework / stack | Latency class |
 |---|---|---|---|---|

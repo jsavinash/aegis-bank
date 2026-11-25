@@ -92,7 +92,7 @@ OpsConsole (web)
 
 ## Page coverage (feature-catalog sections 1–37)
 
-Every feature-catalog section maps to at least one page (source: `../01_requirements_and_capacity_estimation/07_full_feature_catalog.md`):
+Every feature-catalog section maps to at least one page (source: `../../01-business-and-strategy/14_feature_catalog.md`):
 
 | § | Feature domain | Page(s) |
 |---|---|---|

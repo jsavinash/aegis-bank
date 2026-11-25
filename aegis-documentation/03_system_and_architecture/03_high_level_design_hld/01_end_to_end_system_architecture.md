@@ -6,8 +6,8 @@ Aegis is an AI-first retail bank. The architecture separates the **transactional
 ## Coverage
 This document is the **component/topology view**. The authoritative lists it implements are kept in dedicated sources (not duplicated here):
 
-- **Features (~485, 37 sections):** [`../01_requirements_and_capacity_estimation/07_full_feature_catalog.md`](../01_requirements_and_capacity_estimation/07_full_feature_catalog.md)
-- **AI use cases (~46, 7 domains):** [`../01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md`](../01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md)
+- **Features (~485, 37 sections):** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md)
+- **AI use cases (~46, 7 domains):** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md)
 - **Feature → component traceability:** [`../01_requirements_and_capacity_estimation/06_feature_traceability.md`](../01_requirements_and_capacity_estimation/06_feature_traceability.md)
 - **Master index:** [`../../FEATURE_AND_USE_CASE_COVERAGE.md`](../../FEATURE_AND_USE_CASE_COVERAGE.md)
 
@@ -113,7 +113,7 @@ Every feature type is covered by at least one component (full mapping in `06_fea
 
 ## AI use-case domain → component
 
-The ~46 AI use cases (7 domains) map onto the AI plane as follows (detail in `08_ai_use_case_catalog.md`):
+The ~46 AI use cases (7 domains) map onto the AI plane as follows (detail in `../../01-business-and-strategy/14_feature_catalog.md`):
 
 | AI domain | Primary components |
 |---|---|

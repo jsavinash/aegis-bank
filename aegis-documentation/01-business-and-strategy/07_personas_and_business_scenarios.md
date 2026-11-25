@@ -26,7 +26,7 @@
 
 ## End-state coverage
 
-Each scenario maps to target capabilities (Phase 1 → Phase 2 → Phase 3) and to AI use cases in [`08_ai_use_case_catalog.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md):
+Each scenario maps to target capabilities (Phase 1 → Phase 2 → Phase 3) and to AI use cases in [`14_feature_catalog.md`](14_feature_catalog.md):
 
 | Scenario | Persona | AI use case | Phase |
 |---|---|---|---|

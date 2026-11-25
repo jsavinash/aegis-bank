@@ -95,8 +95,6 @@ Every document in this set (grouped by section):
 - [04_extended_and_custom_requirements.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/04_extended_and_custom_requirements.md)
 - [05_back_of_envelope_capacity_estimation.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/05_back_of_envelope_capacity_estimation.md)
 - [06_feature_traceability.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md)
-- [07_full_feature_catalog.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md)
-- [08_ai_use_case_catalog.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md)
 - [09_use_case_catalog_all.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md)
 - [01_full_stack_and_infra_tech_choices.md](./03_system_and_architecture/02_tech_choices_and_adrs/01_full_stack_and_infra_tech_choices.md)
 - [02_rendering_and_delivery_strategy.md](./03_system_and_architecture/02_tech_choices_and_adrs/02_rendering_and_delivery_strategy.md)
@@ -113,7 +111,7 @@ Every document in this set (grouped by section):
 - [04_ai_and_ml_integration_pipeline.md](./03_system_and_architecture/03_high_level_design_hld/04_ai_and_ml_integration_pipeline.md)
 - [05_agent_contracts_and_tools.md](./03_system_and_architecture/03_high_level_design_hld/05_agent_contracts_and_tools.md)
 - [06_ai_native_reference_architectures.md](./03_system_and_architecture/03_high_level_design_hld/06_ai_native_reference_architectures.md)
-- [07_ai_use_case_catalog.md](./03_system_and_architecture/03_high_level_design_hld/07_ai_use_case_catalog.md)
+
 - [01_component_hierarchy_and_design_system.md](./03_system_and_architecture/04_detailed_frontend_architecture/01_component_hierarchy_and_design_system.md)
 - [02_state_management_and_client_cache.md](./03_system_and_architecture/04_detailed_frontend_architecture/02_state_management_and_client_cache.md)
 - [03_routing_forms_and_validation.md](./03_system_and_architecture/04_detailed_frontend_architecture/03_routing_forms_and_validation.md)

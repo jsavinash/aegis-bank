@@ -1,8 +1,8 @@
 # Use-Case Catalog — All Use Cases (Business, System, AI)
 
-**Version:** 1.0 · **Date:** 24 Nov 2026 · **Companion to:** [02_functional_requirements_demand_supply.md](./02_functional_requirements_demand_supply.md), [07_full_feature_catalog.md](./07_full_feature_catalog.md), [08_ai_use_case_catalog.md](./08_ai_use_case_catalog.md)
+**Version:** 1.0 · **Date:** 24 Nov 2026 · **Companion to:** [02_functional_requirements_demand_supply.md](./02_functional_requirements_demand_supply.md), [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md)
 
-Consolidated catalog of **all use cases** for Aegis Bank across three lenses: **business** (what the bank does), **system** (technical capabilities), and **AI** (agentic/ML use cases). The AI use cases are detailed in [08_ai_use_case_catalog.md](./08_ai_use_case_catalog.md); this document consolidates and indexes them all.
+Consolidated catalog of **all use cases** for Aegis Bank across three lenses: **business** (what the bank does), **system** (technical capabilities), and **AI** (agentic/ML use cases). The AI use cases are detailed in [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md); this document consolidates and indexes them all.
 
 ## 1. Business use cases (actors & outcomes)
 
@@ -88,7 +88,7 @@ Consolidated catalog of **all use cases** for Aegis Bank across three lenses: **
 | AI-35 | Research automation (filings) | Task | H | M |
 | AI-36 | Pitchbook / presentation generation | Task | H | L |
 
-> Full AI use-case detail (archetypes, data readiness, precedents, prioritisation) is in [08_ai_use_case_catalog.md](./08_ai_use_case_catalog.md).
+> Full AI use-case detail (archetypes, data readiness, precedents, prioritisation) is in [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md).
 
 ## 4. Actor map
 
@@ -102,4 +102,4 @@ Consolidated catalog of **all use cases** for Aegis Bank across three lenses: **
 
 ## 5. Coverage vs features
 
-Every use case maps to features in [07_full_feature_catalog.md](./07_full_feature_catalog.md) and components in [06_feature_traceability.md](./06_feature_traceability.md). Use this catalog for **test scenarios** and **acceptance criteria** (see `../../05-quality-and-verification/acceptance-criteria-and-cases.md`).
+Every use case maps to features in [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) and components in [06_feature_traceability.md](./06_feature_traceability.md). Use this catalog for **test scenarios** and **acceptance criteria** (see `../../05-quality-and-verification/acceptance-criteria-and-cases.md`).

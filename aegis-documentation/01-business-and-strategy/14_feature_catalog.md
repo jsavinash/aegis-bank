@@ -19,7 +19,7 @@ This is the complete, exhaustive inventory of **~485 features** that can be inte
 
 - **Complete:** all 37 sections contain features; total **~485** (Appendix A).
 - **Traceability (feature → component):** [`06_feature_traceability.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md)
-- **AI use cases (~46):** [`08_ai_use_case_catalog.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md)
+- **AI use cases (~46):** see the “AI Use Cases (as features)” section below.
 - **NFR baseline:** [`03_non_functional_requirements_matrix.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/03_non_functional_requirements_matrix.md)
 - **Phase sequencing:** [`01_scoping_and_constraints.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/01_scoping_and_constraints.md)
 

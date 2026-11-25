@@ -3,8 +3,8 @@
 ## Coverage
 This document scopes the **full product surface** — all 37 feature-catalog sections (~485 features) are in scope and sequenced across Phase 1 → Phase 2 → Phase 3; nothing is deferred out of scope. Authoritative sources:
 
-- **Features:** [`07_full_feature_catalog.md`](./07_full_feature_catalog.md) (37 sections)
-- **AI use cases:** [`08_ai_use_case_catalog.md`](./08_ai_use_case_catalog.md) (~46)
+- **Features:** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md) (37 sections)
+- **AI use cases:** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md) (~46)
 - **Traceability:** [`06_feature_traceability.md`](./06_feature_traceability.md)
 - **Scope boundaries:** [`../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md`](../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md)
 
@@ -65,7 +65,7 @@ Out of scope (never built by Aegis): physical branch network, proprietary card/p
 
 ## AI use-case scope (7 domains, ~46 use cases)
 
-All AI use cases are in scope and sequenced by domain (detail: [`08_ai_use_case_catalog.md`](./08_ai_use_case_catalog.md)):
+All AI use cases are in scope and sequenced by domain (detail: [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md)):
 
 | AI domain | Use cases | Phase(s) | Notes |
 |---|---|---|---|
