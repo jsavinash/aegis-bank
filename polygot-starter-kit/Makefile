@@ -21,10 +21,10 @@ dev: ## Run all dev servers (web, api, app)
 	npx nx run-many -t dev
 
 java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
-	source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew dependencies
+	if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew dependencies
 
 build: ## Build everything
-	npx nx run-many -t build && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew build
+	npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
 
 test: ## Run all tests
 	npx nx run-many -t test && uv run pytest
@@ -39,7 +39,7 @@ typecheck: ## Type-check everything
 	npx nx run-many -t typecheck && uv run mypy .
 
 ci: ## Local CI mirror (what CI runs)
-	npx nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew build
+	npx nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
 
 run-web: ## Run Astro marketing site
 	pnpm --filter @aegis/web dev
@@ -54,7 +54,7 @@ run-mcp: ## Run MCP server (stdio)
 run-data: ## Run data-platform
 	uv run --package data-platform python -m data_platform
 run-java: ## Run Java micro-services (SDKMAN)
-	source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew -p apps/micro-services payments:bootRun
+	if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
 
 docker-build: ## Build docker images
 	docker compose build

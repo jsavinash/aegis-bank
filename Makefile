@@ -37,16 +37,16 @@ migrate:
 
 # --- Java microservices (Gradle via SDKMAN, in polygot-starter-kit) ---
 java-build:
-	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew clean build
+	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew clean build
 
 java-test:
-	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew test
+	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew test
 
 java-run:
-	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew -p apps/micro-services payments:bootRun
+	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:bootRun
 
 java-quality:
-	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew spotlessApply check
+	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew spotlessApply check
 
 java-docker:
-	cd polygot-starter-kit && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew -p apps/micro-services payments:jibDockerBuild
+	cd polygot-starter-kit && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew -p apps/micro-services payments:jibDockerBuild
