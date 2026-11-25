@@ -3,6 +3,7 @@
 > **Coverage:** features → components in [`../../03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md`](../../03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md); languages/frameworks in [`04_language_and_framework_mapping.md`](./04_language_and_framework_mapping.md); use cases in [`01_uml_modeling_and_system_use_cases.md`](../02_low_level_design_and_patterns/01_uml_modeling_and_system_use_cases.md).
 >
 > **Python layout follows [`jsavinash/python-starter-kit`](https://github.com/jsavinash/python-starter-kit)** (uv workspace): `apps/` + `libs/shared`, `config/dependencies.toml`, `tests/`, `.githooks/`, `scripts/`, `.python-version`, `.pre-commit-config.yaml`, `Makefile`, `main.py`, `docker-compose.yml`, `mkdocs.yml`, `noxfile.py`.
+> **MCP servers follow [`jsavinash/mcp-starter-kit`](https://github.com/jsavinash/mcp-starter-kit)**: `apps/<server>/src/<pkg>/{server.py,cli.py,http_app.py,features/}` + reusable `libs/mcp-core`.
 
 Aegis is a **polyglot Nx monorepo**: one workspace, one task graph, one cache. Nx infers projects/targets from each toolchain's own manifest (`build.gradle`, `pyproject.toml`, `package.json`), so Java (Spring Boot/Quarkus), Python (AI/data, uv), and TypeScript (channels/BFF) coexist with `nx affected`, caching, and distributed CI.
 
@@ -29,10 +30,12 @@ aegis-bank/
 │   ├── mobile/                # React Native (Expo, TS)
 │   ├── bff/                   # GraphQL/REST BFF (Node/TS)
 │   ├── aegis/                 # Python AI risk & compliance (src/, tests/, Dockerfile, pyproject.toml)
+│   ├── aegis-mcp/             # MCP server (src/mcp_aegis/{server,cli,http_app}.py, features/)
 │   └── data-platform/         # Python dbt/Dagster
 ├── libs/                      # shared libraries
 │   ├── ts/                    # ui, contracts, config, sdk
 │   ├── java/                  # shared domain
+│   ├── mcp-core/              # reusable MCP config/auth/lifecycle/logging/transport security
 │   └── shared/                # Python shared (Pydantic DTOs, contracts, utils)
 ├── services/                  # Java transactional (Gradle)
 │   ├── payments/  cards/  accounts/  lending/  ledger-adapter/
@@ -88,6 +91,24 @@ shared = { workspace = true }
 - `uv sync` installs the workspace; `uv add <dep>`; `uv run pytest`; `make install`.
 - Nx: `@nxlv/python` infers targets (or a `project.json` target `uv run pytest`, `cache: true`).
 - Quality: `make lint|format|typecheck|test|quality-check` (ruff + mypy strict + pytest).
+
+## MCP servers (mcp-starter-kit layout)
+
+Each deployable MCP server lives under `apps/`; cross-server concerns live in `libs/mcp-core`:
+
+```
+apps/aegis-mcp/src/mcp_aegis/
+├── server.py      # composition root (MCPServer)
+├── cli.py         # stdio + HTTP runner
+├── http_app.py    # uvicorn/ASGI entry
+└── features/      # tools, resources, prompts
+libs/mcp-core/src/mcp_core/   # config, auth, lifecycle, logging, transport security
+```
+
+- **Transports:** stdio (local host) + **Streamable HTTP** (`/mcp`); SSE is legacy.
+- **Auth:** OAuth resource server (RFC 7662 introspection) + host allowlist; **fail-closed** remote bind.
+- **Registration/transport at the app edge;** business logic in feature/service modules.
+- Run: `uv sync --all-packages`, `make run-stdio`, `make run-http`, `make security`.
 
 ## Task pipeline (targetDefaults)
 
