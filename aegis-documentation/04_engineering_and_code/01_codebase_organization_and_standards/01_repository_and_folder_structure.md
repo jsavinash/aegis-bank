@@ -50,7 +50,7 @@ uv workspace, centralized deps, MkDocs, nox.
 apps/aegis/                        # AI risk & compliance (src/, tests/, Dockerfile, pyproject.toml)
 apps/data-platform/                # dbt/Dagster
 libs/shared/                       # Pydantic DTOs, contracts, utils
-config/dependencies.toml           # single source of Python versions
+pyproject.toml           # single source of Python versions
 tests/                             # root tests
 pyproject.toml (uv workspace) / uv.lock / .python-version
 .pre-commit-config.yaml / Makefile / main.py / noxfile.py / mkdocs.yml
