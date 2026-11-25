@@ -2,50 +2,40 @@
 
 > **Coverage:** features → components in [`../../03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md`](../../03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md); languages/frameworks in [`04_language_and_framework_mapping.md`](./04_language_and_framework_mapping.md); use cases in [`01_uml_modeling_and_system_use_cases.md`](../02_low_level_design_and_patterns/01_uml_modeling_and_system_use_cases.md).
 >
-> **Python layout follows [`jsavinash/python-starter-kit`](https://github.com/jsavinash/python-starter-kit)** (uv workspace): `apps/` + `libs/shared`, `config/dependencies.toml`, `tests/`, `.githooks/`, `scripts/`, `.python-version`, `.pre-commit-config.yaml`, `Makefile`, `main.py`, `docker-compose.yml`, `mkdocs.yml`, `noxfile.py`.
-> **MCP servers follow [`jsavinash/mcp-starter-kit`](https://github.com/jsavinash/mcp-starter-kit)**: `apps/<server>/src/<pkg>/{server.py,cli.py,http_app.py,features/}` + reusable `libs/mcp-core`.
+> **Layout references:** Python/uv → [`jsavinash/python-starter-kit`](https://github.com/jsavinash/python-starter-kit); MCP → [`jsavinash/mcp-starter-kit`](https://github.com/jsavinash/mcp-starter-kit); Java → [`jsavinash/java-starter-kit`](https://github.com/jsavinash/java-starter-kit). Nx ties them into one task graph.
 
-Aegis is a **polyglot Nx monorepo**: one workspace, one task graph, one cache. Nx infers projects/targets from each toolchain's own manifest (`build.gradle`, `pyproject.toml`, `package.json`), so Java (Spring Boot/Quarkus), Python (AI/data, uv), and TypeScript (channels/BFF) coexist with `nx affected`, caching, and distributed CI.
+Aegis is a **polyglot Nx monorepo**: one workspace, one task graph, one cache. Nx infers projects/targets from each toolchain's own manifest (`build.gradle.kts`, `pyproject.toml`, `package.json`), so Java (Spring Boot), Python (AI/data, uv), and TypeScript (channels/BFF) coexist with `nx affected`, caching, and distributed CI.
 
 ## Layout
 
 ```
 aegis-bank/
-├── nx.json                    # plugins, targetDefaults, module boundaries
-├── package.json               # workspace root (pnpm) + nx
-├── pnpm-workspace.yaml        # apps/*, libs/*
-├── tsconfig.base.json
-├── pyproject.toml             # uv workspace root (members = apps/*, libs/shared)
-├── uv.lock                    # single, cross-Python lockfile
-├── .python-version            # 3.12
-├── .pre-commit-config.yaml
-├── Makefile                   # install / lint / test / quality / docker
-├── main.py                    # root CLI entry
-├── docker-compose.yml         # Redis + local services
-├── mkdocs.yml                 # docs site
-├── noxfile.py                 # multi-env test sessions
-├── apps/                      # deployable apps
-│   ├── web/                   # Next.js customer web (TS)
-│   ├── ops-console/           # Next.js agent/ops console (TS)
-│   ├── mobile/                # React Native (Expo, TS)
-│   ├── bff/                   # GraphQL/REST BFF (Node/TS)
-│   ├── aegis/                 # Python AI risk & compliance (src/, tests/, Dockerfile, pyproject.toml)
-│   ├── aegis-mcp/             # MCP server (src/mcp_aegis/{server,cli,http_app}.py, features/)
-│   └── data-platform/         # Python dbt/Dagster
-├── libs/                      # shared libraries
-│   ├── ts/                    # ui, contracts, config, sdk
-│   ├── java/                  # shared domain
-│   ├── mcp-core/              # reusable MCP config/auth/lifecycle/logging/transport security
-│   └── shared/                # Python shared (Pydantic DTOs, contracts, utils)
-├── services/                  # Java transactional (Gradle)
-│   ├── payments/  cards/  accounts/  lending/  ledger-adapter/
-├── config/dependencies.toml   # centralized Python dependency version catalog
-├── tests/                     # root-level tests
-├── infra/                     # Terraform, k8s, Helm
-├── docs/                      # MkDocs + ADRs
-├── aegis-documentation/       # this documentation set
-├── .githooks/                 # pre-commit / commit-msg / pre-push
-└── scripts/                   # install-hooks.sh, etc.
+├── nx.json / package.json / pnpm-workspace.yaml / tsconfig.base.json
+├── pyproject.toml / uv.lock / .python-version         # uv workspace (Python)
+├── .pre-commit-config.yaml / Makefile / main.py / docker-compose.yml / mkdocs.yml / noxfile.py
+├── settings.gradle.kts / build.gradle.kts / gradle.properties / .sdkmanrc / gradlew
+├── gradle/libs.versions.toml                          # Java version catalog
+├── apps/
+│   ├── web/ ops-console/ mobile/ bff/                 # TS (Next.js / RN / BFF)
+│   ├── aegis/ aegis-mcp/ data-platform/               # Python (AI, MCP, data)
+│   └── micro-services/                                # Java Spring Boot
+│       ├── api-gateway/ payments/ cards/ accounts/ lending/ ledger-adapter/
+├── libs/                        # TS/Python shared
+│   ├── ts/ (ui, contracts, config, sdk)
+│   ├── mcp-core/                # reusable MCP config/auth/lifecycle
+│   └── shared/                  # Python shared (Pydantic DTOs/contracts)
+├── shared/                      # Java shared
+│   ├── configurations/ constants/ entities/ enums/ utility/
+├── build-logic/                 # Gradle convention plugins (composite build)
+│   ├── convention-plugins/ springboot-app/ java-app/ java-lib/
+├── platforms/                   # BOMs (springboot, test, web)
+├── config/                      # dependencies.toml + checkstyle/detekt/pmd
+├── aggregation/                 # JaCoCo coverage aggregation
+├── tests/                       # root tests
+├── infra/                       # Terraform, k8s, Helm
+├── docs/ (mkdocs) / aegis-documentation/
+├── .githooks/ (pre-commit, commit-msg, pre-push)
+└── scripts/install-hooks.sh
 ```
 
 ## Nx plugins (nx.json)
@@ -54,68 +44,54 @@ aegis-bank/
 {
   "plugins": [
     "@nx/js", "@nx/next", "@nx/react-native", "@nx/node",
-    "@nx/gradle",        // Java (Spring Boot/Quarkus), Java 17+
-    "@nxlv/python"       // Python (uv) — community
+    "@nx/gradle",        // Java (Spring Boot), Java 17+
+    "@nxlv/python"       // Python (uv)
   ]
 }
 ```
 
-- **Java:** `@nx/gradle` (or `@nx/maven`, experimental Nx 22+) infers `build`/`test` from `build.gradle`.
-- **Python:** `@nxlv/python` infers targets from each `pyproject.toml`; `uv` workspace sources create cross-language edges.
-- **TS:** `@nx/js`/`next`/`react-native`/`node` infer from `package.json`/`vite`/`jest`.
-- **2026:** lazy graph hydration means a JS dev need not install Java/Python toolchains to compute the graph.
+- **Java:** `@nx/gradle` infers `build`/`test` from `build.gradle.kts`.
+- **Python:** `@nxlv/python` infers from `pyproject.toml`; `uv` workspace sources create edges.
+- **TS:** `@nx/js`/`next`/`react-native`/`node`.
+- **2026:** lazy graph hydration — JS devs needn't install Java/Python toolchains.
 
-## Python (uv workspace — starter-kit layout)
+## Python (uv — python-starter-kit layout)
 
 ```toml
 # pyproject.toml (root)
 [tool.uv.workspace]
-members = ["apps/*", "libs/shared"]
-
-[dependency-groups]
-dev = ["pytest", "ruff", "mypy"]
+members = ["apps/aegis", "apps/aegis-mcp", "apps/data-platform", "libs/shared"]
 ```
 
-```toml
-# apps/aegis/pyproject.toml
-[project]
-name = "aegis"
-dependencies = ["shared"]
+- Each app: `src/`, `tests/`, `Dockerfile`, `pyproject.toml`, `.env`; `config/dependencies.toml` is the version source of truth.
+- `uv sync --all-packages`, `uv run pytest`, `make install|lint|test|quality-check`.
 
-[tool.uv.sources]
-shared = { workspace = true }
-```
-
-- Each app: `src/`, `tests/`, `Dockerfile`, `pyproject.toml`, `.env`.
-- `config/dependencies.toml` is the **single source of truth** for Python versions.
-- `uv sync` installs the workspace; `uv add <dep>`; `uv run pytest`; `make install`.
-- Nx: `@nxlv/python` infers targets (or a `project.json` target `uv run pytest`, `cache: true`).
-- Quality: `make lint|format|typecheck|test|quality-check` (ruff + mypy strict + pytest).
-
-## MCP servers (mcp-starter-kit layout)
-
-Each deployable MCP server lives under `apps/`; cross-server concerns live in `libs/mcp-core`:
+## MCP (mcp-starter-kit layout)
 
 ```
-apps/aegis-mcp/src/mcp_aegis/
-├── server.py      # composition root (MCPServer)
-├── cli.py         # stdio + HTTP runner
-├── http_app.py    # uvicorn/ASGI entry
-└── features/      # tools, resources, prompts
-libs/mcp-core/src/mcp_core/   # config, auth, lifecycle, logging, transport security
+apps/aegis-mcp/src/mcp_aegis/{server.py, cli.py, http_app.py, features/}
+libs/mcp-core/src/mcp_core/     # config, auth, lifecycle, logging
 ```
 
-- **Transports:** stdio (local host) + **Streamable HTTP** (`/mcp`); SSE is legacy.
-- **Auth:** OAuth resource server (RFC 7662 introspection) + host allowlist; **fail-closed** remote bind.
-- **Registration/transport at the app edge;** business logic in feature/service modules.
-- Run: `uv sync --all-packages`, `make run-stdio`, `make run-http`, `make security`.
+- Transports: **stdio + Streamable HTTP** (`/mcp`); **OAuth** RFC 7662 + host allowlist (fail-closed).
+- `make run-stdio|run-http|security`.
+
+## Java (java-starter-kit layout)
+
+- **Microservices:** `apps/micro-services/<service>/` (Spring Boot, `src/main/java`, `src/test/java`).
+- **Shared:** `shared/{configurations,constants,entities,enums,utility}`.
+- **Build-logic:** `build-logic/` convention plugins (`springboot-app`, `java-app`, `java-lib`, `combined`) — auto-apply Spotless/Checkstyle/Detekt/PMD/JaCoCo + git hooks.
+- **Platforms (BOMs):** `platforms/{springboot,test,web}`; versions in `gradle/libs.versions.toml`.
+- **Quality gates:** JaCoCo 80% line / 60% branch / 70% method / 80% class; `./gradlew qualityCheck|qualityFix`.
+- **Composite builds** in `settings.gradle.kts` (build-logic, micro-services, shared, platforms, aggregation).
+- Hooks auto-install on build; `bash scripts/install-hooks.sh` to (re)install.
 
 ## Task pipeline (targetDefaults)
 
 ```jsonc
 {
   "targetDefaults": {
-    "build":    { "dependsOn": ["^build"], "cache": true, "outputs": ["{projectRoot}/dist"] },
+    "build":    { "dependsOn": ["^build"], "cache": true, "outputs": ["{projectRoot}/dist", "{projectRoot}/build"] },
     "test":     { "dependsOn": ["^build"], "cache": true },
     "lint":     { "cache": true },
     "typecheck":{ "dependsOn": ["^build"], "cache": true }
@@ -124,40 +100,28 @@ libs/mcp-core/src/mcp_core/   # config, auth, lifecycle, logging, transport secu
 ```
 
 - `nx run-many -t build`, `nx affected -t test`, `nx build payments`, `nx run web:dev`.
-- **Nx Cloud** remote cache + **distributed task execution**; **affected** skips untouched projects.
+- **Nx Cloud** remote cache + **DTE**; **affected** skips untouched projects.
 
 ## Module boundaries (tags)
 
 - `scope:web|app|service|lib`, `type:feature|ui|util|data`, `platform:ts|java|python`.
 - Enforce: `app` → `lib`; `service` → `lib`; no `service` → `service` (events only); `lib` no app deps.
 
-## Service layout (per project)
-
-```
-<project>/
-├── build.gradle / pyproject.toml / package.json   # manifest Nx reads
-├── src/ (main/java | python | ts)   ├── tests/
-├── api/                # OpenAPI/AsyncAPI contracts
-├── Dockerfile
-├── project.json        # only if a target needs explicit config
-└── README.md
-```
-
 ## Conventions
 
-- **Contract-first:** every service has `api/` contracts; `libs/ts/contracts` is the source of truth.
-- **Domain-driven:** domain layer pure; adapters at edges; **no cross-service DB access**.
+- **Contract-first:** `libs/ts/contracts` + `api/` per service.
+- **Domain-driven:** domain pure; adapters at edges; **no cross-service DB access**.
 - **Ownership:** CODEOWNERS per project; **ADRs** in `docs/adr/`.
-- **Config/secrets:** env/Terraform; Vault (never in repo); `.env.example` only.
+- **Config/secrets:** env/Terraform; Vault; `.env.example` only.
 
 ## Setup
 
 ```bash
-npx nx@latest init                 # add Nx
-nx add @nx/gradle                  # Java
-nx add @nxlv/python                # Python
-uv sync                            # install Python workspace (starter-kit layout)
-bash scripts/install-hooks.sh      # git hooks
-nx add @nx/next @nx/react-native   # channels
-nx graph                           # visualize the polyglot graph
+npx nx@latest init
+nx add @nx/gradle @nxlv/python
+uv sync --all-packages
+./gradlew build                     # Java (auto-installs hooks)
+bash scripts/install-hooks.sh       # git hooks
+nx add @nx/next @nx/react-native
+nx graph
 ```
