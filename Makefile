@@ -2,29 +2,29 @@
         java-build java-test java-run java-quality java-docker
 
 install:
-	pip install -e ".[dev]"
+	uv sync --extra dev
 
 dev:
-	pip install -e ".[dev]" && pre-commit install || true
+	uv sync --extra dev && uv run pre-commit install || true
 
 test:
-	pytest -q
+	uv run pytest -q
 
 test-cov:
-	pytest --cov=aegis --cov-report=term-missing
+	uv run pytest --cov=aegis --cov-report=term-missing
 
 lint:
-	ruff check aegis tests
+	uv run ruff check aegis tests
 
 format:
-	ruff format aegis tests
-	ruff check --fix aegis tests
+	uv run ruff format aegis tests
+	uv run ruff check --fix aegis tests
 
 serve:
-	uvicorn aegis.api:app --reload --host 0.0.0.0 --port 8000
+	uv run uvicorn aegis.api:app --reload --host 0.0.0.0 --port 8000
 
 seed:
-	aegis seed
+	uv run aegis seed
 
 up:
 	docker compose up -d postgres redis
@@ -33,7 +33,7 @@ down:
 	docker compose down
 
 migrate:
-	alembic upgrade head
+	uv run alembic upgrade head
 
 # --- Java microservices (Gradle, in polygot-starter-kit) ---
 java-build:
