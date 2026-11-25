@@ -1,3 +1,4 @@
 pluginManagement { includeBuild("../../build-logic") }
 rootProject.name = "micro-services"
-include("payments", "api-gateway")
+includeBuild("../../platforms")
+include("payments", "api-gateway", "accounts")

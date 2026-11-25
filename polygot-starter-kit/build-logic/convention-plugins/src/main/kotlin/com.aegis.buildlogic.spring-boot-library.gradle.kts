@@ -4,4 +4,4 @@ plugins {
     id("com.aegis.buildlogic.code-quality")
     id("io.spring.dependency-management")
 }
-dependencies { implementation(platform("com.aegis.platforms:spring-boot-platform:1.0.0")) }
+dependencies { implementation(platform("com.aegis.platforms:spring-boot:1.0.0")) }

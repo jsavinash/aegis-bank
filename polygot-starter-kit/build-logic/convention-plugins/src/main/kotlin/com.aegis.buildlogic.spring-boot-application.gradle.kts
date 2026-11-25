@@ -7,4 +7,8 @@ plugins {
     id("io.spring.dependency-management")
     id("com.google.cloud.tools.jib")
 }
-dependencies { implementation(platform("com.aegis.platforms:spring-boot-platform:1.0.0")) }
+dependencies {
+    implementation(platform("com.aegis.platforms:spring-boot:1.0.0"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
