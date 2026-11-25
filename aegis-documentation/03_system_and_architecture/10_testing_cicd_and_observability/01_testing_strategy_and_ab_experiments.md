@@ -13,19 +13,27 @@
 | **AI eval** | Prompts/models/RAG | Ragas, Braintrust (CI gate) |
 | **Security** | SAST/DAST/pentest | Semgrep, OWASP ZAP |
 
+## CI stages & environments
+
+- **Stages:** lint → unit → contract → integration → e2e → eval → security → perf (pre-prod).
+- **Ephemeral preview envs** per PR; **staging** mirrors prod; **coverage gates** on Tier 0.
+
 ## AI-specific testing
 
 - **Eval-gated CI:** no prompt/model/graph change merges without passing the tagged regression suite.
 - **LLM-as-judge** (calibrated, bias-controlled, pinned) + **Ragas** metrics.
-- **Golden datasets** for AML/fraud/credit.
-- **Shadow testing** in production.
+- **Golden datasets** for AML/fraud/credit; **shadow testing** in production.
 
 ## A/B experiments
 
-- UX/pricing only; never regulated disclosures.
-- Guardrail metrics (trust, fraud, accessibility) block regressions.
+- **Hypothesis → sample size → sequential testing**; **guardrail metrics** (trust, fraud, accessibility) block regressions.
+- UX/pricing only; **never** regulated disclosures; **feature flags** for rollout/rollback.
 
 ## Test data
 
-- **Synthetic** data (Faker + LLM-generated scenarios) — no real PII in tests.
+- **Synthetic** data (Faker + LLM scenarios) — no real PII in tests.
 - **Anonymised** production samples for evals.
+
+## Flaky & maintenance
+
+- **Quarantine** flaky tests; track and fix; **flake budget** per suite.
