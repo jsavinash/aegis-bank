@@ -8,7 +8,7 @@ dependencies = []
 members = ["apps/aegis", "apps/aegis-mcp", "apps/data-platform", "libs/shared", "libs/mcp-core"]
 
 [dependency-groups]
-dev = ["pytest", "pytest-cov", "ruff", "mypy", "pip-audit"]
+dev = ["pytest", "pytest-cov", "ruff", "mypy", "pip-audit", "httpx"]
 
 [tool.ruff]
 line-length = 100
