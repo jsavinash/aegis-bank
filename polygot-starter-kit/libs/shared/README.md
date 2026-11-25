@@ -1,0 +1,2 @@
+# shared
+Python shared (Pydantic).

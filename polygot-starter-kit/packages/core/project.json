@@ -1,0 +1,8 @@
+{
+  "name": "core",
+  "tags": [
+    "scope:lib",
+    "type:util",
+    "platform:ts"
+  ]
+}

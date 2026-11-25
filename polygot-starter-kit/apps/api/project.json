@@ -1,0 +1,8 @@
+{
+  "name": "api",
+  "tags": [
+    "scope:app",
+    "type:api",
+    "platform:ts"
+  ]
+}

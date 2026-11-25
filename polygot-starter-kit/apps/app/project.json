@@ -1,0 +1,8 @@
+{
+  "name": "app",
+  "tags": [
+    "scope:app",
+    "type:app",
+    "platform:ts"
+  ]
+}

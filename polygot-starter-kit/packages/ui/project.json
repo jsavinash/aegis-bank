@@ -1,0 +1,8 @@
+{
+  "name": "ui",
+  "tags": [
+    "scope:lib",
+    "type:ui",
+    "platform:ts"
+  ]
+}

@@ -6,15 +6,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
-      - run: bun install
+      - uses: actions/cache@v4
+        with: { path: ~/.bun/install/cache, key: bun-${{ hashFiles('bun.lock') }}, restore-keys: bun- }
+      - run: bun install --frozen-lockfile
       - uses: nrwl/nx-set-shas@v4
       - run: npx nx affected -t build test lint
   python:
     runs-on: ubuntu-latest
+    strategy: { matrix: { python: ['3.11','3.12'] } }
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
-      - run: uv sync --all-packages
+      - uses: actions/cache@v4
+        with: { path: ~/.cache/uv, key: uv-${{ matrix.python }}-${{ hashFiles('uv.lock') }}, restore-keys: uv- }
+      - run: uv sync --locked --all-packages
       - run: uv run ruff check .
       - run: uv run mypy .
       - run: uv run pytest
@@ -26,3 +31,9 @@ jobs:
         with: { distribution: temurin, java-version: '21' }
       - uses: gradle/actions/setup-gradle@v4
       - run: ./gradlew build
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gitleaks/gitleaks-action@v2
+      - run: uv run pip-audit || true

@@ -1,1 +1,3 @@
-site_name: Aegis Starter Kit
+site_name: Polygot Starter Kit
+nav:
+  - Home: index.md

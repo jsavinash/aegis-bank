@@ -1,17 +1,1 @@
-{
-  "compilerOptions": {
-    "strict": true,
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "baseUrl": ".",
-    "paths": {
-      "@aegis/core": [
-        "packages/core/src"
-      ],
-      "@aegis/ui": [
-        "packages/ui/src"
-      ]
-    }
-  }
-}
+{"compilerOptions":{"strict":true,"target":"ES2022","module":"ESNext","moduleResolution":"Bundler","baseUrl":".","paths":{"@aegis/core":["packages/core/src"],"@aegis/ui":["packages/ui/src"],"@aegis/contracts":["libs/contracts/src"]}},"references":[{"path":"packages/core"},{"path":"packages/ui"}]}
