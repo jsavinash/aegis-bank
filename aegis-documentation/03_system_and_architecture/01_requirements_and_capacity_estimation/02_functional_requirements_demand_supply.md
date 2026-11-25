@@ -29,45 +29,47 @@
 
 ## Feature-domain demand & supply (all 37 catalog sections)
 
-| § | Feature domain | Demand (illustrative) | Supplying component |
-|---|---|---|---|
-| 1 | Accounts & Deposits | 5M accounts | Core (ledger / product engine / CIF) |
-| 2 | Payments & Transfers | 5M/month | Payments service (Java) + Hyperswitch |
-| 3 | Cards | 20M/month auth | Cards service + card issuing (Hyperswitch/Marqeta) |
-| 4 | Bill Pay & Payment Mgmt | On demand | Payments service |
-| 5 | Lending & Credit | 100k/month apps | Lending service + XGBoost/LangGraph + Fineract |
-| 6 | Savings, Wealth & Investing | On demand | Core + Wealth (AI/Data) + robo-advisor |
-| 7 | Money Management & Insights | On demand | Data platform + AI insights |
-| 8 | Credit & Financial Health | On demand | Data + AI (credit score) |
-| 9 | Security & Fraud | Every txn | `aegis/` Fraud + Identity |
-| 10 | Customer Service & AI | 2M/month queries | AI platform (agents) + BFF |
-| 11 | Business & Commercial Banking | On demand | Business services |
-| 12 | Treasury & Cash Management | On demand | Treasury services |
-| 13 | Private Banking & Wealth (HNW) | On demand | Wealth (HNW) |
-| 14 | Kids, Teens & Family | On demand | Core + Accounts |
-| 15 | Open Banking & Embedded Finance | On demand | Open Banking service + APIs |
-| 16 | Super-App & Lifestyle | On demand | Lifestyle + Channels |
-| 17 | Sustainability / Green Banking | On demand | ESG service + Data |
-| 18 | Digital Assets & Stablecoins | On demand | Digital-asset service + Core |
-| 19 | Rewards & Loyalty | On demand | Rewards service |
-| 20 | Insurance & Protection | On demand | Insurance service |
-| 21 | Accessibility & Inclusion | Always (WCAG) | Channels (WCAG 2.2 AA) |
-| 22 | Compliance, Risk & Regulatory | KYC onboarding + ongoing | `aegis/` Compliance + Audit |
-| 23 | Platform, Data & AI Infrastructure | Event-driven | Platform + Data + AI plane |
-| 24 | Notifications, Personalisation & UX | On demand | Notification service + AI personalisation |
-| 25 | International / Cross-border | On demand | Payments (FX) + International service |
-| 26 | Payments Acceptance (merchant) | On demand | Merchant-acceptance service |
-| 27 | Specialty / Niche products | On demand | Specialty service |
-| 28 | Credit Cards — advanced tooling | On demand | Cards service |
-| 29 | Super-App, Embedded Finance & Wallets | On demand | Lifestyle + Wallet |
-| 30 | Business Banking — depth | On demand | Business services |
-| 31 | Financial Inclusion, Rural & Agri | On demand | Agri/inclusion service |
-| 32 | Advanced AI & Agentic Banking | On demand | AI platform (LangGraph) |
-| 33 | Financial Wellness & Personalisation | On demand | Data + AI |
-| 34 | Notifications, Alerts & UX | On demand | Notification service |
-| 35 | Statements, Documents & Self-Service | On demand | Document service + Data |
-| 36 | Rewards, Travel & Perks | On demand | Rewards service |
-| 37 | New / Emerging niche domains | On demand | Emerging service |
+| § | Feature domain | Demand (illustrative) | Supplying component | AI features |
+|---|---|---|---|---|
+| 1 | Accounts & Deposits | 5M accounts | Core (ledger / product engine / CIF) | — |
+| 2 | Payments & Transfers | 5M/month | Payments service (Java) + Hyperswitch | Agentic payment initiation, instruction repair, cash-flow forecasting |
+| 3 | Cards | 20M/month auth | Cards service + card issuing (Hyperswitch/Marqeta) | — |
+| 4 | Bill Pay & Payment Mgmt | On demand | Payments service | — |
+| 5 | Lending & Credit | 100k/month apps | Lending service + XGBoost/LangGraph + Fineract | Origination agent, underwriting copilot, income verification, alt-data scoring, collections |
+| 6 | Savings, Wealth & Investing | On demand | Core + Wealth (AI/Data) + robo-advisor | RM copilot, robo-advisory, financial planning, tax-loss harvesting, market-scout |
+| 7 | Money Management & Insights | On demand | Data platform + AI insights | — |
+| 8 | Credit & Financial Health | On demand | Data + AI (credit score) | — |
+| 9 | Security & Fraud | Every txn | `aegis/` Fraud + Identity | Real-time fraud scoring, alert triage, scam interception |
+| 10 | Customer Service & AI | 2M/month queries | AI platform (agents) + BFF | Contact-centre agent, account/card servicing, agent assist, voice banking, complaints, digital-human guide, coaching |
+| 11 | Business & Commercial Banking | On demand | Business services | — |
+| 12 | Treasury & Cash Management | On demand | Treasury services | Liquidity monitoring, reconciliation, forecasting |
+| 13 | Private Banking & Wealth (HNW) | On demand | Wealth (HNW) | RM copilot |
+| 14 | Kids, Teens & Family | On demand | Core + Accounts | — |
+| 15 | Open Banking & Embedded Finance | On demand | Open Banking service + APIs | — |
+| 16 | Super-App & Lifestyle | On demand | Lifestyle + Channels | — |
+| 17 | Sustainability / Green Banking | On demand | ESG service + Data | — |
+| 18 | Digital Assets & Stablecoins | On demand | Digital-asset service + Core | — |
+| 19 | Rewards & Loyalty | On demand | Rewards service | — |
+| 20 | Insurance & Protection | On demand | Insurance service | — |
+| 21 | Accessibility & Inclusion | Always (WCAG) | Channels (WCAG 2.2 AA) | — |
+| 22 | Compliance, Risk & Regulatory | KYC onboarding + ongoing | `aegis/` Compliance + Audit | AML monitoring, investigation agent, SAR/STR drafting, KYC/KYB, sanctions/PEP, regulatory reporting, change monitoring, disputes, agentic BI |
+| 23 | Platform, Data & AI Infrastructure | Event-driven | Platform + Data + AI plane | Developer augmentation, cyber triage, knowledge search, audit copilot, document/vision extraction |
+| 24 | Notifications, Personalisation & UX | On demand | Notification service + AI personalisation | — |
+| 25 | International / Cross-border | On demand | Payments (FX) + International service | — |
+| 26 | Payments Acceptance (merchant) | On demand | Merchant-acceptance service | — |
+| 27 | Specialty / Niche products | On demand | Specialty service | — |
+| 28 | Credit Cards — advanced tooling | On demand | Cards service | — |
+| 29 | Super-App, Embedded Finance & Wallets | On demand | Lifestyle + Wallet | — |
+| 30 | Business Banking — depth | On demand | Business services | — |
+| 31 | Financial Inclusion, Rural & Agri | On demand | Agri/inclusion service | — |
+| 32 | Advanced AI & Agentic Banking | On demand | AI platform (LangGraph) | Agentic assistant, multi-agent orchestration, MCP tools |
+| 33 | Financial Wellness & Personalisation | On demand | Data + AI | — |
+| 34 | Notifications, Alerts & UX | On demand | Notification service | — |
+| 35 | Statements, Documents & Self-Service | On demand | Document service + Data | — |
+| 36 | Rewards, Travel & Perks | On demand | Rewards service | — |
+| 37 | New / Emerging niche domains | On demand | Emerging service | Research automation, pitchbook, trading-ops, enterprise risk (adjacent) |
+
+> **AI features:** ~46 use cases across 7 domains, embedded above as features (detail: [`14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md) §AI Use Cases).
 
 ## Demand-supply gap analysis
 
