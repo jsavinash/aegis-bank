@@ -1,5 +1,7 @@
 # Component Hierarchy and Design System
 
+> **Scope:** all 37 feature-catalog sections + AI use cases (as features) are in scope per [`in_scope_and_out_of_scope.md`](../../01-business-and-strategy/05_scope_and_boundaries/in_scope_and_out_of_scope.md). Out of scope (no UI): physical branches, proprietary payment scheme, own core-ledger build. AI features are embedded in the relevant pages (e.g., §9 fraud, §10 assistant, §22 compliance).
+
 ## Component hierarchy
 
 ```
