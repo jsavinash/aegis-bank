@@ -1,1 +1,0 @@
-"""NalaGenetics reference implementation — Demand Sensing core (sample)."""
