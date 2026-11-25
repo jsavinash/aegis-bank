@@ -16,13 +16,21 @@
 - **Core banking** integrates via its published REST APIs + event streams.
 - **No direct DB access** to the core from services.
 - **Anti-corruption layer** maps core models to domain models.
+- **Outbox pattern** for reliable event publication; **idempotency keys** on all writes.
+
+## Resilience & reliability
+
+- **Retries** with exponential backoff + jitter; **circuit breakers** per dependency.
+- **Dead-letter queues** for failed events; replay tooling.
+- **Rate limiting** + bulkheads to contain blast radius.
+- **Schema registry** (AsyncAPI/OpenAPI) with backward-compatibility checks.
 
 ## Data strategy
 
 - **Single source of truth** per domain (core = ledger/account truth).
 - **Event-driven propagation** to data platform and AI plane.
 - **Feature store** for ML consistency.
-- **Data contracts** enforced in CI.
+- **Data contracts** enforced in CI; **schema versioning**.
 
 ## External data
 
@@ -34,6 +42,8 @@
 | **FX rates** | Currency conversion |
 | **Open banking** | Account aggregation |
 
+- Cached with TTL; **fallback** to last-known-good; **SLA** + **vendor risk** tracked.
+
 ## Governance
 
-- Data catalogue + lineage; PII minimisation; consent enforcement; residency.
+- Data catalogue + lineage; PII minimisation; consent enforcement; residency; retention; DSAR fulfilment.
