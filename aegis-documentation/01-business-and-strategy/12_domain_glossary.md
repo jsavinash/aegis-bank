@@ -1,5 +1,7 @@
 # 12 — Domain Glossary
 
+> **Scope:** all features + AI use cases are in scope per [`in_scope_and_out_of_scope.md`](05_scope_and_boundaries/in_scope_and_out_of_scope.md); out of scope: physical branches, proprietary payment scheme, own core-ledger build.
+
 Banking-specific terms used throughout this documentation set. The general glossary is in `00-glossary-and-terminology.md`.
 
 | Term | Definition |

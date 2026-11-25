@@ -1,5 +1,7 @@
 # 13 — High-Level Solution Overview
 
+> **Scope:** all features + AI use cases are in scope per [`in_scope_and_out_of_scope.md`](05_scope_and_boundaries/in_scope_and_out_of_scope.md); out of scope: physical branches, proprietary payment scheme, own core-ledger build.
+
 ## Solution in one paragraph
 
 Aegis Bank is an AI-first retail bank built on a bought real-time core, an event-driven backbone, and a Python AI/risk plane. Customers interact through mobile, web, voice, and an agentic assistant; the AI plane powers fraud detection, AML investigation, underwriting support, and service; every AI decision is grounded, guarded, eval-gated, and auditable.

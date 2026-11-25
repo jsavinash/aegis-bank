@@ -1,5 +1,7 @@
 # 03 — Business Goals and KPIs
 
+> **Scope:** all features + AI use cases are in scope per [`in_scope_and_out_of_scope.md`](05_scope_and_boundaries/in_scope_and_out_of_scope.md); out of scope: physical branches, proprietary payment scheme, own core-ledger build.
+
 ## Business goals
 
 | Goal | Description | Metric |

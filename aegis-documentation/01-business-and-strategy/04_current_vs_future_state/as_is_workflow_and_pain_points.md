@@ -1,5 +1,7 @@
 # As-Is Workflow and Pain Points
 
+> **Scope:** all features + AI use cases are in scope per [`in_scope_and_out_of_scope.md`](../05_scope_and_boundaries/in_scope_and_out_of_scope.md); out of scope: physical branches, proprietary payment scheme, own core-ledger build.
+
 ## As-is (typical incumbent bank)
 
 | Area | Current state | Pain point |
