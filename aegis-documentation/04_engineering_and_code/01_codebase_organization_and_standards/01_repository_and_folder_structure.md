@@ -12,6 +12,8 @@ aegis-bank/
 ├── package.json               # workspace root (pnpm) + nx
 ├── pnpm-workspace.yaml        # apps/*, packages/*
 ├── tsconfig.base.json
+├── pyproject.toml             # uv workspace root (members = services-python/*, packages/python/*)
+├── uv.lock                    # single, cross-Python lockfile
 ├── apps/                      # deployable frontends (TS)
 │   ├── web/                   # Next.js customer web
 │   ├── ops-console/           # Next.js agent/ops console
@@ -47,6 +49,33 @@ aegis-bank/
 - **Python:** `@nxlv/python` infers targets from `pyproject.toml`; `uv` workspace sources create cross-language edges.
 - **TS:** `@nx/js`/`next`/`react-native`/`node` infer from `package.json`/`vite`/`jest`.
 - **2026:** lazy graph hydration means a JS dev need not install Java/Python toolchains to compute the graph.
+
+## Python (uv workspace)
+
+`uv` manages all Python packages/deps with one lockfile and fast sync:
+
+```toml
+# pyproject.toml (root)
+[tool.uv.workspace]
+members = ["services-python/*", "packages/python/*"]
+
+[dependency-groups]
+dev = ["pytest", "ruff", "mypy"]
+```
+
+```toml
+# services-python/aegis/pyproject.toml
+[project]
+name = "aegis"
+dependencies = ["shared-utils"]
+
+[tool.uv.sources]
+shared-utils = { workspace = true }
+```
+
+- `uv sync` installs the whole workspace; `uv add <dep>` / `uv run pytest` run tasks.
+- Nx: `@nxlv/python` infers targets from each `pyproject.toml` (or declare a `project.json` target `uv run pytest` with `cache: true`).
+- `uv.lock` is the single source of truth for Python deps (committed).
 
 ## Task pipeline (targetDefaults)
 
@@ -94,6 +123,7 @@ aegis-bank/
 npx nx@latest init                 # add Nx to the repo
 nx add @nx/gradle                  # Java
 nx add @nxlv/python                # Python
+uv sync                            # install Python workspace (all members)
 nx add @nx/next @nx/react-native   # channels
 nx graph                           # visualize the polyglot graph
 ```
