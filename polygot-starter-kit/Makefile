@@ -1,13 +1,73 @@
-.PHONY: install lint format typecheck test ci run-stdio run-http security docs docker java
-install: ; bun install --frozen-lockfile && uv sync --locked --all-packages
-lint: ; nx run-many -t lint && uv run ruff check .
-format: ; uv run ruff format . && bun run format
-typecheck: ; nx run-many -t typecheck && uv run mypy .
-test: ; nx run-many -t test && uv run pytest
-ci: ; nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest
-java: ; ./gradlew build
-run-stdio: ; uv run --package mcp-aegis mcp-aegis
-run-http: ; MCP_TRANSPORT=streamable-http uv run --package mcp-aegis mcp-aegis
-security: ; uv run pip-audit
-docs: ; mkdocs build
-docker: ; docker compose build
+.DEFAULT_GOAL := help
+SHELL := /bin/bash
+
+.PHONY: help install bootstrap dev build test lint format typecheck ci \
+        run-web run-api run-app run-aegis run-mcp run-data run-java \
+        docker-build docker-up docker-down clean deep-clean hooks docs security sbom
+
+help: ## Show this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-16s\033[0m %s\n",$$1,$$2}'
+
+install: ## Install all dependencies (bun + uv)
+	bun install --frozen-lockfile || bun install
+	uv sync --locked --all-packages || uv sync --all-packages
+
+bootstrap: install hooks ## One-time setup (deps + git hooks)
+
+hooks: ## Install git hooks
+	bash scripts/install-hooks.sh
+
+dev: ## Run all dev servers (web, api, app)
+	npx nx run-many -t dev
+
+build: ## Build everything
+	npx nx run-many -t build && ./gradlew build
+
+test: ## Run all tests
+	npx nx run-many -t test && uv run pytest
+
+lint: ## Lint everything
+	npx nx run-many -t lint && uv run ruff check .
+
+format: ## Format everything
+	uv run ruff format . && bun run format
+
+typecheck: ## Type-check everything
+	npx nx run-many -t typecheck && uv run mypy .
+
+ci: ## Local CI mirror (what CI runs)
+	npx nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest && ./gradlew build
+
+run-web: ## Run Astro marketing site
+	bun --filter @aegis/web dev
+run-api: ## Run tRPC/Hono API
+	bun --filter @aegis/api dev
+run-app: ## Run React app
+	bun --filter @aegis/app dev
+run-aegis: ## Run Python aegis service
+	uv run --package aegis aegis
+run-mcp: ## Run MCP server (stdio)
+	uv run --package mcp-aegis mcp-aegis
+run-data: ## Run data-platform
+	uv run --package data-platform python -m data_platform
+run-java: ## Run Java micro-services
+	./gradlew :payments:bootRun
+
+docker-build: ## Build docker images
+	docker compose build
+docker-up: ## Start docker compose (redis + services)
+	docker compose up -d
+docker-down: ## Stop docker compose
+	docker compose down
+
+docs: ## Build docs
+	mkdocs build
+security: ## Security scans
+	uv run pip-audit || true
+sbom: ## Generate SBOM
+	command -v syft >/dev/null && syft . -o spdx-json > sbom.spdx.json || echo "install syft"
+
+clean: ## Clean build artifacts
+	rm -rf **/dist **/build **/.pytest_cache **/__pycache__ .nx
+deep-clean: clean ## Also remove deps/venv
+	rm -rf node_modules .venv

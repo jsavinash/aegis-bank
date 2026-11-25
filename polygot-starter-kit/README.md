@@ -9,6 +9,8 @@ Layouts follow:
 - TypeScript: https://github.com/jsavinash/javascript-starter-kit
 
 ## Quick start
+
+See **[QUICKSTART.md](./QUICKSTART.md)** for the full guide. One control plane: `make bootstrap`, `make dev`, `make ci`.
 ```bash
 npx nx@latest init
 bun install
