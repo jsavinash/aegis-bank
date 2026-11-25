@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: lending
+server:
+  port: 8084
