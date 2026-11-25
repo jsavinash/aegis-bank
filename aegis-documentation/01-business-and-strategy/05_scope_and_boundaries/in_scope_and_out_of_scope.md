@@ -1,6 +1,6 @@
 # In Scope and Out of Scope
 
-Aegis Bank is a **full-featured retail digital bank**. Every product surface in the source-of-truth feature catalog ([`../14_feature_catalog.md`](../14_feature_catalog.md), ~485 features) is **in scope**, sequenced across Phase 1 (production release) → Phase 2 → Phase 3. Nothing in the catalog is deferred out of scope; "later" items are simply later phases.
+Aegis Bank is a **full-featured retail digital bank**. Every product surface in the source-of-truth feature catalog ([`../14_feature_catalog.md`](../14_feature_catalog.md), ~485 features) **and all ~46 AI use cases** are **in scope**, sequenced across Phase 1 (production release) → Phase 2 → Phase 3. Nothing in the catalog is deferred out of scope; "later" items are simply later phases.
 
 ## In scope (all phases)
 
@@ -34,6 +34,21 @@ Aegis Bank is a **full-featured retail digital bank**. Every product surface in 
 | **Payments acceptance (merchant)** | Card acquiring/POS, e-commerce checkout/links, QR merchant, recurring billing, payouts, chargeback mgmt, merchant analytics |
 | **Specialty / niche** | Islamic/Shariah, microfinance/inclusion, gig/migrant bundle, payroll-as-a-service, real-estate/rent-to-own, agri/sector lending, diaspora, charity/non-profit, trust/estate, rural/agri-finance, tiered KYC, alternative credit scoring, parametric crop insurance, seasonal loans, value-chain finance, group lending/VSLA/SACCO |
 
+## AI use cases (in scope)
+
+All ~46 AI use cases across 7 domains are in scope, sequenced by phase (detail: [`08_ai_use_case_catalog.md`](../../03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md)):
+
+| AI domain | Use cases | Phase(s) |
+|---|---|---|
+| Customer service & engagement | 7 | 1 → 3 |
+| Fraud, financial crime & compliance | 13 | 1 → 2 |
+| Lending & credit | 6 | 2 |
+| Wealth & private banking | 5 | 2 → 3 |
+| Payments, treasury & operations | 6 | 2 → 3 |
+| Technology, cyber & internal productivity | 5 | 2 → 3 |
+| Investment banking & markets | 4 | 3 |
+| **Total** | **~46** | |
+
 ## Out of scope
 
 | Area | Why out |
@@ -48,4 +63,4 @@ All in-scope areas ship across Phase 1 → Phase 2 → Phase 3 (see `04_current_
 
 ## Assumptions & dependencies
 
-See `05_scope_and_boundaries/assumptions_and_dependencies.md`.
+See [`assumptions_and_dependencies.md`](./assumptions_and_dependencies.md).

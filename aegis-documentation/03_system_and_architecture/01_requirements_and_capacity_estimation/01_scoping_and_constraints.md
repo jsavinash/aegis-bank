@@ -63,6 +63,21 @@ Out of scope (never built by Aegis): physical branch network, proprietary card/p
 | 36 | Rewards, Travel & Perks | 3 | Travel/perks |
 | 37 | New / Emerging niche domains | 3 | Emerging |
 
+## AI use-case scope (7 domains, ~46 use cases)
+
+All AI use cases are in scope and sequenced by domain (detail: [`08_ai_use_case_catalog.md`](./08_ai_use_case_catalog.md)):
+
+| AI domain | Use cases | Phase(s) | Notes |
+|---|---|---|---|
+| Customer service & engagement | 7 | 1 → 3 | Basic assistant P1; full conversational P2–P3 |
+| Fraud, financial crime & compliance | 13 | 1 → 2 | Real-time fraud + AML/KYC P1; reg reporting P2 |
+| Lending & credit | 6 | 2 | Underwriting after governance model exists |
+| Wealth & private banking | 5 | 2 → 3 | RM copilot/robo P2; full P3 |
+| Payments, treasury & operations | 6 | 2 → 3 | Payment agent/reconciliation P2–P3 |
+| Technology, cyber & internal productivity | 5 | 2 → 3 | Ops/knowledge agents P2–P3 |
+| Investment banking & markets | 4 | 3 | Adjacent, scale ambition |
+| **Total** | **~46** | | |
+
 ## Constraints
 
 | Type | Constraint |
