@@ -1,6 +1,6 @@
 # Quick Start — Polygot Starter Kit
 
-One repo, one control plane (**`make`**), four stacks: **TypeScript/Bun**, **Python/uv**, **Java/Gradle**, **MCP**.
+One repo, one control plane (**`make`**), four stacks: **TypeScript (pnpm + Turborepo)**, **Python/uv**, **Java/Gradle**, **MCP**.
 
 ## 1. Prerequisites
 - **pnpm** ≥ 9 (TS) — https://pnpm.io
@@ -28,6 +28,18 @@ make run-aegis          # Python AI service (apps/aegis)
 make run-mcp            # MCP server, stdio (apps/aegis-mcp)
 make run-data           # data-platform
 make run-java           # Java payments (or: ./java.sh run)
+```
+
+### Java microservices (Gradle)
+```bash
+./java.sh build         # ./gradlew clean build
+./java.sh test          # ./gradlew test
+./java.sh run           # ./gradlew -p apps/micro-services payments:bootRun
+./java.sh quality       # spotlessApply + check
+./java.sh docker        # jibDockerBuild (payments)
+# direct Gradle equivalents:
+./gradlew -p apps/micro-services payments:bootRun
+./gradlew -p apps/micro-services payments:test
 ```
 
 ## 4. Build / test / quality
