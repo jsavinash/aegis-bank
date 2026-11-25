@@ -39,7 +39,7 @@ make run-java           # Java payments (or: ./java.sh run)
 Run from the **repo root** (targets live in the root `Makefile`):
 ```bash
 make java-build         # cd polygot-starter-kit && ./gradlew clean build
-make java-test          # ./gradlew test
+make test-java          # ./gradlew test
 make java-run           # ./gradlew -p apps/micro-services payments:bootRun
 make java-quality       # spotlessApply + check
 make java-docker        # jibDockerBuild (payments)
