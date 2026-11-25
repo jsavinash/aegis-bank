@@ -1,10 +1,49 @@
 package com.aegis.credit;
-import java.net.URI; import java.util.*; import org.springframework.http.ResponseEntity; import org.springframework.web.bind.annotation.*;
-@RestController @RequestMapping("/credit")
+
+import com.aegis.credit.command.UpsertProfile;
+import com.aegis.credit.web.CreditProfileView;
+import jakarta.validation.Valid;
+import java.net.URI;
+import java.util.List;
+import java.util.UUID;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+/** REST surface for the credit domain. Thin: validation + delegation, no business logic. */
+@RestController
+@RequestMapping("/credit")
 public class CreditController {
-  private final CreditService s; public CreditController(CreditService s){this.s=s;}
-  @PostMapping("/profiles") public ResponseEntity<CreditProfile> upsert(@RequestParam String customerId, @RequestParam int score){ CreditProfile p=s.upsert(customerId,score); return ResponseEntity.created(URI.create("/credit/profiles/"+p.id())).body(p); }
-  @GetMapping("/profiles/{id}") public ResponseEntity<CreditProfile> get(@PathVariable UUID id){ return s.get(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()); }
-  @GetMapping("/profiles") public List<CreditProfile> list(){ return s.list(); }
-  @GetMapping("/simulate") public int simulate(@RequestParam int base, @RequestParam int delta){ return s.simulate(base,delta); }
+
+  private final CreditService service;
+
+  public CreditController(CreditService service) {
+    this.service = service;
+  }
+
+  @PostMapping("/profiles")
+  public ResponseEntity<CreditProfileView> upsert(@Valid @RequestBody UpsertProfile req) {
+    CreditProfileView view = service.upsert(req);
+    URI location =
+        ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(view.id())
+            .toUri();
+    return ResponseEntity.created(location).body(view);
+  }
+
+  @GetMapping("/profiles/{id}")
+  public CreditProfileView get(@PathVariable UUID id) {
+    return service.get(id);
+  }
+
+  @GetMapping("/profiles")
+  public List<CreditProfileView> list() {
+    return service.list();
+  }
+
+  @GetMapping("/profiles/simulate")
+  public int simulate(@RequestParam int base, @RequestParam int delta) {
+    return service.simulate(base, delta);
+  }
 }

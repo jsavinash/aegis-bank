@@ -1,12 +1,86 @@
 package com.aegis.security;
-import java.util.*; import org.springframework.http.ResponseEntity; import org.springframework.web.bind.annotation.*;
-@RestController @RequestMapping("/security")
+
+import com.aegis.security.command.RaiseAlert;
+import com.aegis.security.command.RegisterDevice;
+import com.aegis.security.web.DeviceView;
+import com.aegis.security.web.FraudAlertView;
+import jakarta.validation.Valid;
+import java.net.URI;
+import java.util.List;
+import java.util.UUID;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+/** REST surface for the security &amp; fraud domain. Thin: validation + delegation, no business logic. */
+@RestController
 public class SecurityController {
-  private final SecurityService s; public SecurityController(SecurityService s){this.s=s;}
-  @PostMapping("/devices") public ResponseEntity<Device> register(@RequestParam String customerId, @RequestParam String fingerprint){ Device d=s.register(customerId,fingerprint); return ResponseEntity.ok(d); }
-  @PostMapping("/devices/{id}/trust") public Device trust(@PathVariable UUID id){ return s.trust(id); }
-  @GetMapping("/devices") public List<Device> devices(){ return s.devices(); }
-  @GetMapping("/risk") public double risk(@RequestParam String customerId, @RequestParam double amount){ return s.risk(customerId,amount); }
-  @PostMapping("/freeze") public void freeze(@RequestParam String customerId){ s.freeze(customerId); }
-  @GetMapping("/frozen") public boolean frozen(@RequestParam String customerId){ return s.isFrozen(customerId); }
+
+  private final SecurityService service;
+
+  public SecurityController(SecurityService service) {
+    this.service = service;
+  }
+
+  @PostMapping("/devices")
+  public ResponseEntity<DeviceView> register(@Valid @RequestBody RegisterDevice req) {
+    DeviceView view = service.registerDevice(req);
+    URI location =
+        ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(view.id())
+            .toUri();
+    return ResponseEntity.created(location).body(view);
+  }
+
+  @GetMapping("/devices")
+  public List<DeviceView> devices() {
+    return service.listDevices();
+  }
+
+  @PostMapping("/devices/{id}/trust")
+  public DeviceView trust(@PathVariable UUID id) {
+    return service.trustDevice(id);
+  }
+
+  @PostMapping("/devices/{id}/revoke")
+  public DeviceView revoke(@PathVariable UUID id) {
+    return service.revokeDevice(id);
+  }
+
+  @PostMapping("/alerts")
+  public ResponseEntity<FraudAlertView> raise(@Valid @RequestBody RaiseAlert req) {
+    FraudAlertView view = service.raiseAlert(req);
+    URI location =
+        ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(view.id())
+            .toUri();
+    return ResponseEntity.created(location).body(view);
+  }
+
+  @GetMapping("/alerts")
+  public List<FraudAlertView> alerts() {
+    return service.listAlerts();
+  }
+
+  @PostMapping("/alerts/{id}/confirm")
+  public FraudAlertView confirm(@PathVariable UUID id) {
+    return service.confirmAlert(id);
+  }
+
+  @PostMapping("/alerts/{id}/dismiss")
+  public FraudAlertView dismiss(@PathVariable UUID id) {
+    return service.dismissAlert(id);
+  }
+
+  @PostMapping("/freeze/{customerId}")
+  public void freeze(@PathVariable String customerId) {
+    service.freeze(customerId);
+  }
+
+  @GetMapping("/freeze/{customerId}")
+  public boolean frozen(@PathVariable String customerId) {
+    return service.isFrozen(customerId);
+  }
 }

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: treasury
+server:
+  port: 8090
