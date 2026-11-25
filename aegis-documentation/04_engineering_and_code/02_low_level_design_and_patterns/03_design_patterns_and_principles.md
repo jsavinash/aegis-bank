@@ -11,6 +11,9 @@
 | **Event sourcing** | Audit-grade history (where warranted) |
 | **Repository** | Data access abstraction |
 | **Adapter** | Anti-corruption layer for core/vendor |
+| **BFF / Gateway** | Client aggregation; edge routing |
+| **Sidecar / Mesh** | Cross-cutting (mTLS, retries) |
+| **Mediator** | Decouple commands/handlers |
 | **Strategy** | Pluggable models/strategies (risk routing) |
 | **Chain of responsibility** | Guardrail pipeline |
 | **Circuit breaker / bulkhead** | Resilience |
@@ -20,6 +23,8 @@
 ## Principles
 
 - **SOLID** — single responsibility, dependency inversion.
+- **KISS / DRY / YAGNI** — simplest thing, no premature abstraction.
+- **Composition over inheritance**; **immutability** where practical.
 - **Domain-driven design** — ubiquitous language, bounded contexts.
 - **Twelve-factor** — config in env, stateless processes.
 - **Contract-first** — API before implementation.
@@ -32,3 +37,4 @@
 - **God objects** / long-lived global state.
 - **Autonomous AI** without HITL for regulated actions.
 - **Hardcoded products** instead of config.
+- **Retry storms / chatty sync chains**; **dual writes** without outbox.
