@@ -52,6 +52,12 @@ A greenfield AI-first bank can:
 
 See `03_business_goals_and_kpis.md` (includes north-star metric: monthly active customers completing a high-value digital journey).
 
+## Coverage
+
+**Features — all 37 catalog sections (~485):** 1 Accounts & Deposits · 2 Payments & Transfers · 3 Cards · 4 Bill Pay & Payment Mgmt · 5 Lending & Credit · 6 Savings, Wealth & Investing · 7 Money Management & Insights · 8 Credit & Financial Health · 9 Security & Fraud · 10 Customer Service & AI · 11 Business & Commercial Banking · 12 Treasury & Cash Management · 13 Private Banking & Wealth (HNW) · 14 Kids, Teens & Family · 15 Open Banking & Ecosystem · 16 Super-App & Lifestyle · 17 Sustainability / Green · 18 Digital Assets & Stablecoins · 19 Rewards & Loyalty · 20 Insurance & Protection · 21 Accessibility & Inclusion · 22 Compliance, Risk & Regulatory · 23 Platform, Data & AI Infra · 24 Notifications, Personalisation & UX · 25 International / Cross-border · 26 Payments Acceptance (merchant) · 27 Specialty / Niche · 28 Credit Cards — advanced tooling · 29 Super-App, Embedded Finance & Wallets · 30 Business Banking — depth · 31 Financial Inclusion, Rural & Agri · 32 Advanced AI & Agentic Banking · 33 Financial Wellness & Personalisation · 34 Notifications, Alerts & UX · 35 Statements, Documents & Self-Service · 36 Rewards, Travel & Perks · 37 New / Emerging niche. (detail: [`07_full_feature_catalog.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md))
+
+**AI use cases — all ~46 across 7 domains:** Customer service & engagement (7) · Fraud, financial crime & compliance (13) · Lending & credit (6) · Wealth & private banking (5) · Payments, treasury & operations (6) · Technology, cyber & internal productivity (5) · Investment banking & markets (4, adjacent). (detail: [`08_ai_use_case_catalog.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md))
+
 ## Related
 
 - [00_executive_summary_and_signoffs/executive_summary.md](./00_executive_summary_and_signoffs/executive_summary.md) — executive summary & sign-off.
