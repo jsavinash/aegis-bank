@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: billpay
+server:
+  port: 8083
