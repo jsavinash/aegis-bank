@@ -95,7 +95,7 @@ Every document in this set (grouped by section):
 - [04_extended_and_custom_requirements.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/04_extended_and_custom_requirements.md)
 - [05_back_of_envelope_capacity_estimation.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/05_back_of_envelope_capacity_estimation.md)
 - [06_feature_traceability.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md)
-- [09_use_case_catalog_all.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md)
+- [07_use_case_catalog_all.md](./03_system_and_architecture/01_requirements_and_capacity_estimation/07_use_case_catalog_all.md)
 - [01_full_stack_and_infra_tech_choices.md](./03_system_and_architecture/02_tech_choices_and_adrs/01_full_stack_and_infra_tech_choices.md)
 - [02_rendering_and_delivery_strategy.md](./03_system_and_architecture/02_tech_choices_and_adrs/02_rendering_and_delivery_strategy.md)
 - [03_ai_first_tech_stack_recommendation.md](./03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md)

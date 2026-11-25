@@ -1,6 +1,6 @@
 # Cloud Infrastructure Topology
 
-> **Coverage:** infrastructure sized from feature volumes ([`../01-business-and-strategy/14_feature_catalog.md`](../01-business-and-strategy/14_feature_catalog.md)); operational failure modes from use cases ([`../03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md)).
+> **Coverage:** infrastructure sized from feature volumes ([`../01-business-and-strategy/14_feature_catalog.md`](../01-business-and-strategy/14_feature_catalog.md)); operational failure modes from use cases ([`../03_system_and_architecture/01_requirements_and_capacity_estimation/07_use_case_catalog_all.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/07_use_case_catalog_all.md)).
 
 ## Topology
 

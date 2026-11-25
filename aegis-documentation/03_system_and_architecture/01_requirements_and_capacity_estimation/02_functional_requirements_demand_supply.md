@@ -1,6 +1,6 @@
 # Functional Requirements — Demand & Supply
 
-> These are the high-level FRs. The **full ~485-feature catalog** (37 sections, incl. AI use cases) is in [`14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md); its **architecture traceability** is in [`06_feature_traceability.md`](./06_feature_traceability.md); **all use cases** (business + system + AI) are in [`09_use_case_catalog_all.md`](./09_use_case_catalog_all.md). Every feature domain is covered by a demand driver and a supplying component below.
+> These are the high-level FRs. The **full ~485-feature catalog** (37 sections, incl. AI use cases) is in [`14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md); its **architecture traceability** is in [`06_feature_traceability.md`](./06_feature_traceability.md); **all use cases** (business + system + AI) are in [`07_use_case_catalog_all.md`](./07_use_case_catalog_all.md). Every feature domain is covered by a demand driver and a supplying component below.
 
 ## Demand (functional requirements)
 

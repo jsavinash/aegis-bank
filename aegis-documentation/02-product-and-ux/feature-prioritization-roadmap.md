@@ -1,6 +1,6 @@
 # Feature Prioritization Roadmap
 
-> **Coverage:** features from [`../01-business-and-strategy/14_feature_catalog.md`](../01-business-and-strategy/14_feature_catalog.md); use cases from [`../03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md); master map in [`../FEATURE_AND_USE_CASE_COVERAGE.md`](../FEATURE_AND_USE_CASE_COVERAGE.md).
+> **Coverage:** features from [`../01-business-and-strategy/14_feature_catalog.md`](../01-business-and-strategy/14_feature_catalog.md); use cases from [`../03_system_and_architecture/01_requirements_and_capacity_estimation/07_use_case_catalog_all.md`](../03_system_and_architecture/01_requirements_and_capacity_estimation/07_use_case_catalog_all.md); master map in [`../FEATURE_AND_USE_CASE_COVERAGE.md`](../FEATURE_AND_USE_CASE_COVERAGE.md).
 
 ## Prioritisation method
 
