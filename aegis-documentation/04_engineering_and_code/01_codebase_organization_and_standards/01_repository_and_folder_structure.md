@@ -14,6 +14,7 @@ aegis-bank/
 │   ├── payments/ cards/ accounts/ lending/
 ├── channels/                       # TypeScript (to build)
 │   ├── mobile/ web/ ops/
+├── packages/                       # shared libs (ui, contracts, config)
 ├── data/                           # dbt, Dagster, IaC
 ├── infra/                          # Terraform, k8s, Helm
 ├── docs/                           # research & architecture docs
@@ -27,6 +28,7 @@ aegis-bank/
 ├── src/main/java/      production code (domain, adapters)
 ├── src/test/java/      tests
 ├── api/                contracts (OpenAPI/AsyncAPI)
+├── db/migrations/      Flyway/Liquibase
 └── README.md
 ```
 
@@ -36,3 +38,21 @@ aegis-bank/
 - **Domain-driven:** the domain layer is pure; adapters at edges.
 - **No cross-service DB access.**
 - **Ownership:** each service has a CODEOWNERS entry.
+
+## Naming & versioning
+
+- **SemVer** for packages/services; **API N-2** support.
+- Consistent module names (`<domain>.<capability>`); generated code in `gen/` (not hand-edited).
+
+## Config & secrets
+
+- **Config** via env/Terraform; **secrets** via Vault (never in repo); **`.env.example`** only.
+
+## Tooling
+
+- **Monorepo:** Nx/Turborepo (TS), Maven/Gradle (Java), uv/poetry (Python).
+- **Lint/format/type** in pre-commit + CI; **ADRs** in `docs/adr/`.
+
+## Ownership & ADRs
+
+- **CODEOWNERS** per package; **ADRs** in `03_system_and_architecture/02_tech_choices_and_adrs/architecture_decision_records/`.
