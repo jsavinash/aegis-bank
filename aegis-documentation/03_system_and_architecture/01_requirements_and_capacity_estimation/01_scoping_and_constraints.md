@@ -107,7 +107,7 @@ All AI use cases are in scope and sequenced by domain (detail: [`../../01-busine
 | Security & fraud | real-time alerts, one-tap freeze | warm-path triage, scam detection | full GNN/GBM across all channels |
 | Open banking / BaaS | aggregation lite | full aggregation, business lite | super-app, embedded finance |
 | Compliance & regulatory | KYC, SAR, audit trail, WCAG AA baseline | regulatory reporting | full model risk, cross-jurisdiction |
-| Business banking | basic invoicing, payroll | full (MTD, payroll) | super-app, embedded finance |
+| Business banking | — | lite (invoicing) | full (MTD, payroll) |
 
 ## Out of scope for all phases
 
