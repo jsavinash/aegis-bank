@@ -18,7 +18,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 | 6 | Savings, Wealth & Investing | Wealth service (Python) | Postgres, Iceberg | REST `/wealth` |
 | 7 | Money Management & Insights | Insights service (Python) + Data platform | ClickHouse, Iceberg | GraphQL |
 | 8 | Credit & Financial Health | Credit service (Python) + bureau APIs | Postgres | REST `/credit` |
-| 9 | Security & Fraud | **Fraud ** + Identity (Keycloak) | Qdrant, Neo4j, Redis | gRPC + REST |
+| 9 | Security & Fraud | **Fraud** + Identity (Keycloak) | Qdrant, Neo4j, Redis | gRPC + REST |
 | 10 | Customer Service & AI | **AI Platform (LangGraph/LlamaIndex)** | Qdrant, Neo4j, vLLM | REST/stream `/assistant` |
 | 11 | Business & Commercial Banking | Business service (TS UI + Python automation) | Postgres | REST `/business` |
 | 12 | Treasury & Cash Management | Treasury service (Java + Python forecasting) | Postgres, ClickHouse | REST `/treasury` |
@@ -31,7 +31,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 | 19 | Rewards & Loyalty | Rewards service (TS + Java) | Postgres | REST `/rewards` |
 | 20 | Insurance & Protection | Insurance service (Python) | Postgres | REST `/insurance` |
 | 21 | Accessibility & Inclusion | Channels (RN/Next.js) + axe-core CI | — | UI (WCAG 2.2 AA) |
-| 22 | Compliance, Risk & Regulatory | **AI Risk ** | Postgres, Neo4j, Qdrant | REST `/compliance` |
+| 22 | Compliance, Risk & Regulatory | **AI Risk** | Postgres, Neo4j, Qdrant | REST `/compliance` |
 | 23 | Platform, Data & AI Infra | Platform (K8s) + Data (Iceberg/ClickHouse/Feast) | S3, ClickHouse, Feast | Internal |
 | 24 | Notifications & UX | Notifications service (Java/Python) + Channels | Redis, FCM/APNs | Push/SMS/email |
 | 25 | International / Cross-border | Payments + FX service (Java) | Postgres | REST `/fx` |
@@ -58,13 +58,13 @@ This document closes the gap between the **full feature catalog** (~485 features
 | **LEND** | Lending | 32 |
 | **WEALTH** | Wealth | 43 |
 | **BIZ** | Business | 57 |
-| **SEC** | Fraud + Identity () | 32 |
-| **AI** | AI Platform () | 44 |
+| **SEC** | Fraud + Identity | 32 |
+| **AI** | AI Platform | 44 |
 | **DATA** | Data platform | 45 |
 | **OPEN** | Open Banking | 7 |
 | **LIFE** | Lifestyle / Channels | 39 |
 | **ESG** | ESG | 16 |
-| **COMP** | Compliance () | 25 |
+| **COMP** | Compliance | 25 |
 | **ACC** | Channels (WCAG 2.2 AA) | 12 |
 | **PLAT** | Platform / Data / Infra | 25 |
 
@@ -83,8 +83,8 @@ This document closes the gap between the **full feature catalog** (~485 features
 |---|---|
 | Personalisation & insights | Insights service + Data (ClickHouse/Iceberg) + AI Platform |
 | Customer servicing | AI Platform (agents) + BFF + Guard |
-| Fraud & financial crime | Fraud () + Neo4j + Qdrant |
-| Compliance (KYC/AML) | Compliance () + Neo4j/Qdrant + Audit |
+| Fraud & financial crime | Fraud + Neo4j + Qdrant |
+| Compliance (KYC/AML) | Compliance + Neo4j/Qdrant + Audit |
 | Wealth & product | Wealth service + AI Platform + Core product engine |
 | Payments & money movement | Payments service + Fraud + payment agent |
 | Ops & engineering | AI Platform (ops agents) + Observability + Data |
