@@ -11,6 +11,7 @@ dev:
 
 test:
 	uv run pytest -q
+	cd polygot-starter-kit && make test
 
 test-cov:
 	uv run pytest --cov=aegis --cov-report=term-missing

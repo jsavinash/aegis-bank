@@ -34,8 +34,10 @@ java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
 build: ## Build everything
 	. .tools/env.sh 2>/dev/null || true; npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
 
-test: ## Run all tests
-	npx nx run-many -t test && uv run pytest
+test: ## Run all tests (TS + Python + Java)
+	. .tools/env.sh 2>/dev/null || true; npx nx run-many -t test
+	uv run pytest
+	./gradlew test
 
 lint: ## Lint everything
 	npx nx run-many -t lint && uv run ruff check .
