@@ -1,1 +1,0 @@
-{"lockfileVersion":1,"workspaces":{"":{"name":"polygot-starter-kit"},"apps/app":{"name":"@aegis/app"},"apps/web":{"name":"@aegis/web"},"apps/api":{"name":"@aegis/api"},"apps/email":{"name":"@aegis/email"},"packages/core":{"name":"@aegis/core"},"packages/ui":{"name":"@aegis/ui"}},"packages":{}}

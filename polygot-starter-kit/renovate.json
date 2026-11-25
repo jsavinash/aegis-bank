@@ -1,1 +1,1 @@
-{"extends":["config:recommended"],"packageRules":[{"matchManagers":["uv","bun","gradle"],"separateMinorPatch":true}]}
+{"extends": ["config:recommended"], "packageRules": [{"matchManagers": ["uv", "pnpm", "gradle"], "separateMinorPatch": true}]}

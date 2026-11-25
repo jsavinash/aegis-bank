@@ -20,7 +20,7 @@
       "!{projectRoot}/**/test/**"
     ],
     "sharedGlobals": [
-      "{workspaceRoot}/bun.lock",
+      "{workspaceRoot}/pnpm-lock.yaml",
       "{workspaceRoot}/uv.lock",
       "{workspaceRoot}/gradle/libs.versions.toml"
     ]

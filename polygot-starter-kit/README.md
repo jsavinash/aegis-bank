@@ -13,7 +13,7 @@ Layouts follow:
 See **[QUICKSTART.md](./QUICKSTART.md)** for the full guide. One control plane: `make bootstrap`, `make dev`, `make ci`.
 ```bash
 npx nx@latest init
-bun install
+pnpm install
 uv sync --all-packages
 ./gradlew build
 bash scripts/install-hooks.sh

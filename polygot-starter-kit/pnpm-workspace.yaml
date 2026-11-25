@@ -1,0 +1,9 @@
+packages:
+  - apps/app
+  - apps/web
+  - apps/api
+  - apps/email
+  - apps/ops-console
+  - packages/*
+  - libs/contracts
+  - db

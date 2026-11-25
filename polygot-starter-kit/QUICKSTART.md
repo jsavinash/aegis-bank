@@ -3,7 +3,7 @@
 One repo, one control plane (**`make`**), four stacks: **TypeScript/Bun**, **Python/uv**, **Java/Gradle**, **MCP**.
 
 ## 1. Prerequisites
-- **Bun** ≥ 1.3 (TS) — https://bun.sh
+- **pnpm** ≥ 9 (TS) — https://pnpm.io
 - **uv** (Python) — https://docs.astral.sh/uv
 - **Java 21** (Gradle) + **Node ≥ 20**
 - **Docker** (optional, for redis/compose)
@@ -13,7 +13,7 @@ One repo, one control plane (**`make`**), four stacks: **TypeScript/Bun**, **Pyt
 git clone <repo> && cd polygot-starter-kit
 make bootstrap          # install deps + git hooks
 ```
-`make install` = `bun install` + `uv sync --all-packages`.
+`make install` = `pnpm install` + `uv sync --all-packages` (TS tasks run via **Turborepo**).
 
 ## 3. Run everything
 ```bash
@@ -76,7 +76,7 @@ infra/ docs/     Terraform, MkDocs
 ## 9. Troubleshooting
 - **`./gradlew` fails:** ensure Java 21 (`java -version`); wrapper is committed.
 - **`uv sync --locked` fails:** run `uv lock` to refresh `uv.lock`.
-- **`bun install --frozen-lockfile` fails:** run `bun install` to refresh `bun.lock`.
+- **`pnpm install --frozen-lockfile` fails:** run `pnpm install` to refresh `pnpm-lock.yaml`.
 - **Port busy:** `make docker-down` or change the port in the app config.
 - **Reset everything:** `make deep-clean && make bootstrap`.
 

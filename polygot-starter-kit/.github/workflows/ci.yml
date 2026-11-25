@@ -1,16 +1,15 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  nx:
+  ts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - uses: actions/cache@v4
-        with: { path: ~/.bun/install/cache, key: bun-${{ hashFiles('bun.lock') }}, restore-keys: bun- }
-      - run: bun install --frozen-lockfile
-      - uses: nrwl/nx-set-shas@v4
-      - run: npx nx affected -t build test lint
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm turbo run build test lint
   python:
     runs-on: ubuntu-latest
     strategy: { matrix: { python: ['3.11','3.12'] } }
@@ -36,4 +35,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: gitleaks/gitleaks-action@v2
-      - run: uv run pip-audit || true

@@ -8,8 +8,8 @@ SHELL := /bin/bash
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-16s\033[0m %s\n",$$1,$$2}'
 
-install: ## Install all dependencies (bun + uv)
-	bun install --frozen-lockfile || bun install
+install: ## Install all dependencies (pnpm + uv)
+	pnpm install --frozen-lockfile || pnpm install
 	uv sync --locked --all-packages || uv sync --all-packages
 
 bootstrap: install hooks ## One-time setup (deps + git hooks)
@@ -30,7 +30,7 @@ lint: ## Lint everything
 	npx nx run-many -t lint && uv run ruff check .
 
 format: ## Format everything
-	uv run ruff format . && bun run format
+	uv run ruff format . && pnpm format
 
 typecheck: ## Type-check everything
 	npx nx run-many -t typecheck && uv run mypy .
@@ -39,11 +39,11 @@ ci: ## Local CI mirror (what CI runs)
 	npx nx affected -t build test lint && uv run ruff check . && uv run mypy . && uv run pytest && ./gradlew build
 
 run-web: ## Run Astro marketing site
-	bun --filter @aegis/web dev
+	pnpm --filter @aegis/web dev
 run-api: ## Run tRPC/Hono API
-	bun --filter @aegis/api dev
+	pnpm --filter @aegis/api dev
 run-app: ## Run React app
-	bun --filter @aegis/app dev
+	pnpm --filter @aegis/app dev
 run-aegis: ## Run Python aegis service
 	uv run --package aegis aegis
 run-mcp: ## Run MCP server (stdio)
