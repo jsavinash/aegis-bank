@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 
 .PHONY: help install bootstrap dev build test lint format typecheck ci \
-        run-web run-api run-app run-aegis run-mcp run-data run-java \
+        run-web run-api run-app run-aegis run-mcp run-data run-java java-sync \
         docker-build docker-up docker-down clean deep-clean hooks docs security sbom
 
 help: ## Show this help
@@ -12,13 +12,16 @@ install: ## Install all dependencies (pnpm + uv)
 	pnpm install --frozen-lockfile || pnpm install
 	uv sync --locked --all-packages || uv sync --all-packages
 
-bootstrap: install hooks ## One-time setup (deps + git hooks)
+bootstrap: install hooks java-sync ## One-time setup (deps + gradle sync + git hooks)
 
 hooks: ## Install git hooks
 	bash scripts/install-hooks.sh
 
 dev: ## Run all dev servers (web, api, app)
 	npx nx run-many -t dev
+
+java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
+	source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew dependencies
 
 build: ## Build everything
 	npx nx run-many -t build && source $$HOME/.sdkman/bin/sdkman-init.sh && sdk env install && ./gradlew build
