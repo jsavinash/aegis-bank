@@ -1,0 +1,25 @@
+[project]
+name = "polygot-starter-kit"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["apps/aegis", "apps/aegis-mcp", "apps/data-platform", "libs/shared", "libs/mcp-core"]
+
+[dependency-groups]
+dev = ["pytest", "pytest-cov", "ruff", "mypy", "pip-audit"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+[tool.ruff.lint]
+select = ["E","F","I","UP","B","SIM"]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["apps", "libs"]
+addopts = "-q --cov --cov-report=term-missing"

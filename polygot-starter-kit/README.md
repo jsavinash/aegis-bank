@@ -1,6 +1,6 @@
-# Aegis Polyglot Starter Kit
+# Polygot Starter Kit (production-grade Nx monorepo)
 
-Nx monorepo skeleton per `aegis-documentation/04_engineering_and_code/01_codebase_organization_and_standards/01_repository_and_folder_structure.md`.
+Nx + **Bun/TypeScript** + **uv/Python** + **Gradle/Java**, one task graph.
 
 Layouts follow:
 - Java: https://github.com/jsavinash/java-starter-kit
@@ -17,3 +17,6 @@ uv sync --all-packages
 bash scripts/install-hooks.sh
 nx graph
 ```
+
+## CI
+`.github/workflows/ci.yml` runs `nx affected -t build test lint`, `uv run ruff/mypy/pytest`, and `./gradlew build`.

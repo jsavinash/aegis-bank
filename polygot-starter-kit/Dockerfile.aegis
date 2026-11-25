@@ -1,0 +1,8 @@
+FROM python:3.12-slim AS base
+RUN pip install --no-cache-dir uv
+WORKDIR /app
+COPY pyproject.toml uv.lock ./
+COPY apps/aegis apps/aegis
+COPY libs libs
+RUN uv sync --package aegis
+CMD ["uv","run","aegis"]

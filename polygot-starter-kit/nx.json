@@ -1,0 +1,66 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "plugins": [
+    "@nx/js",
+    "@nx/next",
+    "@nx/react-native",
+    "@nx/node",
+    "@nx/gradle",
+    "@nxlv/python"
+  ],
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/**/*-test.*",
+      "!{projectRoot}/**/*.test.*",
+      "!{projectRoot}/**/test/**"
+    ],
+    "sharedGlobals": [
+      "{workspaceRoot}/bun.lock",
+      "{workspaceRoot}/uv.lock",
+      "{workspaceRoot}/gradle/libs.versions.toml"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
+      "cache": true,
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/build"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "cache": true
+    },
+    "lint": {
+      "inputs": [
+        "default"
+      ],
+      "cache": true
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true
+    }
+  }
+}
