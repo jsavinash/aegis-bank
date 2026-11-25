@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 
 .PHONY: help tools locks install bootstrap dev build test lint format typecheck ci \
-        run-web run-api run-app run-aegis run-mcp run-data run-java java-sync \
+        run-web run-api run-app run-aegis run-mcp run-data run-java java-sync test-py test-ts test-java \
         docker-build docker-up docker-down clean deep-clean hooks docs security sbom
 
 help: ## Show this help
@@ -33,6 +33,15 @@ java-sync: ## Gradle sync (SDKMAN + resolve dependencies)
 
 build: ## Build everything
 	. .tools/env.sh 2>/dev/null || true; npx nx run-many -t build && if [ -f "$$HOME/.sdkman/bin/sdkman-init.sh" ]; then source "$$HOME/.sdkman/bin/sdkman-init.sh"; sdk env install; fi; ./gradlew build
+
+test-py: ## Python tests
+	uv run pytest
+
+test-ts: ## TypeScript tests
+	. .tools/env.sh 2>/dev/null || true; npx nx run-many -t test
+
+test-java: ## Java tests
+	. .tools/env.sh 2>/dev/null || true; ./gradlew test
 
 test: ## Run all tests (TS + Python + Java)
 	. .tools/env.sh 2>/dev/null || true; npx nx run-many -t test

@@ -1,4 +1,4 @@
-.PHONY: install dev test lint format serve seed migrate up down \
+.PHONY: install dev test test-py test-ts test-java lint format serve seed migrate up down \
         java-build java-test java-run java-quality java-docker kit-tools kit-bootstrap
 
 install:
@@ -59,3 +59,13 @@ kit-tools:
 
 kit-bootstrap:
 	cd polygot-starter-kit && make bootstrap
+
+# --- granular tests ---
+test-py:
+	uv run pytest -q
+
+test-ts:
+	cd polygot-starter-kit && pnpm turbo run test
+
+test-java:
+	cd polygot-starter-kit && . .tools/env.sh 2>/dev/null || true; ./gradlew test
