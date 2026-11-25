@@ -47,7 +47,7 @@ Consolidated catalog of **all use cases** for Aegis Bank across three lenses: **
 | SY-14 | Send notifications | Notifications service |
 | SY-15 | Provision a card | Cards service |
 
-## 3. AI use cases (subset of 46 — full detail in 08)
+## 3. AI use cases (subset of 46 — full detail in 14)
 
 | ID | AI use case | Archetype | Value | Reg |
 |---|---|---|---|---|
