@@ -9,14 +9,17 @@
 | **Vector/graph** | Tiered storage; replica tuning |
 | **Data egress** | Minimise cross-region; compress |
 | **Observability** | Sample traces; tiered retention |
+| **Storage** | Lifecycle policies (hot→cold); delete orphans |
+| **Licensing / SaaS** | Consolidate vendors; annual commits |
+| **Idle resources** | Scale-to-zero; scheduled shutdown (dev/test) |
 
 ## FinOps practices
 
-- **Tagging & showback** per team/product.
+- **Tagging & showback** per team/product; **cost dashboards**.
 - **Budgets** with alerts (per-step LLM budget enforced).
 - **Unit economics** — cost per payment, per KYC, per query.
-- **Reserved instances / savings plans** for steady state.
-- **Autoscaling** to avoid idle capacity.
+- **Reserved instances / savings plans** for steady state; **autoscaling** to avoid idle.
+- **Anomaly detection** + **forecasting** (alert on spikes).
 
 ## Model routing economics
 
@@ -29,5 +32,5 @@
 ## Optimisation loops
 
 - **Continuous eval** ensures cheaper models still pass quality gates.
-- **Right-sizing** based on utilisation.
-- **Chargeback** to product teams for accountability.
+- **Right-sizing** based on utilisation; **rightsizing reviews** monthly.
+- **Chargeback** to product teams for accountability; **carbon** reporting where relevant.
