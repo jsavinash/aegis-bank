@@ -31,7 +31,8 @@
 | **Tier 0** (ledger, payments, auth, fraud) | 99.95%+ | <1h | <5min | SLO dashboards, DR drill |
 | **Tier 1** (AI agents, RAG, compliance) | 99.9% | <4h | <1h | SLO dashboards, DR drill |
 | **Tier 2** (insights, super-app) | 99.5% | <24h | <24h | SLO dashboards |
-| Error rate (Tier 0) | <0.1% | — | — | SLO dashboards |
+
+Tier 0 error rate target: **<0.1%** (SLO dashboards).
 
 ## Security & privacy
 
