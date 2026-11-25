@@ -62,3 +62,4 @@ See `03_business_goals_and_kpis.md` (includes north-star metric: monthly active 
 - [03_business_goals_and_kpis.md](./03_business_goals_and_kpis.md) — goals, KPI targets, measurement discipline.
 - [09_non_functional_business_constraints.md](./09_non_functional_business_constraints.md) — NFR targets (availability, latency, scale, accessibility, compliance).
 - [13_high_level_solution_overview.md](./13_high_level_solution_overview.md) — high-level architecture & component responsibilities.
+- [14_feature_catalog.md](./14_feature_catalog.md) — combined feature + AI use-case catalog (~485 features + ~46 AI use cases).
