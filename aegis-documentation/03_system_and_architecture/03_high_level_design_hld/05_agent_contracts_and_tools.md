@@ -2,7 +2,7 @@
 
 ## Agent contracts
 
-Each agent is a typed unit with a defined input/output schema (Pydantic) and a role. Agents run as LangGraph nodes with a Postgres checkpointer.
+Each agent is a typed unit with a defined input/output schema (Pydantic) and a role. Agents run as LangGraph nodes with a Postgres checkpointer; each has a **version, timeout, retry policy, and token budget**.
 
 | Agent | Role | Input | Output |
 |---|---|---|---|
@@ -24,8 +24,11 @@ Each agent is a typed unit with a defined input/output schema (Pydantic) and a r
 | `query_graph_neighbourhood` | network | No |
 | `get_customer_360` | risk | No |
 | `search_obligations` | compliance | No |
+| `create_case` | evidence, network | **Yes** (approval required) |
+| `add_case_note` | narrative, qa | No |
 | `file_sar` | narrative | **Yes** (approval required) |
 | `freeze_account` | risk | **Yes** (approval required) |
+| `escalate_to_human` | all | No |
 
 ## Tool governance
 
@@ -33,7 +36,19 @@ Each agent is a typed unit with a defined input/output schema (Pydantic) and a r
 - **Guardrail gate:** every tool call passes through NeMo tool-call rail (role + write-approval).
 - **Tool-result screening:** every result treated as untrusted (injection defence).
 - **Idempotency:** write tools keyed by run ID.
+- **Schema versioning + timeouts + rate limits;** every call audited.
+
+## Orchestration & resilience
+
+- **LangGraph** for agent graphs; **Temporal** for durable, crash-proof runs (waits days for HITL).
+- **Retries** with backoff; **timeouts** per node; **dead-letter** for failed runs.
+- **Two-pass structured output** where an agent must act and emit strict JSON.
 
 ## Human escalation
 
-When QA confidence < threshold, or a guardrail fires, the run pauses for human review.
+When QA confidence < threshold, or a guardrail fires, the run pauses for human review (Temporal `interrupt()`), resuming after approval.
+
+## Observability & audit
+
+- Every model/tool/retrieval/guardrail step is an OTel span (Langfuse).
+- Immutable audit of inputs, model/prompt/tool versions, output, and human approver.
