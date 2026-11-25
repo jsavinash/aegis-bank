@@ -7,7 +7,7 @@ Aegis is an AI-first retail bank. The architecture separates the **transactional
 This document is the **component/topology view**. The authoritative lists it implements are kept in dedicated sources (not duplicated here):
 
 - **Features (~485, 37 sections):** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md)
-- **AI use cases (~46, 7 domains):** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md)
+- **AI use cases (~46, 7 domains):** [`../../01-business-and-strategy/14_feature_catalog.md`](../../01-business-and-strategy/14_feature_catalog.md) §AI Use Cases
 - **Feature → component traceability:** [`../01_requirements_and_capacity_estimation/06_feature_traceability.md`](../01_requirements_and_capacity_estimation/06_feature_traceability.md)
 - **Master index:** [`../../FEATURE_AND_USE_CASE_COVERAGE.md`](../../FEATURE_AND_USE_CASE_COVERAGE.md)
 
