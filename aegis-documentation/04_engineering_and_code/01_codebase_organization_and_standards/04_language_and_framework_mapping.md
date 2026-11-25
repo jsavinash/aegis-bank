@@ -34,13 +34,13 @@ Maps the **full project** — all **~485 features** (37 sections, 15 feature typ
 | **LEND** | 32 | Python (decisioning) + Java (servicing) | Python: `scikit-learn`/`xgboost`, `fastapi` · Java: loan servicing (Spring Boot) | ML underwriting + explainability |
 | **WEALTH** | 43 | Python | `pandas`/`polars`, `numpy`, `pyportfolioopt`, `fastapi` | Portfolio math, robo, analytics |
 | **BIZ** | 57 | TypeScript (back-office UI) + Python (automation) | Next.js + `tRPC`, Python `fastapi`/Celery | AP/AR automation, invoicing, expense |
-| **SEC** | 32 | Python (fraud/AML) + Java (authN/Z) | Python: GNN (PyG), `aegis/` guardrails · Java: session/keys (Spring Security) | Real-time fraud + identity |
+| **SEC** | 32 | Python (fraud/AML) + Java (authN/Z) | Python: GNN (PyG), guardrails · Java: session/keys (Spring Security) | Real-time fraud + identity |
 | **AI** | 44 | Python | LangGraph, LlamaIndex, PyTorch, vLLM, LiteLLM, Ragas | The AI plane — see §4 |
 | **DATA** | 45 | Python + SQL | `dbt`, Dagster, Polars, ClickHouse client | Pipelines, analytics, feature store |
 | **OPEN** | 7 | Java + TypeScript | Spring Boot (APIs), Next.js (portal), OIDC | PSD2/open-banking APIs, consent |
 | **LIFE** | 39 | TypeScript + Python | React Native/Flutter, Next.js, Python services | Super-app, lifestyle, mini-apps |
 | **ESG** | 16 | Python | `pandas`, carbon-factor APIs, `fastapi` | Carbon tracking, ESG scoring |
-| **COMP** | 25 | Python | `aegis/` compliance, Docling, Neo4j/Graphiti, NeMo | KYC/AML/regulatory — see `aegis/` |
+| **COMP** | 25 | Python | compliance, Docling, Neo4j/Graphiti, NeMo | KYC/AML/regulatory — see |
 | **ACC** | 12 | TypeScript | React Native/Next.js + `axe-core`, WCAG 2.2 AA | Accessibility is a UI concern |
 | **PLAT** | 25 | Java + Python | K8s, Terraform, OTel, Kafka, Feast, vLLM | Infra, observability, events |
 
@@ -58,8 +58,8 @@ Maps the **full project** — all **~485 features** (37 sections, 15 feature typ
 | 6 | Savings, Wealth & Investing | Python | `polars`/`pandas`, `pyportfolioopt`, `fastapi` |
 | 7 | Money Management & Insights | Python + TypeScript | `polars`, `fastapi`; Next.js dashboards |
 | 8 | Credit & Financial Health | Python | credit-bureau APIs, `scikit-learn`, `fastapi` |
-| 9 | Security & Fraud | Python + Java | PyG/GNN, `aegis/risk`, `aegis/guardrails`; Java authN (Spring Security) |
-| 10 | Customer Service & AI | Python | LangGraph, LlamaIndex, MCP, vLLM (`aegis/agents`) |
+| 9 | Security & Fraud | Python + Java | PyG/GNN, , ; Java authN (Spring Security) |
+| 10 | Customer Service & AI | Python | LangGraph, LlamaIndex, MCP, vLLM () |
 | 11 | Business & Commercial Banking | TypeScript + Python | Next.js + `tRPC`; `fastapi`/Celery |
 | 12 | Treasury & Cash Management | Java + Python | Spring Boot; Python forecasting (`pandas`, Prophet) |
 | 13 | Private Banking & Wealth | Python | `pyportfolioopt`, `fastapi`, RAG over mandates |
@@ -71,7 +71,7 @@ Maps the **full project** — all **~485 features** (37 sections, 15 feature typ
 | 19 | Rewards & Loyalty | TypeScript + Java | Next.js, Spring Boot (points ledger) |
 | 20 | Insurance & Protection | Python | underwriting models, `fastapi` |
 | 21 | Accessibility & Inclusion | TypeScript | React Native/Next.js, `axe-core`, WCAG 2.2 AA |
-| 22 | Compliance, Risk & Regulatory | Python | `aegis/` (NeMo, LlamaIndex, Neo4j, Docling) |
+| 22 | Compliance, Risk & Regulatory | Python | (NeMo, LlamaIndex, Neo4j, Docling) |
 | 23 | Platform, Data & AI Infra | Java + Python | K8s, Terraform, OTel, Kafka, Feast, vLLM |
 | 24 | Notifications & UX | TypeScript + Python | React Native push, `fastapi` prefs service |
 | 25 | International / Cross-border | Java | FX services, Spring Boot, corridor integrations |
@@ -81,7 +81,7 @@ Maps the **full project** — all **~485 features** (37 sections, 15 feature typ
 | 29 | Super-App / Embedded / Wallets | TypeScript + Python | React Native, wallet SDKs, Python services |
 | 30 | Business Banking — depth | TypeScript + Python | Next.js + `tRPC`, AP/AR automation (Python) |
 | 31 | Financial Inclusion / Rural / Agri | Python + TypeScript | alternative-data scoring, USSD/mobile-money |
-| 32 | Advanced AI & Agentic Banking | Python | LangGraph + Temporal + MCP (`aegis/`) |
+| 32 | Advanced AI & Agentic Banking | Python | LangGraph + Temporal + MCP () |
 | 33 | Financial Wellness & Personalisation | Python | `pandas`, `scikit-learn`, `fastapi` |
 | 34 | Notifications / Alerts / UX | TypeScript + Python | push/SMS/email, preference service |
 | 35 | Statements / Documents / Self-Service | TypeScript + Python | Next.js, Docling (PDF), `fastapi` |
@@ -132,7 +132,7 @@ Maps the AI use-case catalog ([14_feature_catalog.md](../../01-business-and-stra
 | Cybersecurity triage | Monitoring | Python | LLM + rules + SIEM integration | Warm |
 | Agentic BI (NL→SQL) | Multi-agent | Python | text-to-SQL + governed semantic layer | Interactive |
 
-**Pattern:** the **AI brain is always Python** (LangGraph/LlamaIndex/vLLM/NeMo). Only the *fraud hot path* needs a non-LLM, ultra-low-latency serving layer (still Python model, served via BentoML/KServe/Triton). Every AI use case is wrapped in the same **guardrails → eval → trace** plane (`aegis/guardrails`, `aegis/eval`, Langfuse).
+**Pattern:** the **AI brain is always Python** (LangGraph/LlamaIndex/vLLM/NeMo). Only the *fraud hot path* needs a non-LLM, ultra-low-latency serving layer (still Python model, served via BentoML/KServe/Triton). Every AI use case is wrapped in the same **guardrails → eval → trace** plane (, , Langfuse).
 
 ---
 
@@ -165,7 +165,7 @@ Maps the AI use-case catalog ([14_feature_catalog.md](../../01-business-and-stra
 4. **Touching the ledger product logic → buy, don't build.** Integrate via events/APIs.
 5. **Touching many products → configure, don't hardcode.** Product engine, not 485 modules.
 6. **Touching a contract → define it first.** OpenAPI/AsyncAPI/GraphQL; language is an implementation detail.
-7. **Touching compliance → `aegis/` (Python) + human sign-off.** Never autonomous for regulated actions.
+7. **Touching compliance → (Python) + human sign-off.** Never autonomous for regulated actions.
 8. **Every AI use case → same guardrails/eval/trace plane.** Fraud hot path = non-LLM low-latency serving (BentoML/KServe); all else = LangGraph/LlamaIndex/vLLM + NeMo + Langfuse.
 
 ---
@@ -180,7 +180,7 @@ Maps the AI use-case catalog ([14_feature_catalog.md](../../01-business-and-stra
 | All ~46 AI use cases (7 domains) | §4b | ✅ |
 | Framework shortlist by concern | §5 | ✅ |
 | Decision rules | §6 | ✅ |
-| Code-level mapping (`aegis/`) | [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md) | ✅ |
+| Code-level mapping () | [05_module_to_stack_mapping.md](./05_module_to_stack_mapping.md) | ✅ |
 | Tech-stack layers (full bank) | [../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md](../../03_system_and_architecture/02_tech_choices_and_adrs/03_ai_first_tech_stack_recommendation.md) | ✅ |
 
 ---

@@ -21,15 +21,15 @@
 
 ## Resilience code patterns
 
-```python
+`python
 @retry(stop=stop_after_attempt(3), wait=wait_exponential())
 async def call_tool(...): ...
 
 try:
-    result = await llm.structured(...)
+ result = await llm.structured(...)
 except BudgetExceeded:
-    raise FallbackToHuman(...)
-```
+ raise FallbackToHuman(...)
+`
 
 ## Circuit breaker
 

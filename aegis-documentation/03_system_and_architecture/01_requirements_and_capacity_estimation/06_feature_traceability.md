@@ -18,7 +18,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 | 6 | Savings, Wealth & Investing | Wealth service (Python) | Postgres, Iceberg | REST `/wealth` |
 | 7 | Money Management & Insights | Insights service (Python) + Data platform | ClickHouse, Iceberg | GraphQL |
 | 8 | Credit & Financial Health | Credit service (Python) + bureau APIs | Postgres | REST `/credit` |
-| 9 | Security & Fraud | **Fraud (aegis/risk)** + Identity (Keycloak) | Qdrant, Neo4j, Redis | gRPC + REST |
+| 9 | Security & Fraud | **Fraud ** + Identity (Keycloak) | Qdrant, Neo4j, Redis | gRPC + REST |
 | 10 | Customer Service & AI | **AI Platform (LangGraph/LlamaIndex)** | Qdrant, Neo4j, vLLM | REST/stream `/assistant` |
 | 11 | Business & Commercial Banking | Business service (TS UI + Python automation) | Postgres | REST `/business` |
 | 12 | Treasury & Cash Management | Treasury service (Java + Python forecasting) | Postgres, ClickHouse | REST `/treasury` |
@@ -31,7 +31,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 | 19 | Rewards & Loyalty | Rewards service (TS + Java) | Postgres | REST `/rewards` |
 | 20 | Insurance & Protection | Insurance service (Python) | Postgres | REST `/insurance` |
 | 21 | Accessibility & Inclusion | Channels (RN/Next.js) + axe-core CI | — | UI (WCAG 2.2 AA) |
-| 22 | Compliance, Risk & Regulatory | **AI Risk (aegis/compliance)** | Postgres, Neo4j, Qdrant | REST `/compliance` |
+| 22 | Compliance, Risk & Regulatory | **AI Risk ** | Postgres, Neo4j, Qdrant | REST `/compliance` |
 | 23 | Platform, Data & AI Infra | Platform (K8s) + Data (Iceberg/ClickHouse/Feast) | S3, ClickHouse, Feast | Internal |
 | 24 | Notifications & UX | Notifications service (Java/Python) + Channels | Redis, FCM/APNs | Push/SMS/email |
 | 25 | International / Cross-border | Payments + FX service (Java) | Postgres | REST `/fx` |
@@ -58,13 +58,13 @@ This document closes the gap between the **full feature catalog** (~485 features
 | **LEND** | Lending | 32 |
 | **WEALTH** | Wealth | 43 |
 | **BIZ** | Business | 57 |
-| **SEC** | Fraud + Identity (`aegis/`) | 32 |
-| **AI** | AI Platform (`aegis/`) | 44 |
+| **SEC** | Fraud + Identity () | 32 |
+| **AI** | AI Platform () | 44 |
 | **DATA** | Data platform | 45 |
 | **OPEN** | Open Banking | 7 |
 | **LIFE** | Lifestyle / Channels | 39 |
 | **ESG** | ESG | 16 |
-| **COMP** | Compliance (`aegis/`) | 25 |
+| **COMP** | Compliance () | 25 |
 | **ACC** | Channels (WCAG 2.2 AA) | 12 |
 | **PLAT** | Platform / Data / Infra | 25 |
 
@@ -72,7 +72,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 
 ## Coverage notes
 
-- **Implemented today:** `aegis/` (AI + Risk + Compliance plane) covers types **SEC, AI, COMP** and parts of **LEND/WEALTH/DATA**.
+- **Implemented today:** (AI + Risk + Compliance plane) covers types **SEC, AI, COMP** and parts of **LEND/WEALTH/DATA**.
 - **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services (see `03_high_level_design_hld/01_end_to_end_system_architecture.md`).
 - **AI use cases:** see `../../01-business-and-strategy/14_feature_catalog.md` (~46 use cases mapped to the same components).
 - **Language/framework per domain:** see `../../04_engineering_and_code/01_codebase_organization_and_standards/04_language_and_framework_mapping.md`.
@@ -83,8 +83,8 @@ This document closes the gap between the **full feature catalog** (~485 features
 |---|---|
 | Personalisation & insights | Insights service + Data (ClickHouse/Iceberg) + AI Platform |
 | Customer servicing | AI Platform (agents) + BFF + Guard |
-| Fraud & financial crime | Fraud (`aegis/risk`) + Neo4j + Qdrant |
-| Compliance (KYC/AML) | Compliance (`aegis/`) + Neo4j/Qdrant + Audit |
+| Fraud & financial crime | Fraud () + Neo4j + Qdrant |
+| Compliance (KYC/AML) | Compliance () + Neo4j/Qdrant + Audit |
 | Wealth & product | Wealth service + AI Platform + Core product engine |
 | Payments & money movement | Payments service + Fraud + payment agent |
 | Ops & engineering | AI Platform (ops agents) + Observability + Data |
@@ -92,7 +92,7 @@ This document closes the gap between the **full feature catalog** (~485 features
 ## Coverage & gaps
 
 - **Complete:** all 37 domains have ≥1 implementing component, a data store, and an API surface (table above).
-- **Implemented today:** `aegis/` (AI + Risk + Compliance) covers SEC, AI, COMP and parts of LEND/WEALTH/DATA.
+- **Implemented today:** (AI + Risk + Compliance) covers SEC, AI, COMP and parts of LEND/WEALTH/DATA.
 - **To build:** CORE, PAY, CARD, BIZ, LIFE, OPEN, ESG, PLAT transactional services.
 - **NFR baseline:** applies to every domain (see `03_non_functional_requirements_matrix.md`).
 - **AI use cases:** 46, mapped to the same components (see `../../01-business-and-strategy/14_feature_catalog.md`).

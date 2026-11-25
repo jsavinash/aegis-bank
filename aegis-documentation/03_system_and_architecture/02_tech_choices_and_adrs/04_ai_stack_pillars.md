@@ -26,24 +26,24 @@ This document maps the canonical 7-pillar open-source AI stack onto the Aegis pl
 
 **Why:** PyTorch is the universal training substrate; Hugging Face is the model hub + `Trainer`/`pipeline` API; Unsloth does LoRA/QLoRA fine-tuning at ~2× speed and a fraction of the memory — the default for small teams fine-tuning 7B–14B models on a single GPU.
 
-**Where it plugs in (`aegis/`):**
-- **`aegis/risk/`** — the GNN/GBM hot-path scorer is a PyTorch model. `HotPathScorer` is the deterministic reference; the production scorer is a fine-tuned graph model.
-- **`aegis/rag/`** — embedding models (sentence-transformers) and the reranker are HF models.
-- **`aegis/agents/`** — small classification models (typology, alert triage) fine-tuned with Unsloth/LoRA.
+**Where it plugs in ():**
+- **** — the GNN/GBM hot-path scorer is a PyTorch model. `HotPathScorer` is the deterministic reference; the production scorer is a fine-tuned graph model.
+- **** — embedding models (sentence-transformers) and the reranker are HF models.
+- **** — small classification models (typology, alert triage) fine-tuned with Unsloth/LoRA.
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
 torch>=2.4
 transformers>=4.45
 datasets>=3.0
 peft>=0.13
-unsloth>=2024.11        # optional, GPU only
+unsloth>=2024.11 # optional, GPU only
 sentence-transformers>=3.2
-```
+`
 
-- **Model tiers** already defined in `aegis/llm/__init__.py` (`LLMRouter.TIERS`) — map each tier to a HF model id; local dev uses Ollama (Pillar 5), prod uses vLLM.
-- **Fine-tuning workflow:** `datasets` → `peft`/Unsloth LoRA → HF `Trainer` → export → serve on vLLM/Ollama. Version the adapter alongside `PROMPT_VERSION` in `aegis/llm/prompts.py` so eval runs are reproducible.
+- **Model tiers** already defined in (`LLMRouter.TIERS`) — map each tier to a HF model id; local dev uses Ollama (Pillar 5), prod uses vLLM.
+- **Fine-tuning workflow:** `datasets` → `peft`/Unsloth LoRA → HF `Trainer` → export → serve on vLLM/Ollama. Version the adapter alongside `PROMPT_VERSION` in so eval runs are reproducible.
 - **Deviation:** the repo's `MockLLM` stands in for any model so tests run with zero deps. Swap in a `HFTransformersLLM`/`OllamaLLM` behind the same `BaseLLM` interface.
 
 ---
@@ -54,17 +54,17 @@ sentence-transformers>=3.2
 
 **Why:** Docling converts complex PDFs, tables, scans, and IDs into clean, layout-aware Markdown/JSON — the best open parser for bank statements, KYC docs, and regulatory filings. Qdrant gives high-performance HNSW, rich **metadata filtering** (critical for tenant/partition isolation), and seamless local→cloud scaling.
 
-**Where it plugs in (`aegis/`):**
-- **`aegis/rag/`** — `HybridRetriever` + `GraphStore` + `Router`. The vector store is pluggable; Qdrant is the production backend.
-- **`aegis/db/`** — `DocumentRepository` already models a `documents` table with `VECTOR(1536)`; Qdrant replaces this for scale.
-- **`aegis/compliance/`** — Docling parses regulatory PDFs into `Obligation` objects.
+**Where it plugs in ():**
+- **** — `HybridRetriever` + `GraphStore` + `Router`. The vector store is pluggable; Qdrant is the production backend.
+- **** — `DocumentRepository` already models a `documents` table with `VECTOR(1536)`; Qdrant replaces this for scale.
+- **** — Docling parses regulatory PDFs into `Obligation` objects.
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
 docling>=2.9
 qdrant-client>=1.12
-```
+`
 
 - **Ingestion pipeline:** `docling.DocumentConverter().convert(pdf)` → Markdown + table structure → chunk (semantic) → embed (HF) → `qdrant_client.upsert()` with payload metadata (`source`, `case_id`, `in_force_from`, `tenant`).
 - **Filtering is the reason to choose Qdrant** — `ef_search` tuning + payload indexes give correct tenant-filtered recall (the 2026 finding: pgvector's HNSW can collapse to 0.71 recall on selective filters; Qdrant holds ~0.98).
@@ -79,22 +79,22 @@ qdrant-client>=1.12
 
 **Why:** purpose-built for advanced RAG — composable indexes (vector, summary, keyword, **knowledge-graph**), query engines, routing, and structured retrieval. Cleaner than general chains for document Q&A over obligations, policies, and case evidence.
 
-**Where it plugs in (`aegis/`):**
-- **`aegis/rag/`** — LlamaIndex becomes the retrieval engine behind `Router`: `VectorStoreIndex` (Qdrant) + `KnowledgeGraphIndex` (Neo4j) + `QueryFusionRetriever` for hybrid, plus a `RouterQueryEngine` for hybrid-vs-graph routing.
-- **`aegis/compliance/`** — regulatory Q&A over obligations/controls.
-- **`aegis/agents/`** — Evidence Gatherer uses LlamaIndex query engines for policy/KYB retrieval.
+**Where it plugs in ():**
+- **** — LlamaIndex becomes the retrieval engine behind `Router`: `VectorStoreIndex` (Qdrant) + `KnowledgeGraphIndex` (Neo4j) + `QueryFusionRetriever` for hybrid, plus a `RouterQueryEngine` for hybrid-vs-graph routing.
+- **** — regulatory Q&A over obligations/controls.
+- **** — Evidence Gatherer uses LlamaIndex query engines for policy/KYB retrieval.
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
 llama-index>=0.12
 llama-index-vector-stores-qdrant>=0.4
 llama-index-graph-stores-neo4j>=0.4
 llama-index-retrievers-bm25>=0.5
-```
+`
 
 - **GraphRAG done right:** use `KnowledgeGraphIndex` over a *scoped* obligation/entity graph (not every document) with **temporal validity** edges — matches the 2026 GraphRAG-Bench conclusion (hybrid floor, graph for multi-hop/temporal).
-- **Two-pass structured output** (`two_pass` in `aegis/llm/`) still applies — LlamaIndex's structured `PydanticProgram` maps cleanly to the agent `Output` schemas.
+- **Two-pass structured output** (`two_pass` in ) still applies — LlamaIndex's structured `PydanticProgram` maps cleanly to the agent `Output` schemas.
 - **Deviation:** LlamaIndex is added as the RAG engine; the agent orchestration stays on LangGraph (Pillar 4) rather than LlamaIndex `Workflows`, to keep fine-grained control.
 
 ---
@@ -105,22 +105,22 @@ llama-index-retrievers-bm25>=0.5
 
 **Why:** LangGraph is the leading framework for production-grade **stateful** multi-agent graphs — explicit nodes/edges, typed shared state, checkpointers, and `interrupt()` for human-in-the-loop. MCP is the universal standard for connecting agents to external tools/data (300M SDK downloads/mo; OAuth, elicitation, long-running tasks are enterprise-grade).
 
-**Where it plugs in (`aegis/`):**
-- **`aegis/graphs/`** — `CaseGraph` is currently a LangGraph-shaped pure-Python graph. **Replace with LangGraph `StateGraph`** using `CaseState` as the typed state and a **Postgres checkpointer** (`langgraph-checkpoint-postgres`, already a dep).
-- **`aegis/agents/`** — each specialist becomes a LangGraph node; edges encode the supervisor flow and the QA→(revise|approve) conditional.
-- **`aegis/tools/`** — `ToolRegistry` is an MCP-shaped registry. Expose each tool as an **MCP server** (stdio/HTTP) so agents call them via MCP; the `guardrails.check_tool_call` rail runs in front of every MCP call.
-- **`aegis/workflows/`** — Temporal workflows wrap LangGraph runs for durable, days-long HITL (approval gates via `interrupt()`/signals).
+**Where it plugs in ():**
+- **** — `CaseGraph` is currently a LangGraph-shaped pure-Python graph. **Replace with LangGraph `StateGraph`** using `CaseState` as the typed state and a **Postgres checkpointer** (`langgraph-checkpoint-postgres`, already a dep).
+- **** — each specialist becomes a LangGraph node; edges encode the supervisor flow and the QA→(revise|approve) conditional.
+- **** — `ToolRegistry` is an MCP-shaped registry. Expose each tool as an **MCP server** (stdio/HTTP) so agents call them via MCP; the `guardrails.check_tool_call` rail runs in front of every MCP call.
+- **** — Temporal workflows wrap LangGraph runs for durable, days-long HITL (approval gates via `interrupt`/signals).
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
 langgraph>=1.2
 langgraph-checkpoint-postgres>=2.0
 mcp>=1.1
-```
+`
 
-- **State machine:** `CaseState` (in `aegis/models/`) is the LangGraph state schema. Nodes: `evidence → typology → network → narrative → qa`; conditional edge on `QAReviewer.confidence` (≥0.85 approve, else revise/pending_review).
-- **MCP tool contracts:** `aegis/tools/__init__.py` `Tool.schema()` already emits `{name, description, input_schema, roles, write}` — directly mappable to an MCP `tools/list` response. Group tools around intent (few, well-described) per Anthropic's MCP guidance.
+- **State machine:** `CaseState` (in ) is the LangGraph state schema. Nodes: `evidence → typology → network → narrative → qa`; conditional edge on `QAReviewer.confidence` (≥0.85 approve, else revise/pending_review).
+- **MCP tool contracts:** `Tool.schema` already emits `{name, description, input_schema, roles, write}` — directly mappable to an MCP `tools/list` response. Group tools around intent (few, well-described) per Anthropic's MCP guidance.
 - **HITL:** `interrupt()` at the approval gate; Temporal holds the run across a multi-day wait.
 - **Governance:** MCP tool calls pass through `GuardrailEngine.check_tool_call` (least-privilege by role, write-approval gate) — the 2026 OWASP MCP Top-10 mitigations.
 
@@ -132,21 +132,21 @@ mcp>=1.1
 
 **Why:** Ollama is the frictionless local runtime for development (pull + run any HF model in one command). vLLM is the production standard for high-throughput GPU serving via **PagedAttention** + **continuous batching**, and exposes an OpenAI-compatible API with **structured outputs / constrained decoding** and `--tool-strict-level parameter` (needed for the two-pass anti-tool-suppression mitigation).
 
-**Where it plugs in (`aegis/`):**
-- **`aegis/llm/__init__.py`** — add `OllamaLLM` and `vLLMLLM` behind `BaseLLM`; `LLMRouter` selects provider by tier/env.
+**Where it plugs in ():**
+- **** — add `OllamaLLM` and `vLLMLLM` behind `BaseLLM`; `LLMRouter` selects provider by tier/env.
 - **Dev:** `LLM_PROVIDER=ollama` with a local model (e.g. a 7–14B instruct model).
 - **Prod:** `LLM_PROVIDER=vllm` → OpenAI-compatible endpoint; `structured()` uses JSON-schema constrained decoding.
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
-ollama>=0.4          # or just HTTP
-openai>=1.57         # vLLM is OpenAI-compatible
-```
+ollama>=0.4 # or just HTTP
+openai>=1.57 # vLLM is OpenAI-compatible
+`
 
 - **vLLM launch:** `vllm serve <model> --tool-call-parser hermes --tool-strict-level parameter --enable-auto-tool-choice` → guarantees schema-valid tool calls.
 - **Constraint-tax mitigation:** keep **two-pass** (`two_pass`) — pass 1 tools-on/no-schema (gather), pass 2 tools-off/schema-on (emit) — avoids the 2026 tool-suppression failure on open-weight models.
-- **Routing:** `LLMRouter.TIERS` maps `fast→Ollama small`, `reasoning→vLLM large`, etc. `Budget` (`aegis/llm/`) tracks token/cost per step.
+- **Routing:** `LLMRouter.TIERS` maps `fast→Ollama small`, `reasoning→vLLM large`, etc. `Budget` () tracks token/cost per step.
 - **Deviation:** `MockLLM` remains the offline default for CI; `OllamaLLM`/`vLLMLLM` are drop-in.
 
 ---
@@ -157,18 +157,18 @@ openai>=1.57         # vLLM is OpenAI-compatible
 
 **Why:** Langfuse is the leading **open-source, framework-agnostic** LLM engineering/tracing platform (self-hostable → data residency for a bank). Ragas is the standard for RAG evaluation (faithfulness, answer relevancy, context precision/recall).
 
-**Where it plugs in (`aegis/`):**
-- **Tracing:** instrument `aegis/agents/` (agent runs), `aegis/tools/` (tool calls), `aegis/rag/` (retrieval), `aegis/llm/` (model calls) with Langfuse spans. The repo already has OTel (`aegis/telemetry.py`) — Langfuse is an OTel-compatible backend.
-- **Eval:** `aegis/eval/` (`LLMJudge`, `EvalSuite`, CI gate) gains Ragas metrics alongside the existing rubric judge. The tagged regression suite (fact/multi-hop/temporal/unanswerable) becomes the Ragas dataset.
-- **Audit:** Langfuse traces feed the audit trail (`aegis/db/` `audit_events`), satisfying regulated traceability.
+**Where it plugs in ():**
+- **Tracing:** instrument (agent runs), (tool calls), (retrieval), (model calls) with Langfuse spans. The repo already has OTel () — Langfuse is an OTel-compatible backend.
+- **Eval:** (`LLMJudge`, `EvalSuite`, CI gate) gains Ragas metrics alongside the existing rubric judge. The tagged regression suite (fact/multi-hop/temporal/unanswerable) becomes the Ragas dataset.
+- **Audit:** Langfuse traces feed the audit trail ( `audit_events`), satisfying regulated traceability.
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
 langfuse>=2.50
 ragas>=0.2
 datasets>=3.0
-```
+`
 
 - **Trace shape:** each case = a Langfuse trace; each agent node/tool call/retrieval = a span with `input`, `output`, `latency`, `token usage`, `model`, `prompt_version`.
 - **Eval gate:** Ragas `evaluate()` on the tagged suite → `EvalSuite.gate()` blocks the merge if faithfulness/answer-relevancy regresses.
@@ -182,17 +182,17 @@ datasets>=3.0
 
 **Why:** NeMo Guardrails (NVIDIA, Apache-2.0) is the most comprehensive open toolkit for **programmable conversational rails** — it validates not just text but **tool calls and tool results** (the riskiest surface for indirect prompt injection). Llama Guard is the most widely adopted safeguard model for classifying input/output safety risk.
 
-**Where it plugs in (`aegis/`):**
-- **`aegis/guardrails/__init__.py`** — `GuardrailEngine` already implements fail-closed input/output/**tool-call** rails with deterministic-first checks. This is the integration point for NeMo rails (`input`, `output`, `tool` rail types) and Llama Guard as the model-backed classifier behind a rail.
-- **`aegis/tools/`** — every MCP tool call routes through `GuardrailEngine.check_tool_call` (least-privilege by role + write-approval gate).
-- **`aegis/security/`** — signed agent principals (HMAC), RBAC roles/scopes, JWT.
+**Where it plugs in ():**
+- **** — `GuardrailEngine` already implements fail-closed input/output/**tool-call** rails with deterministic-first checks. This is the integration point for NeMo rails (`input`, `output`, `tool` rail types) and Llama Guard as the model-backed classifier behind a rail.
+- **** — every MCP tool call routes through `GuardrailEngine.check_tool_call` (least-privilege by role + write-approval gate).
+- **** — signed agent principals (HMAC), RBAC roles/scopes, JWT.
 
 **Integration notes:**
-```python
+`python
 # requirements (optional extra)
 nemoguardrails>=0.24
-llama-cpp-python>=0.3   # or HF transformers for Llama Guard 4
-```
+llama-cpp-python>=0.3 # or HF transformers for Llama Guard 4
+`
 
 - **Deterministic-first:** keep regex/schema checks first (~2.6ms) — only invoke NeMo/Llama Guard where rules can't decide.
 - **Fail-closed:** `GUARDRAILS_FAIL_CLOSED=true` (already default) → if a model-backed check can't run, block and alert.
@@ -203,26 +203,26 @@ llama-cpp-python>=0.3   # or HF transformers for Llama Guard 4
 
 ## Wiring it all together — the request lifecycle
 
-```mermaid
+`mermaid
 flowchart LR
-    U[User / Analyst] --> API[FastAPI]
-    API --> LG[LangGraph Case Graph]
-    LG --> NODE[Agent Nodes<br/>aegis/agents]
-    NODE --> MCP[MCP Tools<br/>aegis/tools]
-    NODE --> RAG[LlamaIndex RAG<br/>aegis/rag]
-    RAG --> DOC[Docling Ingest]
-    RAG --> QDR[(Qdrant)]
-    RAG --> NEO[(Neo4j Graph)]
-    NODE --> LLM[LLM Router]
-    LLM --> OLL[Ollama dev]
-    LLM --> VLL[vLLM prod]
-    NODE --> GRAIL[Guardrail Engine]
-    GRAIL --> NEMO[NeMo / Llama Guard]
-    API --> LF[Langfuse Traces]
-    NODE --> LF
-    EVAL[Ragas + LLMJudge] --> LF
-    EVAL --> CI[CI Gate]
-```
+ U[User / Analyst] --> API[FastAPI]
+ API --> LG[LangGraph Case Graph]
+ LG --> NODE[Agent Nodes<br/>]
+ NODE --> MCP[MCP Tools<br/>]
+ NODE --> RAG[LlamaIndex RAG<br/>]
+ RAG --> DOC[Docling Ingest]
+ RAG --> QDR[(Qdrant)]
+ RAG --> NEO[(Neo4j Graph)]
+ NODE --> LLM[LLM Router]
+ LLM --> OLL[Ollama dev]
+ LLM --> VLL[vLLM prod]
+ NODE --> GRAIL[Guardrail Engine]
+ GRAIL --> NEMO[NeMo / Llama Guard]
+ API --> LF[Langfuse Traces]
+ NODE --> LF
+ EVAL[Ragas + LLMJudge] --> LF
+ EVAL --> CI[CI Gate]
+`
 
 **End-to-end trace (AML case):** Alert → `LangGraph CaseGraph` → `EvidenceGatherer` (LlamaIndex over Qdrant/Docling) → `TypologyAnalyst` (vLLM structured) → `NetworkAnalyst` (Neo4j graph) → `NarrativeWriter` (two-pass, citation-required) → `QAReviewer` → HITL `interrupt()` (Temporal). Every step: OTel→Langfuse trace, NeMo tool-rail on each MCP call, audit event in Postgres, and Ragas/Judge score sampled into the eval suite.
 
@@ -232,19 +232,19 @@ flowchart LR
 
 Add to `pyproject.toml` `[project.optional-dependencies]`:
 
-```toml
+`toml
 ai = [
-  "torch>=2.4", "transformers>=4.45", "datasets>=3.0", "peft>=0.13",
-  "unsloth>=2024.11", "sentence-transformers>=3.2",
-  "docling>=2.9", "qdrant-client>=1.12",
-  "llama-index>=0.12", "llama-index-vector-stores-qdrant>=0.4",
-  "llama-index-graph-stores-neo4j>=0.4", "llama-index-retrievers-bm25>=0.5",
-  "langgraph>=1.2", "langgraph-checkpoint-postgres>=2.0", "mcp>=1.1",
-  "ollama>=0.4", "openai>=1.57",
-  "langfuse>=2.50", "ragas>=0.2",
-  "nemoguardrails>=0.24",
+ "torch>=2.4", "transformers>=4.45", "datasets>=3.0", "peft>=0.13",
+ "unsloth>=2024.11", "sentence-transformers>=3.2",
+ "docling>=2.9", "qdrant-client>=1.12",
+ "llama-index>=0.12", "llama-index-vector-stores-qdrant>=0.4",
+ "llama-index-graph-stores-neo4j>=0.4", "llama-index-retrievers-bm25>=0.5",
+ "langgraph>=1.2", "langgraph-checkpoint-postgres>=2.0", "mcp>=1.1",
+ "ollama>=0.4", "openai>=1.57",
+ "langfuse>=2.50", "ragas>=0.2",
+ "nemoguardrails>=0.24",
 ]
-```
+`
 
 Install with: `pip install -e ".[dev,ai]"` (GPU extras: `unsloth`, `torch` CUDA build).
 
@@ -254,7 +254,7 @@ Install with: `pip install -e ".[dev,ai]"` (GPU extras: `unsloth`, `torch` CUDA 
 
 | Pillar | Tool | Repo today | Change |
 |---|---|---|---|
-| 1 | PyTorch/HF/Unsloth | `MockLLM`, `LLMRouter` tiers | Add `HF`/`Ollama` LLMs; GNN scorer in `aegis/risk/` |
+| 1 | PyTorch/HF/Unsloth | `MockLLM`, `LLMRouter` tiers | Add `HF`/`Ollama` LLMs; GNN scorer in |
 | 2 | Docling + Qdrant | `pgvector` DDL, in-memory `HybridRetriever` | Qdrant backend + Docling ingestion |
 | 3 | LlamaIndex | hand-rolled `HybridRetriever` + `GraphStore` | LlamaIndex query engines behind `Router` |
 | 4 | LangGraph + MCP | LangGraph-*shaped* `CaseGraph` + `ToolRegistry` | Real `StateGraph` + Postgres checkpointer; MCP servers |

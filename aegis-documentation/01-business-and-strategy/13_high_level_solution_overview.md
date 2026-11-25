@@ -8,20 +8,20 @@ Aegis Bank is an AI-first retail bank built on a bought real-time core, an event
 
 ## High-level architecture
 
-```mermaid
+`mermaid
 flowchart TD
-    CH[Channels: Mobile / Web / Voice] --> EDGE[Edge: APISIX+WAF, Keycloak passkeys]
-    EDGE --> BFF[BFF: GraphQL/REST]
-    BFF --> CORE[Core Banking: ledger, product engine, CIF]
-    BFF --> AI[AI Platform: LangGraph, LlamaIndex, vLLM]
-    CORE --> BUS[(Event Bus: Kafka/Redpanda + Flink)]
-    BUS --> RISK[AI Risk: fraud, AML, agents]
-    BUS --> DATA[(Data: Iceberg, ClickHouse, Feast)]
-    RISK --> GUARD[Guardrails: NeMo, Llama Guard]
-    AI --> GUARD
-    RISK --> AUDIT[(Audit Log)]
-    AI --> OBS[Langfuse + OTel]
-```
+ CH[Channels: Mobile / Web / Voice] --> EDGE[Edge: APISIX+WAF, Keycloak passkeys]
+ EDGE --> BFF[BFF: GraphQL/REST]
+ BFF --> CORE[Core Banking: ledger, product engine, CIF]
+ BFF --> AI[AI Platform: LangGraph, LlamaIndex, vLLM]
+ CORE --> BUS[(Event Bus: Kafka/Redpanda + Flink)]
+ BUS --> RISK[AI Risk: fraud, AML, agents]
+ BUS --> DATA[(Data: Iceberg, ClickHouse, Feast)]
+ RISK --> GUARD[Guardrails: NeMo, Llama Guard]
+ AI --> GUARD
+ RISK --> AUDIT[(Audit Log)]
+ AI --> OBS[Langfuse + OTel]
+`
 
 ## Component responsibilities
 
@@ -33,7 +33,7 @@ flowchart TD
 | **Core banking** | System of record: ledger, products, GL, CIF. |
 | **Event bus** | Real-time backbone; every txn → event. |
 | **AI platform** | Agents, RAG, inference, feature store. |
-| **AI risk** | Fraud, AML, compliance intelligence (`aegis/`). |
+| **AI risk** | Fraud, AML, compliance intelligence (). |
 | **Data** | Lakehouse, warehouse, feature store. |
 | **Guardrails** | Fail-closed safety on all AI. |
 | **Observability** | Tracing, eval, audit. |

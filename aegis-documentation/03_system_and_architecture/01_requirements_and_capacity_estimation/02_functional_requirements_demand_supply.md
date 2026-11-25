@@ -22,7 +22,7 @@
 | Accounts/payments/cards | Core banking engine + Java microservices (Spring Boot / Quarkus) | **Apache Fineract** (Apache 2.0, ledger + REST API) or **Mifos X** (MPL 2.0, Fineract + web/mobile), **TigerBeetle** (high-throughput double-entry ledger) | Temenos, Mambu, Thought Machine |
 | Card issuing & payment orchestration | Payments layer | **Hyperswitch** (Apache 2.0, Rust; 100+ processors, card vault), **Apache Fineract** for ledger | Marqeta, Stripe Issuing |
 | Fraud scoring | AI risk plane | GNN/GBM + vLLM (open models) | Feedzai, Featurespace |
-| KYC/AML | Compliance plane (`aegis/`) | Docling, LlamaIndex, NeMo, **Apache Fineract** audit journal | Actimize, NICE |
+| KYC/AML | Compliance plane () | Docling, LlamaIndex, NeMo, **Apache Fineract** audit journal | Actimize, NICE |
 | Lending | Lending service | XGBoost + LangGraph; **Apache Fineract** loan/savings product engine | Temenos, Mambu |
 | Assistant | AI platform | LangGraph + LlamaIndex | — |
 | Data | Data platform | Kafka/Redpanda, Iceberg, ClickHouse | Snowflake, Databricks |
@@ -39,7 +39,7 @@
 | 6 | Savings, Wealth & Investing | On demand | Core + Wealth (AI/Data) + robo-advisor | RM copilot, robo-advisory, financial planning, tax-loss harvesting, market-scout |
 | 7 | Money Management & Insights | On demand | Data platform + AI insights | — |
 | 8 | Credit & Financial Health | On demand | Data + AI (credit score) | — |
-| 9 | Security & Fraud | Every txn | `aegis/` Fraud + Identity | Real-time fraud scoring, alert triage, scam interception |
+| 9 | Security & Fraud | Every txn | Fraud + Identity | Real-time fraud scoring, alert triage, scam interception |
 | 10 | Customer Service & AI | 2M/month queries | AI platform (agents) + BFF | Contact-centre agent, account/card servicing, agent assist, voice banking, complaints, digital-human guide, coaching |
 | 11 | Business & Commercial Banking | On demand | Business services | — |
 | 12 | Treasury & Cash Management | On demand | Treasury services | Liquidity monitoring, reconciliation, forecasting |
@@ -52,7 +52,7 @@
 | 19 | Rewards & Loyalty | On demand | Rewards service | — |
 | 20 | Insurance & Protection | On demand | Insurance service | — |
 | 21 | Accessibility & Inclusion | Always (WCAG) | Channels (WCAG 2.2 AA) | — |
-| 22 | Compliance, Risk & Regulatory | KYC onboarding + ongoing | `aegis/` Compliance + Audit | AML monitoring, investigation agent, SAR/STR drafting, KYC/KYB, sanctions/PEP, regulatory reporting, change monitoring, disputes, agentic BI |
+| 22 | Compliance, Risk & Regulatory | KYC onboarding + ongoing | Compliance + Audit | AML monitoring, investigation agent, SAR/STR drafting, KYC/KYB, sanctions/PEP, regulatory reporting, change monitoring, disputes, agentic BI |
 | 23 | Platform, Data & AI Infrastructure | Event-driven | Platform + Data + AI plane | Developer augmentation, cyber triage, knowledge search, audit copilot, document/vision extraction |
 | 24 | Notifications, Personalisation & UX | On demand | Notification service + AI personalisation | — |
 | 25 | International / Cross-border | On demand | Payments (FX) + International service | — |

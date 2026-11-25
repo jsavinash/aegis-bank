@@ -20,14 +20,14 @@
 
 ## Agent plugins
 
-```python
+`python
 registry.register(Tool(
-    name="get_customer_360",
-    handler=get_customer_360,
-    roles={"risk"},
-    is_write=False,
+ name="get_customer_360",
+ handler=get_customer_360,
+ roles={"risk"},
+ is_write=False,
 ))
-```
+`
 
 ## Safety
 

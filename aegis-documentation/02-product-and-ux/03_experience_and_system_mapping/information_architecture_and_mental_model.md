@@ -2,7 +2,7 @@
 
 ## Top-level IA (mobile app)
 
-```
+`
 Home (balance, quick actions, insights)
 ├── Accounts (list, detail, pots)
 ├── Payments (send, request, pay a bill, scheduled)
@@ -13,7 +13,7 @@ Home (balance, quick actions, insights)
 ├── Insights (spending, budgets, credit score)
 ├── Assistant (agentic chat/voice)
 └── Profile & Settings (security, accessibility, privacy)
-```
+`
 
 ## Mental model
 

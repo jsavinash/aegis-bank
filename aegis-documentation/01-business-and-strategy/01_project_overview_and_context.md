@@ -19,12 +19,12 @@ A greenfield AI-first bank can:
 1. **Deliver the full product surface** — ~485 features across 37 sections (see [`14_feature_catalog.md`](14_feature_catalog.md)), built on a **config-driven core** (Thought Machine/Mambu) so 485 features ≠ 485 codebases. **Phase 1 production release** (accounts, cards, payments, security base) launches in ~3 months; Phase 2 adds full lending suite, multi-currency, passkeys, scam detection, robo-advisor; Phase 3 deepens with mortgages, agentic AI, business banking, embedded finance.
 
 2. **Use AI as the decision engine across ~46 use cases** (see [`14_feature_catalog.md`](14_feature_catalog.md)) organized by four agent archetypes:
-   - **Monitoring agents** (hot path): real-time fraud scoring (<150ms GNN/GBM), AML transaction monitoring, sanctions/PEP screening, cybersecurity triage.
-   - **Task agents**: fraud alert triage, SAR narrative drafting, KYC/CDD automation, credit underwriting copilot, document extraction, developer augmentation.
-   - **Workflow agents**: KYC onboarding, loan origination, reconciliation, collections, regulatory reporting, customer servicing (contact centre + account/card agent).
-   - **Multi-agent systems**: Aegis-IR (AML investigation), credit underwriting pod, wealth advice pod, regulatory change intelligence (Lexicon).
+ - **Monitoring agents** (hot path): real-time fraud scoring (<150ms GNN/GBM), AML transaction monitoring, sanctions/PEP screening, cybersecurity triage.
+ - **Task agents**: fraud alert triage, SAR narrative drafting, KYC/CDD automation, credit underwriting copilot, document extraction, developer augmentation.
+ - **Workflow agents**: KYC onboarding, loan origination, reconciliation, collections, regulatory reporting, customer servicing (contact centre + account/card agent).
+ - **Multi-agent systems**: Aegis-IR (AML investigation), credit underwriting pod, wealth advice pod, regulatory change intelligence (Lexicon).
 
-   Sequencing rule: **fraud + servicing first** (lower fair-lending exposure, builds operating muscle) → AML as augmentation layer → underwriting only once governance model exists.
+ Sequencing rule: **fraud + servicing first** (lower fair-lending exposure, builds operating muscle) → AML as augmentation layer → underwriting only once governance model exists.
 
 3. **Turn compliance into competitive advantage** — every AI decision is traceable to data, model, policy, and human via: eval-gated CI (Ragas + Braintrust), grounded generation (citation-required), durable HITL (Temporal `interrupt()`), fail-closed guardrails (NeMo + Llama Guard), full OTel traceability. Regulators get audit-ready artefacts; competitors get pilot factories.
 

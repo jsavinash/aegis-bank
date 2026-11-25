@@ -74,54 +74,54 @@ The three projects are deliberately *architecturally different*, not three flavo
 
 ## 4. System architecture & data flow
 
-```mermaid
+`mermaid
 flowchart TD
-    subgraph Sources["Systems of Record (read-only, via MCP)"]
-        TX[Core Ledger]
-        KYC[KYC / CIF]
-        SCR[Sanctions Screening]
-        MEDIA[Adverse Media]
-        CASE[Case Mgmt]
-    end
+ subgraph Sources["Systems of Record (read-only, via MCP)"]
+ TX[Core Ledger]
+ KYC[KYC / CIF]
+ SCR[Sanctions Screening]
+ MEDIA[Adverse Media]
+ CASE[Case Mgmt]
+ end
 
-    subgraph Orchestration["LangGraph Case Graph (Temporal Workflow)"]
-        SUP[Case Supervisor<br/>typed CaseState]
-        EG[Evidence Gatherer]
-        TA[Typology Analyst]
-        NA[Network Analyst]
-        NW[Narrative Writer]
-        QR[Policy / QA Reviewer]
-        SUP --> EG --> TA --> NA --> NW --> QR
-        QR -->|reject / low-confidence| TA
-    end
+ subgraph Orchestration["LangGraph Case Graph (Temporal Workflow)"]
+ SUP[Case Supervisor<br/>typed CaseState]
+ EG[Evidence Gatherer]
+ TA[Typology Analyst]
+ NA[Network Analyst]
+ NW[Narrative Writer]
+ QR[Policy / QA Reviewer]
+ SUP --> EG --> TA --> NA --> NW --> QR
+ QR -->|reject / low-confidence| TA
+ end
 
-    subgraph Guards["Guardrail & Policy Plane"]
-        NEMO[NeMo Guardrails<br/>input/output/tool-call rails]
-        LG[Llama Guard 4<br/>content classifier]
-        IZ[Idempotency + Policy Engine]
-    end
+ subgraph Guards["Guardrail & Policy Plane"]
+ NEMO[NeMo Guardrails<br/>input/output/tool-call rails]
+ LG[Llama Guard 4<br/>content classifier]
+ IZ[Idempotency + Policy Engine]
+ end
 
-    subgraph Data["Knowledge Layer"]
-        HYBRID[(Hybrid Search<br/>pgvector + BM25 + reranker)]
-        GRAPH[(Neo4j / Graphiti<br/>entity+temporal graph)]
-        STORE[(Postgres<br/>case state + audit)]
-    end
+ subgraph Data["Knowledge Layer"]
+ HYBRID[(Hybrid Search<br/>pgvector + BM25 + reranker)]
+ GRAPH[(Neo4j / Graphiti<br/>entity+temporal graph)]
+ STORE[(Postgres<br/>case state + audit)]
+ end
 
-    subgraph Human["HITL"]
-        ANALYST[Analyst Console<br/>approve / edit / reject]
-    end
+ subgraph Human["HITL"]
+ ANALYST[Analyst Console<br/>approve / edit / reject]
+ end
 
-    ALERT[Alert arrives] --> SUP
-    SUP --> NEMO
-    EG -->|MCP tool calls| NEMO --> IZ --> TX & KYC & SCR & MEDIA & CASE
-    TA --> HYBRID
-    NA --> GRAPH
-    SUP -. checkpoint .-> STORE
-    NW --> LG
-    QR -->|approval required| ANALYST
-    ANALYST -->|resume| SUP
-    IZ -->|file SAR / freeze| EXT[External Action<br/>idempotency-keyed]
-```
+ ALERT[Alert arrives] --> SUP
+ SUP --> NEMO
+ EG -->|MCP tool calls| NEMO --> IZ --> TX & KYC & SCR & MEDIA & CASE
+ TA --> HYBRID
+ NA --> GRAPH
+ SUP -. checkpoint .-> STORE
+ NW --> LG
+ QR -->|approval required| ANALYST
+ ANALYST -->|resume| SUP
+ IZ -->|file SAR / freeze| EXT[External Action<br/>idempotency-keyed]
+`
 
 **Execution trace (complex request).** *Alert A-8841: three cash deposits just under $10k across two branches, same beneficiary.*
 
@@ -209,40 +209,40 @@ flowchart TD
 
 ## 4. System architecture & data flow
 
-```mermaid
+`mermaid
 flowchart LR
-    subgraph Hot["Hot Path (p99 under 150ms, NO LLM)"]
-        AUTH[Auth Request] --> FEAT[Feature Store<br/>Redis/DynamoDB]
-        FEAT --> GNN[GNN / GBM Scoring]
-        GNN --> DEC{Score vs<br/>threshold}
-        DEC -->|clear| APPROVE[Approve]
-        DEC -->|clear-risk| DECLINE[Decline]
-        DEC -->|ambiguous| WARM
-    end
+ subgraph Hot["Hot Path (p99 under 150ms, NO LLM)"]
+ AUTH[Auth Request] --> FEAT[Feature Store<br/>Redis/DynamoDB]
+ FEAT --> GNN[GNN / GBM Scoring]
+ GNN --> DEC{Score vs<br/>threshold}
+ DEC -->|clear| APPROVE[Approve]
+ DEC -->|clear-risk| DECLINE[Decline]
+ DEC -->|ambiguous| WARM
+ end
 
-    subgraph Warm["Warm Path (seconds, agentic)"]
-        WARM[Risk Analyst Agent<br/>LangGraph + Temporal]
-        WARM --> RET[Hybrid Retrieve<br/>typologies/customer history]
-        WARM --> GQ[Graph Neighbourhood<br/>Neo4j 2-hop]
-        RET --> REASON[Reasoning Model<br/>Opus 5.5 / Argon]
-        GQ --> REASON
-        REASON --> GUARD[NeMo Guardrails<br/>tool-result rails]
-        GUARD --> VERDICT{Structured Verdict}
-        VERDICT -->|approve| APPROVE
-        VERDICT -->|step-up| STEPUP[3DS / Biometric Challenge]
-        VERDICT -->|decline| DECLINE
-        VERDICT -->|escalate| ANALYST[Analyst Queue]
-    end
+ subgraph Warm["Warm Path (seconds, agentic)"]
+ WARM[Risk Analyst Agent<br/>LangGraph + Temporal]
+ WARM --> RET[Hybrid Retrieve<br/>typologies/customer history]
+ WARM --> GQ[Graph Neighbourhood<br/>Neo4j 2-hop]
+ RET --> REASON[Reasoning Model<br/>Opus 5.5 / Argon]
+ GQ --> REASON
+ REASON --> GUARD[NeMo Guardrails<br/>tool-result rails]
+ GUARD --> VERDICT{Structured Verdict}
+ VERDICT -->|approve| APPROVE
+ VERDICT -->|step-up| STEPUP[3DS / Biometric Challenge]
+ VERDICT -->|decline| DECLINE
+ VERDICT -->|escalate| ANALYST[Analyst Queue]
+ end
 
-    subgraph Learn["Learning Loop"]
-        CHARGE[Chargebacks / Analyst Labels] --> STORE[(Label Store)]
-        STORE --> RETRAIN[Retrain GNN + exemplars]
-        RETRAIN --> CI[CI Eval Gate]
-        CI --> GNN
-    end
+ subgraph Learn["Learning Loop"]
+ CHARGE[Chargebacks / Analyst Labels] --> STORE[(Label Store)]
+ STORE --> RETRAIN[Retrain GNN + exemplars]
+ RETRAIN --> CI[CI Eval Gate]
+ CI --> GNN
+ end
 
-    KAFKA[Kafka txn stream] --> FEAT
-```
+ KAFKA[Kafka txn stream] --> FEAT
+`
 
 **Execution trace.** *Card-not-present $1,840 at a new merchant, device seen 3× in 1 hour across 4 cards.*
 
@@ -322,40 +322,40 @@ flowchart LR
 
 ## 4. System architecture & data flow
 
-```mermaid
+`mermaid
 flowchart TD
-    subgraph Ingest["Ingestion (durable Temporal workflows)"]
-        SRC[Regulators / RSS / Email] --> IA[Ingest Agent<br/>classify + extract obligations]
-        IA --> GX[Temporal KG<br/>Neo4j + Graphiti<br/>validity intervals]
-        IA --> VDB[(pgvector + BM25)]
-    end
+ subgraph Ingest["Ingestion (durable Temporal workflows)"]
+ SRC[Regulators / RSS / Email] --> IA[Ingest Agent<br/>classify + extract obligations]
+ IA --> GX[Temporal KG<br/>Neo4j + Graphiti<br/>validity intervals]
+ IA --> VDB[(pgvector + BM25)]
+ end
 
-    subgraph Query["Query / Mapping"]
-        Q[Compliance Question] --> ROUTER{Query Router}
-        ROUTER -->|local lookup| HYBRID[Hybrid + Reranker]
-        ROUTER -->|corpus-wide / temporal| GRAPH[GraphRAG traversal]
-        HYBRID --> REASON[Gap Analyst<br/>Opus 5.5 reasoning]
-        GRAPH --> REASON
-    end
+ subgraph Query["Query / Mapping"]
+ Q[Compliance Question] --> ROUTER{Query Router}
+ ROUTER -->|local lookup| HYBRID[Hybrid + Reranker]
+ ROUTER -->|corpus-wide / temporal| GRAPH[GraphRAG traversal]
+ HYBRID --> REASON[Gap Analyst<br/>Opus 5.5 reasoning]
+ GRAPH --> REASON
+ end
 
-    subgraph Control["Control Library"]
-        CTRL[(Controls / Policy / Code<br/>git + pgvector)]
-    end
+ subgraph Control["Control Library"]
+ CTRL[(Controls / Policy / Code<br/>git + pgvector)]
+ end
 
-    REASON --> GUARD[NeMo Guardrails<br/>groundedness + injection]
-    GUARD --> GAP[Gap Register<br/>schema-valid JSON]
-    GAP --> HITL{Compliance Officer<br/>sign-off}
-    HITL -->|approve| REPORT[Audit-ready report]
-    HITL -->|reject| REASON
+ REASON --> GUARD[NeMo Guardrails<br/>groundedness + injection]
+ GUARD --> GAP[Gap Register<br/>schema-valid JSON]
+ GAP --> HITL{Compliance Officer<br/>sign-off}
+ HITL -->|approve| REPORT[Audit-ready report]
+ HITL -->|reject| REASON
 
-    subgraph Eval["Eval Loop"]
-        SUITE[Regression Suite<br/>fact/multi-hop/temporal/unanswerable]
-        SUITE --> CI[CI Gate]
-        PROD[Production traces] --> JUDGE[Calibrated LLM Judge]
-        JUDGE --> SUITE
-    end
-    REASON -.-> JUDGE
-```
+ subgraph Eval["Eval Loop"]
+ SUITE[Regression Suite<br/>fact/multi-hop/temporal/unanswerable]
+ SUITE --> CI[CI Gate]
+ PROD[Production traces] --> JUDGE[Calibrated LLM Judge]
+ JUDGE --> SUITE
+ end
+ REASON -.-> JUDGE
+`
 
 **Execution trace.** *"Does our KYC refresh policy satisfy the new CDD periodic-review cadence for high-risk customers?"*
 

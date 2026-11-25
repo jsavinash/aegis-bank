@@ -41,8 +41,8 @@
 |---|---|---|---|---|
 | Core ledger / product engine | **Thought Machine Vault** or **Mambu** (buy) · **build** on an event-sourced ledger if full control needed | Config-driven products (accounts/loans/deposits = config, not code) → 485-feature breadth without 485 codebases; real-time multi-currency ledger | Temenos / Oracle FLEXCUBE / 10x / TCS BaNCS; open-source: **Apache Fineract**, **Frappe/Meta** | — (not yet built) |
 | General ledger | Core-native GL + double-entry sub-ledgers | Auditability, regulatory reporting | — | — |
-| Event backbone | **Redpanda** (Kafka-compatible) or **Apache Kafka** + **Flink** | Every txn emits an event → real-time fraud/AML/analytics; 10x pattern | NATS / Pulsar / Kinesis | `aegis/db` (Postgres) only |
-| Transaction DB | **PostgreSQL 16** (primary) + **pgvector** | One DB for ledger, audit, and (small) vectors; transactional JOINs | CockroachDB / Yugabyte for multi-region | ✅ `aegis/db` |
+| Event backbone | **Redpanda** (Kafka-compatible) or **Apache Kafka** + **Flink** | Every txn emits an event → real-time fraud/AML/analytics; 10x pattern | NATS / Pulsar / Kinesis | (Postgres) only |
+| Transaction DB | **PostgreSQL 16** (primary) + **pgvector** | One DB for ledger, audit, and (small) vectors; transactional JOINs | CockroachDB / Yugabyte for multi-region | ✅ |
 
 **Verdict:** Buy the core (Vault/Mambu) if speed-to-market matters; build only if "ledger as a differentiator" is core to the thesis. Either way, **event-driven from day one** — the AI plane is impossible without a real-time event stream.
 
@@ -52,7 +52,7 @@
 
 | Concern | Primary pick | Why | Alternative | Repo today |
 |---|---|---|---|---|
-| Identity / CIAM | **Keycloak** (self-host) or **Ory Kratos/Hydra** — with **FIDO2/passkeys** + risk-adaptive MFA | Passkeys in only 5% of apps (Ostorlab) → competitive edge; self-host for data residency | Auth0 / Okta CIC / AWS Cognito | `aegis/security` (JWT + RBAC) |
+| Identity / CIAM | **Keycloak** (self-host) or **Ory Kratos/Hydra** — with **FIDO2/passkeys** + risk-adaptive MFA | Passkeys in only 5% of apps (Ostorlab) → competitive edge; self-host for data residency | Auth0 / Okta CIC / AWS Cognito | (JWT + RBAC) |
 | API gateway / WAF | **APISIX** or **Cloudflare** + **AWS WAF** | Rate limiting, mTLS, schema validation, bot defense; richer AI plugin set (ai-proxy, ai-rate-limiting, ai-cache, ai-rag); 36 HTTP extended Gateway API features | Kong (Enterprise) / Envoy / AWS API Gateway | — |
 | BFF / API layer | **GraphQL (Apollo)** for app BFF + **REST/OpenAPI** for partner/open-banking | GraphQL for flexible client queries; REST for PSD2/partner contracts | tRPC / gRPC | ✅ FastAPI routers |
 | API docs / contract | **OpenAPI 3.1** + **Spectral** linting in CI | Contract-first; gates breaking changes | — | FastAPI auto-docs |
@@ -65,7 +65,7 @@
 |---|---|---|---|---|
 | Mobile app | **React Native** (Expo) or **Flutter**; native modules for biometrics/secure enclave | One codebase for iOS+Android; 2026 neobank standard; native modules for passkeys/secure key | Native Swift/Kotlin (max performance) | `web/` empty |
 | Web banking | **Next.js** (TypeScript) + **Tailwind + shadcn/ui** | SSR/SEO, fast, accessible components | Remix / SvelteKit | — |
-| Conversational AI layer | **Agentic assistant** (LangGraph) as primary nav + traditional UI fallback | AI-first UX; escalate to human for fraud/disputes (J.D. Power) | — | `aegis/agents` |
+| Conversational AI layer | **Agentic assistant** (LangGraph) as primary nav + traditional UI fallback | AI-first UX; escalate to human for fraud/disputes (J.D. Power) | — | |
 | Design system | **WCAG 2.2 AA**-compliant component library | EAA legal requirement in EU | — | — |
 | Accessibility | Automated axe-core checks in CI + manual screen-reader testing | WCAG 2.2 AA is law | — | — |
 
@@ -77,19 +77,19 @@ This is where AI-first is won or lost. The 7 pillars from `04_ai_stack_pillars.m
 
 | Concern | Primary pick | Why | Alternative | Repo today |
 |---|---|---|---|---|
-| **Agent orchestration** | **LangGraph** (typed state graphs) | Fine-grained control, `interrupt()` HITL, checkpointers | PydanticAI (single-agent), CrewAI (role-based) | `aegis/graphs` (LangGraph-shaped) |
-| **Durable execution** | **Temporal** | Crash-proof, days-long HITL waits, idempotent side effects | DBOS / Restate / Inngest | `aegis/workflows` (Temporal stubs) |
-| **Tool connectivity** | **MCP** servers per system-of-record | Universal agent-tool standard; OAuth, elicitation | Direct function calling | `aegis/tools` (MCP-shaped) |
-| **RAG engine** | **LlamaIndex** (vector + KG + fusion + router) | Purpose-built RAG; GraphRAG + hybrid + routing | LangChain, Haystack | `aegis/rag` (hand-rolled) |
-| **Vector DB** | **Qdrant** | Rich metadata filtering (tenant isolation), HNSW, local→cloud | pgvector (<10M), Weaviate, Milvus | `aegis/db` (pgvector DDL) |
-| **Graph DB** | **Neo4j** + **Graphiti** (temporal KG) | Temporal validity (superseded rules), mule-ring detection | TigerGraph, Memgraph, Postgres+Age | `aegis/rag` (in-memory GraphStore) |
-| **Inference (prod)** | **vLLM** (PagedAttention, constrained decoding, `--tool-strict-level parameter`) | High-throughput, OpenAI-compatible, schema-valid outputs | TGI, SGLang, TensorRT-LLM | `aegis/llm` (MockLLM) |
+| **Agent orchestration** | **LangGraph** (typed state graphs) | Fine-grained control, `interrupt` HITL, checkpointers | PydanticAI (single-agent), CrewAI (role-based) | (LangGraph-shaped) |
+| **Durable execution** | **Temporal** | Crash-proof, days-long HITL waits, idempotent side effects | DBOS / Restate / Inngest | (Temporal stubs) |
+| **Tool connectivity** | **MCP** servers per system-of-record | Universal agent-tool standard; OAuth, elicitation | Direct function calling | (MCP-shaped) |
+| **RAG engine** | **LlamaIndex** (vector + KG + fusion + router) | Purpose-built RAG; GraphRAG + hybrid + routing | LangChain, Haystack | (hand-rolled) |
+| **Vector DB** | **Qdrant** | Rich metadata filtering (tenant isolation), HNSW, local→cloud | pgvector (<10M), Weaviate, Milvus | (pgvector DDL) |
+| **Graph DB** | **Neo4j** + **Graphiti** (temporal KG) | Temporal validity (superseded rules), mule-ring detection | TigerGraph, Memgraph, Postgres+Age | (in-memory GraphStore) |
+| **Inference (prod)** | **vLLM** (PagedAttention, constrained decoding, `--tool-strict-level parameter`) | High-throughput, OpenAI-compatible, schema-valid outputs | TGI, SGLang, TensorRT-LLM | (MockLLM) |
 | **Inference (dev)** | **Ollama** | One-command local models | LM Studio | — |
-| **Model gateway** | **LiteLLM** (or Portkey) | Multi-provider routing, fallbacks, budgets, caching | OpenRouter | `aegis/llm` LLMRouter |
+| **Model gateway** | **LiteLLM** (or Portkey) | Multi-provider routing, fallbacks, budgets, caching | OpenRouter | LLMRouter |
 | **Training / fine-tune** | **PyTorch + HF Transformers + PEFT/Unsloth** | LoRA/QLoRA on one GPU; standard | — | — |
-| **Embeddings / rerank** | **sentence-transformers / BGE** + cross-encoder reranker | Reranking is the biggest retrieval-quality lever | Cohere/AI21 rerank API | `aegis/rag` |
+| **Embeddings / rerank** | **sentence-transformers / BGE** + cross-encoder reranker | Reranking is the biggest retrieval-quality lever | Cohere/AI21 rerank API | |
 | **Feature store** | **Feast** (offline: Iceberg/S3, online: Redis) | Online/offline parity prevents training-serving skew | Tecton, Hopsworks | — |
-| **ML serving (non-LLM)** | **BentoML** or **KServe** / **Ray Serve** | GNN/GBM fraud models at low latency | Triton, Seldon | `aegis/risk` (deterministic scorer) |
+| **ML serving (non-LLM)** | **BentoML** or **KServe** / **Ray Serve** | GNN/GBM fraud models at low latency | Triton, Seldon | (deterministic scorer) |
 | **Document AI** | **Docling** (IBM) → Markdown/JSON | Best open parser for statements/KYC/regulatory PDFs | LlamaParse, Unstructured | — |
 
 ---
@@ -112,9 +112,9 @@ This is where AI-first is won or lost. The 7 pillars from `04_ai_stack_pillars.m
 
 | Concern | Primary pick | Why | Alternative | Repo today |
 |---|---|---|---|---|
-| **LLM tracing** | **Langfuse** (self-hosted in VPC) | Framework-agnostic, open-source, data residency | LangSmith, Arize Phoenix | `aegis/telemetry` (OTel) |
-| **RAG eval** | **Ragas** + **Braintrust** (eval-as-CI) | Faithfulness/relevancy metrics; CI gates on PR | DeepEval | `aegis/eval` (LLMJudge + suite) |
-| **LLM-as-judge** | Calibrated, bias-controlled, pinned (existing) | Consistent scoring across model/prompt changes | — | ✅ `aegis/eval` |
+| **LLM tracing** | **Langfuse** (self-hosted in VPC) | Framework-agnostic, open-source, data residency | LangSmith, Arize Phoenix | (OTel) |
+| **RAG eval** | **Ragas** + **Braintrust** (eval-as-CI) | Faithfulness/relevancy metrics; CI gates on PR | DeepEval | (LLMJudge + suite) |
+| **LLM-as-judge** | Calibrated, bias-controlled, pinned (existing) | Consistent scoring across model/prompt changes | — | ✅ |
 | **Metrics/logs/traces** | **OpenTelemetry** → **Grafana** (Tempo/Loki/Prometheus) or **Datadog** | One standard for every layer | — | ✅ OTel |
 | **APM / real user monitoring** | **Grafana Faro** / Datadog RUM | Front-end + API performance | Sentry | — |
 | **AIOps / anomaly** | **Grafana ML** / Datadog Watchdog | Detect fraud-model drift, latency anomalies | — | — |
@@ -125,11 +125,11 @@ This is where AI-first is won or lost. The 7 pillars from `04_ai_stack_pillars.m
 
 | Concern | Primary pick | Why | Alternative | Repo today |
 |---|---|---|---|---|
-| **Guardrails** | **NeMo Guardrails** + **Llama Guard 4** | Only framework validating tool calls/results; fail-closed | Guardrails AI | `aegis/guardrails` |
+| **Guardrails** | **NeMo Guardrails** + **Llama Guard 4** | Only framework validating tool calls/results; fail-closed | Guardrails AI | |
 | **Secrets management** | **HashiCorp Vault** | Dynamic secrets, rotation, HSM-backed | AWS Secrets Manager | — |
-| **Policy / authz** | **Open Policy Agent (OPA)** / Cedar | Externalized, auditable authorization | — | `aegis/security` (RBAC) |
-| **KYC / KYB / AML** | **ComplyAdvantage / Alloy / Unit21** (or in-house `aegis/`) | Sanctions/PEP/adverse-media data + orchestration | Sumsub, Onfido | ✅ `aegis/compliance` |
-| **Fraud data** | **Sift / Forter / Featurespace** (or in-house) | Network effect + consortium data | — | ✅ `aegis/risk` |
+| **Policy / authz** | **Open Policy Agent (OPA)** / Cedar | Externalized, auditable authorization | — | (RBAC) |
+| **KYC / KYB / AML** | **ComplyAdvantage / Alloy / Unit21** (or in-house ) | Sanctions/PEP/adverse-media data + orchestration | Sumsub, Onfido | ✅ |
+| **Fraud data** | **Sift / Forter / Featurespace** (or in-house) | Network effect + consortium data | — | ✅ |
 | **SIEM** | **Elastic Security / Splunk** | Compliance-grade logging, threat detection | — | audit_events |
 | **Data privacy** | Consent manager + **GDPR/CCPA** tooling (OneTrust / open-source) | Consent lifecycle, DSAR automation | — | — |
 
@@ -151,78 +151,78 @@ This is where AI-first is won or lost. The 7 pillars from `04_ai_stack_pillars.m
 
 ## 4. Reference architecture (AI-first)
 
-```mermaid
+`mermaid
 flowchart TD
-    subgraph CH["Channels"]
-        Mob["Mobile (React Native/Flutter)"]
-        Web["Web (Next.js)"]
-        Voice["Voice / WhatsApp"]
-        Ops["Ops Console (agents)"]
-    end
+ subgraph CH["Channels"]
+ Mob["Mobile (React Native/Flutter)"]
+ Web["Web (Next.js)"]
+ Voice["Voice / WhatsApp"]
+ Ops["Ops Console (agents)"]
+ end
 
-    subgraph EDGE["Edge & Identity"]
-        GW["APISIX + WAF"]
-        ID["Keycloak / Ory<br/>Passkeys · MFA · Device binding"]
-        BFF["BFF (GraphQL) + REST"]
-    end
+ subgraph EDGE["Edge & Identity"]
+ GW["APISIX + WAF"]
+ ID["Keycloak / Ory<br/>Passkeys · MFA · Device binding"]
+ BFF["BFF (GraphQL) + REST"]
+ end
 
-    subgraph CORE["Core Banking (System of Record)"]
-        VAULT["Core Ledger + Product Engine<br/>(Thought Machine / Mambu / Fineract)"]
-        GL["General Ledger"]
-        CIF["Customer Info File"]
-        EVT["Event Bus (Redpanda/Kafka + Flink)"]
-    end
+ subgraph CORE["Core Banking (System of Record)"]
+ VAULT["Core Ledger + Product Engine<br/>(Thought Machine / Mambu / Fineract)"]
+ GL["General Ledger"]
+ CIF["Customer Info File"]
+ EVT["Event Bus (Redpanda/Kafka + Flink)"]
+ end
 
-    subgraph AIPLANE["AI Platform"]
-        LG["LangGraph Agents"]
-        MCP["MCP Tool Servers"]
-        RAG["LlamaIndex RAG"]
-        QDR[("Qdrant")]
-        NEO[("Neo4j + Graphiti")]
-        LLM["LiteLLM Gateway"]
-        VLLM["vLLM / Ollama"]
-        FEAT["Feast Feature Store"]
-    end
+ subgraph AIPLANE["AI Platform"]
+ LG["LangGraph Agents"]
+ MCP["MCP Tool Servers"]
+ RAG["LlamaIndex RAG"]
+ QDR[("Qdrant")]
+ NEO[("Neo4j + Graphiti")]
+ LLM["LiteLLM Gateway"]
+ VLLM["vLLM / Ollama"]
+ FEAT["Feast Feature Store"]
+ end
 
-    subgraph DATA["Data Platform"]
-        ICE[("Iceberg on S3")]
-        OLAP[("ClickHouse / Snowflake")]
-        DBT["dbt"]
-    end
+ subgraph DATA["Data Platform"]
+ ICE[("Iceberg on S3")]
+ OLAP[("ClickHouse / Snowflake")]
+ DBT["dbt"]
+ end
 
-    subgraph RISK["Risk & Compliance (aegis/)"]
-        FRAUD["Real-time Fraud (GNN)"]
-        AML["Agentic AML / SAR"]
-        REG["Regulatory GraphRAG"]
-    end
+ subgraph RISK["Risk & Compliance "]
+ FRAUD["Real-time Fraud (GNN)"]
+ AML["Agentic AML / SAR"]
+ REG["Regulatory GraphRAG"]
+ end
 
-    subgraph GUARD["Guardrails & Governance"]
-        NEMO["NeMo + Llama Guard"]
-        OPA["OPA / Cedar"]
-        VAULTSEC["Vault"]
-        AUDIT[("Audit Log")]
-    end
+ subgraph GUARD["Guardrails & Governance"]
+ NEMO["NeMo + Llama Guard"]
+ OPA["OPA / Cedar"]
+ VAULTSEC["Vault"]
+ AUDIT[("Audit Log")]
+ end
 
-    subgraph OBS["Observability & Eval"]
-        LF["Langfuse + OTel"]
-        EVAL["Ragas + Braintrust"]
-    end
+ subgraph OBS["Observability & Eval"]
+ LF["Langfuse + OTel"]
+ EVAL["Ragas + Braintrust"]
+ end
 
-    CH --> GW --> ID --> BFF
-    BFF --> CORE
-    BFF --> AIPLANE
-    CORE --> EVT --> DATA
-    EVT --> RISK
-    AIPLANE --> RAG --> QDR & NEO
-    AIPLANE --> LLM --> VLLM
-    RISK --> NEMO
-    BFF --> NEMO
-    AIPLANE --> OPA
-    CORE --> AUDIT
-    AIPLANE --> LF
-    EVAL --> LF
-    DATA --> FEAT
-```
+ CH --> GW --> ID --> BFF
+ BFF --> CORE
+ BFF --> AIPLANE
+ CORE --> EVT --> DATA
+ EVT --> RISK
+ AIPLANE --> RAG --> QDR & NEO
+ AIPLANE --> LLM --> VLLM
+ RISK --> NEMO
+ BFF --> NEMO
+ AIPLANE --> OPA
+ CORE --> AUDIT
+ AIPLANE --> LF
+ EVAL --> LF
+ DATA --> FEAT
+`
 
 **AI-first request trace (customer):** "Pay this bill." → Mobile/voice → BFF → **Agent** (LangGraph) reads intent → **MCP tools** (billers, balance) via **NeMo rail** → **LLM** drafts payment (you authorise) → **Fraud scorer** (<150ms) → core ledger posts → event to Kafka → Langfuse trace + audit. The **agent is the interface**, the **event bus is the nervous system**, and **every step is traced and gated**.
 
@@ -250,7 +250,7 @@ The stack is only half of AI-first; the **way you build** is the other half.
 | Decision | Recommendation | Why |
 |---|---|---|
 | **Core banking** | **Buy** (Thought Machine / Mambu) for MVP; revisit build if ledger is the differentiator | 485 features on a config-driven core beats 485 hand-built modules; faster to compliance |
-| **KYC/AML/fraud data** | **Buy data** (ComplyAdvantage/Alloy/Unit21/Sift) + **build the intelligence plane** (`aegis/`) | Data is a commodity; the agentic reasoning + eval loop is your moat |
+| **KYC/AML/fraud data** | **Buy data** (ComplyAdvantage/Alloy/Unit21/Sift) + **build the intelligence plane** () | Data is a commodity; the agentic reasoning + eval loop is your moat |
 | **LLM** | **Multi-provider via LiteLLM**; self-host open weights (vLLM) for residency | Avoid lock-in; route cost/quality per step |
 | **Observability** | **Self-host Langfuse + Grafana** | Data residency + no per-seat cost for a regulated bank |
 | **Agent orchestration** | **Build on LangGraph + Temporal** | Frameworks are commodities; your agent graphs + evals are the IP |
@@ -261,7 +261,7 @@ The stack is only half of AI-first; the **way you build** is the other half.
 
 | Phase | Timeline | Stack focus | AI-first proof point |
 |---|---|---|---|
-| **P0 — Foundation** | Weeks 0–4 | Postgres + pgvector, FastAPI, Keycloak, `aegis/` (guardrails, LLM router, eval harness) | Eval-gated CI; offline mock → real LLM |
+| **P0 — Foundation** | Weeks 0–4 | Postgres + pgvector, FastAPI, Keycloak, (guardrails, LLM router, eval harness) | Eval-gated CI; offline mock → real LLM |
 | **P1 — AI core** | Weeks 4–10 | LangGraph + Temporal + MCP, Qdrant + Neo4j + LlamaIndex, vLLM, Langfuse + Ragas | One agentic flow (AML or support) end-to-end, traced and eval-gated |
 | **P2 — Bank MVP** | Weeks 10–20 | Core (buy), Redpanda + Flink, mobile (RN) + web (Next.js), real-time fraud (GNN) | Sub-150ms fraud + agentic assistant in prod |
 | **P3 — Scale** | Months 5–9 | Iceberg + ClickHouse, Feast, BentoML/KServe, OPA + Vault, multi-region K8s | 10k+ TPS, champion/challenger, drift monitors |

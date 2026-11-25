@@ -36,14 +36,14 @@
 
 ## Future-state flow
 
-```
+`
 Customer → Channel (RN/Next.js/Voice)
-        → Edge (APISIX/WAF, Keycloak passkeys)
-        → BFF (GraphQL/REST)
-        → Domain services (Java) + Core ledger (bought)
-        → Event bus (Kafka) → AI plane (fraud, AML, agents) + Data (Iceberg/ClickHouse)
-        → Guardrails + Audit + Langfuse
-```
+ → Edge (APISIX/WAF, Keycloak passkeys)
+ → BFF (GraphQL/REST)
+ → Domain services (Java) + Core ledger (bought)
+ → Event bus (Kafka) → AI plane (fraud, AML, agents) + Data (Iceberg/ClickHouse)
+ → Guardrails + Audit + Langfuse
+`
 
 ## Success criteria
 

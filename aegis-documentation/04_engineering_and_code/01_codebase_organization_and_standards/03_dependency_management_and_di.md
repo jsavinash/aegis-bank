@@ -35,13 +35,13 @@
 
 ## Example (Python)
 
-```python
+`python
 class CaseService:
-    def __init__(self, llm: BaseLLM, tools: ToolRegistry, guardrails: GuardrailEngine):
-        self.llm = llm
-        self.tools = tools
-        self.guardrails = guardrails
-```
+ def __init__(self, llm: BaseLLM, tools: ToolRegistry, guardrails: GuardrailEngine):
+ self.llm = llm
+ self.tools = tools
+ self.guardrails = guardrails
+`
 
 ## Testing
 

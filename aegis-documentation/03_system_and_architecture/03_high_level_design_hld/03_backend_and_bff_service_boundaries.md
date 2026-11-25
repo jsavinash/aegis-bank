@@ -15,7 +15,7 @@
 | **Business** | Python + TS | Invoicing, expenses, payroll |
 | **Treasury** | Java + Python | Cash positioning, forecasting |
 | **Open Banking** | Java | Consent, aggregation, PISP |
-| **Compliance** | Python | KYC/AML/regulatory (`aegis/`) |
+| **Compliance** | Python | KYC/AML/regulatory () |
 | **AI Platform** | Python | Agents, RAG, inference |
 | **Fraud** | Python | Real-time scoring + triage |
 | **Data** | Python/Java | Pipelines, feature store |

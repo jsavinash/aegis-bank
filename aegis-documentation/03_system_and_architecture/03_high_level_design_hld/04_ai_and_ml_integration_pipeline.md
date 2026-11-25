@@ -3,21 +3,21 @@
 
 ## Pipeline
 
-```mermaid
+`mermaid
 flowchart LR
-    EVT[Event Bus] --> FEAT[Feature Store Feast]
-    EVT --> LAKE[(Iceberg/S3)]
-    LAKE --> TRAIN[Training: PyTorch/HF/Unsloth]
-    TRAIN --> REG[Model Registry]
-    REG --> SERVE[vLLM / BentoML / KServe]
-    FEAT --> SERVE
-    SERVE --> RISK[AI Risk Plane]
-    RISK --> GUARD[NeMo + Llama Guard]
-    RISK --> LF[Langfuse Trace]
-    LF --> EVAL[Ragas Eval + CI Gate]
-    EVAL --> MON[Drift / Quality Monitor]
-    MON --> LAKE
-```
+ EVT[Event Bus] --> FEAT[Feature Store Feast]
+ EVT --> LAKE[(Iceberg/S3)]
+ LAKE --> TRAIN[Training: PyTorch/HF/Unsloth]
+ TRAIN --> REG[Model Registry]
+ REG --> SERVE[vLLM / BentoML / KServe]
+ FEAT --> SERVE
+ SERVE --> RISK[AI Risk Plane]
+ RISK --> GUARD[NeMo + Llama Guard]
+ RISK --> LF[Langfuse Trace]
+ LF --> EVAL[Ragas Eval + CI Gate]
+ EVAL --> MON[Drift / Quality Monitor]
+ MON --> LAKE
+`
 
 ## Components
 

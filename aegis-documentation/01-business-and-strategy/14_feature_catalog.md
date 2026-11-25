@@ -915,9 +915,9 @@ Score every candidate on **annual value × data readiness × (inverse) regulator
 
 | Rank | Use case | Why first | Model / stack |
 |---|---|---|---|
-| 1 | **Fraud detection & alert triage** | Highest measurable ROI (card losses 6–8 bps; 40–60% FP cut); moderate reg exposure; builds org muscle | GNN/GBM hot path + LangGraph warm triage (`aegis/risk`, `aegis/agents`) |
+| 1 | **Fraud detection & alert triage** | Highest measurable ROI (card losses 6–8 bps; 40–60% FP cut); moderate reg exposure; builds org muscle | GNN/GBM hot path + LangGraph warm triage (, ) |
 | 2 | **Customer servicing (contact centre + account/card agent)** | 25–40% contact deflection; huge volume; well-scoped | RAG + agentic assistant + MCP tools |
-| 3 | **AML monitoring + investigation (Aegis-IR)** | Legacy FP >90%; agentic investigation is proven (4 funded competitors) | Multi-agent LangGraph + GraphRAG + Temporal (`aegis/`) |
+| 3 | **AML monitoring + investigation (Aegis-IR)** | Legacy FP >90%; agentic investigation is proven (4 funded competitors) | Multi-agent LangGraph + GraphRAG + Temporal () |
 | 4 | **KYC/onboarding automation** | High volume, well-defined; fastest payback (60–120 days) | Workflow agent + Docling + guardrails |
 | 5 | **Credit underwriting copilot** | High value but heavy fair-lending scrutiny → *after* fraud/servicing prove governance | ML + LLM copilot, human-in-loop |
 | 6 | **Wealth RM copilot** | Revenue uplift; lower regulatory exposure than lending | RAG over portfolio + policy |
@@ -946,7 +946,7 @@ Every use case above must satisfy these controls, scaled to autonomy and sensiti
 2. **Risk-tiered controls** — adviser agents (public data) need lighter controls than executor agents writing to payments/AML; classify each agent by *what it may do and what it may touch*, pull controls from a standard library.
 3. **Evidence before action** — tests run, policies checked, outputs validated against authoritative sources before any side effect.
 4. **Containment** — rollback paths, blast-radius limits, idempotency keys.
-5. **Audit-ready traceability** — reconstruct who decided what, on what basis, with what authority (feeds `aegis/db` audit events).
+5. **Audit-ready traceability** — reconstruct who decided what, on what basis, with what authority (feeds audit events).
 6. **Fail-closed guardrails** — NeMo + Llama Guard; tool-result screening (OWASP MCP Top-10).
 
 ---
@@ -955,12 +955,12 @@ Every use case above must satisfy these controls, scaled to autonomy and sensiti
 
 | Use case | Code | Stack layer |
 |---|---|---|
-| Fraud triage / AML investigation | `aegis/risk/`, `aegis/agents/`, `aegis/graphs/`, `aegis/workflows/` | AI/ML platform (LangGraph + Temporal + MCP) |
-| RAG / KYC / policy Q&A | `aegis/rag/` | LlamaIndex + Qdrant + Neo4j |
-| Guardrails on every agent | `aegis/guardrails/` | NeMo + Llama Guard |
-| Eval of every use case | `aegis/eval/` | Ragas + Braintrust + Langfuse |
-| Document extraction | `aegis/compliance/` | Docling |
-| Regulatory change | `aegis/compliance/` | GraphRAG + Graphiti |
+| Fraud triage / AML investigation | , , , | AI/ML platform (LangGraph + Temporal + MCP) |
+| RAG / KYC / policy Q&A | | LlamaIndex + Qdrant + Neo4j |
+| Guardrails on every agent | | NeMo + Llama Guard |
+| Eval of every use case | | Ragas + Braintrust + Langfuse |
+| Document extraction | | Docling |
+| Regulatory change | | GraphRAG + Graphiti |
 
 See [../../04_engineering_and_code/01_codebase_organization_and_standards/05_module_to_stack_mapping.md](../04_engineering_and_code/01_codebase_organization_and_standards/05_module_to_stack_mapping.md) for the full module → stack map.
 

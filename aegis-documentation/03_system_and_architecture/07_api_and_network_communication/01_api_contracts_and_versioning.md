@@ -38,13 +38,13 @@
 
 ## Example endpoints
 
-```
-POST /v1/payments            → payment
-GET  /v1/accounts/{id}       → account
-POST /v1/cards/{id}/freeze   → freeze
+`
+POST /v1/payments → payment
+GET /v1/accounts/{id} → account
+POST /v1/cards/{id}/freeze → freeze
 POST /v1/lending/applications→ application
-POST /v1/assistant/query     → assistant (streaming)
-```
+POST /v1/assistant/query → assistant (streaming)
+`
 
 ## Security
 

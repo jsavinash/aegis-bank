@@ -14,66 +14,66 @@ This document is the **component/topology view**. The authoritative lists it imp
 
 ## Diagram
 
-```mermaid
+`mermaid
 flowchart TD
-    subgraph CH[Channels]
-        Mob[Mobile RN/Flutter]
-        Web[Web Next.js]
-        Voice[Voice/WhatsApp]
-    end
-    subgraph EDGE[Edge & Identity]
-        GW[APISIX + WAF]
-        ID[Keycloak/Ory - passkeys]
-        BFF[GraphQL/REST BFF]
-    end
-    subgraph CORE[Core Banking]
-        LEDGER[Real-time Ledger]
-        PRODUCTS[Product Engine]
-        CIF[Customer Info File]
-    end
-    subgraph SVC[Domain Services - Java]
-        PAY[Payments • Spring Boot / Quarkus]
-        CARD[Cards • Spring Boot / Quarkus]
-        LEND[Lending • Spring Boot / Quarkus]
-    end
-    subgraph BUS[Event Backbone]
-        KAFKA[Redpanda/Kafka + Flink]
-    end
-    subgraph AI[AI Platform - Python]
-        AGENTS[LangGraph Agents]
-        RAG[LlamaIndex RAG]
-        VEC[(Qdrant)]
-        GRAPH[(Neo4j)]
-        VLLM[vLLM/Ollama + LiteLLM]
-    end
-    subgraph RISK[AI Risk - aegis/]
-        FRAUD[Fraud Scorer]
-        AML[AML Investigation]
-        GUARD[NeMo + Llama Guard]
-    end
-    subgraph DATA[Data Platform]
-        ICE[(Iceberg/S3)]
-        OLAP[(ClickHouse)]
-    end
-    subgraph OBS[Observability]
-        LF[Langfuse + OTel]
-        AUDIT[(Audit Log)]
-    end
-    CH --> GW --> ID --> BFF
-    BFF --> CORE
-    BFF --> SVC
-    BFF --> AI
-    CORE --> KAFKA
-    SVC --> KAFKA
-    KAFKA --> RISK
-    KAFKA --> DATA
-    AI --> RAG --> VEC & GRAPH
-    AI --> VLLM
-    RISK --> GUARD
-    BFF --> GUARD
-    RISK --> AUDIT
-    AI --> LF
-```
+ subgraph CH[Channels]
+ Mob[Mobile RN/Flutter]
+ Web[Web Next.js]
+ Voice[Voice/WhatsApp]
+ end
+ subgraph EDGE[Edge & Identity]
+ GW[APISIX + WAF]
+ ID[Keycloak/Ory - passkeys]
+ BFF[GraphQL/REST BFF]
+ end
+ subgraph CORE[Core Banking]
+ LEDGER[Real-time Ledger]
+ PRODUCTS[Product Engine]
+ CIF[Customer Info File]
+ end
+ subgraph SVC[Domain Services - Java]
+ PAY[Payments • Spring Boot / Quarkus]
+ CARD[Cards • Spring Boot / Quarkus]
+ LEND[Lending • Spring Boot / Quarkus]
+ end
+ subgraph BUS[Event Backbone]
+ KAFKA[Redpanda/Kafka + Flink]
+ end
+ subgraph AI[AI Platform - Python]
+ AGENTS[LangGraph Agents]
+ RAG[LlamaIndex RAG]
+ VEC[(Qdrant)]
+ GRAPH[(Neo4j)]
+ VLLM[vLLM/Ollama + LiteLLM]
+ end
+ subgraph RISK[AI Risk - ]
+ FRAUD[Fraud Scorer]
+ AML[AML Investigation]
+ GUARD[NeMo + Llama Guard]
+ end
+ subgraph DATA[Data Platform]
+ ICE[(Iceberg/S3)]
+ OLAP[(ClickHouse)]
+ end
+ subgraph OBS[Observability]
+ LF[Langfuse + OTel]
+ AUDIT[(Audit Log)]
+ end
+ CH --> GW --> ID --> BFF
+ BFF --> CORE
+ BFF --> SVC
+ BFF --> AI
+ CORE --> KAFKA
+ SVC --> KAFKA
+ KAFKA --> RISK
+ KAFKA --> DATA
+ AI --> RAG --> VEC & GRAPH
+ AI --> VLLM
+ RISK --> GUARD
+ BFF --> GUARD
+ RISK --> AUDIT
+ AI --> LF
+`
 
 ## Component responsibilities
 
@@ -86,7 +86,7 @@ flowchart TD
 | **Domain Services** (Java: Payments, Cards, Lending) | Transactional workflows, idempotent writes | PAY, CARD, LEND |
 | **Event Backbone** (Redpanda/Kafka + Flink) | Durable events, stream processing, outbox | DATA, PLAT — cross-cutting |
 | **AI Platform** (LangGraph, LlamaIndex, Qdrant, Neo4j, vLLM) | Agents, RAG, vector + graph retrieval, inference | AI — servicing, insights, wealth, ops |
-| **AI Risk** (`aegis/`: Fraud, AML, Guard) | Real-time fraud scoring, agentic AML, guardrails | SEC, COMP — fraud, KYC/AML |
+| **AI Risk** (: Fraud, AML, Guard) | Real-time fraud scoring, agentic AML, guardrails | SEC, COMP — fraud, KYC/AML |
 | **Data Platform** (Iceberg/S3, ClickHouse) | Lakehouse, OLAP, history, reconciliation | DATA — analytics, reporting |
 | **Observability** (Langfuse + OTel, Audit Log) | Traces, metrics, immutable audit | PLAT, COMP — every action |
 
@@ -102,13 +102,13 @@ Every feature type is covered by at least one component (full mapping in `06_fea
 | LEND | 32 | Lending service |
 | WEALTH | 43 | Wealth (AI + Data) |
 | BIZ | 57 | Business services |
-| SEC | 32 | Fraud + Identity (`aegis/`) |
-| AI | 44 | AI Platform (`aegis/`) |
+| SEC | 32 | Fraud + Identity () |
+| AI | 44 | AI Platform () |
 | DATA | 45 | Data Platform |
 | OPEN | 7 | Open Banking |
 | LIFE | 39 | Lifestyle / Channels |
 | ESG | 16 | ESG |
-| COMP | 25 | Compliance (`aegis/`) |
+| COMP | 25 | Compliance () |
 | ACC | 12 | Channels (WCAG 2.2 AA) |
 | PLAT | 25 | Platform / Data / Infra |
 

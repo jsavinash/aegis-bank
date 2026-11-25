@@ -10,10 +10,10 @@
 3. **Identify saturation** — CPU, memory, GPU, connection pools, queue depth.
 4. **Recent changes?** — correlate with deploys/flags.
 5. **Mitigate:**
-   - Scale horizontally (HPA / manual).
-   - Circuit-break a failing dependency.
-   - Shed low-priority traffic.
-   - Roll back recent deploy / flip feature flag.
+ - Scale horizontally (HPA / manual).
+ - Circuit-break a failing dependency.
+ - Shed low-priority traffic.
+ - Roll back recent deploy / flip feature flag.
 6. **Verify** latency returns to SLO.
 7. **Communicate** if customer-impacting.
 8. **Post-mortem.**

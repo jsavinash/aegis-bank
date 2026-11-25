@@ -3,24 +3,24 @@
 
 ## Core entities
 
-```mermaid
+`mermaid
 erDiagram
-    CUSTOMER ||--o{ ACCOUNT : owns
-    CUSTOMER ||--o{ CARD : holds
-    CUSTOMER ||--o{ LOAN : borrows
-    CUSTOMER ||--o{ DEVICE : uses
-    CUSTOMER ||--o{ KYC_CHECK : undergoes
-    CUSTOMER ||--o{ CONSENT : grants
-    CUSTOMER ||--o{ DOCUMENT : owns
-    ACCOUNT ||--o{ TRANSACTION : posts
-    ACCOUNT ||--o{ PAYMENT : initiates
-    CARD ||--o{ CARD_TXN : authorises
-    LOAN ||--o{ REPAYMENT : schedules
-    TRANSACTION ||--o{ FRAUD_SIGNAL : triggers
-    FRAUD_SIGNAL ||--o{ CASE : becomes
-    CASE ||--o{ AUDIT_EVENT : records
-    CUSTOMER ||--o{ NOTIFICATION : receives
-```
+ CUSTOMER | |--o{ ACCOUNT : owns
+ CUSTOMER | |--o{ CARD : holds
+ CUSTOMER | |--o{ LOAN : borrows
+ CUSTOMER | |--o{ DEVICE : uses
+ CUSTOMER | |--o{ KYC_CHECK : undergoes
+ CUSTOMER | |--o{ CONSENT : grants
+ CUSTOMER | |--o{ DOCUMENT : owns
+ ACCOUNT | |--o{ TRANSACTION : posts
+ ACCOUNT | |--o{ PAYMENT : initiates
+ CARD | |--o{ CARD_TXN : authorises
+ LOAN | |--o{ REPAYMENT : schedules
+ TRANSACTION | |--o{ FRAUD_SIGNAL : triggers
+ FRAUD_SIGNAL | |--o{ CASE : becomes
+ CASE | |--o{ AUDIT_EVENT : records
+ CUSTOMER | |--o{ NOTIFICATION : receives
+`
 
 ## Key tables (Postgres)
 

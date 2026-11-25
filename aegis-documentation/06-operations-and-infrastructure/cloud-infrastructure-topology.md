@@ -4,22 +4,22 @@
 
 ## Topology
 
-```mermaid
+`mermaid
 flowchart TD
-    U[Users] --> CDN[CloudFront / Cloudflare]
-    CDN --> LB[Global LB]
-    LB --> VPC1[VPC - Region A]
-    LB --> VPC2[VPC - Region B - warm standby]
-    subgraph RegionA[VPC - Region A]
-        EKS[EKS cluster - 3 AZs]
-        RDS[(RDS/Aurora Postgres)]
-        REDIS[(ElastiCache Redis)]
-        MSK[(MSK / Redpanda)]
-        S3[(S3 - Iceberg)]
-        QDR[(Qdrant)]
-        NEO[(Neo4j)]
-    end
-```
+ U[Users] --> CDN[CloudFront / Cloudflare]
+ CDN --> LB[Global LB]
+ LB --> VPC1[VPC - Region A]
+ LB --> VPC2[VPC - Region B - warm standby]
+ subgraph RegionA[VPC - Region A]
+ EKS[EKS cluster - 3 AZs]
+ RDS[(RDS/Aurora Postgres)]
+ REDIS[(ElastiCache Redis)]
+ MSK[(MSK / Redpanda)]
+ S3[(S3 - Iceberg)]
+ QDR[(Qdrant)]
+ NEO[(Neo4j)]
+ end
+`
 
 ## Accounts (AWS/GCP)
 

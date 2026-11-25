@@ -35,4 +35,4 @@
 25. **Touching a screen → TypeScript.** All customer/employee interfaces (mobile, web, BFF).
 26. **Touching the ledger product logic → buy, don't build.** Integrate via events/APIs; don't reimplement the core.
 27. **Touching a contract → define it first.** OpenAPI/AsyncAPI/GraphQL; language is an implementation detail behind the contract.
-28. **Touching compliance → `aegis/` (Python) + human sign-off.** Never autonomous for regulated actions.
+28. **Touching compliance → (Python) + human sign-off.** Never autonomous for regulated actions.

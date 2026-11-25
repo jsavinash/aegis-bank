@@ -3,39 +3,39 @@
 ## State machines
 
 ### Case (AML investigation)
-```
+`
 OPEN → INVESTIGATING → PENDING_REVIEW → FILED / CLOSED / DISMISSED
-```
+`
 
 ### Payment
-```
+`
 INITIATED → SCORED → POSTED / DECLINED / ESCALATED
-```
+`
 
 ### KYC
-```
+`
 DRAFT → SUBMITTED → VERIFYING → VERIFIED / EDD / REJECTED
-```
+`
 
 ### Loan application
-```
+`
 DRAFT → SUBMITTED → UNDERWRITING → APPROVED / DECLINED / REFERRED
-```
+`
 
 ### Card
-```
+`
 ACTIVE → FROZEN → CLOSED
-```
+`
 
 ### Consent
-```
+`
 GRANTED → ACTIVE → EXPIRED / REVOKED
-```
+`
 
 ### Dispute
-```
+`
 OPEN → INVESTIGATING → RESOLVED / CHARGEBACK
-```
+`
 
 ## Workflow engines
 

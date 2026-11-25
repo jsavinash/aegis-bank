@@ -4,23 +4,23 @@ A minimal, runnable reference implementation of the Aegis domain: entities, enum
 
 ## Layout
 
-```
+`
 src/
-  exceptions/   typed domain errors
-  models/       entities, enums, value objects
-  services/     case_service, fraud_service
-  strategies/   risk_strategy, model_router
+ exceptions/ typed domain errors
+ models/ entities, enums, value objects
+ services/ case_service, fraud_service
+ strategies/ risk_strategy, model_router
 tests/
-  unit/         service + state-transition tests
-  concurrency/  locking tests
-```
+ unit/ service + state-transition tests
+ concurrency/ locking tests
+`
 
 ## Run
 
-```bash
+`bash
 pip install -r requirements.txt
 pytest -q
-```
+`
 
 ## What it demonstrates
 
@@ -30,4 +30,4 @@ pytest -q
 - **Strategy pattern** for risk scoring (rules vs model).
 - **Model routing** (cheap vs reasoning tiers).
 
-> This is illustrative, not production. The production AI plane is the `aegis/` package at the repo root.
+> This is illustrative, not production. The production AI plane is the package at the repo root.

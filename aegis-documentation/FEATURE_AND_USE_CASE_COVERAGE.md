@@ -39,13 +39,13 @@ Every feature type is covered by at least one architectural component (see `06_f
 | LEND | 32 | Lending | 07, 06 |
 | WEALTH | 43 | Wealth | 07, 06 |
 | BIZ | 57 | Business | 07, 06 |
-| SEC | 32 | Fraud + Identity (`aegis/`) | 07, 06, 08 |
-| AI | 44 | AI Platform (`aegis/`) | 07, 06, 08 |
+| SEC | 32 | Fraud + Identity () | 07, 06, 08 |
+| AI | 44 | AI Platform () | 07, 06, 08 |
 | DATA | 45 | Data platform | 07, 06 |
 | OPEN | 7 | Open Banking | 07, 06 |
 | LIFE | 39 | Lifestyle / Channels | 07, 06 |
 | ESG | 16 | ESG | 07, 06 |
-| COMP | 25 | Compliance (`aegis/`) | 07, 06, 08 |
+| COMP | 25 | Compliance () | 07, 06, 08 |
 | ACC | 12 | Channels (WCAG 2.2 AA) | 07, 06 |
 | PLAT | 25 | Platform / Data / Infra | 07, 06 |
 

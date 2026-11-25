@@ -2,43 +2,43 @@
 
 ## Core domain models (Python / Pydantic)
 
-```python
+`python
 class CaseState(BaseModel):
-    case_id: UUID
-    alert_id: UUID
-    entity_id: UUID
-    status: CaseStatus = CaseStatus.OPEN
-    evidence: list[Evidence] = []
-    hypotheses: list[TypologyHypothesis] = []
-    narrative: str = ""
-    risk_score: float = 0.0
-    approvals: list[dict] = []
-```
+ case_id: UUID
+ alert_id: UUID
+ entity_id: UUID
+ status: CaseStatus = CaseStatus.OPEN
+ evidence: list[Evidence] = []
+ hypotheses: list[TypologyHypothesis] = []
+ narrative: str = ""
+ risk_score: float = 0.0
+ approvals: list[dict] = []
+`
 
 ## Key interfaces
 
-```python
+`python
 class BaseLLM(Protocol):
-    def complete(self, messages: list[ChatMessage]) -> tuple[str, Usage]: ...
-    def structured(self, messages, schema: type[T]) -> T: ...
+ def complete(self, messages: list[ChatMessage]) -> tuple[str, Usage]: ...
+ def structured(self, messages, schema: type[T]) -> T: ...
 
 class ToolRegistry:
-    async def call(self, role: str, name: str, args: dict, approved: bool = False) -> dict: ...
+ async def call(self, role: str, name: str, args: dict, approved: bool = False) -> dict: ...
 
 class GuardrailEngine:
-    def check_input(self, text: str) -> GuardrailResult: ...
-    def check_tool_call(self, role: str, tool: str, args: dict) -> GuardrailResult: ...
+ def check_input(self, text: str) -> GuardrailResult: ...
+ def check_tool_call(self, role: str, tool: str, args: dict) -> GuardrailResult: ...
 
 class EventBus(Protocol):
-    def publish(self, topic: str, key: str, payload: dict) -> None: ...
+ def publish(self, topic: str, key: str, payload: dict) -> None: ...
 
 class FeatureStore(Protocol):
-    def get_online(self, entity_id: UUID, features: list[str]) -> dict: ...
+ def get_online(self, entity_id: UUID, features: list[str]) -> dict: ...
 
 class VectorStore(Protocol):
-    def upsert(self, id: str, vector: list[float], payload: dict) -> None: ...
-    def search(self, vector: list[float], k: int) -> list[dict]: ...
-```
+ def upsert(self, id: str, vector: list[float], payload: dict) -> None: ...
+ def search(self, vector: list[float], k: int) -> list[dict]: ...
+`
 
 ## Domain entities
 

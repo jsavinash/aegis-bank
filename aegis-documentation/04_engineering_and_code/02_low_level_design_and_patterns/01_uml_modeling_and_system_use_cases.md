@@ -4,22 +4,22 @@
 
 ## Use case diagram (text)
 
-```mermaid
+`mermaid
 flowchart LR
-    Customer((Customer)) --> UC1[Onboard]
-    Customer --> UC2[Pay/Transfer]
-    Customer --> UC3[Freeze Card]
-    Customer --> UC4[Ask Assistant]
-    Customer --> UC5[Apply for Loan]
-    Customer --> UC9[Dispute Transaction]
-    Customer --> UC10[Manage Consent]
-    Analyst((Analyst)) --> UC6[Investigate Alert]
-    Analyst --> UC7[Draft SAR]
-    Analyst --> UC8[Approve Case]
-    Admin((Admin)) --> UC11[Manage Users]
-    System((System)) --> UC12[Score Fraud]
-    System --> UC13[Monitor AML]
-```
+ Customer((Customer)) --> UC1[Onboard]
+ Customer --> UC2[Pay/Transfer]
+ Customer --> UC3[Freeze Card]
+ Customer --> UC4[Ask Assistant]
+ Customer --> UC5[Apply for Loan]
+ Customer --> UC9[Dispute Transaction]
+ Customer --> UC10[Manage Consent]
+ Analyst((Analyst)) --> UC6[Investigate Alert]
+ Analyst --> UC7[Draft SAR]
+ Analyst --> UC8[Approve Case]
+ Admin((Admin)) --> UC11[Manage Users]
+ System((System)) --> UC12[Score Fraud]
+ System --> UC13[Monitor AML]
+`
 
 ## Key use cases
 
@@ -41,27 +41,27 @@ flowchart LR
 
 ## Sequence (payment)
 
-```mermaid
+`mermaid
 sequenceDiagram
-    Customer->>BFF: pay(recipient, amount)
-    BFF->>Payments: POST /payments
-    Payments->>Fraud: score()
-    Fraud-->>Payments: allow
-    Payments->>Core: post (idempotent)
-    Core-->>Payments: posted
-    Payments-->>BFF: 201
-    BFF-->>Customer: receipt
-```
+ Customer->>BFF: pay(recipient, amount)
+ BFF->>Payments: POST /payments
+ Payments->>Fraud: score()
+ Fraud-->>Payments: allow
+ Payments->>Core: post (idempotent)
+ Core-->>Payments: posted
+ Payments-->>BFF: 201
+ BFF-->>Customer: receipt
+`
 
 ## Class diagram (core entities)
 
-```mermaid
+`mermaid
 classDiagram
-    Customer "1" --> "*" Account
-    Account "1" --> "*" Transaction
-    Customer "1" --> "*" Card
-    Loan "1" --> "*" Repayment
-```
+ Customer "1" --> "*" Account
+ Account "1" --> "*" Transaction
+ Customer "1" --> "*" Card
+ Loan "1" --> "*" Repayment
+`
 
 ## System boundaries
 

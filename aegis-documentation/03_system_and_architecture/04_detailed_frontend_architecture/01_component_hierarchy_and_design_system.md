@@ -4,84 +4,84 @@
 
 ## Component hierarchy
 
-```
+`
 AppShell
 ├── AppBar / BottomTabBar (Home · Payments · Cards · Save · Profile)
 ├── NavigationHost (React Navigation native / Next.js App Router web)
-│   ├── Auth & Onboarding
-│   │   ├── LoginScreen (passkey / OTP)
-│   │   ├── OnboardingScreen
-│   │   ├── KycScreen (ID + liveness, EDD)
-│   │   └── StepUpAuthScreen
-│   ├── HomeScreen (balance, quick actions, insights teaser)
-│   ├── AccountsScreen
-│   │   ├── AccountsListScreen
-│   │   ├── AccountDetailScreen (transactions, statements)
-│   │   └── PotsGoalsScreen
-│   ├── PaymentsScreen
-│   │   ├── SendMoneyScreen (domestic, P2P, wires, QR, instant)
-│   │   ├── RequestMoneyScreen
-│   │   ├── PayBillScreen (bill pay, autopay, scheduled)
-│   │   ├── StandingOrdersScreen
-│   │   ├── SplitBillScreen
-│   │   ├── MobileDepositScreen
-│   │   └── PaymentStatusScreen
-│   ├── CardsScreen
-│   │   ├── CardsListScreen
-│   │   ├── CardDetailScreen (freeze, controls, limits, MCC/channel)
-│   │   ├── CardPinScreen
-│   │   ├── AddToWalletScreen
-│   │   └── DisputeScreen
-│   ├── SaveInvestScreen
-│   │   ├── SavingsGoalsScreen
-│   │   ├── RoboAdvisorScreen
-│   │   ├── SelfDirectedScreen
-│   │   ├── RetirementScreen
-│   │   ├── CryptoScreen (digital assets, stablecoins)
-│   │   └── PortfolioScreen (analytics, tax-loss harvesting)
-│   ├── BorrowScreen
-│   │   ├── LoansScreen (personal, auto, mortgage)
-│   │   ├── BnplScreen
-│   │   ├── OverdraftEwaScreen
-│   │   ├── CreditLineScreen
-│   │   ├── OriginationScreen
-│   │   └── CreditHealthScreen (score, report, build)
-│   ├── BusinessScreen
-│   │   ├── BusinessAccountScreen
-│   │   ├── InvoicesScreen
-│   │   ├── ExpensesScreen
-│   │   ├── PayrollScreen (MTD)
-│   │   ├── TreasuryScreen
-│   │   └── MerchantAcceptanceScreen
-│   ├── InsightsScreen
-│   │   ├── SpendingScreen
-│   │   ├── BudgetsScreen
-│   │   ├── CashFlowScreen
-│   │   ├── NetWorthScreen
-│   │   └── NudgesScreen
-│   ├── WealthScreen (private banking / HNW, wealth projection)
-│   ├── KidsFamilyScreen
-│   ├── InternationalScreen (multi-currency, FX, remittance, travel)
-│   ├── OpenBankingScreen (aggregation, connected accounts)
-│   ├── LifestyleScreen (super-app, lifestyle, offers)
-│   ├── SustainabilityScreen (green banking, ESG)
-│   ├── RewardsScreen (rewards, travel, perks)
-│   ├── InsuranceScreen (protection)
-│   ├── SpecialtyScreen (niche products)
-│   ├── AgriInclusionScreen (rural, agri, financial inclusion)
-│   ├── EmergingScreen (new / emerging domains)
-│   ├── AccessibilityScreen (adjustments)
-│   ├── ActivityScreen (transactions, statements, documents, self-service)
-│   ├── AssistantScreen (agentic chat/voice, escalation)
-│   ├── SupportScreen (help center, contact, complaints)
-│   ├── SearchScreen (global assistant-powered search)
-│   └── ProfileScreen (settings, security, privacy, notifications)
+│ ├── Auth & Onboarding
+│ │ ├── LoginScreen (passkey / OTP)
+│ │ ├── OnboardingScreen
+│ │ ├── KycScreen (ID + liveness, EDD)
+│ │ └── StepUpAuthScreen
+│ ├── HomeScreen (balance, quick actions, insights teaser)
+│ ├── AccountsScreen
+│ │ ├── AccountsListScreen
+│ │ ├── AccountDetailScreen (transactions, statements)
+│ │ └── PotsGoalsScreen
+│ ├── PaymentsScreen
+│ │ ├── SendMoneyScreen (domestic, P2P, wires, QR, instant)
+│ │ ├── RequestMoneyScreen
+│ │ ├── PayBillScreen (bill pay, autopay, scheduled)
+│ │ ├── StandingOrdersScreen
+│ │ ├── SplitBillScreen
+│ │ ├── MobileDepositScreen
+│ │ └── PaymentStatusScreen
+│ ├── CardsScreen
+│ │ ├── CardsListScreen
+│ │ ├── CardDetailScreen (freeze, controls, limits, MCC/channel)
+│ │ ├── CardPinScreen
+│ │ ├── AddToWalletScreen
+│ │ └── DisputeScreen
+│ ├── SaveInvestScreen
+│ │ ├── SavingsGoalsScreen
+│ │ ├── RoboAdvisorScreen
+│ │ ├── SelfDirectedScreen
+│ │ ├── RetirementScreen
+│ │ ├── CryptoScreen (digital assets, stablecoins)
+│ │ └── PortfolioScreen (analytics, tax-loss harvesting)
+│ ├── BorrowScreen
+│ │ ├── LoansScreen (personal, auto, mortgage)
+│ │ ├── BnplScreen
+│ │ ├── OverdraftEwaScreen
+│ │ ├── CreditLineScreen
+│ │ ├── OriginationScreen
+│ │ └── CreditHealthScreen (score, report, build)
+│ ├── BusinessScreen
+│ │ ├── BusinessAccountScreen
+│ │ ├── InvoicesScreen
+│ │ ├── ExpensesScreen
+│ │ ├── PayrollScreen (MTD)
+│ │ ├── TreasuryScreen
+│ │ └── MerchantAcceptanceScreen
+│ ├── InsightsScreen
+│ │ ├── SpendingScreen
+│ │ ├── BudgetsScreen
+│ │ ├── CashFlowScreen
+│ │ ├── NetWorthScreen
+│ │ └── NudgesScreen
+│ ├── WealthScreen (private banking / HNW, wealth projection)
+│ ├── KidsFamilyScreen
+│ ├── InternationalScreen (multi-currency, FX, remittance, travel)
+│ ├── OpenBankingScreen (aggregation, connected accounts)
+│ ├── LifestyleScreen (super-app, lifestyle, offers)
+│ ├── SustainabilityScreen (green banking, ESG)
+│ ├── RewardsScreen (rewards, travel, perks)
+│ ├── InsuranceScreen (protection)
+│ ├── SpecialtyScreen (niche products)
+│ ├── AgriInclusionScreen (rural, agri, financial inclusion)
+│ ├── EmergingScreen (new / emerging domains)
+│ ├── AccessibilityScreen (adjustments)
+│ ├── ActivityScreen (transactions, statements, documents, self-service)
+│ ├── AssistantScreen (agentic chat/voice, escalation)
+│ ├── SupportScreen (help center, contact, complaints)
+│ ├── SearchScreen (global assistant-powered search)
+│ └── ProfileScreen (settings, security, privacy, notifications)
 └── GlobalOverlays (modals, toasts, alerts)
-```
+`
 
 > The **agent/ops console** (web) reuses the same design system and component set; it is a separate app shell over the same tokens/components, not a separate design language:
 
-```
+`
 OpsConsole (web)
 ├── CaseQueueScreen
 ├── CaseDetailScreen (evidence, narrative, QA, HITL)
@@ -90,7 +90,7 @@ OpsConsole (web)
 ├── SarScreen
 ├── AuditScreen
 └── AgentOversightScreen
-```
+`
 
 ## Page coverage (feature-catalog sections 1–37)
 

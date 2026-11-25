@@ -32,7 +32,7 @@ Consolidated catalog of **all use cases** for Aegis Bank across three lenses: **
 | ID | Use case | Component |
 |---|---|---|
 | SY-01 | Authenticate (passkey/MFA) | Identity (Keycloak/Ory) |
-| SY-02 | Score transaction for fraud | Fraud (aegis/risk) |
+| SY-02 | Score transaction for fraud | Fraud |
 | SY-03 | Post to ledger | Core banking |
 | SY-04 | Emit & consume events | Kafka / Flink |
 | SY-05 | Retrieve knowledge (RAG) | LlamaIndex + Qdrant + Neo4j |
