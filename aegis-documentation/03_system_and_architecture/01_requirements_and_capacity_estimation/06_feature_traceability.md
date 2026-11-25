@@ -1,6 +1,6 @@
 # Feature Traceability — Architecture Coverage
 
-**Version:** 1.1 · **Date:** 25 Nov 2026 · **Companion to:** [07_full_feature_catalog.md](./07_full_feature_catalog.md) (canonical; `../../01-business-and-strategy/14_feature_catalog.md` is the business-view pointer)
+**Version:** 1.1 · **Date:** 25 Nov 2026 · **Companion to:** [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (canonical combined catalog; `07_full_feature_catalog.md` is a pointer)
 
 This document closes the gap between the **full feature catalog** (~485 features, 37 sections) and the **system architecture**. The catalog itself lives in `01-business-and-strategy/14_feature_catalog.md`; here we trace every feature **domain** to the architectural components, services, and data stores that implement it.
 
@@ -99,4 +99,4 @@ This document closes the gap between the **full feature catalog** (~485 features
 
 ## Full feature detail
 
-The authoritative feature list is [07_full_feature_catalog.md](./07_full_feature_catalog.md) (37 sections, ~485 features, tagged `[TYPE] [PRIORITY] [PROVEN]`).
+The authoritative feature list is [14_feature_catalog.md](../../01-business-and-strategy/14_feature_catalog.md) (37 sections, ~485 features + ~46 AI use cases, tagged `[TYPE] [PRIORITY] [PROVEN]`).

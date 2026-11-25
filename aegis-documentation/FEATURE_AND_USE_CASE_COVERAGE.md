@@ -8,8 +8,7 @@ This is the master index proving that the **full feature set (~485 features, 37 
 
 | Artifact | Location | Contents |
 |---|---|---|
-| **Full feature catalog** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/07_full_feature_catalog.md) | ~485 features, 37 sections, tagged `[TYPE] [PRIORITY] [PROVEN]` |
-| **Feature catalog (business copy)** | [`01-business-and-strategy/14_feature_catalog.md`](./01-business-and-strategy/14_feature_catalog.md) | Same catalog, business view |
+| **Full feature catalog (combined)** | [`01-business-and-strategy/14_feature_catalog.md`](./01-business-and-strategy/14_feature_catalog.md) | ~485 features + ~46 AI use cases (as features), 37 sections, tagged `[TYPE] [PRIORITY] [PROVEN]` |
 | **All use cases** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/09_use_case_catalog_all.md) | Business (BU), System (SY), AI (AI) use cases |
 | **AI use cases** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/08_ai_use_case_catalog.md) | ~46 AI use cases, archetypes, value/readiness/regulatory |
 | **Feature → architecture traceability** | [`03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md`](./03_system_and_architecture/01_requirements_and_capacity_estimation/06_feature_traceability.md) | 37 domains → components/services/data |
